@@ -7,7 +7,7 @@ import com.alcohol.sul.board.notice.NoticeDTO;
 public interface BoardDAO {
 
 	//List
-	public List<BoardDTO> getList()throws Exception;
+	public List<BoardDTO> getList(BoardDTO boardDTO)throws Exception;
 	
 	//Detail
 	public BoardDTO getDetail(BoardDTO boardDTO)throws Exception;

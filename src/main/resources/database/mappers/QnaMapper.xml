@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.alcohol.sul.board.qna.QnaDAO">
+ 	
+ 	<!-- List -->
+ 	<select id="getList" resultMap="getListResult">
+ 		SELECT * FROM QNA
+ 	</select>
+ 	<resultMap type="QnaDTO" id="getListResult">
+ 		<id column = "QNANUM" property="num"/>
+ 		<result column="NAME" property="name"/>
+ 		<result column="SUBJECT" property="subject"/>
+ 		<result column="CONTENTS" property="contents"/>
+ 		<result column="CREATEDATE" property="createDate"/>
+ 		<result column="REPLY" property="reply"/>
+ 		<result column="REF" property="ref"/>
+ 		<result column="STEP" property="step"/>
+ 		<result column="DEPTH" property="depth"/>
+ 		<result column="QNAHIT" property="hit"/>
+ 	</resultMap>
+  </mapper>

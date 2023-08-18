@@ -5,7 +5,8 @@
 		
 <configuration>
 	<typeAliases>
-	
+		<!-- QNA -->
+		<typeAlias type="com.alcohol.sul.board.qna.QnaDTO" alias="QnaDTO"/>
 		
 	</typeAliases>
 </configuration>
