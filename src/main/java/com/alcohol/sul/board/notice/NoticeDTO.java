@@ -1,5 +1,7 @@
 package com.alcohol.sul.board.notice;
 
-public class NoticeDTO {
+import com.alcohol.sul.board.BoardDTO;
+
+public class NoticeDTO extends BoardDTO{
 	
 }

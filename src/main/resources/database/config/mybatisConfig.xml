@@ -6,5 +6,27 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="com.alcohol.sul.member.MemberDTO" alias="MemberDTO"/>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<typeAlias type="com.alcohol.sul.board.notice.NoticeDTO" alias="NoticeDTO"/>
+	<typeAlias type="java.lang.Long" alias="Long"/>
 	</typeAliases>
 </configuration>

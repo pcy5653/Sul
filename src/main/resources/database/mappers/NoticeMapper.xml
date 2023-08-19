@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.alcohol.sul.board.notice.NoticeDAO">
+
+<!-- List -->
+<select id="getList" resultMap="getSelectResult" resultType="NoticeDTO">
+	SELECT * FROM NOTICE
+	ORDER BY NOTICENUM DESC
+</select>
+
+<resultMap type="NoticeDTO" id="getSelectResult">
+ 	<id column="NOTICENUM" property="num"/>
+ 	<result column="SUBJECT" property="subject"/>
+ 	<result column="NAME" property="name"/>
+ 	<result column="CONTENTS" property="contents"/>
+ 	<result column="CREATEDATE" property="createDate"/>
+ 	<result column="NOTICEHIT" property="hit"/>
+</resultMap>
+ 
+<!-- Detail -->
+	<select id="getDetail" resultMap="getDetailResult" parameterType="NoticeDTO" >
+		SELECT *
+		FROM NOTICE
+		WHERE NOTICENUM=#{num}
+	</select>
+
+<resultMap type="NoticeDTO" id="getDetailResult">
+ 	<id column="NOTICENUM" property="num"/>
+ 	<result column="SUBJECT" property="subject"/>
+ 	<result column="NAME" property="name"/>
+ 	<result column="CONTENTS" property="contents"/>
+ 	<result column="CREATEDATE" property="createDate"/>
+ 	<result column="NOTICEHIT" property="hit"/>
+</resultMap>
+
+<!-- Add -->
+
+<insert id="setAdd" parameterType="NoticeDTO">
+	INSERT INTO NOTICE
+	VALUES (NOTICE_SEQ.NEXTVAL, #{name}, #{subject}, #{contents}, SYSDATE, 0)
+</insert>
+
+<!-- Update -->
+
+<update id="setUpdate" parameterType="NoticeDTO">
+	UPDATE NOTICE SET
+	NAME=#{name},
+	SUBJECT=#{subject},
+	CONTENTS=#{contents}
+	WHERE NOTICENUM=#{num}
+</update>
+
+<!-- Delete -->
+ 
+	<delete id="setDelete" parameterType="Long">
+ 		DELETE NOTICE WHERE NOTICENUM=#{num}
+ 	</delete>
+
+<!-- Hit -->
+<update id="setHitCount">
+		UPDATE
+			NOTICE
+		SET
+			NOTICEHIT = NOTICEHIT + 1
+		WHERE
+			NOTICENUM = #{noticeNum}
+	</update>
+</mapper>
