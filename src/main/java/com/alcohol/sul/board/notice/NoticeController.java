@@ -7,11 +7,14 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.alcohol.sul.board.BoardDTO;
+import com.alcohol.sul.board.notice.NoticeFileDTO;
+import com.alcohol.sul.util.Pager;
 
 @Controller
 
@@ -24,21 +27,22 @@ public class NoticeController {
 	// List 
 	
 	@RequestMapping(value = "list", method = RequestMethod.GET)
-	public String getList(Model model) throws Exception{
-		List<BoardDTO> ar = noticeService.getList();
+	public String getList(Pager pager, Model model) throws Exception{
+		List<BoardDTO> ar = noticeService.getList(pager);
 		model.addAttribute("list",ar);
+		model.addAttribute("pager", pager);
 		return "board/list";
 	}
 	
 	// Add
 	
 	@RequestMapping(value = "add", method = RequestMethod.GET)
-	public String setAdd() throws Exception{
+	public String setAdd()throws Exception{
 		return "board/add";
 	}
 	
-	@RequestMapping(value="add", method = RequestMethod.POST)
-	public String setAdd(NoticeDTO noticeDTO, MultipartFile[] photos, HttpSession session, Model model) throws Exception{
+	@RequestMapping(value = "add", method = RequestMethod.POST)
+	public String setAdd(NoticeDTO noticeDTO, MultipartFile[] photos, HttpSession session, Model model)throws Exception{
 		int result = noticeService.setAdd(noticeDTO, photos, session);
 		
 		String message="등록 실패";
@@ -47,7 +51,7 @@ public class NoticeController {
 			message="등록 성공";
 		}
 		
-		model.addAttribute("message",message);
+		model.addAttribute("message", message);
 		model.addAttribute("url", "list");
 		
 		return "commons/result";
@@ -71,26 +75,33 @@ public class NoticeController {
 	
 	// Update
 	
-	@RequestMapping(value="update", method = RequestMethod.GET)
-	public String setUpdate(BoardDTO boardDTO, Model model) throws Exception{
+	@RequestMapping(value = "update", method = RequestMethod.GET)
+	public String setUpdate(BoardDTO boardDTO, Model model)throws Exception{
 		boardDTO = noticeService.getDetail(boardDTO);
 		model.addAttribute("dto", boardDTO);
 		return "board/update";
 	}
 	
 	@RequestMapping(value = "update", method = RequestMethod.POST)
-	public String setUpdate(BoardDTO boardDTO, MultipartFile[] photos, HttpSession session)throws Exception{
-		int result = noticeService.setUpdate(boardDTO, photos, session);
+	public String setUpdate(NoticeDTO noticeDTO, MultipartFile[] photos, HttpSession session)throws Exception{
+		int result = noticeService.setUpdate(noticeDTO, photos, session);
 		return "redirect:./list";
 	}
-
+	
 	
 	// Delete
 	
-	@RequestMapping(value="delete", method = RequestMethod.POST)
-	public String setDelete (BoardDTO boardDTO) throws Exception{
-		int result = noticeService.setDelete(boardDTO);
+	@RequestMapping(value = "delete", method = RequestMethod.POST)
+	public String setAdd(NoticeDTO noticeDTO)throws Exception{
+		int result =noticeService.setDelete(noticeDTO);
 		return "redirect:./list";
 	}
 	
+	@GetMapping("fileDelete")
+	public String setFileDelete(NoticeFileDTO noticeFileDTO, HttpSession session ,Model model)throws Exception{
+		int result = noticeService.setFileDelete(noticeFileDTO, session);
+		model.addAttribute("result", result);
+		return "commons/ajaxResult";
+		
+	}
 }

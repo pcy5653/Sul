@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
 <title>Insert title here</title>
 <c:import url="../temp/bootStrap.jsp"></c:import>
 </head>
@@ -27,6 +28,18 @@
 		<div class="mb-3">
 		  <label for="contents" class="form-label">CONTENTS</label>
 		  <textarea class="form-control" name="contents" id="contents" rows="15">${dto.contents}</textarea>
+		</div>
+		
+		<div id="fileList" class="my-5"></div>
+		
+		<div enctype="multipart/form-data">
+			<c:forEach items="${dto.fileDTOs}" var="f">
+				<div class="alert alert-danger" role="alert">
+					${f.originalName}
+				</div>
+				<span class="delets" data-delete-num="${f.fileNum}">X</span>
+			</c:forEach>	
+
 		</div>
 		
 		<div class="my-3">

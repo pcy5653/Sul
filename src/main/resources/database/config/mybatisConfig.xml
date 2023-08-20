@@ -27,6 +27,10 @@
 	
 	
 	<typeAlias type="com.alcohol.sul.board.notice.NoticeDTO" alias="NoticeDTO"/>
+	<typeAlias type="com.alcohol.sul.board.notice.NoticeFileDTO" alias="NoticeFileDTO"/>
+	<typeAlias type="com.alcohol.sul.util.Pager" alias="Pager"/>
 	<typeAlias type="java.lang.Long" alias="Long"/>
+	<typeAlias type="java.util.List" alias="List"/>
+	<typeAlias type="java.util.Map" alias="Map"/>
 	</typeAliases>
 </configuration>

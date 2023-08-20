@@ -12,7 +12,7 @@
 
 	<section class="container mt-5">
 	
-		<h1 class="mb-3 text-center">Detail Page</h1><br>
+		<h1 class="mb-3 text-center">공지사항</h1><br><br>
 		<div class="text-conter">
 		<table class="table">
 		
@@ -32,8 +32,14 @@
 	</table>
 			<div class="mb-3">
 			<label for="contents" class="form-label"></label>
-			<textarea class="form-control" rows="15%" style="width:240%; border: 0;">${dto.contents}</textarea>
+			<textarea class="form-control" rows="15" border: 0;">${dto.contents}</textarea>
 			</div>
+
+			 <c:forEach items="${dto.fileDTOs}" var="f">
+			<div class="mb-3">
+			<input type="file" value="${f.originalName}" name="photos" class="form-control" id="pic">
+			</div>
+			</c:forEach>
 
 		</tbody>
 	</div>

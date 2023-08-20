@@ -5,10 +5,35 @@
   
 <mapper namespace="com.alcohol.sul.board.notice.NoticeDAO">
 
+<sql id="searchSql">
+	  WHERE NOTICENUM>0 
+							
+	<choose>
+		<when test="kind=='subject'">
+			AND SUBJECT LIKE '%'||#{search}||'%'
+		</when>
+				
+		<when test="kind=='contents'">
+			AND CONTENTS LIKE '%'||#{search}||'%'
+		</when>
+				
+		<otherwise>
+			AND NAME LIKE '%'||#{search}||'%'	
+		</otherwise>
+	</choose>
+</sql>
+
 <!-- List -->
-<select id="getList" resultMap="getSelectResult" resultType="NoticeDTO">
-	SELECT * FROM NOTICE
-	ORDER BY NOTICENUM DESC
+<select id="getList" resultMap="getSelectResult" parameterType="Pager">
+	SELECT  * FROM(
+			SELECT ROWNUM R, B.* FROM(
+				SELECT * FROM NOTICE
+				<include refid="searchSql"></include>	
+				ORDER BY 
+					NOTICENUM DESC
+				) B
+			)
+		WHERE R BETWEEN #{startRow} AND #{lastRow}
 </select>
 
 <resultMap type="NoticeDTO" id="getSelectResult">
@@ -18,29 +43,48 @@
  	<result column="CONTENTS" property="contents"/>
  	<result column="CREATEDATE" property="createDate"/>
  	<result column="NOTICEHIT" property="hit"/>
+
+ 	<collection property="fileDTOs" javaType="List" ofType="NoticeFileDTO">
+		<id column="FILENUM" property="fileNum"/>
+	  	<result column="FILENAME" property="fileName"/>	  		
+	  	<result column="ORIGINALNAME" property="originalName"/>
+  	</collection>
 </resultMap>
+
+<select id="getTotal" resultType="Long">
+  SELECT COUNT(NOTICENUM) FROM NOTICE
+  <include refid="searchSql"></include>
+ </select>
  
 <!-- Detail -->
-	<select id="getDetail" resultMap="getDetailResult" parameterType="NoticeDTO" >
-		SELECT *
-		FROM NOTICE
-		WHERE NOTICENUM=#{num}
+	<select id="getDetail" resultMap="getSelectResult" parameterType="NoticeDTO" >
+		SELECT N.*, NF.*
+  		FROM NOTICE N
+  			LEFT JOIN
+  			NOTICEFILE NF
+  			ON (N.NOTICENUM=NF.NOTICENUM)
+  		WHERE N.NOTICENUM=#{num}
 	</select>
 
-<resultMap type="NoticeDTO" id="getDetailResult">
- 	<id column="NOTICENUM" property="num"/>
- 	<result column="SUBJECT" property="subject"/>
- 	<result column="NAME" property="name"/>
- 	<result column="CONTENTS" property="contents"/>
- 	<result column="CREATEDATE" property="createDate"/>
- 	<result column="NOTICEHIT" property="hit"/>
-</resultMap>
+
+<!-- File Detail -->
+
+<select id="getFileDetail" parameterType="NoticeFileDTO" resultType="NoticeFileDTO">
+	SELECT FILENUM, FILENAME FROM NOTICEFILE WHERE FILENUM=#{fileNum}
+</select>
 
 <!-- Add -->
 
 <insert id="setAdd" parameterType="NoticeDTO">
 	INSERT INTO NOTICE
 	VALUES (NOTICE_SEQ.NEXTVAL, #{name}, #{subject}, #{contents}, SYSDATE, 0)
+</insert>
+
+<!-- File Add -->
+
+<insert id="setFileAdd" parameterType="NoticeFileDTO">
+	INSERT INTO NOTICEFILE
+	VALUES (NOTICEFILE_SEQ.NEXTVAL, #{noticeNum},#{fileName},#{originalName})
 </insert>
 
 <!-- Update -->
@@ -58,14 +102,18 @@
 	<delete id="setDelete" parameterType="Long">
  		DELETE NOTICE WHERE NOTICENUM=#{num}
  	</delete>
+ 	
+<!-- File Delete -->
+
+<delete id="setFileDelete" parameterType="NoticeFileDTO">
+	DELETE NOTICEFILE WHERE FILENUM=#{fileNum}
+</delete>
 
 <!-- Hit -->
 <update id="setHitCount">
-		UPDATE
-			NOTICE
-		SET
-			NOTICEHIT = NOTICEHIT + 1
-		WHERE
-			NOTICENUM = #{noticeNum}
-	</update>
+	UPDATE NOTICE
+	SET NOTICEHIT = NOTICEHIT + 1
+	WHERE NOTICENUM = #{noticeNum}
+</update>
+
 </mapper>
