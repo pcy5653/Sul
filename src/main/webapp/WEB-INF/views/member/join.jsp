@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
 <c:import url="../temp/bootStrap.jsp"></c:import>
 <style>
 		.f{
@@ -43,9 +44,24 @@
 			<div id="nameMsg"></div>
 		</div>
 		<div>
-			<label for="phone" class="form-label">휴대폰번호</label>
-			<input type="text" name="phone" class="form-control input" id="phone">
-			<div id="phoneMsg"></div>
+			<tr class="mobileNo">
+				<th>
+					<label for="phone">휴대폰 번호</label>
+				</th>
+				<td>
+					<p>
+						<input id="phone" type="text" name="phone" title="전화번호 입력" required/>
+						<span id="phoneChk" class="doubleChk">인증번호 보내기</span><br/>
+						<input id="phone2" type="text" name="phone2" title="인증번호 입력" disabled required/>
+						<span id="phoneChk2" class="doubleChk">본인인증</span>
+						<span class="point successPhoneChk">휴대폰 번호 입력후 인증번호 보내기를 해주십시오.</span>
+						<input type="hidden" id="phoneDoubleChk"/>
+					</p>
+					<p class="tip">
+						최초 가입 시에만 사용하고 있습니다. 따로 저장되지 않습니다.(번호만 입력해주세요.)
+					</p>
+				</td>
+			</tr>
 		</div>
 		<div>
 			<label for="address" class="form-label">주소</label>
