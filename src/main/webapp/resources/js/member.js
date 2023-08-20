@@ -29,8 +29,13 @@ $("#phoneChk2").click(function(){
 //휴대폰 번호 인증
 let code2 = "";
 $("#phoneChk").click(function(){
+    let phone = $("#phone").val();
+    if(phone.length!=11){
+        alert("유효한 휴대폰번호를 입력해주세요.")
+    }else{
+
 	alert("인증번호 발송이 완료되었습니다.\n휴대폰에서 인증번호 확인을 해주십시오.");
-	let phone = $("#phone").val();
+	
 	$.ajax({
         type:"GET",
         url:"phoneCheck?phone=" + phone,
@@ -51,6 +56,7 @@ $("#phoneChk").click(function(){
         	}
         }
     });
+    }
 });
 //휴대폰 인증번호 대조
 $("#phoneChk2").click(function(){
