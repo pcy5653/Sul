@@ -10,7 +10,17 @@ const address = document.getElementById("address");
 const addressMsg = document.getElementById("addressMsg");
 const birth = document.getElementById("birth");
 const birthMsg = document.getElementById("birthMsg");
+const frm = document.getElementById("frm");
+const input = document.getElementsByClassName("input");
+let checks=[false, false, false, false, false, false, false];
 
+$("#phone").keyup(function(){
+    $(".tip").text("")
+    if($("#phone").val().includes('-')){
+        $(".tip").text("'-'를 제외한 번호만 입력해주세요.")
+        $(".tip").css("color","red");
+    }
+})
 
 //휴대폰 인증번호 대조
 $("#phoneChk2").click(function(){
@@ -19,6 +29,7 @@ $("#phoneChk2").click(function(){
 		$(".successPhoneChk").css("color","green");
 		$("#phoneDoubleChk").val("true");
 		$("#phone2").attr("disabled",true);
+        
 	}else{
 		$(".successPhoneChk").text("인증번호가 일치하지 않습니다. 확인해주시기 바랍니다.");
 		$(".successPhoneChk").css("color","red");
@@ -65,6 +76,7 @@ $("#phoneChk2").click(function(){
 		$(".successPhoneChk").css("color","green");
 		$("#phoneDoubleChk").val("true");
 		$("#phone2").attr("disabled",true);
+        checks[4]=true;
 	}else{
 		$(".successPhoneChk").text("인증번호가 일치하지 않습니다. 확인해주시기 바랍니다.");
 		$(".successPhoneChk").css("color","red");
@@ -73,8 +85,8 @@ $("#phoneChk2").click(function(){
 	}
 });
 
-id.addEventListener("blur",function(){
-    idMsg.innerHTML='';
+$("#id").blur(function(){
+    ("#idMsg").text='';
     fetch("idCheck?id="+id.value, {method:"get"})
         .then((response)=>{return response.text()})
         .then((r)=>{
@@ -85,29 +97,32 @@ id.addEventListener("blur",function(){
                 }else{
                     idMsg.innerHTML='사용 가능한 아이디 입니다.';
                     idMsg.className='t';
+                    checks[0]=true;
                 }
            }else{
-                idMsg.innerHTML='가입된 아이디 입니다.';
+                idMsg.innerHTML='이미 가입된 아이디 입니다.';
                 idMsg.className='f';
-                //가입된아이디면 로그인창가는버튼 또는 비밀번호찾기버튼 밑에 추가되게
-           }
+            }
         })
-
 });
 
 pw.addEventListener("blur",function(){
-    pwMsg.innerHTML='';
-    if(pw.value.length<8 || pw.value.length>16 || pw.value=='')
+    if(pw.value.length<8 || pw.value.length>16 || pw.value==''){
         pwMsg.innerHTML="비밀번호를 8자이상 16자이내로 입력하시오.";
-    if(pw.value==''){
-         pw2Msg.innerHTML='';
-     }
+        pwMsg.className="f"
+    }else{
+        pwMsg.innerHTML='사용가능한 비밀번호';
+        pwMsg.className="t"
+        checks[1]=true;
+    }
+   
 });
 
 pw2.addEventListener("keyup",function(){
     if(pw2.value==pw.value){
         pw2Msg.innerHTML="비밀번호가 일치합니다.";
         pw2Msg.className="t";
+        checks[2]=true;
     }else{
         pw2Msg.innerHTML="비밀번호가 틀렸습니다";
         pw2Msg.className="f";
@@ -119,6 +134,8 @@ name1.addEventListener("blur",function(){
     if(name1.value==''){
         nameMsg.innerHTML="이름을 입력해주세요";
         nameMsg.className='f';
+    }else{
+        checks[3]=true;
     }
 });
 
@@ -128,6 +145,8 @@ address.addEventListener("blur",function(){
     if(address.value==''){
         addressMsg.innerHTML="주소를 입력하세요.";
         addressMsg.className="f";
+    }else{
+        checks[5]=true;
     }
 })
 
@@ -135,14 +154,35 @@ birth.addEventListener("change",function(){
     let check = emptyCheck(birth);
     birthMsg.innerHTML="생년월일을 입력하세요.";
     birthMsg.className="f";
-    checkResults[5]=false;
     if(!check){
         birthMsg.innerHTML="OK";
         birthMsg.className="s";
-        checkResults[5]=true;
+        checks[6]=true;
     }
 })
 
+function emptyCheck(element){
+    if(element.value==null||element.value.length==0){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+$("#btn").click(function(){
+    let allCheck = checks.includes(false);
+    if(!allCheck){
+        frm.submit();
+    }else{
+        for(let i=0;checks.length;i++){
+            if(checks[i]==false){
+                input[i].focus();
+                alert("빈칸을 채워주세요.")
+                return;
+            }
+        }
+    }
+})
 
 
 

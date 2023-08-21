@@ -23,7 +23,7 @@
 		<h1>회원가입</h1>
 
 		<form action="./join" method="post"  id="frm">
-		<div>
+		<div id="idDiv">
 			<label for="id" class="form-label">아이디</label>
 			<input type="text" name="id" class="form-control input" id="id">
 			<div id="idMsg"></div>
@@ -43,25 +43,17 @@
 			<input type="text" name="name" class="form-control input" id="name1">
 			<div id="nameMsg"></div>
 		</div>
-		<div>
-			<tr class="mobileNo">
-				<th>
-					<label for="phone">휴대폰 번호</label>
-				</th>
-				<td>
-					<p>
-						<input id="phone" type="text" name="phone" title="전화번호 입력" required/>
-						<span id="phoneChk" class="doubleChk">인증번호 보내기</span><br/>
-						<input id="phone2" type="text" name="phone2" title="인증번호 입력" disabled required/>
-						<span id="phoneChk2" class="doubleChk">본인인증</span>
-						<span class="point successPhoneChk">휴대폰 번호 입력후 인증번호 보내기를 해주십시오.</span>
-						<input type="hidden" id="phoneDoubleChk"/>
-					</p>
-					<p class="tip">
-						최초 가입 시에만 사용하고 있습니다. 따로 저장되지 않습니다.(번호만 입력해주세요.)
-					</p>
-				</td>
-			</tr>
+		<div class="mobileNo">
+			<label for="phone">휴대폰 번호</label><br>
+				<input id="phone" type="text" name="phone" title="전화번호 입력" class="input" required/>
+				<button type="button" id="phoneChk" class="doubleChk">인증번호 보내기</button>
+				<span class="tip"></span><br>
+				<input id="phone2" type="text" name="phone2" title="인증번호 입력" disabled required/>
+				<button type="button" id="phoneChk2" class="doubleChk">본인인증</button>
+				<span class="point successPhoneChk">휴대폰 번호 입력후 인증번호 보내기를 해주십시오.</span>
+				<input type="hidden" id="phoneDoubleChk"/>
+				
+			
 		</div>
 		<div>
 			<label for="address" class="form-label">주소</label>
@@ -81,12 +73,12 @@
 		
 		
 		<div>
-			<button type="submit" class="btn btn-success" id="btn">회원가입</button>
+			<button type="button" class="btn btn-success" id="btn">회원가입</button>
 		</div>
 
 		</form>
 	</section>
 
-	<script src="/resources/js/member.js"></script>
+	<script src="/resources/js/join.js"></script>
 </body>
 </html>

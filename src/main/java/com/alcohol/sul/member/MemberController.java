@@ -35,9 +35,9 @@ public class MemberController {
 		
 	}
 	@PostMapping(value = "join")
-	public void setJoin(MemberDTO memberDTO) throws Exception{
+	public String setJoin(MemberDTO memberDTO) throws Exception{
 		int result = memberService.setJoin(memberDTO);
-		
+		return "redirect:../";
 	}
 	//로그인
 	@GetMapping(value = "login")
@@ -76,4 +76,10 @@ public class MemberController {
 		 
 		return "/commons/ajaxResult";
 	 }
+	
+	@PostMapping(value="updateInfo")
+	public String setInfoUpdate(MemberDTO memberDTO) throws Exception{
+		int result = memberService.setInfoUpdate(memberDTO);
+		return "redirect:./mypage";
+	}
 }

@@ -54,8 +54,10 @@ public class MemberService {
 	        System.out.println(e.getMessage());
 	        System.out.println(e.getCode());
 	      }
-	    
-	    
+	}
+	
+	public int setInfoUpdate(MemberDTO memberDTO) throws Exception{
+		return memberDAO.setInfoUpdate(memberDTO);
 	}
 }
 
