@@ -37,11 +37,11 @@
 				<textarea class="form-control" name="contents" id="contents" rows="15" placeholder="내용을 입력하세요."></textarea>
 			</div>
 			
+			<div id="fileList" class="my-5"></div>
 			<div class="mb-3">
 				<button type="button" class="btn btn-primary" id="add">File추가</button>
 			</div>
 			
-			<div id="fileList" class="my-5"></div>
 			
 			<div class="my-3">
 				<a class="btn btn-outline-secondary" href="./list">BACK</a>

@@ -67,21 +67,9 @@ public class NoticeService implements BoardService{
 	//Update
 	
 	@Override
-	public int setUpdate(BoardDTO boardDTO, MultipartFile[] photos, HttpSession session) throws Exception {
-		int result = noticeDAO.setUpdate(boardDTO);
-		String path="/resources/upload/notice/";
-		for(MultipartFile file:photos) {
-			if(!file.isEmpty()) {
-				String fileName = fileManager.fileSave(path, file, session);
-				
-				NoticeFileDTO noticeFileDTO = new NoticeFileDTO();
-				noticeFileDTO.setNoticeNum(boardDTO.getNum());
-				noticeFileDTO.setFileName(fileName);
-				noticeFileDTO.setOriginalName(file.getOriginalFilename());
-				result=noticeDAO.setFileAdd(noticeFileDTO);
-			}
-		}
-		return result;
+	public int setUpdate(BoardDTO boardDTO, MultipartFile[] files, HttpSession session) throws Exception {
+
+		return noticeDAO.setUpdate(boardDTO);
 	}
 
 	//Delete

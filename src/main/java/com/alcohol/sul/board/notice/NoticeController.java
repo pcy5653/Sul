@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.alcohol.sul.board.BoardDTO;
 import com.alcohol.sul.board.notice.NoticeFileDTO;
@@ -80,12 +81,18 @@ public class NoticeController {
 		boardDTO = noticeService.getDetail(boardDTO);
 		model.addAttribute("dto", boardDTO);
 		return "board/update";
+		
+//		ModelAndView mv = new ModelAndView();
+//		mv.setViewName("board/update");
+//		mv.addObject("dto", boardDTO);
+//		return mv;
 	}
 	
 	@RequestMapping(value = "update", method = RequestMethod.POST)
 	public String setUpdate(NoticeDTO noticeDTO, MultipartFile[] photos, HttpSession session)throws Exception{
 		int result = noticeService.setUpdate(noticeDTO, photos, session);
-		return "redirect:./list";
+		//return "redirect:./list";
+		return "redirect:./detail?num="+noticeDTO.getNum();
 	}
 	
 	

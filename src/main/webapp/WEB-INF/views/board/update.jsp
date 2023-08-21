@@ -15,6 +15,7 @@
 	<h1 class="my-4 text-center">Update Page</h1>
 		<form action="./update" method="post">
 		<input type="hidden" name="num" value="${dto.num}">
+		<input type="hidden" name="fileNum" value="${fileDTOs.fileNum}">
 		<div class="mb-3">
 		  <label for="subject" class="form-label">SUBJECT</label>
 		  <input type="text" name="subject" class="form-control" id="subject" value="${dto.subject}">
@@ -31,16 +32,17 @@
 		</div>
 		
 		<div id="fileList" class="my-5"></div>
-		
-		<div>
-			<c:forEach items="${dto.fileDTOs}" var="f">
-				<div class="alert alert-danger" role="alert">
-					${f.originalName}
-				</div>
-				<span class="delets" data-delete-num="${f.fileNum}">X</span>
-			</c:forEach>	
 
+		<div class="mb-3">
+			<button type="button" class="btn btn-primary" id="add">File추가</button>
 		</div>
+				
+		<c:forEach items="${dto.fileDTOs}" var="f">
+			<img alt="" src="/resources/upload/notice/${f.fileName}">
+		</c:forEach>	
+		<span class="delets" data-delete-num="${fileDTOs.fileNum}">X</span>		
+
+		
 		
 		<div class="my-3">
 		<br>
@@ -49,6 +51,6 @@
 		</div>
 	</form>
 </section>
-
+<script src="/resources/js/file.js"></script>
 </body>
 </html>

@@ -32,17 +32,16 @@
 	</table>
 			<div class="mb-3">
 			<label for="contents" class="form-label"></label>
-			<textarea class="form-control" rows="15" border: 0;">${dto.contents}</textarea>
+			<textarea class="form-control" border: 0">${dto.contents}</textarea>
 			</div>
 
-			 <c:forEach items="${dto.fileDTOs}" var="f">
-			<div class="mb-3">
-			<input type="file" value="${f.originalName}" name="photos" class="form-control" id="pic">
-			</div>
+			<c:forEach items="${dto.fileDTOs}" var="f">
+				<img alt="" src="/resources/upload/notice/${f.fileName}">
 			</c:forEach>
 
 		</tbody>
 	</div>
+	<br><br>
 	<form id="frm" action="">
 		<input type="hidden" name="num" value="${dto.num}">
 	</form>

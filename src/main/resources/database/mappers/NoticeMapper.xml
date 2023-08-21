@@ -23,6 +23,10 @@
 	</choose>
 </sql>
 
+<select id="getSequence" resultType="Long">
+  	SELECT NOTICE_SEQ.NEXTVAL FROM DUAL
+</select>
+
 <!-- List -->
 <select id="getList" resultMap="getSelectResult" parameterType="Pager">
 	SELECT  * FROM(
@@ -76,8 +80,11 @@
 <!-- Add -->
 
 <insert id="setAdd" parameterType="NoticeDTO">
+	<selectKey keyProperty="num" resultType="Long" order="BEFORE">
+  		SELECT NOTICE_SEQ.NEXTVAL FROM DUAL
+  	</selectKey>
 	INSERT INTO NOTICE
-	VALUES (NOTICE_SEQ.NEXTVAL, #{name}, #{subject}, #{contents}, SYSDATE, 0)
+	VALUES (#{num}, #{name}, #{subject}, #{contents}, SYSDATE, 0)
 </insert>
 
 <!-- File Add -->
@@ -91,7 +98,6 @@
 
 <update id="setUpdate" parameterType="NoticeDTO">
 	UPDATE NOTICE SET
-	NAME=#{name},
 	SUBJECT=#{subject},
 	CONTENTS=#{contents}
 	WHERE NOTICENUM=#{num}

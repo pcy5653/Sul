@@ -9,7 +9,7 @@ for(del of delets){
         let check = confirm("삭제시 복구 불가");
 
         if(check){
-            fetch("./fileDelete?fileNum="+num, {method:"get"})
+            fetch("./fileDelete?fileNum="+fileNum, {method:"get"})
                 .then((result)=>{return result.text()})
                 .then((r)=>{ 
                     if(r.trim()=='1'){
@@ -30,7 +30,6 @@ let count=0;
 
 if(delets != null){
     count=delets.length;
-    alert(count);
 }
 
 let idx=0;
