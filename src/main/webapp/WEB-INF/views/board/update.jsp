@@ -32,7 +32,7 @@
 		
 		<div id="fileList" class="my-5"></div>
 		
-		<div enctype="multipart/form-data">
+		<div>
 			<c:forEach items="${dto.fileDTOs}" var="f">
 				<div class="alert alert-danger" role="alert">
 					${f.originalName}

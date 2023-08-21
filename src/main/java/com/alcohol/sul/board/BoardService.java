@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import com.alcohol.sul.board.notice.NoticeDTO;
 import com.alcohol.sul.util.Pager;
 
 public interface BoardService {

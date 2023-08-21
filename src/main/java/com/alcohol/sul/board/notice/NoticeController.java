@@ -92,8 +92,8 @@ public class NoticeController {
 	// Delete
 	
 	@RequestMapping(value = "delete", method = RequestMethod.POST)
-	public String setAdd(NoticeDTO noticeDTO)throws Exception{
-		int result =noticeService.setDelete(noticeDTO);
+	public String setDelete(BoardDTO boardDTO)throws Exception{
+		int result = noticeService.setDelete(boardDTO);
 		return "redirect:./list";
 	}
 	
