@@ -34,9 +34,10 @@
 			<label for="contents" class="form-label"></label>
 			<textarea class="form-control" border: 0">${dto.contents}</textarea>
 			</div>
-
 			<c:forEach items="${dto.fileDTOs}" var="f">
+			<div>
 				<img alt="" src="/resources/upload/notice/${f.fileName}">
+			</div>
 			</c:forEach>
 
 		</tbody>

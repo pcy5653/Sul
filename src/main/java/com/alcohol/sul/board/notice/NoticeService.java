@@ -14,6 +14,7 @@ import com.alcohol.sul.board.BoardDTO;
 import com.alcohol.sul.board.BoardService;
 import com.alcohol.sul.util.FileManager;
 import com.alcohol.sul.util.Pager;
+import com.alcohol.sul.util.FileDTO;
 import com.alcohol.sul.board.notice.NoticeFileDTO;
 
 @Service
@@ -25,6 +26,22 @@ public class NoticeService implements BoardService{
 	@Autowired
 	private FileManager fileManager;
 	
+	public boolean setContentsImgDelete(String path, HttpSession session)throws Exception{
+		//path: /resources/upload/notice/파일명
+		FileDTO fileDTO = new FileDTO();
+		System.out.println(path.substring(path.lastIndexOf("/")+1));
+		fileDTO.setFileName(path.substring(path.lastIndexOf("/")+1));
+		
+		//path = path.substring(0, path.lastIndexOf("\\")+1);
+		path= "/resources/upload/notice/";
+		return fileManager.fileDelete(fileDTO, path, session);
+	}
+	
+	public String setContentsImg(MultipartFile file, HttpSession session) throws Exception {
+		String path="/resources/upload/notice/";
+		String fileName = fileManager.fileSave(path, file, session);
+		return path+fileName;
+	}
 	
 	//List
 	@Override

@@ -9,7 +9,7 @@ for(del of delets){
         let check = confirm("삭제시 복구 불가");
 
         if(check){
-            fetch("./fileDelete?fileNum="+fileNum, {method:"get"})
+            fetch("./fileDelete?fileNum="+num, {method:"get"})
                 .then((result)=>{return result.text()})
                 .then((r)=>{ 
                     if(r.trim()=='1'){
@@ -24,7 +24,7 @@ for(del of delets){
     });
 }
 
-let max=2;
+let max=1;
 let count=0;
 
 
@@ -43,7 +43,7 @@ $("#fileList").on("click", ".df", function(){
 //jquery로 변경
 $("#add").click(function(){
     if(count>=max){
-        alert("최대 2개까지 첨부 가능합니다.");
+        alert("최대 1개만 첨부 가능합니다.");
         return;
     }
     count++;

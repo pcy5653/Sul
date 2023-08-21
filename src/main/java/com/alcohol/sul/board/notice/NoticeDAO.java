@@ -36,6 +36,11 @@ public class NoticeDAO implements BoardDAO{
 		
 		return sqlSession.selectOne(NAMESPACE+"getDetail", boardDTO);
 	}
+	
+	public NoticeFileDTO getFileDetai1(NoticeFileDTO noticeFileDTO)throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getFileDetail", noticeFileDTO);
+	}
+	
 	@Override
 	public int setAdd(BoardDTO boardDTO) throws Exception {
 		

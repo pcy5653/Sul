@@ -16,6 +16,10 @@
 </c:if>
 
 <c:import url="../temp/bootStrap.jsp"></c:import>
+<!-- include summernote css/js-->
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
 </head>
 <body>
 
@@ -50,6 +54,51 @@
 		</form>
 	</section>
 	<script src="../resources/js/file.js"></script>
+	<script type="text/javascript">
+		$("#contents").summernote({
+			height:400,
+			callbacks:{
+				onImageUpload: function(files) {
+					alert('이미지 업로드')
+					//이미지를 서버로 전송하고 응답으로 이미지경로와 파일명을 받아서 img 태그 만들어 src 속성에 이미지경로를 넣는 것 (해야 함/용량이 너무 커서)
+					let formData = new FormData(); // <form></form>이 만들어진 것
+					formData.append("files",files[0]); // form태그 안에 <input type="file" name="files"> 추가
+
+					$.ajax({
+						type: 'post',
+						url: 'setContentsImg',
+						data:formData,
+						cache:false,
+						contentType:false,
+						processData:false,
+						success:function(result){
+							$("#contents").summernote('insertImage', result.trim());
+						},
+						error:function(){
+							console.log('error');
+						}
+					});
+				},
+				onMediaDelete:function(files){
+					let path = $(files[0]).attr("src"); // /resources/upload/notice/파일명
+
+					$.ajax({
+						type:'post',
+						url:'./setContentsImgDelete',
+						data:{
+							path:path
+						},
+						success:function(result){
+							console.log(result);
+						},
+						error:function(){
+							console.log('error');
+						}
+					})
+				}
+			}
+		});
+	</script>
 	<script>
 		const btn = document.getElementById("btn");
 		const subject = document.getElementById("subject");
