@@ -50,7 +50,8 @@
 		<form id="frm">
 			<input type="hidden" name="num" value="${dto.num}">
 		</form>
-
+		
+		
 		<a href="./update?num=${dto.num}" class="btn btn-danger">수정</a>
 		<!-- 입력 form으로 method GET -->
 		<!-- <button id="update" class="c1" data-url="update">수정</button> -->

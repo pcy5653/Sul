@@ -61,6 +61,18 @@ public class QnaController {
 	}
 	
 	// Update
-	//@GetMapping("update")
+	@GetMapping("update")
+	public String setUpdate(QnaDTO qnaDTO, Model model)throws Exception{
+		qnaDTO = (QnaDTO)qnaService.getDetail(qnaDTO);
+		model.addAttribute("dto", qnaDTO);
+		
+		return "board/update";
+	}
+	@PostMapping("update")
+	public String setUpdate(QnaDTO qnaDTO, MultipartFile [] photos, HttpSession session)throws Exception{
+		int result = qnaService.setUpdate(qnaDTO, photos, session);
+		
+		return "redirect:./detail?num="+qnaDTO.getNum();
+	}
 	
 }
