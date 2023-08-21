@@ -70,7 +70,26 @@
 			<label for="pic" class="form-label">사진첨부</label>
 			<input type="file" name="pic" id="pic">
 		</div>
-		
+		<fieldset class="fieldarea f2">
+			<legend><span>이용</span>약관</legend>
+			<p class="agreeText">
+				<label for="agreement1">아래 사항에 동의 합니다.</label>
+				<input id="agreement1" class="checkboxs" type="checkbox" name="agreement1"/>
+				<textarea id="text1" readonly>
+					이용약관
+				</textarea>
+			</p>
+		</fieldset>
+		<fieldset class="fieldarea f3">
+			<legend><span>개인정보</span>취급방침</legend>
+			<p class="agreeText">
+				<label for="agreement2">아래 사항에 동의 합니다.</label>
+				<input id="agreement2" class="checkboxs" type="checkbox" name="agreement2"/>
+				<textarea id="text2" readonly>
+					개인정보 방침 및 안내
+				</textarea>
+			</p>
+		</fieldset>
 		
 		<div>
 			<button type="button" class="btn btn-success" id="btn">회원가입</button>

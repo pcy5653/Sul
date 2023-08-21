@@ -13,6 +13,27 @@ const birthMsg = document.getElementById("birthMsg");
 const frm = document.getElementById("frm");
 const input = document.getElementsByClassName("input");
 let checks=[false, false, false, false, false, false, false];
+let agree=false;
+//체크박스 체크여부
+$(".checkboxs").click(checkedChange);
+  
+function checkedChange() {
+    if($(this).prop("checked")){
+        $("label[for="+this.id+"]").text("동의되었습니다.");
+        $("label[for="+this.id+"]").css("color","blue");
+        agr();
+    }else{
+        $("label[for="+this.id+"]").text("동의 해주시기 바랍니다.");
+        $("label[for="+this.id+"]").css("color","red");
+        agree=false;
+    }
+}
+
+function agr(){
+    if($("#agreement1").prop("checked") && $("#agreement2").prop("checked")){
+        agree=true;
+    }
+}
 
 $("#phone").keyup(function(){
     $(".tip").text("")
@@ -172,7 +193,11 @@ function emptyCheck(element){
 $("#btn").click(function(){
     let allCheck = checks.includes(false);
     if(!allCheck){
-        frm.submit();
+        if(agree){
+            frm.submit();
+        }else{
+            alert("약관에 동의해주세요");
+        }
     }else{
         for(let i=0;checks.length;i++){
             if(checks[i]==false){
