@@ -3,19 +3,12 @@ package com.alcohol.sul.board.qna;
 import com.alcohol.sul.board.BoardDTO;
 
 public class QnaDTO extends BoardDTO{
-	private String reply;
 	private Integer ref;
 	private Integer step;
 	private Integer depth;
 	
 	
 	
-	public String getReply() {
-		return reply;
-	}
-	public void setReply(String reply) {
-		this.reply = reply;
-	}
 	public Integer getRef() {
 		return ref;
 	}

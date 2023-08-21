@@ -5,33 +5,48 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<style>
+	section {text-align: center;}
+	#title {font-size: 2.5rem; margin-bottom : 2rem;}
+	table {border: 1px solid black;}
+</style>
+
 <title>${board} List</title>
 </head>
 <body>
 	<c:import url="../temp/header.jsp"></c:import>
 	<section>
-        <h1 id="title">${board} List</h1>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>No</th><th>Title</th><th>작성자</th><th>날짜</th><th>HIT</th>
-                </tr>
-            </thead>
-            <tbody>
-                <c:forEach items="${list}" var="dto" varStatus="i"></c:forEach>
-                    <tr>
-                        <td>${dto.num}</td>
-                        <td><a href="#"> ${dto.subject}</a></td>
-                        <td>${dto.name}</td>
-                        <td>${dto.createDate}</td>
-                        <td>${dto.hit}</td>
-                    </tr>
-            </tbody>
-        </table>
-    </section>
-
+		<div class="main">
+	        <h1 id="title">${board} List</h1>
 	
-
+	        <table>
+	            <thead>
+	                <tr>
+	                    <th>No</th><th>Title</th><th>작성자</th><th>날짜</th><th>HIT</th>
+	                </tr>
+	            </thead>
+	            <tbody>
+	                <c:forEach items="${list}" var="dto" varStatus="i">
+	                    <tr>
+	                        <td>${dto.num}</td>
+	                        <td><a href="./detail?num=${dto.num}"> ${dto.subject}</a></td>
+	                        <td>${dto.name}</td>
+	                        <td>${dto.createDate}</td>
+	                        <td>${dto.hit}</td>
+	                    </tr>
+	                </c:forEach>
+	            </tbody>
+	        </table>
+        </div>
+        
+        <a class="btn btn-danger" href="./add">게시물 등록</a>
+        <%-- <c:if test="${not empty member}">
+			
+		</c:if> --%>
+    </section>
+    
+    
+    
+	<c:import url="../temp/footer.jsp"></c:import>
 </body>
 </html>

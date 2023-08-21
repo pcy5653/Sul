@@ -12,5 +12,6 @@
 <body>
 	<c:import url="./temp/header.jsp"></c:import>
 	
+	<c:import url="./temp/footer.jsp"></c:import>
 </body>
 </html>

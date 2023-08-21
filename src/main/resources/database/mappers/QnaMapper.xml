@@ -6,19 +6,41 @@
   <mapper namespace="com.alcohol.sul.board.qna.QnaDAO">
  	
  	<!-- List -->
- 	<select id="getList" resultMap="getListResult">
+ 	<select id="getList" resultMap="getSelectResult">
  		SELECT * FROM QNA
  	</select>
- 	<resultMap type="QnaDTO" id="getListResult">
+ 	
+ 	
+ 	<select id="getDetail" parameterType="QnaDTO" resultMap="getSelectResult">
+ 		SELECT * FROM QNA WHERE QNANUM = #{num}
+ 	</select>
+
+ 	<resultMap type="QnaDTO" id="getSelectResult">
  		<id column = "QNANUM" property="num"/>
  		<result column="NAME" property="name"/>
  		<result column="SUBJECT" property="subject"/>
  		<result column="CONTENTS" property="contents"/>
  		<result column="CREATEDATE" property="createDate"/>
- 		<result column="REPLY" property="reply"/>
+ 		<result column="QNAHIT" property="hit"/>
  		<result column="REF" property="ref"/>
  		<result column="STEP" property="step"/>
  		<result column="DEPTH" property="depth"/>
- 		<result column="QNAHIT" property="hit"/>
  	</resultMap>
+ 	
+ 	
+ 	<insert id="setAdd" parameterType="QnaDTO">
+ 		<selectKey keyProperty="num" resultType="Long" order="BEFORE">
+ 			SELECT QNA_SEQ.NEXTVAL FROM DUAL
+ 		</selectKey>
+ 		INSERT INTO QNA (QNANUM, NAME, SUBJECT, CONTENTS, CREATEDATE, QNAHIT, REF, STEP, DEPTH)
+		VALUES (#{num}, #{name}, #{subject}, #{contents}, SYSDATE, 0, #{num}, 0, 0)
+ 	</insert>
+ 	
+ 	
+ 	<update id="setUpdate" parameterType="QnaDTO">
+		 UPDATE QNA
+		 SET SUBJECT = #{subject}, CONTENTS = #{contents}
+		 WHERE QNANUM = #{num} AND NAME = #{name}
+ 	</update>
+ 	
   </mapper>
