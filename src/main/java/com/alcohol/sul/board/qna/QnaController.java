@@ -76,7 +76,11 @@ public class QnaController {
 	}
 	
 	// Delete
-	//@PostMapping("delete")
-	
+	@PostMapping("delete")
+	public String setDelete(QnaDTO qnaDTO, HttpSession session, Model model)throws Exception{		
+		int result = qnaService.setDelete(qnaDTO);
+		
+		return "redirect:./list";
+	}
 	
 }

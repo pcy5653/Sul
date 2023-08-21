@@ -46,29 +46,32 @@
 		</div>
 		 --%>
 		
-		<form id="frm">
+		<form id="frm" action="">
 			<input type="hidden" name="num" value="${dto.num}">
 		</form>
 		
 		
-		<a href="./update?num=${dto.num}" class="btn btn-danger">수정</a>
+		<!-- <a href="./update?num=${dto.num}" class="btn btn-danger">수정</a> -->
 		<!-- 입력 form으로 method GET -->
-		<!-- <button id="update" class="c1" data-url="update">수정</button> -->
+		<c:if test="${member.id}">
+			<button id="update" class="c1" data-url="update">수정</button>
+		</c:if>
 		
 		<!-- parameterName = data-delete-name 속성에 넣기 -->
 		<!-- method POST -->
-		<input type="hidden" data-url="delete" data-delete-name="name" data-delete-num="${member.id}">
-		<button id="del"  class="c1" data-url="delete" data-delete-name="num" data-delete-num="${dto.num}">삭제</button>
+		<c:if test="${member.id}">
+			<button id="del" class="c1" data-url="delete" data-delete-name="num" data-delete-num="${dto.num}">삭제</button>
+		</c:if>
 
 
 		<c:if test="${board ne 'notice'}">
 			<!-- <a href="./reply?num=${dto.num}" class="btn btn-danger">답글달기</a> -->
 			<!-- 입력 form으로 method GET -->
-			<button id="reply" class="btn btn-danger c1" data-url="reply">답글</button>
+			<button id="reply" class="c1" data-url="reply">답글</button>
 		</c:if>
 	</div>
 </section>
 <c:import url="../temp/footer.jsp"></c:import>
-<!-- <script src="../resources/js/delete.js"></script> -->
+<script src="/resources/js/board_delete.js"></script>
 </body>
 </html>

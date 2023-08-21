@@ -41,6 +41,6 @@
 	</div>
 </section>	
 <c:import url="../temp/footer.jsp"></c:import>
-<script src="/resources/js/add.js"></script>
+<script src="/resources/js/board_add.js"></script>
 </body>
 </html>

@@ -1,14 +1,23 @@
 package com.alcohol.sul.board.qna;
 
+import java.util.List;
+
 import com.alcohol.sul.board.BoardDTO;
 
 public class QnaDTO extends BoardDTO{
 	private Integer ref;
 	private Integer step;
 	private Integer depth;
+	// file
+	private List<QnaFileDTO> fileDTOs;
 	
 	
-	
+	public List<QnaFileDTO> getFileDTOs() {
+		return fileDTOs;
+	}
+	public void setFileDTOs(List<QnaFileDTO> fileDTOs) {
+		this.fileDTOs = fileDTOs;
+	}
 	public Integer getRef() {
 		return ref;
 	}

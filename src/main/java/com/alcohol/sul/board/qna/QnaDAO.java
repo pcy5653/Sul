@@ -17,6 +17,7 @@ public class QnaDAO implements BoardDAO {
 	private SqlSession sqlSession;
 	private final String NAMESPACE = "com.alcohol.sul.board.qna.QnaDAO.";
 
+	
 	@Override
 	public List<BoardDTO> getList(BoardDTO boardDTO) throws Exception {
 		return sqlSession.selectList(NAMESPACE+"getList");
@@ -31,6 +32,10 @@ public class QnaDAO implements BoardDAO {
 	public int setAdd(BoardDTO boardDTO) throws Exception {
 		return sqlSession.insert(NAMESPACE+"setAdd", boardDTO);
 	}
+	// fileSave
+	public int setFileAdd(QnaFileDTO qnaFileDTO)throws Exception{
+		return sqlSession.insert(NAMESPACE+"setFileAdd", qnaFileDTO);
+	}
 
 	@Override
 	public int setUpdate(BoardDTO boardDTO) throws Exception {
@@ -39,7 +44,6 @@ public class QnaDAO implements BoardDAO {
 
 	@Override
 	public int setDelete(BoardDTO boardDTO) throws Exception {
-		// Map<String, Object> map
 		return sqlSession.delete(NAMESPACE+"setDelete", boardDTO);
 	}
 

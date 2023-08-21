@@ -7,6 +7,10 @@
 	<typeAliases>
 		<!-- QNA -->
 		<typeAlias type="com.alcohol.sul.board.qna.QnaDTO" alias="QnaDTO"/>
+		<typeAlias type="com.alcohol.sul.board.qna.QnaFileDTO" alias="QnaFileDTO"/>
+		<typeAlias type="java.lang.Long" alias="Long"/>
+		<typeAlias type="java.util.Map" alias="Map"/>
+		
 		
 		<typeAlias type="com.alcohol.sul.member.MemberDTO" alias="MemberDTO"/>
 	</typeAliases>

@@ -7,7 +7,7 @@
  	
  	<!-- List -->
  	<select id="getList" resultMap="getSelectResult">
- 		SELECT * FROM QNA
+ 		SELECT * FROM QNA ORDER BY REF DESC, STEP ASC
  	</select>
  	
  	
@@ -46,7 +46,13 @@
  	
  	<delete id="setDelete" parameterType="QnaDTO">
  		DELETE QNA WHERE QNANUM = #{num}
- 		<!-- AND NAME = #{name} -->
  	</delete>
+ 	
+ 	
+ 	<!-- File -->
+ 	<insert id="setFileAdd" parameterType="QnaFileDTO">
+ 		INSERT INTO QNAFILE (FILENUM, QNANUM, FILENAME, ORIGINALNAME)
+ 		VALUES (QNAFILE_SEQ.NEXTVAL, #{num}, #{fileName}, #{originalName})
+ 	</insert>
  	
   </mapper>

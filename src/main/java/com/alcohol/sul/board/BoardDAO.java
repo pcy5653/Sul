@@ -21,7 +21,6 @@ public interface BoardDAO {
 	
 	//Delete
 	public int setDelete(BoardDTO boardDTO)throws Exception;
-	// Map<String, Object> map
 	
 	//totalCount
 	public Long getTotal()throws Exception;

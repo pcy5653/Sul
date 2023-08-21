@@ -14,11 +14,11 @@
 		<form action="./login" method="post">
 			<div class="mb-3">
 				<label for="formId" class="form-label">아이디</label> 
-				<input type="text" class="form-control" id="formId" name="id">
+				<input type="text" class="form-control" id="formId" name="id" value ="sunday1">
 			</div>
 			<div class="mb-3">
 				<label for="formPw" class="form-label">비밀번호</label>
-				<input type="password" class="form-control" id="formPw" name="pw">
+				<input type="password" class="form-control" id="formPw" name="pw" value="123456">
 			</div>
 			
 			<button type="submit" class="btn btn-primary">로그인</button>

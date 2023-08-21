@@ -13,13 +13,16 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.alcohol.sul.board.BoardDTO;
 import com.alcohol.sul.board.BoardService;
+import com.alcohol.sul.member.MemberDTO;
+import com.alcohol.sul.util.FileManager;
 
 @Service
 public class QnaService implements BoardService {
 	
 	@Autowired
 	private QnaDAO qnaDAO;
-	
+	@Autowired
+	private FileManager fileManager;
 	
 	
 	@Override
@@ -37,6 +40,24 @@ public class QnaService implements BoardService {
 	public int setAdd(BoardDTO boardDTO, MultipartFile[] files, HttpSession session) throws Exception {
 		int result = qnaDAO.setAdd(boardDTO);
 		
+		// file Save
+		String path = "/resources/upload/qna/";
+		
+		for(MultipartFile multipartFile: files) {
+			if(multipartFile.isEmpty()) {
+				continue;
+			}
+			
+			// fileManager에서 리턴 값
+			String fileName = fileManager.fileSave(path, session, multipartFile);
+			
+			QnaFileDTO qnaFileDTO = new QnaFileDTO();
+			qnaFileDTO.setFileName(fileName);
+			qnaFileDTO.setNum(boardDTO.getNum());
+			qnaFileDTO.setOriginalName(multipartFile.getOriginalFilename());
+			
+			result = qnaDAO.setFileAdd(qnaFileDTO);
+		}
 		return result;
 	}
 
@@ -49,14 +70,7 @@ public class QnaService implements BoardService {
 
 	@Override
 	public int setDelete(BoardDTO boardDTO) throws Exception {
-		// , HttpSession session
-		Map<String, Object> map = new HashMap<String, Object>();
-		//MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
-		//map.put("dto", boardDTO);
-		//map.put("member", memberDTO.getId());
-		int result = qnaDAO.setDelete(boardDTO);
-		
-		return 0;
+		return qnaDAO.setDelete(boardDTO);
 	}
 
 }
