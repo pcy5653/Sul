@@ -24,7 +24,7 @@
 				<div>
 					<form id="myForm" action="../member/updateInfo" method="post">
 						<p>
-							<label>ID</label> 
+							<label>아이디</label> 
 							<input class="w3-input" type="text" id="id" name="id" readonly value="${ member.id }"> 
 						</p>
 						<p>
@@ -47,19 +47,21 @@
 					<form id="pwForm" action="../member/updatePw" method="post">	
 						<input type="hidden" name="id" value="${ member.id }">
 						<p>
-							<label>Password</label>
-							<input class="w3-input" id="old_pw" name="old_pw" type="password" required>
+							<label>기존 비밀번호</label>
+							<input class="w3-input" id="old_pw" name="old_pw" data-pw="${member.pw}" type="password" required>
 						</p>
 						<p>
-							<label>New Password</label> 
+							<label>새 비밀번호</label> 
 							<input class="w3-input" id="pw" name="pw" type="password" required>
+							<div id="pwMsg"></div>
 						</p>
 						<p>
-							<label>Confirm</label>
+							<label>비밀번호확인</label>
 							<input class="w3-input" type="password" id="pw2" type="password" required>
+							<div id="pw2Msg"></div>
 						</p>
 						<p class="w3-center">
-							<button type="submit" id="joinBtn" class="w3-button w3-block w3-black w3-ripple w3-margin-top w3-round">비밀번호 변경</button>
+							<button type="button" id="pwBtn" class="w3-button w3-block w3-black w3-ripple w3-margin-top w3-round">비밀번호 변경</button>
 						</p>
 					</form>
 				</div>

@@ -21,4 +21,8 @@
  		UPDATE MEMBER SET PHONE=#{phone},ADDRESS=#{address},BIRTH=#{birth} WHERE ID=#{id}
  	</update>
  	
+ 	<update id="setPwUpdate" parameterType="MemberDTO">
+ 		UPDATE MEMBER SET pw=#{pw} WHERE ID=#{id}
+ 	</update>
+ 	
   </mapper>

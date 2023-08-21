@@ -6,23 +6,25 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<c:import url="../temp/bootStrap.jsp"></c:import>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+<c:import url="../temp/bootStrap.jsp"></c:import>	
 </head>
 <body>
 	<section class="container mt-5">
 		<h1>LOGIN</h1>
-		<form action="./login" method="post">
+		<form action="./login" id="loginFrm" method="post">
 			<div class="mb-3">
-				<label for="formId" class="form-label">아이디</label> 
-				<input type="text" class="form-control" id="formId" name="id">
+				<label for="id" class="form-label">아이디</label> 
+				<input type="text" class="form-control" id="id" name="id">
 			</div>
 			<div class="mb-3">
-				<label for="formPw" class="form-label">비밀번호</label>
-				<input type="password" class="form-control" id="formPw" name="pw">
+				<label for="pw" class="form-label">비밀번호</label>
+				<input type="password" class="form-control" id="pw" name="pw">
 			</div>
 			
-			<button type="submit" class="btn btn-primary">로그인</button>
 		</form>
+		<button id="btn" class="btn btn-primary">로그인</button>
 	</section>
+	<script src="/resources/js/login.js"></script>
 </body>
 </html>

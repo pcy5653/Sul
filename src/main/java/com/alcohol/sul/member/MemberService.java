@@ -59,5 +59,13 @@ public class MemberService {
 	public int setInfoUpdate(MemberDTO memberDTO) throws Exception{
 		return memberDAO.setInfoUpdate(memberDTO);
 	}
+	
+	public MemberDTO myPageReset(MemberDTO memberDTO) throws Exception{
+		return memberDAO.getLogin(memberDTO);
+	}
+	
+	public int setPwUpdate(MemberDTO memberDTO) throws Exception{
+		return memberDAO.setPwUpdate(memberDTO);
+	}
 }
 

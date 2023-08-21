@@ -28,4 +28,8 @@ public class MemberDAO {
 	public int setInfoUpdate(MemberDTO memberDTO) throws Exception{
 		return sqlSession.update(NAMESPACE+"setInfoUpdate", memberDTO);
 	}
+	
+	public int setPwUpdate(MemberDTO memberDTO) throws Exception{
+		return sqlSession.update(NAMESPACE+"setPwUpdate",memberDTO);
+	}
 }

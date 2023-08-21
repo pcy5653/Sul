@@ -45,19 +45,22 @@ public class MemberController {
 		
 	}
 	@PostMapping(value = "login")
-	public String getLogin(MemberDTO memberDTO,HttpSession session) throws Exception{
+	public String getLogin(MemberDTO memberDTO,HttpSession session,Model model) throws Exception{
 		memberDTO = memberService.getLogin(memberDTO);
 		
 		if(memberDTO != null) {
 			session.setAttribute("member", memberDTO);
+			return "redirect:../";
 		}
-		return "redirect:../"; 
+		model.addAttribute("result", 0);
+		return "commons/ajaxResult";
 	}
 	
 	//마이페이지
 	@GetMapping(value="mypage")
-	public void getMypage() throws Exception{
-		
+	public void getMypage(MemberDTO memberDTO,HttpSession session) throws Exception{
+		memberDTO=(MemberDTO)session.getAttribute("member");
+		session.setAttribute("member",memberService.myPageReset(memberDTO));
 	}
 	
 	//로그아웃
@@ -74,12 +77,20 @@ public class MemberController {
 		int result = memberService.getIdCheck(memberDTO);
 		model.addAttribute("result", result);
 		 
-		return "/commons/ajaxResult";
+		return "commons/ajaxResult";
 	 }
 	
+	
 	@PostMapping(value="updateInfo")
-	public String setInfoUpdate(MemberDTO memberDTO) throws Exception{
+	public String setInfoUpdate(MemberDTO memberDTO,HttpSession session) throws Exception{
 		int result = memberService.setInfoUpdate(memberDTO);
+		
 		return "redirect:./mypage";
+	}
+	@PostMapping(value="updatePw")
+	public String setPwUpdate(MemberDTO memberDTO,HttpSession session) throws Exception{
+		int result = memberService.setPwUpdate(memberDTO);
+		session.invalidate();
+		return "redirect:./login";
 	}
 }
