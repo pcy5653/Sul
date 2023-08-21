@@ -1,6 +1,7 @@
 package com.alcohol.sul.board;
 
 import java.util.List;
+import java.util.Map;
 
 import com.alcohol.sul.board.notice.NoticeDTO;
 
@@ -20,6 +21,7 @@ public interface BoardDAO {
 	
 	//Delete
 	public int setDelete(BoardDTO boardDTO)throws Exception;
+	// Map<String, Object> map
 	
 	//totalCount
 	public Long getTotal()throws Exception;

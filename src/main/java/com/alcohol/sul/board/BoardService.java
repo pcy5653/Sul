@@ -22,5 +22,5 @@ public interface BoardService {
 	
 	//delete
 	public int setDelete(BoardDTO boardDTO)throws Exception;
-
+	// , HttpSession session
 }

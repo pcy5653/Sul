@@ -8,7 +8,6 @@
 <title>Detail Page</title>
 
 <style>
-	section {text-align: center;}
 	#title {font-size: 2.5rem; margin-bottom : 2rem;}
 	table {border: 1px solid black;}
 </style>

@@ -41,15 +41,15 @@
     .main_logo img {width: 80%; height: 80%;}
     header ul {display: flex; align-items: center;}
     header ul .login {margin-right: 1rem;}
-    section {width: 100%; margin-top: 100px;} 
-    section .main {width: 50%; background-color: rgb(136, 176, 211); margin: 0 auto;}
+    section {width: 100%; margin-top: 100px; text-align: center;} 
+    section .main {width: 85%; background-color: rgb(136, 176, 211); margin: 0 auto;}
     </style>
 </head>
 <body>
     <div class="viewport">
         <header>
             <h1>
-                <a href="/index" class="main_logo">
+                <a href="../" class="main_logo">
                     <img src="/resources/images/main_logo.png" alt="메인로고">
                 </a>
             </h1>

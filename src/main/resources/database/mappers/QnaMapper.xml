@@ -43,4 +43,10 @@
 		 WHERE QNANUM = #{num} AND NAME = #{name}
  	</update>
  	
+ 	
+ 	<delete id="setDelete" parameterType="QnaDTO">
+ 		DELETE QNA WHERE QNANUM = #{num}
+ 		<!-- AND NAME = #{name} -->
+ 	</delete>
+ 	
   </mapper>

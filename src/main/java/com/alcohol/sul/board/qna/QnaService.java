@@ -1,6 +1,8 @@
 package com.alcohol.sul.board.qna;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -47,7 +49,13 @@ public class QnaService implements BoardService {
 
 	@Override
 	public int setDelete(BoardDTO boardDTO) throws Exception {
-		// TODO Auto-generated method stub
+		// , HttpSession session
+		Map<String, Object> map = new HashMap<String, Object>();
+		//MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		//map.put("dto", boardDTO);
+		//map.put("member", memberDTO.getId());
+		int result = qnaDAO.setDelete(boardDTO);
+		
 		return 0;
 	}
 

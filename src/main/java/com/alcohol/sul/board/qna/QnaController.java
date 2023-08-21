@@ -75,4 +75,8 @@ public class QnaController {
 		return "redirect:./detail?num="+qnaDTO.getNum();
 	}
 	
+	// Delete
+	//@PostMapping("delete")
+	
+	
 }
