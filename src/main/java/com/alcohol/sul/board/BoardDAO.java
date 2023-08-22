@@ -4,11 +4,12 @@ import java.util.List;
 import java.util.Map;
 
 import com.alcohol.sul.board.notice.NoticeDTO;
+import com.alcohol.sul.util.Pager;
 
 public interface BoardDAO {
 
 	//List
-	public List<BoardDTO> getList(BoardDTO boardDTO)throws Exception;
+	public List<BoardDTO> getList(Pager pager)throws Exception;
 	
 	//Detail
 	public BoardDTO getDetail(BoardDTO boardDTO)throws Exception;
@@ -23,7 +24,7 @@ public interface BoardDAO {
 	public int setDelete(BoardDTO boardDTO)throws Exception;
 	
 	//totalCount
-	public Long getTotal()throws Exception;
+	public Long getTotal(Pager pager)throws Exception;	
 	
 	//hit update
 	public int setHitUpdate(BoardDTO boardDTO)throws Exception;

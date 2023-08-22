@@ -15,6 +15,7 @@ import com.alcohol.sul.board.BoardDTO;
 import com.alcohol.sul.board.BoardService;
 import com.alcohol.sul.member.MemberDTO;
 import com.alcohol.sul.util.FileManager;
+import com.alcohol.sul.util.Pager;
 
 @Service
 public class QnaService implements BoardService {
@@ -27,9 +28,9 @@ public class QnaService implements BoardService {
 	
 	
 	@Override
-	public List<BoardDTO> getList(BoardDTO boardDTO) throws Exception {
-		List<BoardDTO> ar = qnaDAO.getList(boardDTO);
-		return qnaDAO.getList(boardDTO);
+	public List<BoardDTO> getList(Pager pager) throws Exception {
+		List<BoardDTO> ar = qnaDAO.getList(pager);
+		return qnaDAO.getList(pager);
 	}
 
 	@Override

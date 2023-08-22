@@ -14,7 +14,50 @@ public class Pager {
 	private String search;		// 검색 내용
 	
 	
-	
+	// 1. 보여질 data 갯수
+	public void makeRowNum() {
+		this.startRow = (this.getPage()-1)*this.getPerPage()+1;		// *=10의자리 | +1=1의자리
+		this.lastRow = this.getPage()*this.getPerPage();		
+	}
+	// 2. data 갯수에 따른 totalPage
+	public void makePageNum(Long total) {
+		// 2_1. 전체 페이지 수 
+		this.totalPage = total/this.getPerPage();
+		if(total%this.getPerPage() != 0) {
+			this.totalPage++;
+		}
+		
+		// 2_2. 전체 페이지 수로 block 나누기
+		long perBlock = 5;
+		
+		long totalBlock = this.totalPage/perBlock;
+		if(this.totalPage%perBlock != 0) {
+			totalBlock++;
+		}
+		
+		// 2_3. 현재 page 번호로 block 구하기
+		long curBlock = this.getPage()/perBlock;
+		if(this.getPage()%perBlock != 0) {
+			curBlock++;
+		}
+		
+		// 2_4. 현재 block의 시작+마지막 번호 구하기
+		this.startNum = (curBlock-1)*perBlock+1;
+		this.lastNum = curBlock*perBlock;
+		
+		// 2_5. 이전*다음 block 활성화
+		if(curBlock>1) {
+			this.pre=true;
+		}
+		if(curBlock<totalBlock) {
+			this.next=true;
+		}
+		
+		// 2_5_1. 마지막 block일 때
+		if(!this.next) {
+			this.lastNum=totalPage;
+		}
+	}
 	
 	
 	public Long getStartRow() {

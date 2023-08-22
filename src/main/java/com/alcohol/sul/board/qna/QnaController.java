@@ -36,7 +36,7 @@ public class QnaController {
 		List<BoardDTO> ar = qnaService.getList(qnaDTO);
 		model.addAttribute("list", ar);
 		
-		return "board/list";
+		return "qna/list";
 	}
 	
 	// Detail
@@ -59,7 +59,7 @@ public class QnaController {
 	// Add
 	@GetMapping("add")
 	public String setAdd()throws Exception{
-		return "board/add";
+		return "qna/add";
 	}
 	@PostMapping("add")
 	public String setAdd(QnaDTO qnaDTO, MultipartFile [] photos, HttpSession session, Model model)throws Exception{
@@ -81,7 +81,7 @@ public class QnaController {
 		qnaDTO = (QnaDTO)qnaService.getDetail(qnaDTO);
 		model.addAttribute("dto", qnaDTO);
 		
-		return "board/update";
+		return "qna/update";
 	}
 	@PostMapping("update")
 	public String setUpdate(QnaDTO qnaDTO, MultipartFile [] photos, HttpSession session)throws Exception{
