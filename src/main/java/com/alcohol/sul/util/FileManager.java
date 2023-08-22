@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.view.AbstractView;
 
-import com.alcohol.sul.file.FileDTO;
+import com.alcohol.sul.util.FileDTO;
 
 @Component
 public class FileManager extends AbstractView{

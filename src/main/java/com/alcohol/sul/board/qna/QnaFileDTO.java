@@ -1,6 +1,6 @@
 package com.alcohol.sul.board.qna;
 
-import com.alcohol.sul.file.FileDTO;
+import com.alcohol.sul.util.FileDTO;
 
 public class QnaFileDTO extends FileDTO{
 	private Long num;

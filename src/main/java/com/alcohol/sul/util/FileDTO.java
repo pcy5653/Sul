@@ -1,4 +1,4 @@
-package com.alcohol.sul.file;
+package com.alcohol.sul.util;
 
 public class FileDTO {
 	private Long fileNum;
