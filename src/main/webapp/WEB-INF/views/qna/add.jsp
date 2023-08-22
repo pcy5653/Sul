@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Add page</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
 <body>
 <c:import url="../temp/header.jsp"></c:import>
@@ -30,7 +32,7 @@
 			<div id="fileList" class="my-5"></div>
 			
 			<div class="mb-3">
-				<button type="button"  id="add">File 추가</button>
+				<button type="button" id="add">File 추가</button>
 			</div>
 			
 
@@ -41,6 +43,7 @@
 	</div>
 </section>	
 <c:import url="../temp/footer.jsp"></c:import>
-<script src="/resources/js/board_add.js"></script>
+<script src="/resources/js/qna_add.js"></script>
+<script src="/resources/js/file.js"></script>
 </body>
 </html>

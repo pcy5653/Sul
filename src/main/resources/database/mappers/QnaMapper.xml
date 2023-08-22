@@ -64,7 +64,7 @@
  		<collection property="fileDTOs" javaType="List" ofType="QnaFileDTO">
  			<id column="FILENUM" property="fileNum"/>
  			<result column="FILENAME" property="fileName"/>
- 			<result column="ORIGINALNAME" property="originanlName"/>
+ 			<result column="ORIGINALNAME" property="originalName"/>
  		</collection>
  	</resultMap>
  	
@@ -100,7 +100,7 @@
  	<!-- << 수정 중 파일 삭제 >> -->
  	<!-- 2_1. 폴더 파일 삭제 (fileNum으로 fileName 조회) -->
  	<select id="getFileDetail" parameterType="QnaFileDTO" resultType="QnaFileDTO">
- 		SELECT FILENUM, FILENAME, ORIGINALNAME FROM QNAFILE WHERE FILENUM = {fileNum}
+ 		SELECT FILENUM, FILENAME, ORIGINALNAME FROM QNAFILE WHERE FILENUM = #{fileNum}
  	</select>
  	
  	<!-- 2_2. DB 삭제 (폴더 파일 삭제 완료 시 DB 삭제) -->

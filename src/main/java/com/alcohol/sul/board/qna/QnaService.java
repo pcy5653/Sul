@@ -42,24 +42,24 @@ public class QnaService implements BoardService {
 	}
 
 	@Override
-	public int setAdd(BoardDTO boardDTO, MultipartFile[] files, HttpSession session) throws Exception {
-		int result = qnaDAO.setAdd(boardDTO);
-		
+	public int setAdd(BoardDTO boardDTO, MultipartFile[] files, HttpSession session) throws Exception {		
 		// file Save
 		String path = "/resources/upload/qna/";
+
+		int result = qnaDAO.setAdd(boardDTO);
 		
-		for(MultipartFile multipartFile: files) {
-			if(multipartFile.isEmpty()) {
+		for(MultipartFile file: files) {
+			if(file.isEmpty()) {
 				continue;
 			}
 			
 			// fileManager에서 리턴 값
-			String fileName = fileManager.fileSave(path, session, multipartFile);
+			String fileName = fileManager.fileSave(path, session, file);
 			
 			QnaFileDTO qnaFileDTO = new QnaFileDTO();
 			qnaFileDTO.setFileName(fileName);
 			qnaFileDTO.setNum(boardDTO.getNum());
-			qnaFileDTO.setOriginalName(multipartFile.getOriginalFilename());
+			qnaFileDTO.setOriginalName(file.getOriginalFilename());
 			
 			result = qnaDAO.setFileAdd(qnaFileDTO);
 		}

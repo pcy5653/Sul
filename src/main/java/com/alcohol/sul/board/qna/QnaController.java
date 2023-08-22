@@ -49,7 +49,7 @@ public class QnaController {
 		// null여부에 따른 return 경로
 		if(qnaDTO != null) {
 			model.addAttribute("dto",qnaDTO);
-			return "board/detail";
+			return "qna/detail";
 		}else {
 			model.addAttribute("message", "존재하지 않는 글 입니다.");
 			model.addAttribute("url", "list");
@@ -94,9 +94,9 @@ public class QnaController {
 	
 	// Delete
 	@PostMapping("delete")
-	public String setDelete(QnaDTO qnaDTO, HttpSession session, Model model)throws Exception{		
+	public String setDelete(QnaDTO qnaDTO, QnaFileDTO qnaFileDTO, HttpSession session, Model model)throws Exception{		
 		int result = qnaService.setDelete(qnaDTO);
-		
+		result = qnaService.setFileDelete(qnaFileDTO, session);
 		return "redirect:./list";
 	}
 	
@@ -109,4 +109,6 @@ public class QnaController {
 		
 		return "commons/ajaxResult";
 	}
+	
+	
 }

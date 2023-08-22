@@ -6,8 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Update page</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
-</head>
+
 <body>
 <c:import url="../temp/header.jsp"></c:import>
 	<section>
@@ -38,7 +39,7 @@
 				<div id="fileList" class="my-5">
 					
 				</div>
-<%-- 
+ 
 				<div>
 					<c:forEach items="${dto.fileDTOs}" var="f">
 						<div class="alert alert-info" role="alert">
@@ -47,12 +48,13 @@
 						<span class="delets" data-delete-num="${f.fileNum}">X</span>
 					</c:forEach>
 				</div>
- --%>
+ 
 				
 			<button type="submit" class="btn btn-dark">수정</button>
 			</form>   
 		</div>
 	</section>
 <c:import url="../temp/footer.jsp"></c:import>
+<script src="/resources/js/file.js"></script>
 </body>
 </html>

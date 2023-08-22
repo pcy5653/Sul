@@ -30,7 +30,7 @@ public class FileManager extends AbstractView{
 		// 3. 실제 경로 file 생성(경로가 없다면 파일을 생성)
 		File file = new File(realPath);
 		if(!file.exists()) {
-			file.mkdir();
+			file.mkdirs();
 		}
 		
 		// 4. 중복되지 않는 file 이름 설정 (return 할 값)

@@ -11,7 +11,7 @@
 	#title {font-size: 2.5rem; margin-bottom : 2rem;}
 	table {border: 1px solid black;}
 </style>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
 <body>
 <c:import url="../temp/header.jsp"></c:import>
@@ -39,7 +39,7 @@
 
 		<div>
 			<c:forEach items="${dto.fileDTOs}" var="f">
-				<a href="#">${f.originalName}</a>
+				<img src="${f.fileNum}">${f.originalName}</img>
 			</c:forEach>
 		</div>
 		
@@ -69,6 +69,6 @@
 	</div>
 </section>
 <c:import url="../temp/footer.jsp"></c:import>
-<script src="/resources/js/board_delete.js"></script>
+<script src="/resources/js/qna_delete.js"></script>
 </body>
 </html>
