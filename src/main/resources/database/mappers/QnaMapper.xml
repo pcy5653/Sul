@@ -5,7 +5,7 @@
   
   <mapper namespace="com.alcohol.sul.board.qna.QnaDAO">
  	<sql id="searchSql">
- 		WHERE NOTICENUM>0
+ 		WHERE QNANUM>0
 		AND
 		<choose>
 			<when test="kind == 'name'">
@@ -45,8 +45,8 @@
  		FROM QNA Q
  		LEFT OUTER JOIN
  		QNAFILE QF
- 		ON (Q.NUM = QF.NUM)
- 		WHERE Q.NUM = #{num}
+ 		ON (Q.QNANUM = QF.QNANUM)
+ 		WHERE Q.QNANUM = #{num}
  	</select>
 
  	<resultMap type="QnaDTO" id="getSelectResult">
@@ -61,7 +61,7 @@
  		<result column="DEPTH" property="depth"/>
  		
  		<!-- fileDTOs -->
- 		<collection property="fileDTO" javaType="List" ofType="QnaFileDTO">
+ 		<collection property="fileDTOs" javaType="List" ofType="QnaFileDTO">
  			<id column="FILENUM" property="fileNum"/>
  			<result column="FILENAME" property="fileName"/>
  			<result column="ORIGINALNAME" property="originanlName"/>
