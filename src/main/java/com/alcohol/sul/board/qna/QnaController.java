@@ -43,9 +43,17 @@ public class QnaController {
 	@GetMapping("detail")
 	public String getDetail(QnaDTO qnaDTO, Model model)throws Exception{
 		qnaDTO = (QnaDTO)qnaService.getDetail(qnaDTO);
-		model.addAttribute("dto",qnaDTO);
 		
-		return "board/detail";
+		// null여부에 따른 return 경로
+		if(qnaDTO != null) {
+			model.addAttribute("dto",qnaDTO);
+			return "board/detail";
+		}else {
+			model.addAttribute("message", "존재하지 않는 글 입니다.");
+			model.addAttribute("url", "list");
+			return "commons/result";
+		}
+		
 	}
 	
 	// Add
@@ -54,10 +62,17 @@ public class QnaController {
 		return "board/add";
 	}
 	@PostMapping("add")
-	public String setAdd(QnaDTO qnaDTO, MultipartFile [] photos, HttpSession session)throws Exception{
+	public String setAdd(QnaDTO qnaDTO, MultipartFile [] photos, HttpSession session, Model model)throws Exception{
 		int result = qnaService.setAdd(qnaDTO, photos, session);
 		
-		return "redirect:./list";
+		String message = "등록에 실패하였습니다.";
+		if(result>0) {
+			message="등록이 완료되었습니다.";
+		}
+		model.addAttribute("message", message);
+		model.addAttribute("url", "list");
+		
+		return "commons/result";
 	}
 	
 	// Update
@@ -83,4 +98,13 @@ public class QnaController {
 		return "redirect:./list";
 	}
 	
+	
+	// <<수정 중 파일 삭제>>
+	@GetMapping("fileDelete")
+	public String setFileDelete(QnaFileDTO qnaFileDTO, HttpSession session, Model model)throws Exception{
+		int result = qnaService.setFileDelete(qnaFileDTO,session);
+		model.addAttribute("result", result);
+		
+		return "commons/ajaxResult";
+	}
 }

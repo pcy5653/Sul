@@ -5,14 +5,25 @@
   
   <mapper namespace="com.alcohol.sul.board.qna.QnaDAO">
  	
- 	<!-- List -->
+ 	
+ 	
+ 	<select id="getTotal" resultType="Long">
+ 		SELECT COUNT(QNANUM) FROM QNA
+ 	</select>
+ 	
+ 	
  	<select id="getList" resultMap="getSelectResult">
  		SELECT * FROM QNA ORDER BY REF DESC, STEP ASC
  	</select>
  	
  	
  	<select id="getDetail" parameterType="QnaDTO" resultMap="getSelectResult">
- 		SELECT * FROM QNA WHERE QNANUM = #{num}
+ 		SELECT Q.*, QF.* 
+ 		FROM QNA Q
+ 		LEFT OUTER JOIN
+ 		QNAFILE QF
+ 		ON (Q.NUM = QF.NUM)
+ 		WHERE Q.NUM = #{num}
  	</select>
 
  	<resultMap type="QnaDTO" id="getSelectResult">
@@ -25,6 +36,13 @@
  		<result column="REF" property="ref"/>
  		<result column="STEP" property="step"/>
  		<result column="DEPTH" property="depth"/>
+ 		
+ 		<!-- fileDTOs -->
+ 		<collection property="fileDTO" javaType="List" ofType="QnaFileDTO">
+ 			<id column="FILENUM" property="fileNum"/>
+ 			<result column="FILENAME" property="fileName"/>
+ 			<result column="ORIGINALNAME" property="originanlName"/>
+ 		</collection>
  	</resultMap>
  	
  	
@@ -50,9 +68,20 @@
  	
  	
  	<!-- File -->
+ 	<!-- 1. insert 작성 중 file 올리기 (add, update) -->
  	<insert id="setFileAdd" parameterType="QnaFileDTO">
  		INSERT INTO QNAFILE (FILENUM, QNANUM, FILENAME, ORIGINALNAME)
  		VALUES (QNAFILE_SEQ.NEXTVAL, #{num}, #{fileName}, #{originalName})
  	</insert>
  	
+ 	<!-- << 수정 중 파일 삭제 >> -->
+ 	<!-- 2_1. 폴더 파일 삭제 (fileNum으로 fileName 조회) -->
+ 	<select id="getFileDetail" parameterType="QnaFileDTO" resultType="QnaFileDTO">
+ 		SELECT FILENUM, FILENAME, ORIGINALNAME FROM QNAFILE WHERE FILENUM = {fileNum}
+ 	</select>
+ 	
+ 	<!-- 2_2. DB 삭제 (폴더 파일 삭제 완료 시 DB 삭제) -->
+ 	<delete id="setFileDelete" parameterType="QnaFileDTO">
+ 		DELETE QNAFILE WHERE FILENUM =  #{fileNum}
+ 	</delete>
   </mapper>

@@ -42,8 +42,7 @@ public class QnaDAO implements BoardDAO {
 		return sqlSession.update(NAMESPACE+"setUpdate", boardDTO);
 	}
 
-	@Override
-	public int setDelete(BoardDTO boardDTO) throws Exception {
+	@Overrideq int setDelete(BoardDTO boardDTO) throws Exception {
 		return sqlSession.delete(NAMESPACE+"setDelete", boardDTO);
 	}
 
@@ -60,5 +59,13 @@ public class QnaDAO implements BoardDAO {
 	}
 	
 	
-	
+	// <<수정 시 파일 삭제>>
+	// 1. 폴더 내용(파일) 삭제
+	public QnaFileDTO getFileDetail(QnaFileDTO qnaFileDTO)throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getFileDetail", qnaFileDTO);
+	}
+	// 2. DB 내용(파일) 삭제
+	public int setFileDelete(QnaFileDTO qnaFileDTO)throws Exception{
+		return sqlSession.delete(NAMESPACE+"setFileDelete", qnaFileDTO);
+	}
 }
