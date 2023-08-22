@@ -1,5 +1,6 @@
 package com.alcohol.sul.board.qna;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -92,7 +93,7 @@ public class QnaService implements BoardService {
 	}
 
 	@Override
-	public int setDelete(BoardDTO boardDTO) throws Exception {
+	public int setDelete(BoardDTO boardDTO, HttpSession session) throws Exception {
 		return qnaDAO.setDelete(boardDTO);
 	}
 

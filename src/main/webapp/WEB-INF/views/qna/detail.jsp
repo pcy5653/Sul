@@ -39,7 +39,7 @@
 
 		<div>
 			<c:forEach items="${dto.fileDTOs}" var="f">
-				<img src="${f.fileNum}">${f.originalName}</img>
+				<img class="fileImg" data-file-num="${f.fileNum}">${f.originalName}</img>
 			</c:forEach>
 		</div>
 		

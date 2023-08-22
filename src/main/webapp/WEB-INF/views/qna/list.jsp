@@ -38,6 +38,45 @@
 	            </tbody>
 	        </table>
         </div>
+		<nav aria-label="Page navigation example">
+			<ul class="pagination">
+				<c:if test="${pager.pre}">
+				  <li class="page-item">
+					<a class="move" href="#" data-num="${pager.startNum-1}" aria-label="Previous">
+					  <span aria-hidden="true">&laquo;</span>
+					</a>
+				  </li>
+			  </c:if>
+			  <c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
+				  <li class="page-item "><a class="page-link move" href="#" data-num="${i}">${i}</a></li>
+			  </c:forEach>
+			  <c:if test="${pager.next}">
+				  <li class="page-item">
+					<a class="move" href="#" data-num="${pager.lastNum+1}" aria-label="Next">
+					  <span aria-hidden="true">&raquo;</span>
+					</a>
+				  </li>
+			  </c:if>
+			</ul>
+		</nav>
+
+		<div class="input-group mb-3">
+			<form action="./list" method="get" id="frm" >
+
+				  <input type="hidden" id="page" value="${pager.page}" name="page">
+				  <!-- parameter(name,value) -->
+				  <select name="kind" id="k" class="form-select" data-kind="${param.kind}" aria-label="Default select example">
+					  <option value="name" class="kind" data-list-name="kind" data-list="${param.kind}">작성자</option>
+					  <option value="title" class="kind">Title</option>
+					  <option value="contents" class="kind">Contents</option>
+				 </select>
+				 <!-- parameter -->
+				  <input type="text" name="search" value="${param.search}" class="form-control" aria-label="Amount (to the nearest dollar)">
+				  <div class="col-auto">
+				    <button type="submit" class="btn btn-primary">검색</button>
+				  </div>
+			</form>
+		</div>
         
         <a class="btn btn-danger" href="./add">게시물 등록</a>
         <%-- <c:if test="${not empty member}">
@@ -48,5 +87,6 @@
     
     
 	<c:import url="../temp/footer.jsp"></c:import>
+	<script src="/resources/js/qna_list.js"></script>
 </body>
 </html>

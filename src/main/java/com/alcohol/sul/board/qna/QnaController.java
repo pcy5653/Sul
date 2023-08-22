@@ -94,9 +94,10 @@ public class QnaController {
 	
 	// Delete
 	@PostMapping("delete")
-	public String setDelete(QnaDTO qnaDTO, QnaFileDTO qnaFileDTO, HttpSession session, Model model)throws Exception{		
-		int result = qnaService.setDelete(qnaDTO);
-		result = qnaService.setFileDelete(qnaFileDTO, session);
+	public String setDelete(QnaDTO qnaDTO, QnaFileDTO qnaFileDTO, HttpSession session)throws Exception{
+		qnaService.setFileDelete(qnaFileDTO, session);
+		int result = qnaService.setDelete(qnaDTO, session);
+		
 		return "redirect:./list";
 	}
 	
