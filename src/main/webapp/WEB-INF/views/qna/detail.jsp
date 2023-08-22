@@ -49,23 +49,16 @@
 		</form>
 		
 		
-		<!-- <a href="./update?num=${dto.num}" class="btn btn-danger">수정</a> -->
 		<!-- 입력 form으로 method GET -->
 		<button id="update" class="c1" data-url="update">수정</button>
 		
-		
-		<!-- parameterName = data-delete-name 속성에 넣기 -->
 		<!-- method POST -->
 		<input type="hidden" data-url="delete" data-delete-name="name" data-delete-num="${member.id}">
 		<button id="del" class="c1" data-url="delete" data-delete-name="num" data-delete-num="${dto.num}">삭제</button>
 		
+		<!-- 입력 form으로 method GET -->
+		<button id="reply" class="c1" data-url="reply">답글</button>
 
-
-		<c:if test="${board ne 'notice'}">
-			<!-- <a href="./reply?num=${dto.num}" class="btn btn-danger">답글달기</a> -->
-			<!-- 입력 form으로 method GET -->
-			<button id="reply" class="c1" data-url="reply">답글</button>
-		</c:if>
 	</div>
 </section>
 <c:import url="../temp/footer.jsp"></c:import>

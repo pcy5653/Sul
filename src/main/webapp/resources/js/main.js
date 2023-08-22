@@ -7,6 +7,6 @@ window.addEventListener('scroll',function(){
     if(body.scrollTop > 200){
         header.style.top = '0'
     }else{
-        header.style.top = '-80px'
+        header.style.top = '-100px'
     }
 })

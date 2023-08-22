@@ -6,37 +6,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/resources/style/reset.css">
+    <link rel="stylesheet" href="/resources/style/basic.css">
     <title>footer</title>
-    <style>
-    /* footer */
-    body {margin: 0 auto;}
-    .viewport {width: 100%;}
-    footer {
-        width:100%; font-size: 0.8rem; color: #494949;
-        background-color: #f2f2f2;
-    }
-    .f_total {width: 90%; margin: 0 auto; padding: 2rem;}
-    .f_top {display: flex; justify-content: space-between; margin-bottom: 1.5rem;}
-    .f_top .f_top_left > p { margin-bottom: 0.2rem;}
-    .f_top .f_top_left .company {
-        font-size: 1.1rem; font-weight: 700; color:black; 
-        margin-bottom: 0.8rem; 
-    }
-    .f_top ul {display: flex;}
-    .f_top ul > li {width: 45px; margin-right: 1rem;}
-    .f_top ul > li > a {display: block;}
-    .f_top ul > li > a img {width: 100%;}
-    .f_middle {margin-bottom: 1.5rem;}
-    .f_middle > span {margin-right: 0.8rem ; font-weight: 600;}
-    .f_middle > span::after {
-        content: ''; display: inline-block;
-        width: 1px; height: 10px; margin-left: 15px; background-color: black;
-    }
-    .f_middle > .last::after{display: none;}
-    .f_bottom > p {color: black; margin-bottom: 0.2rem;}
-    .f_bottom > p:last-of-type {margin-bottom: 2rem;}
-    .f_bottom > span {line-height: 1.5;}
-    </style>
 </head>
 <body>
     <div class="viewport">

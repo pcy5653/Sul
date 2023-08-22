@@ -6,8 +6,9 @@
 <head>
 	<meta charset="UTF-8">
  	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>4조 프로젝트</title>
+	<link rel="stylesheet" href="/resources/style/reset.css">
 
+	<title>4조 프로젝트</title>
 </head>
 <body>
 	<c:import url="./temp/header.jsp"></c:import>
