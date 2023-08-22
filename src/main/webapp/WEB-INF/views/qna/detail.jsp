@@ -18,33 +18,31 @@
 <section>
 	<div class="main">
 		<h1 id="title">${board} Detail Page</h1>
-	<!-- Getter 이름 : 메서드에서 get을 제외하고 첫번째글자를 소문자로 바꾼것 -->
-	<!-- DB & GETTER 이름 동일 -->
-	
 		<table>
 			<thead>
 				<th>SUBJECT</th><th>작성자</th><th>날짜</th><th>HIT</th>
 			</thead>
 			<tbody>
-				<!-- Controller에서 속성명=items를 해서  -->
 				<tr>
 					<td>${dto.subject}</td>
 					<td>${dto.name}</td>
 					<td>${dto.createDate}</td>
 					<td>${dto.hit}</td>
 				</tr>			
-				<tr><td colspan=4>${dto.contents}</td></tr>
 			</tbody>
+		</table>
+		<table>
+			<tr><td>내용</td></tr>
+			<tr><td>${dto.contents}</td></tr>
 		</table>
 		
 
-<%-- 		<div>
-			<!-- Controller에서 작성한 키 이름과 동일하게 적기 -->
+		<div>
 			<c:forEach items="${dto.fileDTOs}" var="f">
-				<a href="./fileDown?fileNum=${f.fileNum}">${f.originalName}</a>
+				<a href="#">${f.originalName}</a>
 			</c:forEach>
 		</div>
-		 --%>
+		
 		
 		<form id="frm" action="">
 			<input type="hidden" name="num" value="${dto.num}">

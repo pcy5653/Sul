@@ -9,13 +9,13 @@
 		AND
 		<choose>
 			<when test="kind == 'name'">
-				NAME LIKE #{search}
+				NAME LIKE '%'||#{search}||'%'
 			</when>
 			<when test="kind == 'title'">
-				SUBJECT LIKE #{search}
+				SUBJECT LIKE '%'||#{search}||'%'
 			</when>
 			<otherwise>
-				CONTENTS LIKE #{search}
+				CONTENTS LIKE '%'||#{search}||'%'
 			</otherwise>
 		</choose>
  	</sql>
@@ -23,11 +23,20 @@
  	
  	<select id="getTotal" resultType="Long">
  		SELECT COUNT(QNANUM) FROM QNA
+ 		<include refid="searchSql"></include>
  	</select>
  	
  	
  	<select id="getList" parameterType="Pager" resultMap="getSelectResult" >
- 		SELECT * FROM QNA ORDER BY REF DESC, STEP ASC
+ 		SELECT * FROM
+ 			(SELECT ROWNUM R, B.* FROM
+		  		(
+			  		SELECT * FROM QNA 
+			  		<include refid="searchSql"></include>
+			  		ORDER BY REF DESC, STEP ASC
+		  		) B
+	  		)
+	  	WHERE R BETWEEN ${startRow} AND ${lastRow}
  	</select>
  	
  	

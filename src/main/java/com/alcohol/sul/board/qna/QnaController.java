@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.alcohol.sul.board.BoardDTO;
+import com.alcohol.sul.util.Pager;
 
 @Controller
 @RequestMapping(value = "/qna/*")
@@ -32,9 +33,10 @@ public class QnaController {
 	
 	// List
 	@GetMapping("list")
-	public String getList(QnaDTO qnaDTO, Model model)throws Exception{
-		List<BoardDTO> ar = qnaService.getList(qnaDTO);
+	public String getList(Pager pager, Model model)throws Exception{
+		List<BoardDTO> ar = qnaService.getList(pager);
 		model.addAttribute("list", ar);
+		model.addAttribute("pager", pager);
 		
 		return "qna/list";
 	}
