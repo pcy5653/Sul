@@ -13,6 +13,15 @@
 <body>
 	<c:import url="./temp/header.jsp"></c:import>
 	
+	<main>
+		<section id="video_wrap">
+			<div class="video_div">
+				<video src="" type="" autoplay loop muted></video>
+			</div>
+		<!-- /video_wrap -->
+		</section>
+	</main>
+
 	<c:import url="./temp/footer.jsp"></c:import>
 </body>
 </html>
