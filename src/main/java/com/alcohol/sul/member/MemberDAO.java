@@ -24,4 +24,12 @@ public class MemberDAO {
 	public MemberDTO getIdCheck(MemberDTO memberDTO) throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"getIdCheck", memberDTO);
 	}
+	
+	public int setInfoUpdate(MemberDTO memberDTO) throws Exception{
+		return sqlSession.update(NAMESPACE+"setInfoUpdate", memberDTO);
+	}
+	
+	public int setPwUpdate(MemberDTO memberDTO) throws Exception{
+		return sqlSession.update(NAMESPACE+"setPwUpdate",memberDTO);
+	}
 }

@@ -16,4 +16,13 @@
  	<select id="getIdCheck" resultType="MemberDTO" parameterType="MemberDTO">
  		SELECT ID FROM MEMBER WHERE ID=#{id}
  	</select>
+ 	
+ 	<update id="setInfoUpdate" parameterType="MemberDTO">
+ 		UPDATE MEMBER SET PHONE=#{phone},ADDRESS=#{address},BIRTH=#{birth} WHERE ID=#{id}
+ 	</update>
+ 	
+ 	<update id="setPwUpdate" parameterType="MemberDTO">
+ 		UPDATE MEMBER SET pw=#{pw} WHERE ID=#{id}
+ 	</update>
+ 	
   </mapper>
