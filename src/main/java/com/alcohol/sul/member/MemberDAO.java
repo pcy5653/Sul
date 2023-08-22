@@ -25,6 +25,11 @@ public class MemberDAO {
 		return sqlSession.selectOne(NAMESPACE+"getIdCheck", memberDTO);
 	}
 	
+	//폰번호중복체크
+	public MemberDTO getPhoneCheck(MemberDTO memberDTO) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getPhoneCheck",memberDTO);
+	}
+	
 	public int setInfoUpdate(MemberDTO memberDTO) throws Exception{
 		return sqlSession.update(NAMESPACE+"setInfoUpdate", memberDTO);
 	}
@@ -32,4 +37,13 @@ public class MemberDAO {
 	public int setPwUpdate(MemberDTO memberDTO) throws Exception{
 		return sqlSession.update(NAMESPACE+"setPwUpdate",memberDTO);
 	}
+	
+	public MemberDTO findId(MemberDTO memberDTO) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"findId", memberDTO);
+	}
+	
+	public MemberDTO findPw(MemberDTO memberDTO) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"findPw", memberDTO);
+	}
+	
 }

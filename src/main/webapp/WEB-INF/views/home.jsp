@@ -7,10 +7,10 @@
 	<meta charset="UTF-8">
  	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>4조 프로젝트</title>
-
+<c:import url="./temp/header.jsp"></c:import>
 </head>
 <body>
-	<c:import url="./temp/header.jsp"></c:import>
-	
+
 </body>
+
 </html>
