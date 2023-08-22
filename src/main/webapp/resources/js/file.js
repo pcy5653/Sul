@@ -25,7 +25,7 @@ for(del of delets){
     });
 }
 
-let max=1;
+let max=3;
 let count=0;
 
 
@@ -44,7 +44,7 @@ $("#fileList").on("click", ".df", function(){
 //jquery로 변경
 $("#add").click(function(){
     if(count>=max){
-        alert("최대 1개만 첨부 가능합니다.");
+        alert("최대 3개까지만 첨부 가능합니다.");
         return;
     }
     count++;

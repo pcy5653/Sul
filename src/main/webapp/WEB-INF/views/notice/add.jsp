@@ -42,27 +42,28 @@
 			</div>
 			
 			<div id="fileList" class="my-5"></div>
-			<div class="mb-3">
-				<button type="button" class="btn btn-primary" id="add">File추가</button>
-			</div>
+			
+		
 			
 			
 			<div class="my-3">
-				<a class="btn btn-outline-secondary" href="./list">BACK</a>
-				<button type="button" id="btn" class="btn btn-secondary">작성완료</button>
+				<button type="button" class="btn btn-primary" id="add">File추가</button>
+				<a class="btn btn-outline-secondary" href="./list" style='width:80px;float: right;'>목록</a>
+				<button type="button" id="btn" class="btn btn-secondary" style='width:80px;float: right;'>완료</button>
 			</div>
 		</form>
 	</section>
+	
 	<script src="../resources/js/file.js"></script>
+	
 	<script type="text/javascript">
 		$("#contents").summernote({
 			height:400,
 			callbacks:{
 				onImageUpload: function(files) {
 					alert('이미지 업로드')
-					//이미지를 서버로 전송하고 응답으로 이미지경로와 파일명을 받아서 img 태그 만들어 src 속성에 이미지경로를 넣는 것 (해야 함/용량이 너무 커서)
-					let formData = new FormData(); // <form></form>이 만들어진 것
-					formData.append("files",files[0]); // form태그 안에 <input type="file" name="files"> 추가
+					let formData = new FormData(); 
+					formData.append("files",files[0]); 
 
 					$.ajax({
 						type: 'post',
@@ -80,7 +81,7 @@
 					});
 				},
 				onMediaDelete:function(files){
-					let path = $(files[0]).attr("src"); // /resources/upload/notice/파일명
+					let path = $(files[0]).attr("src"); 
 
 					$.ajax({
 						type:'post',

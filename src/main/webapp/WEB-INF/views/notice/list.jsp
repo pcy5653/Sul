@@ -69,7 +69,6 @@
 			    <!-- 파라미터 이름 kind -->
 			  <select name="kind" id="k" class="form-select form-select-sm" style="width:25%" aria-label="Small select example">
 				  <option class="kind" value="subject">Subject</option>
-				  <option class="kind" value="name">Name</option>
 				  <option class="kind" value="contents">Contents</option>
 			  </select>
 			  

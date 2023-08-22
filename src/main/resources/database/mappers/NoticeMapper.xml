@@ -12,13 +12,9 @@
 		<when test="kind=='subject'">
 			AND SUBJECT LIKE '%'||#{search}||'%'
 		</when>
-				
-		<when test="kind=='contents'">
+							
+		<otherwise>				
 			AND CONTENTS LIKE '%'||#{search}||'%'
-		</when>
-				
-		<otherwise>
-			AND NAME LIKE '%'||#{search}||'%'	
 		</otherwise>
 	</choose>
 </sql>
@@ -101,6 +97,14 @@
 	SUBJECT=#{subject},
 	CONTENTS=#{contents}
 	WHERE NOTICENUM=#{num}
+</update>
+
+<update id="setFileUpdate" parameterType="NoticeFileDTO">
+	UPDATE NOTICEFILE SET
+	FILENUM=noticeFile_SEQ.NEXTVAL,
+	FILENAME=#{fileName},
+	ORIGINALFILENAME=#{originalFileName}
+	WHERE NOTICENUM=#{noticeNum}
 </update>
 
 <!-- Delete -->

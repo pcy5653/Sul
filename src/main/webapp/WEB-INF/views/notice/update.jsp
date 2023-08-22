@@ -16,7 +16,7 @@
 
 	<section class="container mt-5">
 	<h1 class="my-4 text-center">Update Page</h1>
-		<form action="./update" method="post">
+		<form action="./update" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="num" value="${dto.num}">
 		<input type="hidden" name="fileNum" value="${fileDTOs.fileNum}">
 		<div class="mb-3">
@@ -30,33 +30,31 @@
 		</div>
 		
 		<div class="mb-3">
-		  <label for="contents" class="form-label">CONTENTS</label>
-		  <textarea class="form-control" name="contents" id="contents" rows="15">${dto.contents}</textarea>
+		  <label for="contents" class="form-label"></label>
+		  <textarea name="contents" class="form-control" id="contents" placeholder="내용 입력" rows="7">${dto.contents}</textarea>
 		</div>
 		
 		<div id="fileList" class="my-5"></div>
-
-		<div class="mb-3">
-			<button type="button" class="btn btn-primary" id="add">File추가</button>
-		</div>
-				
 		<c:forEach items="${dto.fileDTOs}" var="f">
-			<img alt="" src="/resources/upload/notice/${f.fileName}">
-		</c:forEach>	
-		<span class="delets" data-delete-num="${fileDTOs.fileNum}">X</span>		
+			<div>
+				<a>${f.originalName}</a>
+			</div>
+		</c:forEach>
+		
+		
+		
 
-		
-		
-		<div class="my-3">
+		<div class="my-3" >
 		<br>
-			<a class="btn btn-outline-secondary" href="./list">LIST</a>
-			<button type="submit" class="btn btn-secondary">UPDATE</button>
+			<button type="button" class="btn btn-primary" id="add">File추가</button>
+			<a class="btn btn-outline-secondary" href="./list" style='width:80px;float: right;'>LIST</a>
+			<button type="submit" class="btn btn-secondary" style='width:80px;float: right;'>UPDATE</button>
 		</div>
 	</form>
 </section>
 <script src="/resources/js/file.js"></script>
 <script type="text/javascript">
-	$("#contents").summernote();
+	$("#contents").summernote('code');	
 </script>
 </body>
 </html>

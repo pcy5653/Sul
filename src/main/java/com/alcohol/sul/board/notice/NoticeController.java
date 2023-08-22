@@ -20,7 +20,7 @@ import com.alcohol.sul.util.Pager;
 
 @Controller
 
-@RequestMapping("/board/*")
+@RequestMapping("/notice/*")
 public class NoticeController {
 	
 	@Autowired
@@ -50,14 +50,14 @@ public class NoticeController {
 		List<BoardDTO> ar = noticeService.getList(pager);
 		model.addAttribute("list",ar);
 		model.addAttribute("pager", pager);
-		return "board/list";
+		return "notice/list";
 	}
 	
 	// Add
 	
 	@RequestMapping(value = "add", method = RequestMethod.GET)
 	public String setAdd()throws Exception{
-		return "board/add";
+		return "notice/add";
 	}
 	
 	@RequestMapping(value = "add", method = RequestMethod.POST)
@@ -84,7 +84,7 @@ public class NoticeController {
 		if(boardDTO != null) {
 			
 			model.addAttribute("dto", boardDTO);
-			return "board/detail";	
+			return "notice/detail";	
 		}else {
 			model.addAttribute("message", "글이 없습니다.");
 			model.addAttribute("url", "list");
@@ -98,12 +98,8 @@ public class NoticeController {
 	public String setUpdate(BoardDTO boardDTO, Model model)throws Exception{
 		boardDTO = noticeService.getDetail(boardDTO);
 		model.addAttribute("dto", boardDTO);
-		return "board/update";
+		return "notice/update";
 		
-//		ModelAndView mv = new ModelAndView();
-//		mv.setViewName("board/update");
-//		mv.addObject("dto", boardDTO);
-//		return mv;
 	}
 	
 	@RequestMapping(value = "update", method = RequestMethod.POST)
@@ -111,6 +107,12 @@ public class NoticeController {
 		int result = noticeService.setUpdate(noticeDTO, photos, session);
 		//return "redirect:./list";
 		return "redirect:./detail?num="+noticeDTO.getNum();
+	}
+	
+	@PostMapping("fileUpdate")
+	public String setFileUpdate(NoticeFileDTO noticeFileDTO, MultipartFile[] photos, HttpSession session)throws Exception{
+		int result = noticeService.setFileUpdate(noticeFileDTO, photos, session);
+		return "redirect:./detail?num="+noticeFileDTO.getNoticeNum();
 	}
 	
 	

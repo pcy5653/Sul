@@ -32,7 +32,7 @@
 	</table>
 			<div class="mb-3">
 			<label for="contents" class="form-label"></label>
-			<textarea class="form-control" border: 0">${dto.contents}</textarea>
+				${dto.contents}
 			</div>
 			<c:forEach items="${dto.fileDTOs}" var="f">
 			<div>
@@ -46,13 +46,14 @@
 	<form id="frm" action="">
 		<input type="hidden" name="num" value="${dto.num}">
 	</form>
-	<a class="btn btn-outline-secondary" href="./list">LIST</a>
-	<a class="btn btn-outline-secondary" href="./update?num=${dto.num}">UPDATE</a>
-	<div style='width:80px;float: right;'>
-		<button id="del" data-url="delete" data-delete-name="num" data-delete-num="${dto.num}" class="btn btn-danger c1">DELETE</button>
-	</div>
+	<a class="btn btn-outline-secondary" href="./list" style='width:80px;float: right;'>목록</a>
+	<a class="btn btn-outline-secondary" href="./update?num=${dto.num}">수정</a>
+
+	<button id="del" data-url="delete" data-delete-name="num" data-delete-num="${f.fileNum}" class="btn btn-danger c1">삭제</button>
 	
 </section>
+
+
 	<script type="text/javascript">
 	let del = document.getElementById("del");
 	const c1 = document.getElementsByClassName("c1");

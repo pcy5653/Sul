@@ -88,6 +88,11 @@ public class NoticeService implements BoardService{
 
 		return noticeDAO.setUpdate(boardDTO);
 	}
+	
+	public int setFileUpdate(NoticeFileDTO noticeFileDTO, MultipartFile[] files, HttpSession session)throws Exception{
+		
+		return noticeDAO.setFileUpdate(noticeFileDTO);
+	}
 
 	//Delete
 	@Override

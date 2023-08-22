@@ -36,11 +36,7 @@ public class NoticeDAO implements BoardDAO{
 		
 		return sqlSession.selectOne(NAMESPACE+"getDetail", boardDTO);
 	}
-	
-	public NoticeFileDTO getFileDetai1(NoticeFileDTO noticeFileDTO)throws Exception{
-		return sqlSession.selectOne(NAMESPACE+"getFileDetail", noticeFileDTO);
-	}
-	
+
 	@Override
 	public int setAdd(BoardDTO boardDTO) throws Exception {
 		
@@ -57,6 +53,11 @@ public class NoticeDAO implements BoardDAO{
 		
 		return sqlSession.update(NAMESPACE+"setUpdate", boardDTO);
 	}
+	
+	public int setFileUpdate(NoticeFileDTO noticeFileDTO)throws Exception{
+		return sqlSession.update(NAMESPACE+"setFileUpdate", noticeFileDTO);
+	}
+	
 	@Override
 	public int setDelete(BoardDTO boardDTO) throws Exception {
 		
