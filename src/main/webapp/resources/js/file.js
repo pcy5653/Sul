@@ -2,7 +2,7 @@ const add = document.getElementById("add");
 const fileList = document.getElementById("fileList");
 const delets = document.getElementsByClassName("delets");
 
-//-------------------------------
+//--------------------------------------
 for(del of delets){
     del.addEventListener("click", function(){
         let num = this.getAttribute("data-delete-num");
@@ -17,6 +17,7 @@ for(del of delets){
                         this.remove();
                         count--;
                     }
+
 
                  })
         }
