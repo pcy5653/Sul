@@ -1,0 +1,17 @@
+/* list.css */
+#list {width:100%; margin-top: 150px; background-color: aquamarine; }
+.wrap {width: 70%; margin: 0 auto;}
+.main {background-color: burlywood;}
+#title {font-size: 2.5rem; margin-bottom : 2rem; text-align: center;}
+.wrap table {width:85%; margin: 0 auto;}
+table tr {height:3rem; text-align: center;}
+table thead {border-top:1px solid black; border-bottom: 1px solid black;}
+table thead tr {background-color: rgb(211, 211, 211);}
+table thead tr th {font-size: 1.1rem; font-weight: 800;}
+table tbody tr td {border-bottom: 1px solid rgb(139, 139, 139);}
+/* table tbody tr td:first-of-type {}  title 앞으로*/
+
+.t_page ul {display: flex;}
+.t_page ul > li {}
+
+

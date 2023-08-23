@@ -1,0 +1,46 @@
+/* header.css */
+body {margin: 0 auto;}
+.viewport {width: 100%;}
+
+header {
+    display: flex; justify-content: space-between; align-items: center;
+    position: fixed; left: 0; top: 0; width: 90%; height:100px; margin: 0 6rem; background: rgba(255,255,255,0.6);
+    transition: top 1s;
+}
+.main_logo {display: block;}
+.main_logo img {width: 80%; height: 80%;}
+header ul {display: flex; align-items: center;}
+header ul .login {margin-right: 1rem;}
+main {background-color: rebeccapurple; margin: 0 auto; width: 100%; margin-top: 100px;text-align: center;}
+section {margin: 0 auto;}
+#video_wrap {width: 90%; background-color: red;}
+
+
+/* footer */
+body {margin: 0 auto;}
+.viewport {width: 100%;}
+footer {
+    width:100%; font-size: 0.8rem; color: #494949;
+    background-color: #f2f2f2;
+}
+.f_total {width: 90%; margin: 0 auto; padding: 2rem;}
+.f_top {display: flex; justify-content: space-between; margin-bottom: 1.5rem;}
+.f_top .f_top_left > p { margin-bottom: 0.2rem;}
+.f_top .f_top_left .company {
+    font-size: 1.1rem; font-weight: 700; color:black; 
+    margin-bottom: 0.8rem; 
+}
+.f_top ul {display: flex;}
+.f_top ul > li {width: 45px; margin-right: 1rem;}
+.f_top ul > li > a {display: block;}
+.f_top ul > li > a img {width: 100%;}
+.f_middle {margin-bottom: 1.5rem;}
+.f_middle > span {margin-right: 0.8rem ; font-weight: 600;}
+.f_middle > span::after {
+    content: ''; display: inline-block;
+    width: 1px; height: 10px; margin-left: 15px; background-color: black;
+}
+.f_middle > .last::after{display: none;}
+.f_bottom > p {color: black; margin-bottom: 0.2rem;}
+.f_bottom > p:last-of-type {margin-bottom: 2rem;}
+.f_bottom > span {line-height: 1.5;}
