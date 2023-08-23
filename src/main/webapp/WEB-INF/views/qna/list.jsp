@@ -11,7 +11,7 @@
 </head>
 <body>
 	<c:import url="../temp/header.jsp"></c:import>
-	<section id="list">
+	<section>
 		<div class="wrap">
 			<div class="main">
 				<h1 id="title">1:1 문의 내역</h1>
@@ -55,7 +55,7 @@
 			</nav>
 
 			<div class="t_search">
-				<form action="./list" method="get" id="frm" >
+				<form action="./list" method="get" id="frm" class="t_frm">
 					<input type="hidden" id="page" value="${pager.page}" name="page">
 					<!-- parameter(name,value) -->
 					<select name="kind" id="k" data-kind="${pager.kind}">
@@ -65,13 +65,13 @@
 					<!-- parameter -->
 					<input type="text" name="search" value="${pager.search}" class="search">
 					<div class="t_btn">
-						<button type="submit" class="btn">검색</button>
+						<button type="submit" class="s_btn">검색</button>
 					</div>
 				</form>
+				<c:if test="${not empty member}">
+					<a class="btn btn-danger" href="./add">게시물 등록</a>
+				</c:if>
 			</div>
-			<c:if test="${not empty member}">
-				<a class="btn btn-danger" href="./add">게시물 등록</a>
-			</c:if>
 		</div>
     </section>
     
