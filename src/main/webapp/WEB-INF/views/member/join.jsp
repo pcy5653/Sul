@@ -61,6 +61,7 @@
 					<div>
 						<label for="address" class="form-label">주소</label>
 						<input type="text" name="address" class="form-control input" id="address">
+						<button type="button" id="adrBtn">주소검색</button>
 						<div id="addressMsg"></div>
 					</div>
 					<div class="mb-5">
@@ -98,7 +99,7 @@
 
 				</form>
 			</section>
-
+			<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 			<script src="/resources/js/join.js"></script>
 		</body>
 
