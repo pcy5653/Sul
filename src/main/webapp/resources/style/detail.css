@@ -1,9 +1,9 @@
 /* list.css */
-#list {width:100%; margin-top: 150px; background-color: aquamarine; }
+#list {width:100%; margin-top: 150px;}
 .wrap {width: 70%; margin: 0 auto;}
-.main {background-color: burlywood;}
+.main {}
 #title {font-size: 2.5rem; margin-bottom : 2rem; text-align: center;}
-.wrap table {width:85%; margin: 0 auto;}
+.wrap table, .t_page, .t_search {width:85%; margin: 0 auto;margin-bottom: 2rem;}
 table tr {height:3rem; text-align: center;}
 table thead {border-top:1px solid black; border-bottom: 1px solid black;}
 table thead tr {background-color: rgb(211, 211, 211);}
@@ -12,6 +12,14 @@ table tbody tr td {border-bottom: 1px solid rgb(139, 139, 139);}
 /* table tbody tr td:first-of-type {}  title 앞으로*/
 
 .t_page ul {display: flex;}
-.t_page ul > li {}
+.t_page ul > li {
+    height: 30px;width: 30px;line-height: 30px;
+    background-color: rgb(211, 211, 211);
+    text-align: center;margin-right: 0.5rem;
+    border-radius: 15%;
+}
 
-
+#frm {display: flex; height: 2rem;}
+#k, .search {margin-right: 0.5rem;}
+.t_btn {width: 5rem;line-height: 2rem;background: #80a9ff;text-align: center;border-radius: 10%;}
+.btn {font-weight: 900; color: white;}

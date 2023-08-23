@@ -18,10 +18,12 @@
 			<div class="video_div">
 				<video src="" type="" autoplay loop muted></video>
 			</div>
-		<!-- /video_wrap -->
+			<!-- /video_wrap -->
 		</section>
 	</main>
-
+	
 	<c:import url="./temp/footer.jsp"></c:import>
+	<script src="/resources/js/main.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/ScrollTrigger.min.js"></script>
 </body>
 </html>

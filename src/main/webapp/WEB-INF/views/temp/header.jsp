@@ -27,17 +27,9 @@
 				<c:if test="${empty member}">
 	      		<li class="login"><a href="/member/login">로그인</a></li>
 	      		<li class="join"><a href="/member/join">회원가입</a></li>
-	      		</c:if>            </ul>
+	      		</c:if>            
+            </ul>
         </header>
-        
-        <section>
-           <div class="main">
-            
-           </div>
-        </section>
     </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/ScrollTrigger.min.js"></script>
-    <script src="/resources/js/main.js"></script>
 </body>
 </html>

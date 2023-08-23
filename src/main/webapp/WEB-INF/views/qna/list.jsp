@@ -54,18 +54,18 @@
 				</ul>
 			</nav>
 
-			<div class="input-group mb-3">
+			<div class="t_search">
 				<form action="./list" method="get" id="frm" >
 					<input type="hidden" id="page" value="${pager.page}" name="page">
 					<!-- parameter(name,value) -->
 					<select name="kind" id="k" data-kind="${pager.kind}">
-						<option value="title" class="kind" data-list-name="kind" data-list="${pager.kind}">Title</option>
-						<option value="contents" class="kind">Contents</option>
+						<option value="title" class="kind" data-list-name="kind" data-list="${pager.kind}">문의내역</option>
+						<option value="contents" class="kind">내용</option>
 					</select>
 					<!-- parameter -->
-					<input type="text" name="search" value="${pager.search}">
-					<div class="col-auto">
-						<button type="submit" class="btn btn-primary">검색</button>
+					<input type="text" name="search" value="${pager.search}" class="search">
+					<div class="t_btn">
+						<button type="submit" class="btn">검색</button>
 					</div>
 				</form>
 			</div>
