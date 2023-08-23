@@ -5,81 +5,74 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<style>
-	#title {font-size: 2.5rem; margin-bottom : 2rem;}
-	table {border: 1px solid black; width:100%}
-</style>
-
+<link rel="stylesheet" href="/resources/style/detail.css">
 <title>${board} List</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
 <body>
 	<c:import url="../temp/header.jsp"></c:import>
-	<section>
-		<div class="main">
-	        <h1 id="title">1:1 문의 내역</h1>
-	
-	        <table>
-	            <thead>
-	                <tr>
-	                    <th>No</th><th>Title</th><th>작성자</th><th>날짜</th><th>HIT</th>
-	                </tr>
-	            </thead>
-	            <tbody>
-	                <c:forEach items="${list}" var="dto" varStatus="i">
-	                    <tr>
-	                        <td>${dto.num}</td>
-	                        <td><a href="./detail?num=${dto.num}"> ${dto.subject}</a></td>
-	                        <td>${dto.name}</td>
-	                        <td>${dto.createDate}</td>
-	                        <td>${dto.hit}</td>
-	                    </tr>
-	                </c:forEach>
-	            </tbody>
-	        </table>
-        </div>
-		<nav aria-label="Page navigation example">
-			<ul class="pagination">
-				<c:if test="${pager.pre}">
-				  <li class="page-item">
-					<a class="move" href="#" data-num="${pager.startNum-1}" aria-label="Previous">
-					  <span aria-hidden="true">&laquo;</span>
-					</a>
-				  </li>
-			  </c:if>
-			  <c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
-				  <li class="page-item "><a class="page-link move" href="#" data-num="${i}">${i}</a></li>
-			  </c:forEach>
-			  <c:if test="${pager.next}">
-				  <li class="page-item">
-					<a class="move" href="#" data-num="${pager.lastNum+1}" aria-label="Next">
-					  <span aria-hidden="true">&raquo;</span>
-					</a>
-				  </li>
-			  </c:if>
-			</ul>
-		</nav>
+	<section id="list">
+		<div class="wrap">
+			<div class="main">
+				<h1 id="title">1:1 문의 내역</h1>
+				<table>
+					<thead>
+						<tr>
+							<th>문의내역</th><th>문의일</th><th>조회수</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach items="${list}" var="dto" varStatus="i">
+							<tr>
+								<td><a href="./detail?num=${dto.num}">${dto.subject}</a></td>
+								<td>${dto.createDate}</td>
+								<td>${dto.hit}</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</div>
+			<nav class="t_page">
+				<ul class="pagination">
+					<c:if test="${pager.pre}">
+					<li class="page-item">
+						<a class="move" href="#" data-num="${pager.startNum-1}" aria-label="Previous">
+						<span aria-hidden="true">&laquo;</span>
+						</a>
+					</li>
+				</c:if>
+				<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
+					<li class="page-item "><a class="page-link move" href="#" data-num="${i}">${i}</a></li>
+				</c:forEach>
+				<c:if test="${pager.next}">
+					<li class="page-item">
+						<a class="move" href="#" data-num="${pager.lastNum+1}" aria-label="Next">
+						<span aria-hidden="true">&raquo;</span>
+						</a>
+					</li>
+				</c:if>
+				</ul>
+			</nav>
 
-		<div class="input-group mb-3">
-			<form action="./list" method="get" id="frm" >
-				  <input type="hidden" id="page" value="${pager.page}" name="page">
-				  <!-- parameter(name,value) -->
-				  <select name="kind" id="k" data-kind="${pager.kind}">
-					  <option value="title" class="kind" data-list-name="kind" data-list="${pager.kind}">Title</option>
-					  <option value="contents" class="kind">Contents</option>
-				 </select>
-				 <!-- parameter -->
-				  <input type="text" name="search" value="${pager.search}">
-				  <div class="col-auto">
-				    <button type="submit" class="btn btn-primary">검색</button>
-				  </div>
-			</form>
+			<div class="input-group mb-3">
+				<form action="./list" method="get" id="frm" >
+					<input type="hidden" id="page" value="${pager.page}" name="page">
+					<!-- parameter(name,value) -->
+					<select name="kind" id="k" data-kind="${pager.kind}">
+						<option value="title" class="kind" data-list-name="kind" data-list="${pager.kind}">Title</option>
+						<option value="contents" class="kind">Contents</option>
+					</select>
+					<!-- parameter -->
+					<input type="text" name="search" value="${pager.search}">
+					<div class="col-auto">
+						<button type="submit" class="btn btn-primary">검색</button>
+					</div>
+				</form>
+			</div>
+			<c:if test="${not empty member}">
+				<a class="btn btn-danger" href="./add">게시물 등록</a>
+			</c:if>
 		</div>
-        
-        <a class="btn btn-danger" href="./add">게시물 등록</a>
-        <%-- <c:if test="${not empty member}">
-			
-		</c:if> --%>
     </section>
     
     
