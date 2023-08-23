@@ -15,5 +15,7 @@ public class NoticeDTO extends BoardDTO{
 	public void setFileDTOs(List<NoticeFileDTO> fileDTOs) {
 		this.fileDTOs = fileDTOs;
 	}
+
+	
 	
 }

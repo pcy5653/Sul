@@ -42,7 +42,7 @@
  	<result column="NAME" property="name"/>
  	<result column="CONTENTS" property="contents"/>
  	<result column="CREATEDATE" property="createDate"/>
- 	<result column="NOTICEHIT" property="hit"/>
+ 	<result column="HIT" property="hit"/>
 
  	<collection property="fileDTOs" javaType="List" ofType="NoticeFileDTO">
 		<id column="FILENUM" property="fileNum"/>
@@ -79,7 +79,7 @@
 	<selectKey keyProperty="num" resultType="Long" order="BEFORE">
   		SELECT NOTICE_SEQ.NEXTVAL FROM DUAL
   	</selectKey>
-	INSERT INTO NOTICE
+	INSERT INTO NOTICE 
 	VALUES (#{num}, #{name}, #{subject}, #{contents}, SYSDATE, 0)
 </insert>
 
@@ -99,14 +99,6 @@
 	WHERE NOTICENUM=#{num}
 </update>
 
-<update id="setFileUpdate" parameterType="NoticeFileDTO">
-	UPDATE NOTICEFILE SET
-	FILENUM=noticeFile_SEQ.NEXTVAL,
-	FILENAME=#{fileName},
-	ORIGINALFILENAME=#{originalFileName}
-	WHERE NOTICENUM=#{noticeNum}
-</update>
-
 <!-- Delete -->
  
 	<delete id="setDelete" parameterType="Long">
@@ -122,8 +114,8 @@
 <!-- Hit -->
 <update id="setHitCount">
 	UPDATE NOTICE
-	SET NOTICEHIT = NOTICEHIT + 1
-	WHERE NOTICENUM = #{noticeNum}
+	SET HIT = #{hit} + 1
+	WHERE NOTICENUM = #{num}
 </update>
 
 </mapper>

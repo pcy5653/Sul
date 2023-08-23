@@ -28,17 +28,15 @@
 	        <th>작성일</th>
 	        <td>${dto.createDate}</td>
 	    </tr>
-	
+	    <tr>
+	    <th>조회수</th>
+		<td>${dto.hit}</td>
+		</tr>
 	</table>
 			<div class="mb-3">
 			<label for="contents" class="form-label"></label>
 				${dto.contents}
 			</div>
-			<c:forEach items="${dto.fileDTOs}" var="f">
-			<div>
-				<img alt="" src="/resources/upload/notice/${f.fileName}">
-			</div>
-			</c:forEach>
 
 		</tbody>
 	</div>

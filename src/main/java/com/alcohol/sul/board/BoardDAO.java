@@ -25,8 +25,8 @@ public interface BoardDAO {
 	//totalCount
 	public Long getTotal(Pager pager)throws Exception;
 	
-	//hit update
 	public int setHitUpdate(BoardDTO boardDTO)throws Exception;
+	
 
 	
 }

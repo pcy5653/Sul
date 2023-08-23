@@ -8,6 +8,8 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.alcohol.sul.board.BoardDTO;
@@ -88,12 +90,11 @@ public class NoticeService implements BoardService{
 
 		return noticeDAO.setUpdate(boardDTO);
 	}
-	
-	public int setFileUpdate(NoticeFileDTO noticeFileDTO, MultipartFile[] files, HttpSession session)throws Exception{
-		
-		return noticeDAO.setFileUpdate(noticeFileDTO);
-	}
 
+	public int setHitCount(BoardDTO boardDTO)throws Exception{
+		return noticeDAO.setHitUpdate(boardDTO);
+	}
+	
 	//Delete
 	@Override
 	public int setDelete(BoardDTO boardDTO) throws Exception {

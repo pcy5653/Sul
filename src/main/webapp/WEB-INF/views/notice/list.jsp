@@ -18,14 +18,15 @@
 		<table class="table">
 	
 		<thead>
-			<th scope="col">NO</th>
-			<th scope="col" >SUBJECT</th>
-			<th scope="col">NAME</th>
-			<th scope="col">DATE</th>
-			<th scope="col">HIT</th>
+			<th scope="col" width=10%>NO</th>
+			<th scope="col" width=50%>SUBJECT</th>
+			<th scope="col" width=15%>NAME</th>
+			<th scope="col" width=15%>DATE</th>
+			<th scope="col" width=10%>HIT</th>
 		</thead>
 		<tbody class="table-group-divider">
 		<c:forEach items="${list}" var="d" varStatus="i">
+			
 			<tr>
 				<td>${d.num}</td>
 				<td><a href="./detail?num=${d.num}" class="link-offset-2 link-underline link-underline-opacity-0 text-black">${d.subject}</a></td>
@@ -67,7 +68,7 @@
 		<div class="input-group mb-3" id="frm">
 			  <input type="hidden" value="${pager.page}" id="page" name="page">
 			    <!-- 파라미터 이름 kind -->
-			  <select name="kind" id="k" class="form-select form-select-sm" style="width:25%" aria-label="Small select example">
+			  <select name="kind" id="k" class="form-select form-select-sm" aria-label="Small select example">
 				  <option class="kind" value="subject">Subject</option>
 				  <option class="kind" value="contents">Contents</option>
 			  </select>

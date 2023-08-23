@@ -54,10 +54,6 @@ public class NoticeDAO implements BoardDAO{
 		return sqlSession.update(NAMESPACE+"setUpdate", boardDTO);
 	}
 	
-	public int setFileUpdate(NoticeFileDTO noticeFileDTO)throws Exception{
-		return sqlSession.update(NAMESPACE+"setFileUpdate", noticeFileDTO);
-	}
-	
 	@Override
 	public int setDelete(BoardDTO boardDTO) throws Exception {
 		
@@ -68,12 +64,14 @@ public class NoticeDAO implements BoardDAO{
 		
 		return sqlSession.selectOne(NAMESPACE+"getTotal", pager);
 	}
+
 	@Override
 	public int setHitUpdate(BoardDTO boardDTO) throws Exception {
-	
+		
 		return sqlSession.update(NAMESPACE+"setHitCount", boardDTO);
 	}
 
 	
-
+	
+	
 }

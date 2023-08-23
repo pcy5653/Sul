@@ -1,5 +1,6 @@
 package com.alcohol.sul.board;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -25,5 +26,5 @@ public interface BoardService {
 	
 	//delete
 	public int setDelete(BoardDTO boardDTO)throws Exception;
-
+	
 }

@@ -41,20 +41,12 @@
 				<textarea class="form-control" name="contents" id="contents" rows="15" placeholder="내용을 입력하세요."></textarea>
 			</div>
 			
-			<div id="fileList" class="my-5"></div>
-			
-		
-			
-			
 			<div class="my-3">
-				<button type="button" class="btn btn-primary" id="add">File추가</button>
 				<a class="btn btn-outline-secondary" href="./list" style='width:80px;float: right;'>목록</a>
-				<button type="button" id="btn" class="btn btn-secondary" style='width:80px;float: right;'>완료</button>
+				<button type="button" id="btn" class="btn btn-secondary">완료</button>
 			</div>
 		</form>
 	</section>
-	
-	<script src="../resources/js/file.js"></script>
 	
 	<script type="text/javascript">
 		$("#contents").summernote({

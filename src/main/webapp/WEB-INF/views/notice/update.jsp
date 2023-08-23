@@ -7,6 +7,14 @@
 <meta charset="UTF-8">
 
 <title>Insert title here</title>
+
+<c:if test="${empty member}">
+	<script type="text/javascript">
+		alert("로그인이 필요합니다.");
+		location.href="../member/login";
+	</script>	
+</c:if>
+
 <c:import url="../temp/bootStrap.jsp"></c:import>
 <!-- include summernote css/js-->
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
@@ -37,6 +45,7 @@
 		<div id="fileList" class="my-5"></div>
 		<c:forEach items="${dto.fileDTOs}" var="f">
 			<div>
+				<img alt="" src="/resources/upload/notice/${f.fileName}" style="width:100px">
 				<a>${f.originalName}</a>
 			</div>
 		</c:forEach>
@@ -46,15 +55,15 @@
 
 		<div class="my-3" >
 		<br>
-			<button type="button" class="btn btn-primary" id="add">File추가</button>
-			<a class="btn btn-outline-secondary" href="./list" style='width:80px;float: right;'>LIST</a>
-			<button type="submit" class="btn btn-secondary" style='width:80px;float: right;'>UPDATE</button>
+			<a class="btn btn-outline-secondary" href="./list" style='width:80px;float: right;'>목록</a>
+			<button type="submit" class="btn btn-secondary">수정</button>
 		</div>
 	</form>
 </section>
-<script src="/resources/js/file.js"></script>
+
 <script type="text/javascript">
 	$("#contents").summernote('code');	
+	
 </script>
 </body>
 </html>
