@@ -12,7 +12,7 @@
 <c:import url="../temp/header.jsp"></c:import>
 <section>
 	<div class="main">
-		<h1 id="title">${board} Add Page</h1>
+		<h1 id="title">1:1 문의하기</h1>
 		
 		<form action="./add" method="post" id="frm" enctype="multipart/form-data">
 			<div class="mb-3 nameLine">

@@ -17,7 +17,7 @@
 	<c:import url="../temp/header.jsp"></c:import>
 	<section>
 		<div class="main">
-	        <h1 id="title">${board} List</h1>
+	        <h1 id="title">1:1 문의 내역</h1>
 	
 	        <table>
 	            <thead>
@@ -62,16 +62,14 @@
 
 		<div class="input-group mb-3">
 			<form action="./list" method="get" id="frm" >
-
 				  <input type="hidden" id="page" value="${pager.page}" name="page">
 				  <!-- parameter(name,value) -->
-				  <select name="kind" id="k" class="form-select" data-kind="${param.kind}" aria-label="Default select example">
-					  <option value="name" class="kind" data-list-name="kind" data-list="${param.kind}">작성자</option>
-					  <option value="title" class="kind">Title</option>
+				  <select name="kind" id="k" data-kind="${pager.kind}">
+					  <option value="title" class="kind" data-list-name="kind" data-list="${pager.kind}">Title</option>
 					  <option value="contents" class="kind">Contents</option>
 				 </select>
 				 <!-- parameter -->
-				  <input type="text" name="search" value="${param.search}" class="form-control" aria-label="Amount (to the nearest dollar)">
+				  <input type="text" name="search" value="${pager.search}">
 				  <div class="col-auto">
 				    <button type="submit" class="btn btn-primary">검색</button>
 				  </div>

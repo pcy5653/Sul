@@ -8,9 +8,6 @@
  		WHERE QNANUM>0
 		AND
 		<choose>
-			<when test="kind == 'name'">
-				NAME LIKE '%'||#{search}||'%'
-			</when>
 			<when test="kind == 'title'">
 				SUBJECT LIKE '%'||#{search}||'%'
 			</when>
