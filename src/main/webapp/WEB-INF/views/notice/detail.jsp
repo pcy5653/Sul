@@ -28,10 +28,7 @@
 	        <th>작성일</th>
 	        <td>${dto.createDate}</td>
 	    </tr>
-	    <tr>
-	    <th>조회수</th>
-		<td>${dto.hit}</td>
-		</tr>
+	 
 	</table>
 			<div class="mb-3">
 			<label for="contents" class="form-label"></label>

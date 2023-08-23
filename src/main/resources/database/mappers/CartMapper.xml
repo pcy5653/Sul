@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.alcohol.sul.cart.CartDAO">
+
+<!-- 카트 추가하기 -->
+
+<insert id="addCart">
+	INSERT INTO CART 
+	VALUES (CARTNUM_SEQ.NEXTVAL,#{id},#{cartPrice},SYSDATE)
+</insert>
+
+<select id="getDetail">
+	SELECT C.*, CP.*, P.PRODUCTNAME, P.PRICE, P.SAVEPOINT, PI.ORIGINALNAME
+	FROM CART C JOIN CARTPRODUCT CP
+		ON C.CARTNUM = CP.CARTNUM 
+		JOIN PRODUCT P 
+		ON CP.PRODUCTNUM = P.PRODUCTNUM 
+		JOIN PRODUCTIMG PI 
+		ON P.PRODUCTNUM = PI.PRODUCTNUM
+		JOIN MEMBER M 
+		ON M.ID = C.ID
+	WHERE M.ID=C.ID;
+</select>
+
+</mapper>
