@@ -11,12 +11,6 @@
 </head>
 <body>
 	<c:import url="../temp/header.jsp"></c:import>
-	<c:if test="${empty member}">
-		<script type="text/javascript">
-			alert("로그인이 필요합니다.");
-			location.href="../member/login";
-		</script>
-	</c:if>
 	<input type="hidden" value="${member.id}" id="check_id" name="name">
 	<section>
 		<div class="wrap">

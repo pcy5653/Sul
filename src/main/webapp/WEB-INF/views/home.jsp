@@ -20,8 +20,23 @@
 			</div>
 			<!-- /video_wrap -->
 		</section>
+		<section id="nav">
+			<div>
+				<ul>
+					<li><a href="/qna/list" id="list_Go">1:1문의</a></li>
+				</ul>
+			</div>
+		</section>
 	</main>
-	
+	<c:if test="${empty member}">
+		<script type="text/javascript">
+			const list = document.getElementById('list_Go');
+			list.addEventListener("click", function(){
+				alert("로그인이 필요합니다.");
+				//////////////////////location.href="/member/login";
+			})
+		</script>
+	</c:if>
 	<c:import url="./temp/footer.jsp"></c:import>
 	<script src="/resources/js/main.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/ScrollTrigger.min.js"></script>

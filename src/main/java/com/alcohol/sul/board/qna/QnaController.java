@@ -32,14 +32,14 @@ public class QnaController {
 	
 	// List
 	@GetMapping("list")
-	public String getList(BoardDTO boardDTO, Pager pager, HttpSession session, Model model)throws Exception{
+	public String getList(QnaDTO qnaDTO, Pager pager, HttpSession session, Model model)throws Exception{
 		System.out.println("qna lIst");
-		MemberDTO memberDTO =  (MemberDTO)session.getAttribute("member");
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
 		System.out.println(memberDTO.getId());
-//		boardDTO.setName(memberDTO.getId());
-//		System.out.println(boardDTO.getName());
+		qnaDTO.setName(memberDTO.getId());
+		System.out.println(qnaDTO.getName());
 		
-		List<BoardDTO> ar = qnaService.getList(pager, memberDTO);
+		List<BoardDTO> ar = qnaService.getList(pager, qnaDTO);
 		model.addAttribute("list", ar);
 		model.addAttribute("pager", pager);
 		return "qna/list";

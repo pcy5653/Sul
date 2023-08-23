@@ -5,18 +5,19 @@
   
   <mapper namespace="com.alcohol.sul.board.qna.QnaDAO">
  	<sql id="searchSql">
- 		WHERE QNANUM>0
+		WHERE QNANUM>0
 		AND
-		NAME = ${member.name}
+		NAME = #{member.name}
+		AND
 		<choose>
 			<when test="kind == 'title'">
-				SUBJECT LIKE '%'||#{search}||'%'
+				SUBJECT LIKE '%'||#{pager.search}||'%'
 			</when>
 			<otherwise>
-				CONTENTS LIKE '%'||#{search}||'%'
+				CONTENTS LIKE '%'||#{pager.search}||'%'
 			</otherwise>
-		</choose>
- 	</sql>
+		</choose>	
+	</sql>
  	
  	
  	<select id="getTotal" resultType="Long">
@@ -34,11 +35,11 @@
 			  		ORDER BY REF DESC, STEP ASC
 		  		) B
 	  		)
-	  	WHERE R BETWEEN ${pager.startRow} AND ${pager.lastRow}
+	  	WHERE R BETWEEN #{pager.startRow} AND #{pager.lastRow}
  	</select>
  	
  	
- 	<select id="getDetail" parameterType="com.alcohol.sul.board.qna.QnaDTO" resultMap="getSelectResult">
+ 	<select id="getDetail" parameterType="QnaDTO" resultMap="getSelectResult">
  		SELECT Q.*, QF.* 
  		FROM QNA Q
  		LEFT OUTER JOIN
@@ -59,7 +60,7 @@
  		<result column="DEPTH" property="depth"/>
  		
  		<!-- fileDTOs -->
- 		<collection property="fileDTOs" javaType="List" ofType="com.alcohol.sul.board.qna.QnaFileDTO">
+ 		<collection property="fileDTOs" javaType="List" ofType="QnaFileDTO">
  			<id column="FILENUM" property="fileNum"/>
  			<result column="FILENAME" property="fileName"/>
  			<result column="ORIGINALNAME" property="originalName"/>
@@ -67,7 +68,7 @@
  	</resultMap>
  	
  	
- 	<insert id="setAdd" parameterType="com.alcohol.sul.board.qna.QnaDTO">
+ 	<insert id="setAdd" parameterType="QnaDTO">
  		<selectKey keyProperty="num" resultType="Long" order="BEFORE">
  			SELECT QNA_SEQ.NEXTVAL FROM DUAL
  		</selectKey>
@@ -76,33 +77,33 @@
  	</insert>
  	
  	
- 	<update id="setUpdate" parameterType="com.alcohol.sul.board.qna.QnaDTO">
+ 	<update id="setUpdate" parameterType="QnaDTO">
 		 UPDATE QNA
 		 SET SUBJECT = #{subject}, CONTENTS = #{contents}
 		 WHERE QNANUM = #{num} AND NAME = #{name}
  	</update>
  	
  	
- 	<delete id="setDelete" parameterType="com.alcohol.sul.board.qna.QnaDTO">
+ 	<delete id="setDelete" parameterType="QnaDTO">
  		DELETE QNA WHERE QNANUM = #{num}
  	</delete>
  	
  	
  	<!-- File -->
  	<!-- 1. insert 작성 중 file 올리기 (add, update) -->
- 	<insert id="setFileAdd" parameterType="com.alcohol.sul.board.qna.QnaFileDTO">
+ 	<insert id="setFileAdd" parameterType="QnaFileDTO">
  		INSERT INTO QNAFILE (FILENUM, QNANUM, FILENAME, ORIGINALNAME)
  		VALUES (QNAFILE_SEQ.NEXTVAL, #{num}, #{fileName}, #{originalName})
  	</insert>
  	
  	<!-- << 수정 중 파일 삭제 >> -->
  	<!-- 2_1. 폴더 파일 삭제 (fileNum으로 fileName 조회) -->
- 	<select id="getFileDetail" parameterType="com.alcohol.sul.board.qna.QnaFileDTO" resultType="com.alcohol.sul.board.qna.QnaFileDTO">
+ 	<select id="getFileDetail" parameterType="QnaFileDTO" resultType="QnaFileDTO">
  		SELECT FILENUM, FILENAME, ORIGINALNAME FROM QNAFILE WHERE FILENUM = #{fileNum}
  	</select>
  	
  	<!-- 2_2. DB 삭제 (폴더 파일 삭제 완료 시 DB 삭제) -->
- 	<delete id="setFileDelete" parameterType="com.alcohol.sul.board.qna.QnaFileDTO">
+ 	<delete id="setFileDelete" parameterType="QnaFileDTO">
  		DELETE QNAFILE WHERE FILENUM =  #{fileNum}
  	</delete>
  	

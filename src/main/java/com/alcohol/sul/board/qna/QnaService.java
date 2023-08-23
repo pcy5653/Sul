@@ -29,12 +29,13 @@ public class QnaService implements BoardService {
 	
 	
 	@Override
-	public List<BoardDTO> getList(Pager pager, MemberDTO memberDTO) throws Exception {
+	public List<BoardDTO> getList(Pager pager, QnaDTO qnaDTO) throws Exception {
 		Map<String, Object> map = new HashMap<String, Object>();
 		pager.makeRowNum();
+		
 		pager.makePageNum(qnaDAO.getTotal(pager));
 		map.put("pager", pager);
-		map.put("member",memberDTO);
+		map.put("member",qnaDTO);
 		
 		return qnaDAO.getList(map);
 	}
