@@ -18,18 +18,17 @@
 					<input type="text" id="id" name="id" placeholder="아이디">
 
 					<input type="password" placeholder="비밀번호" id="pw" name="pw">
-					
+
 
 				</form>
+				<a id="idBtn" onclick="window.open('./findId','아이디찾기','resizable=no width=600 height=500')">아이디찾기</a>
+				<a id="pwBtn" onclick="window.open('./findPw','비밀번호찾기','resizable=no width=600 height=500')">비밀번호찾기</a><br>
+				
 				<button id="btn" class="btn btn-primary">로그인</button><br><br>
-				<button id="idBtn" class="btn btn-primary"
-					onclick="window.open('./findId','아이디찾기','resizable=no width=600 height=500')">아이디찾기</button>
-				<button id="pwBtn" class="btn btn-primary"
-					onclick="window.open('./findPw','비밀번호찾기','resizable=no width=600 height=500')">비밀번호찾기</button>
 			</div>
 			<script src="/resources/js/login.js"></script>
 			<script>
-				
+
 			</script>
 		</body>
 

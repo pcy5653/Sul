@@ -10,13 +10,13 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
 
-	<title>마이페이지</title>
+	<title>회원정보</title>
 	</head>
 	<body>
 		<div class="w3-content w3-container w3-margin-top">
 			<div class="w3-container w3-card-4">
 				<div class="w3-center w3-large w3-margin-top">
-					<h3>My Page</h3>
+					<h3>회원정보</h3>
 				</div>
 				<div>
 					 적립금:${member.point}
