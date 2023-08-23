@@ -11,4 +11,5 @@ table thead tr th {font-size: 1.1rem; font-weight: 800;}
 table tbody tr td {border-bottom: 1px solid rgb(139, 139, 139);}
 /* table tbody tr td:first-of-type {}  title 앞으로*/
 
-.t_page { display: flex;}
+.t_page ul {display: flex;}
+.t_page ul > li {}
