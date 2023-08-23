@@ -80,7 +80,7 @@
 
 
 					<c:if test="${check == 0 }">
-						<label>찾으시는 비밀번호는' ${pw}' 입니다.</label>
+						<label>찾으시는 비밀번호는 '${pw}' 입니다.</label>
 						<div class="form-label-group">
 							<input class="btn btn-lg btn-secondary btn-block text-uppercase" type="button" value="OK"
 								onclick="closethewindow()">

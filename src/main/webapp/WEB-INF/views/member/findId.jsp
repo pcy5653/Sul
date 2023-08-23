@@ -74,7 +74,7 @@ body{
 
 			<!-- 이름과 비밀번호가 일치하지 않을 때 -->
 			<c:if test="${check == 0 }">
-				<label>찾으시는 아이디는' ${id}' 입니다.</label>
+				<label>찾으시는 아이디는 '${id}' 입니다.</label>
 				<div class="form-label-group">
 					<input class="btn btn-lg btn-secondary btn-block text-uppercase"
 						type="button" value="OK" onclick="closethewindow()">

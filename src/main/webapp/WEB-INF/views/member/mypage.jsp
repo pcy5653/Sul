@@ -26,7 +26,6 @@
                     <a class="flex-sm-fill text-sm-center nav-link" id="btn" href="#">작성리뷰</a>
                     <a class="flex-sm-fill text-sm-center nav-link" id="infoBtn" href="#">회원정보</a>
                     <a class="flex-sm-fill text-sm-center nav-link" id="btn" href="#">배송지관리</a>
-                    <a class="flex-sm-fill text-sm-center nav-link" id="btn" href="#">고객센터</a>
                 </nav>
             </fieldset>
             <section class="mt-5">
