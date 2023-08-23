@@ -17,8 +17,24 @@
  		SELECT ID FROM MEMBER WHERE ID=#{id}
  	</select>
  	
+ 	<select id="getPhoneCheck" resultType="MemberDTO" parameterType="MemberDTO">
+ 		SELECT PHONE FROM MEMBER WHERE PHONE=#{phone}
+ 	</select>
+ 	
  	<update id="setInfoUpdate" parameterType="MemberDTO">
  		UPDATE MEMBER SET PHONE=#{phone},ADDRESS=#{address},BIRTH=#{birth} WHERE ID=#{id}
  	</update>
+ 	
+ 	<update id="setPwUpdate" parameterType="MemberDTO">
+ 		UPDATE MEMBER SET PW=#{pw} WHERE ID=#{id}
+ 	</update>
+ 	
+ 	<select id="findId" resultType="MemberDTO" parameterType="MemberDTO">
+ 		SELECT ID FROM MEMBER WHERE NAME=#{name} AND PHONE=#{phone}
+ 	</select>
+ 	
+ 	<select id="findPw" resultType="MemberDTO" parameterType="MemberDTO">
+ 		SELECT PW FROM MEMBER WHERE ID=#{id} AND NAME=#{name} AND PHONE=#{phone}
+ 	</select>
  	
   </mapper>

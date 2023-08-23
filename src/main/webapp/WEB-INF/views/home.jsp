@@ -6,6 +6,7 @@
 <head>
 	<meta charset="UTF-8">
  	<meta name="viewport" content="width=device-width, initial-scale=1">
+
 	<link rel="stylesheet" href="/resources/style/reset.css">
 
 	<title>4조 프로젝트</title>
@@ -23,5 +24,7 @@
 	</main>
 
 	<c:import url="./temp/footer.jsp"></c:import>
+
 </body>
+
 </html>

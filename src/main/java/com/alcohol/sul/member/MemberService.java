@@ -33,6 +33,15 @@ public class MemberService {
 		}
 		return result;
 	}
+	public int getPhoneCheck(MemberDTO memberDTO) throws Exception{
+		memberDTO = memberDAO.getPhoneCheck(memberDTO);
+		int result=0; //중복
+		if(memberDTO == null) {
+			result=1;
+		}
+		return result;
+	}
+	
 	//휴대폰 인증 
 	public void certifiedPhoneNumber(String userPhoneNumber, int randomNumber) {
 		String api_key = "NCS6Z2IHA0RLQUS1"; //쿨sms api
@@ -58,6 +67,22 @@ public class MemberService {
 	
 	public int setInfoUpdate(MemberDTO memberDTO) throws Exception{
 		return memberDAO.setInfoUpdate(memberDTO);
+	}
+	
+	public MemberDTO myPageReset(MemberDTO memberDTO) throws Exception{
+		return memberDAO.getLogin(memberDTO);
+	}
+	
+	public int setPwUpdate(MemberDTO memberDTO) throws Exception{
+		return memberDAO.setPwUpdate(memberDTO);
+	}
+	
+	public MemberDTO findId(MemberDTO memberDTO) throws Exception{
+		return memberDAO.findId(memberDTO);
+	}
+	
+	public MemberDTO findPw(MemberDTO memberDTO) throws Exception{
+		return memberDAO.findPw(memberDTO);
 	}
 }
 

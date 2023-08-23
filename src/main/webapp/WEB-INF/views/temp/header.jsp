@@ -16,6 +16,7 @@
         <header>
             <h1>
                 <a href="../" class="main_logo">
+
                     <img src="/resources/images/main_logo.png" alt="메인로고">
                 </a>
             </h1>
