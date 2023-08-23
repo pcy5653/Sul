@@ -6,7 +6,6 @@ const frm = document.getElementById("frm");
 btn.addEventListener("click", function(){
     if(subject.value==""){
         alert("제목은 필수 입니다.");
-        // title 강제 작성
         subject.focus();
     }else {
         frm.submit();

@@ -29,12 +29,14 @@ public class QnaService implements BoardService {
 	
 	
 	@Override
-	public List<BoardDTO> getList(Pager pager) throws Exception {
+	public List<BoardDTO> getList(Pager pager, MemberDTO memberDTO) throws Exception {
+		Map<String, Object> map = new HashMap<String, Object>();
 		pager.makeRowNum();
-		Long total = qnaDAO.getTotal(pager);
-		pager.makePageNum(total);
+		pager.makePageNum(qnaDAO.getTotal(pager));
+		map.put("pager", pager);
+		map.put("member",memberDTO);
 		
-		return qnaDAO.getList(pager);
+		return qnaDAO.getList(map);
 	}
 
 	@Override
@@ -111,4 +113,21 @@ public class QnaService implements BoardService {
 		return 0;	// false
 	}
 	
+	
+	// << Reply >>
+	public int setReplyAdd(QnaDTO qnaDTO, HttpSession session)throws Exception{
+		BoardDTO pDTO = new BoardDTO();
+		pDTO.setNum(qnaDTO.getNum());	// 부모num 받기
+		
+		pDTO = qnaDAO.getDetail(pDTO);
+		QnaDTO p = (QnaDTO)pDTO;
+		qnaDTO.setRef(p.getRef());
+		qnaDTO.setStep(p.getStep()+1);
+		qnaDTO.setDepth(p.getDepth()+1);
+		
+		int result = qnaDAO.setStepUpdate(qnaDTO);	// step 증가
+		result = qnaDAO.setReplyAdd(qnaDTO);		// reply 대입
+		
+		return result;
+	}
 }

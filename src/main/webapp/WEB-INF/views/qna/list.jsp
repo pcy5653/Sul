@@ -11,6 +11,13 @@
 </head>
 <body>
 	<c:import url="../temp/header.jsp"></c:import>
+	<c:if test="${empty member}">
+		<script type="text/javascript">
+			alert("로그인이 필요합니다.");
+			location.href="../member/login";
+		</script>
+	</c:if>
+	<input type="hidden" value="${member.id}" id="check_id" name="name">
 	<section>
 		<div class="wrap">
 			<div class="main">
@@ -18,15 +25,15 @@
 				<table>
 					<thead>
 						<tr>
-							<th>문의내역</th><th>문의일</th><th>조회수</th>
+							<th>문의내역</th><th>작성자</th><th>문의일</th>
 						</tr>
 					</thead>
 					<tbody>
 						<c:forEach items="${list}" var="dto" varStatus="i">
 							<tr>
 								<td><a href="./detail?num=${dto.num}">${dto.subject}</a></td>
+								<td id="id_name" data-member-id="${dto.name}">${dto.name}</td>
 								<td>${dto.createDate}</td>
-								<td>${dto.hit}</td>
 							</tr>
 						</c:forEach>
 					</tbody>
@@ -68,9 +75,8 @@
 						<button type="submit" class="s_btn">검색</button>
 					</div>
 				</form>
-				<c:if test="${not empty member}">
-					<a class="btn btn-danger" href="./add">게시물 등록</a>
-				</c:if>
+				
+				<a class="btn btn-danger" href="./add">게시물 등록</a>
 			</div>
 		</div>
     </section>

@@ -9,7 +9,7 @@ import com.alcohol.sul.util.Pager;
 public interface BoardDAO {
 
 	//List
-	public List<BoardDTO> getList(Pager pager)throws Exception;
+	public List<BoardDTO> getList(Map<String, Object> map)throws Exception;
 	
 	//Detail
 	public BoardDTO getDetail(BoardDTO boardDTO)throws Exception;

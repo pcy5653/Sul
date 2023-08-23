@@ -4,20 +4,20 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="com.alcohol.sul.member.MemberDAO">
- 	<insert id="setJoin" parameterType="MemberDTO">
+ 	<insert id="setJoin" parameterType="com.alcohol.sul.member.MemberDTO">
  		INSERT INTO MEMBER(ID,ROLENUM,PW,NAME,PHONE,ADDRESS,BIRTH,MEMBERDATE,POINT) VALUES(#{id},0,#{pw},#{name},#{phone},#{address},
  		#{birth},SYSDATE,0)
  	</insert>
  	
- 	<select id="getLogin" resultType="MemberDTO" parameterType="MemberDTO">
+ 	<select id="getLogin" resultType="com.alcohol.sul.member.MemberDTO" parameterType="com.alcohol.sul.member.MemberDTO">
  		SELECT * FROM MEMBER WHERE ID=#{id} AND PW=#{pw}
  	</select>
  	
- 	<select id="getIdCheck" resultType="MemberDTO" parameterType="MemberDTO">
+ 	<select id="getIdCheck" resultType="com.alcohol.sul.member.MemberDTO" parameterType="com.alcohol.sul.member.MemberDTO">
  		SELECT ID FROM MEMBER WHERE ID=#{id}
  	</select>
  	
- 	<update id="setInfoUpdate" parameterType="MemberDTO">
+ 	<update id="setInfoUpdate" parameterType="com.alcohol.sul.member.MemberDTO">
  		UPDATE MEMBER SET PHONE=#{phone},ADDRESS=#{address},BIRTH=#{birth} WHERE ID=#{id}
  	</update>
  	

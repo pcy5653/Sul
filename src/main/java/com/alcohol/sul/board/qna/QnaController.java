@@ -1,9 +1,13 @@
 package com.alcohol.sul.board.qna;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.collections.map.HashedMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.alcohol.sul.board.BoardDTO;
+import com.alcohol.sul.member.MemberDTO;
 import com.alcohol.sul.util.Pager;
 
 @Controller
@@ -24,20 +29,19 @@ public class QnaController {
 	private QnaService qnaService;
 	
 	
-	@ModelAttribute("board")
-	public String getBoardName() {
-		return "QNA";
-	}
-	
-	
 	
 	// List
 	@GetMapping("list")
-	public String getList(Pager pager, Model model)throws Exception{
-		List<BoardDTO> ar = qnaService.getList(pager);
+	public String getList(BoardDTO boardDTO, Pager pager, HttpSession session, Model model)throws Exception{
+		System.out.println("qna lIst");
+		MemberDTO memberDTO =  (MemberDTO)session.getAttribute("member");
+		System.out.println(memberDTO.getId());
+//		boardDTO.setName(memberDTO.getId());
+//		System.out.println(boardDTO.getName());
+		
+		List<BoardDTO> ar = qnaService.getList(pager, memberDTO);
 		model.addAttribute("list", ar);
 		model.addAttribute("pager", pager);
-		
 		return "qna/list";
 	}
 	
@@ -111,4 +115,17 @@ public class QnaController {
 	}
 	
 	
+	// << Reply >>
+	@GetMapping("reply")
+	public String setReplyAdd(Long num, Model model)throws Exception{
+		model.addAttribute("num", num);
+		
+		return "qna/reply";
+	}
+	@PostMapping("reply")
+	public String setReplyAdd(QnaDTO qnaDTO, HttpSession session)throws Exception{
+		int result = qnaService.setReplyAdd(qnaDTO, session);
+		
+		return "redirect:./list";
+	}
 }
