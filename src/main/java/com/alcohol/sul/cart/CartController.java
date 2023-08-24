@@ -16,10 +16,10 @@ public class CartController {
 	@Autowired
 	private CartService cartService;
 	
-	@RequestMapping(value="detail", method = RequestMethod.GET)
-	public String getDetail(Model model)throws Exception{
-		List<CartDTO> ar = cartService.getDetail();
-		model.addAttribute("detail", ar);
+	@RequestMapping(value="list", method = RequestMethod.GET)
+	public String getList(Model model)throws Exception{
+		List<CartDTO> ar = cartService.getList();
+		model.addAttribute("list", ar);
 		return "cart/list";
 	}
 	

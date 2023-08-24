@@ -12,7 +12,7 @@ public class CartService {
 	private CartDAO cartDAO;
 
 	
-	public List<CartDTO> getDetail()throws Exception{
-		return cartDAO.getDetail();
+	public List<CartDTO> getList()throws Exception{
+		return cartDAO.getList();
 	}
 }

@@ -13,7 +13,7 @@ public class CartDAO {
 	private SqlSession sqlSession;
 	private final String NAMESPACE="com.alcohol.sul.cart.CartDAO.";
 	
-	public List<CartDTO> getDetail()throws Exception{
-		return sqlSession.selectList(NAMESPACE+"getDetail");
+	public List<CartDTO> getList()throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getList");
 	}
 }
