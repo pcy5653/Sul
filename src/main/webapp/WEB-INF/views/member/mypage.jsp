@@ -1,42 +1,47 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         <!DOCTYPE html>
-        <html lang="ko">
+        <html>
 
         <head>
             <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Document</title>
+            <title>Insert title here</title>
+            <link rel="stylesheet" href="/resources/css/mypage.css" type="text/css">
+            <link rel="stylesheet" href="/resources/css/bootstrap.min.css" type="text/css">
             <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
-            <c:import url="../temp/bootStrap.jsp"></c:import>
-
-            <style>
-
-            </style>
-
         </head>
 
         <body>
-            <fieldset>
-               
-                <nav class="nav nav-pills flex-column flex-sm-row">
-                    <p>${member.name}님</p>
-                    <a class="flex-sm-fill text-sm-center nav-link" href="#">주문내역</a>
-                    <a class="flex-sm-fill text-sm-center nav-link" id="btn" href="#">취소/환불내역</a>
-                    <a class="flex-sm-fill text-sm-center nav-link" id="btn" href="#">작성리뷰</a>
-                    <a class="flex-sm-fill text-sm-center nav-link" id="infoBtn" href="#">회원정보</a>
-                    <a class="flex-sm-fill text-sm-center nav-link" id="btn" href="#">배송지관리</a>
-                </nav>
-            </fieldset>
-            <section class="mt-5">
-                <div>
-                    <table id="page" style="width: 80%;">
 
-                    </table>
+            <!-- Banner Section Begin -->
+            <section class="a a-normal">
+                            <hr>
+                        <div class="text-center">
+                                <div class="text">
+                                    <h2>MyPage</h2>
+                                </div>
+                        </div>
+            </section>
+            <section>
+                <div class="container">
+                    <div class="mypage-text">
+                        <nav>
+                            <a href="#" class="link btn btn-secondary">주문 내역</a>
+                            <a href="#" class="link btn btn-secondary">취소/환불 내역</a>
+                            <a href="#" class="link btn btn-secondary">리뷰</a>
+                            <a href="#" id="infoBtn" class="link btn btn-secondary">회원정보</a>
+                            <a href="#" class="link btn btn-secondary">배송지 관리</a>
+                        </nav>
+                    </div>
+                   <div id="page">
+                                
 
-
+                    </div>
+                        
+                    
                 </div>
             </section>
+
             <script src="/resources/js/mypage.js"></script>
         </body>
 
