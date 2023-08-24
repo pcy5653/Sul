@@ -17,8 +17,6 @@
         </head>
 
         <body>
-            <c:import url="../temp/header.jsp"></c:import>
-            <main>
             <fieldset>
                
                 <nav class="nav nav-pills flex-column flex-sm-row">
@@ -39,7 +37,6 @@
 
                 </div>
             </section>
-        </main> 
             <script src="/resources/js/mypage.js"></script>
         </body>
 

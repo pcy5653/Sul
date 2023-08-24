@@ -1,5 +1,6 @@
 package com.alcohol.sul.member;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,16 +23,27 @@ public class MemberController {
 	@ResponseBody
 	public String sendSMS(@RequestParam("phone") String userPhoneNumber) { // 휴대폰 문자보내기
 		int randomNumber = (int) ((Math.random() * (9999 - 1000 + 1)) + 1000);// 난수 생성
-
+		System.out.println(randomNumber);
 		memberService.certifiedPhoneNumber(userPhoneNumber, randomNumber);
 
 		return Integer.toString(randomNumber);
 	}
-
+	
+	//약관동의
+		@GetMapping(value = "terms")
+		public void getTerms() throws Exception{
+			
+		}
+		@PostMapping(value = "terms")
+		public String getTerms(HttpServletRequest request,Model model) throws Exception{
+			model.addAttribute("phone",request.getParameter("phone"));
+			return "member/join";
+		}
+		
 	// 회원가입
 	@GetMapping(value = "join")
 	public void setJoin() throws Exception {
-
+		
 	}
 
 	@PostMapping(value = "join")

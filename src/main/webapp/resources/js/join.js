@@ -12,7 +12,7 @@ const birth = document.getElementById("birth");
 const birthMsg = document.getElementById("birthMsg");
 const frm = document.getElementById("frm");
 const input = document.getElementsByClassName("input");
-let checks = [false, false, false, false, false, false, false];
+let checks = [false, false, false, false, false, false];
 let agree = false;
 let phoneCheck = true;
 
@@ -85,83 +85,13 @@ function addr() {
             a = data.zonecode + addr + a;
             address.value = a;
             // 커서를 상세주소 필드로 이동한다.
+            checks[4]=true;
             address.focus();
         }
     }).open();
 }
 
 
-
-$("#phone").keyup(function () {
-    phoneCheck = true;
-    $("#phoneMsg").text("");
-    fetch("getPhoneCheck?phone=" + phone.value, { method: "get" })
-        .then((response) => { return response.text() })
-        .then((r) => {
-            if (r.trim() == 0) {
-                phoneCheck = false;
-                $("#phoneMsg").text("이미 가입된 번호입니다.");
-                $("#phoneMsg").css("color", "red");
-                $("#phoneMsg").append('<a href="./login">로그인</a>');
-            }
-        })
-    if ($("#phone").val().includes('-')) {
-        phoneCheck = false;
-        $("#phoneMsg").text("'-'를 제외한 번호만 입력해주세요.")
-        $("#phoneMsg").css("color", "red");
-    }
-})
-
-
-//휴대폰 번호 인증
-let code2 = "";
-$("#phoneChk").click(function () {
-    let phone = $("#phone").val();
-    if (phoneCheck) {
-        if (phone.length != 11) {
-            alert("유효한 휴대폰번호를 입력해주세요.")
-        } else {
-
-            alert("인증번호 발송이 완료되었습니다.\n휴대폰에서 인증번호 확인을 해주십시오.");
-
-            $.ajax({
-                type: "GET",
-                url: "phoneCheck?phone=" + phone,
-                cache: false,
-                success: function (data) {
-                    if (data == "error") {
-                        alert("휴대폰 번호가 올바르지 않습니다.")
-                        $(".successPhoneChk").text("유효한 번호를 입력해주세요.");
-                        $(".successPhoneChk").css("color", "red");
-                        $("#phone").attr("autofocus", true);
-                    } else {
-                        $("#phone2").attr("disabled", false);
-                        $("#phoneChk2").css("display", "inline-block");
-                        $(".successPhoneChk").text("인증번호를 입력한 뒤 본인인증을 눌러주십시오.");
-                        $(".successPhoneChk").css("color", "green");
-                        $("#phone").attr("readonly", true);
-                        code2 = data;
-                    }
-                }
-            });
-        }
-    }
-});
-//휴대폰 인증번호 대조
-$("#phoneChk2").click(function () {
-    if ($("#phone2").val() == code2) {
-        $(".successPhoneChk").text("인증번호가 일치합니다.");
-        $(".successPhoneChk").css("color", "green");
-        $("#phoneDoubleChk").val("true");
-        $("#phone2").attr("disabled", true);
-        checks[4] = true;
-    } else {
-        $(".successPhoneChk").text("인증번호가 일치하지 않습니다. 확인해주시기 바랍니다.");
-        $(".successPhoneChk").css("color", "red");
-        $("#phoneDoubleChk").val("false");
-        $(this).attr("autofocus", true);
-    }
-});
 
 
 $("#id").blur(function () {
@@ -224,9 +154,7 @@ address.addEventListener("blur", function () {
     if (address.value == '') {
         addressMsg.innerHTML = "주소를 입력하세요.";
         addressMsg.className = "f";
-    } else {
-        checks[5] = true;
-    }
+    } 
 })
 
 birth.addEventListener("change", function () {
@@ -236,7 +164,7 @@ birth.addEventListener("change", function () {
     if (!check) {
         birthMsg.innerHTML = "OK";
         birthMsg.className = "s";
-        checks[6] = true;
+        checks[5] = true;
     }
 })
 

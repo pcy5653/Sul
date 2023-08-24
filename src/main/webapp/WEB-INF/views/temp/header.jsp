@@ -22,12 +22,12 @@
             </h1>
             <ul>
                 <c:if test="${not empty member}">
-	      		<li class="login"><a href="/member/logout">로그아웃</a></li>
-	      		<li class="join"><a href="/member/mypage">mypage</a></li>
+                    <li class="join"><a href="/member/mypage" style="color: rgb(69, 144, 214);">${member.name}님></a></li>
+	      		<li class="login"><a href="/member/logout">&nbsp&nbsp로그아웃</a></li>
 	      		</c:if>
 				<c:if test="${empty member}">
-	      		<li class="login"><a href="/member/login">로그인</a></li>
-	      		<li class="join"><a href="/member/join">회원가입</a></li>
+	      		<li class="login"><a href="/member/login">로그인/회원가입</a></li>
+	      		
 	      		</c:if>            </ul>
         </header>
         

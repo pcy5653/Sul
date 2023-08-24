@@ -6,7 +6,7 @@
 		<head>
 			<meta charset="UTF-8">
 			<title>Insert title here</title>
-
+			
 			<c:import url="../temp/bootStrap.jsp"></c:import>
 			<link rel="stylesheet" href="/resources/css/login.css">
 		</head>
@@ -24,7 +24,8 @@
 				<a id="idBtn" onclick="window.open('./findId','아이디찾기','resizable=no width=600 height=500')">아이디찾기</a>
 				<a id="pwBtn" onclick="window.open('./findPw','비밀번호찾기','resizable=no width=600 height=500')">비밀번호찾기</a><br>
 				
-				<button id="btn" class="btn btn-primary">로그인</button><br><br>
+				<button id="btn" class="btn btn-primary">로그인</button><br>
+				<button id="btn1" class="btn btn-primary" onclick = "location.href = '/member/terms' ">회원가입</button><br>
 			</div>
 			<script src="/resources/js/login.js"></script>
 			<script>

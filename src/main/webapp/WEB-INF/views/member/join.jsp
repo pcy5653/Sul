@@ -17,7 +17,7 @@
 					color: blue;
 				}
 			</style>
-			
+
 		</head>
 
 		<body>
@@ -47,17 +47,15 @@
 					</div>
 					<div class="mobileNo">
 						<label for="phone">휴대폰 번호</label><br>
-						<input id="phone" type="text" name="phone" title="전화번호 입력" class="input" required />
-						<div id="phoneMsg"></div>
+						<input id="phone" type="text" name="phone" title="전화번호 입력" value="${phone}" readonly>
+						<!-- <div id="phoneMsg"></div>
 						<button type="button" id="phoneChk" class="doubleChk">인증번호 보내기</button>
 						<span class="tip"></span><br>
 						<input id="phone2" type="text" name="phone2" title="인증번호 입력" disabled required />
 						<button type="button" id="phoneChk2" class="doubleChk">본인인증</button>
 						<span class="point successPhoneChk">휴대폰 번호 입력후 인증번호 보내기를 해주십시오.</span>
 						<input type="hidden" id="phoneDoubleChk" />
-
-
-					</div>
+					</div> -->
 					<div>
 						<label for="address" class="form-label">주소</label>
 						<input type="text" name="address" class="form-control input" id="address">
@@ -68,33 +66,6 @@
 						<label for="birth" class="form-label input" data-name="생년월일">생년월일</label>
 						<input type="date" name="birth" id="birth">
 						<div id="birthMsg"></div>
-					</div>
-					<div style="float:left;margin-right:20px;">
-						<fieldset class="fieldarea f2">
-							<legend><span>이용</span>약관</legend>
-							<p class="agreeText">
-								<label for="agreement1">아래 사항에 동의 합니다.</label>
-								<input id="agreement1" class="checkboxs" type="checkbox" name="agreement1" />
-								<textarea id="text1" readonly>
-					이용약관
-				</textarea>
-							</p>
-						</fieldset>
-					</div>
-					<div>
-						<fieldset class="fieldarea f3">
-							<legend><span>개인정보</span>취급방침</legend>
-							<p class="agreeText">
-								<label for="agreement2">아래 사항에 동의 합니다.</label>
-								<input id="agreement2" class="checkboxs" type="checkbox" name="agreement2" />
-								<textarea id="text2" readonly>
-					개인정보 방침 및 안내
-				</textarea>
-							</p>
-						</fieldset>
-					</div>
-					<div>
-						<button type="button" class="btn btn-success" id="btn">회원가입</button>
 					</div>
 
 				</form>
