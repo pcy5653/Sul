@@ -17,7 +17,9 @@
         </head>
 
         <body>
-            <fieldset class="mt-5">
+            <c:import url="../temp/header.jsp"></c:import>
+            <main>
+            <fieldset>
                
                 <nav class="nav nav-pills flex-column flex-sm-row">
                     <p>${member.name}님</p>
@@ -37,6 +39,7 @@
 
                 </div>
             </section>
+        </main> 
             <script src="/resources/js/mypage.js"></script>
         </body>
 

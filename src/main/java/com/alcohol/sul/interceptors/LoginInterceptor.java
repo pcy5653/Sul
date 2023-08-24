@@ -9,12 +9,12 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 
 
-public class MemberLoginIntercepter extends HandlerInterceptorAdapter{
+public class LoginInterceptor extends HandlerInterceptorAdapter{
 
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		Object obj = request.getAttribute("member");
+		Object obj = request.getSession().getAttribute("member");
 		
 		if(obj!=null) {
 			return true;
