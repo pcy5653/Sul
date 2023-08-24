@@ -1,5 +1,6 @@
 package com.alcohol.sul.board.qna;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -21,6 +22,7 @@ public class QnaDAO implements BoardDAO {
 	
 	@Override
 	public List<BoardDTO> getList(Map<String, Object> map) throws Exception {
+		
 		return sqlSession.selectList(NAMESPACE+"getList", map);
 	}
 
@@ -49,8 +51,11 @@ public class QnaDAO implements BoardDAO {
 	}
 
 	@Override
-	public Long getTotal(Pager pager) throws Exception {
-		return sqlSession.selectOne(NAMESPACE+"getTotal", pager);
+	public Long getTotal(Pager pager, QnaDTO qnaDTO) throws Exception {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("pager", pager);
+		map.put("member", qnaDTO);
+		return sqlSession.selectOne(NAMESPACE+"getTotal", map);
 	}
 
 	@Override

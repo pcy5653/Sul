@@ -10,7 +10,7 @@ header {
 .main_logo {display: block;}
 .main_logo img {width: 80%; height: 80%;}
 header ul {display: flex; align-items: center;}
-header ul .login {margin-right: 1rem;}
+header ul > li {margin-right: 1rem;}
 main {background-color: rebeccapurple; margin: 0 auto; width: 100%; margin-top: 100px;text-align: center;}
 section {margin: 0 auto;}
 #video_wrap {width: 90%; background-color: red;}

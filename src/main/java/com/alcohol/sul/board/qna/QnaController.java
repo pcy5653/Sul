@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.alcohol.sul.board.BoardDTO;
@@ -31,14 +32,10 @@ public class QnaController {
 	
 	
 	// List
-	@GetMapping("list")
+	@RequestMapping(value="list",method=RequestMethod.GET)
 	public String getList(QnaDTO qnaDTO, Pager pager, HttpSession session, Model model)throws Exception{
-		System.out.println("qna lIst");
 		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
-		System.out.println(memberDTO.getId());
 		qnaDTO.setName(memberDTO.getId());
-		System.out.println(qnaDTO.getName());
-		
 		List<BoardDTO> ar = qnaService.getList(pager, qnaDTO);
 		model.addAttribute("list", ar);
 		model.addAttribute("pager", pager);
@@ -46,7 +43,7 @@ public class QnaController {
 	}
 	
 	// Detail
-	@GetMapping("detail")
+	@RequestMapping(value="detail",method=RequestMethod.GET)
 	public String getDetail(QnaDTO qnaDTO, Model model)throws Exception{
 		qnaDTO = (QnaDTO)qnaService.getDetail(qnaDTO);
 		
@@ -63,11 +60,11 @@ public class QnaController {
 	}
 	
 	// Add
-	@GetMapping("add")
+	@RequestMapping(value="add",method=RequestMethod.GET)
 	public String setAdd()throws Exception{
 		return "qna/add";
 	}
-	@PostMapping("add")
+	@RequestMapping(value="add",method=RequestMethod.POST)
 	public String setAdd(QnaDTO qnaDTO, MultipartFile [] photos, HttpSession session, Model model)throws Exception{
 		int result = qnaService.setAdd(qnaDTO, photos, session);
 		
@@ -82,14 +79,14 @@ public class QnaController {
 	}
 	
 	// Update
-	@GetMapping("update")
+	@RequestMapping(value = "update", method=RequestMethod.GET)
 	public String setUpdate(QnaDTO qnaDTO, Model model)throws Exception{
 		qnaDTO = (QnaDTO)qnaService.getDetail(qnaDTO);
 		model.addAttribute("dto", qnaDTO);
 		
 		return "qna/update";
 	}
-	@PostMapping("update")
+	@RequestMapping(value = "update", method = RequestMethod.POST)
 	public String setUpdate(QnaDTO qnaDTO, MultipartFile [] photos, HttpSession session)throws Exception{
 		int result = qnaService.setUpdate(qnaDTO, photos, session);
 		
@@ -97,7 +94,7 @@ public class QnaController {
 	}
 	
 	// Delete
-	@PostMapping("delete")
+	@RequestMapping(value = "delete", method = RequestMethod.POST)
 	public String setDelete(QnaDTO qnaDTO, HttpSession session)throws Exception{
 		int result = qnaService.setDelete(qnaDTO, session);
 		

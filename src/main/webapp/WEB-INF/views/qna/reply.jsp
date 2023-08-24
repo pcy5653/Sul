@@ -44,7 +44,7 @@
 				</div>
 				<div class="mb-3">
 				  <label for="title" class="form-label">Title</label>
-				  <input type="text" name="subject" class="form-control" value="${subject}" id="noticeTitle" placeholder="제목을 작성하세요">
+				  <input type="text" name="subject" class="form-control" value="질문 답변입니다." id="noticeTitle" placeholder="제목을 작성하세요">
 				</div>
 				<div class="mb-3">
 				  <label for="contents" class="form-label">Contents</label>

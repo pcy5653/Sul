@@ -17,7 +17,8 @@
 <c:import url="../temp/header.jsp"></c:import>
 <section>
 	<div class="main">
-		<h1 id="title">${board} Detail Page</h1>
+		<input type="hidden" value="${member.roleNum}" id="role" name="roleNum">
+		<h1 id="title">상세 문의</h1>
 		<table>
 			<thead>
 				<th>SUBJECT</th><th>작성자</th><th>날짜</th><th>HIT</th>

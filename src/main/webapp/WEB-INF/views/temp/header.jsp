@@ -21,6 +21,7 @@
             </h1>
             <ul>
                 <c:if test="${not empty member}">
+                <li><a href="/qna/list">1:1문의</a></li>
 	      		<li class="login"><a href="/member/logout">로그아웃</a></li>
 	      		<li class="join"><a href="/member/mypage">mypage</a></li>
 	      		</c:if>

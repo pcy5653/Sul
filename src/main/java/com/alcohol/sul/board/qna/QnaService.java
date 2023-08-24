@@ -32,8 +32,8 @@ public class QnaService implements BoardService {
 	public List<BoardDTO> getList(Pager pager, QnaDTO qnaDTO) throws Exception {
 		Map<String, Object> map = new HashMap<String, Object>();
 		pager.makeRowNum();
-		
-		pager.makePageNum(qnaDAO.getTotal(pager));
+		Long total = qnaDAO.getTotal(pager, qnaDTO);
+		pager.makePageNum(total);
 		map.put("pager", pager);
 		map.put("member",qnaDTO);
 		
