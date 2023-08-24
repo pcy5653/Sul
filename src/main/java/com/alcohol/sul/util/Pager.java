@@ -29,7 +29,7 @@ public class Pager {
 		
 		// 2_2. 전체 페이지 수로 block 나누기
 		long perBlock = 5;
-		
+
 		long totalBlock = this.totalPage/perBlock;
 		if(this.totalPage%perBlock != 0) {
 			totalBlock++;
@@ -37,10 +37,12 @@ public class Pager {
 		
 		// 2_3. 현재 page 번호로 block 구하기
 		long curBlock = this.getPage()/perBlock;
+
 		if(this.getPage()%perBlock != 0) {
 			curBlock++;
 		}
 		
+
 		// 2_4. 현재 block의 시작+마지막 번호 구하기
 		this.startNum = (curBlock-1)*perBlock+1;
 		this.lastNum = curBlock*perBlock;
@@ -49,10 +51,12 @@ public class Pager {
 		if(curBlock>1) {
 			this.pre=true;
 		}
+
 		if(curBlock<totalBlock) {
 			this.next=true;
 		}
 		
+
 		// 2_5_1. 마지막 block일 때
 		if(!this.next) {
 			this.lastNum=totalPage;
@@ -87,6 +91,7 @@ public class Pager {
 		}
 		return perPage;
 	}
+
 	public void setPerPage(Long perPage) {
 		this.perPage = perPage;
 	}
@@ -135,4 +140,5 @@ public class Pager {
 	public void setSearch(String search) {
 		this.search = search;
 	}
+
 }

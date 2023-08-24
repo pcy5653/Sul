@@ -14,5 +14,28 @@
 		
 		
 		<typeAlias type="com.alcohol.sul.member.MemberDTO" alias="MemberDTO"/>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<typeAlias type="com.alcohol.sul.board.notice.NoticeDTO" alias="NoticeDTO"/>
+	<typeAlias type="com.alcohol.sul.board.notice.NoticeFileDTO" alias="NoticeFileDTO"/>
+	<typeAlias type="java.util.List" alias="List"/>
 	</typeAliases>
 </configuration>

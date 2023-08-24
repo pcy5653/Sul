@@ -1,12 +1,13 @@
 package com.alcohol.sul.board;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.web.multipart.MultipartFile;
-
 import com.alcohol.sul.board.qna.QnaFileDTO;
+import com.alcohol.sul.board.notice.NoticeDTO;
 import com.alcohol.sul.util.Pager;
 
 public interface BoardService {
@@ -25,4 +26,5 @@ public interface BoardService {
 	
 	//delete
 	public int setDelete(BoardDTO boardDTO, HttpSession session)throws Exception;
+
 }
