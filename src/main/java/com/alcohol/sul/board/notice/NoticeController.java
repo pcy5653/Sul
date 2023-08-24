@@ -117,16 +117,9 @@ public class NoticeController {
 	// Delete
 	
 	@RequestMapping(value = "delete", method = RequestMethod.POST)
-	public String setDelete(BoardDTO boardDTO)throws Exception{
-		int result = noticeService.setDelete(boardDTO);
+	public String setDelete(BoardDTO boardDTO, HttpSession session)throws Exception{
+		int result = noticeService.setDelete(boardDTO,session);
 		return "redirect:./list";
 	}
 	
-	@GetMapping("fileDelete")
-	public String setFileDelete(NoticeFileDTO noticeFileDTO, HttpSession session ,Model model)throws Exception{
-		int result = noticeService.setFileDelete(noticeFileDTO, session);
-		model.addAttribute("result", result);
-		return "commons/ajaxResult";
-		
-	}
 }
