@@ -20,17 +20,19 @@
 		<input type="hidden" value="${member.roleNum}" id="role" name="roleNum">
 		<h1 id="title">상세 문의</h1>
 		<table>
-			<thead>
-				<th>SUBJECT</th><th>작성자</th><th>날짜</th><th>HIT</th>
-			</thead>
-			<tbody>
-				<tr>
-					<td>${dto.subject}</td>
-					<td>${dto.name}</td>
-					<td>${dto.createDate}</td>
-					<td>${dto.hit}</td>
-				</tr>			
-			</tbody>
+			<!-- <c:forEach items="${list}" var="dto" varStatus="i"> -->
+				<thead>
+					<th>SUBJECT</th><th>작성자</th><th>날짜</th><th>HIT</th>
+				</thead>
+				<tbody>
+					<tr>
+						<td>${dto.subject}</td>
+						<td>${dto.name}</td>
+						<td>${dto.createDate}</td>
+						<td>${dto.hit}</td>
+					</tr>			
+				</tbody>
+			<!-- </c:forEach> -->
 		</table>
 		<table>
 			<tr><td>내용</td></tr>
