@@ -8,7 +8,6 @@
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>Document</title>
-            <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
             <c:import url="../temp/bootStrap.jsp"></c:import>
             <link rel="stylesheet" href="/resources/css/terms.css" type="text/css">
 

@@ -46,4 +46,7 @@ public class MemberDAO {
 		return sqlSession.selectOne(NAMESPACE+"findPw", memberDTO);
 	}
 	
+	public int deleteMember(MemberDTO memberDTO) throws Exception{
+		return sqlSession.delete(NAMESPACE+"deleteMember", memberDTO);
+	}
 }

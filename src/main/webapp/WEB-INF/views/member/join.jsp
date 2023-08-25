@@ -48,14 +48,6 @@
 					<div class="mobileNo">
 						<label for="phone">휴대폰 번호</label><br>
 						<input id="phone" type="text" name="phone" title="전화번호 입력" value="${phone}" readonly>
-						<!-- <div id="phoneMsg"></div>
-						<button type="button" id="phoneChk" class="doubleChk">인증번호 보내기</button>
-						<span class="tip"></span><br>
-						<input id="phone2" type="text" name="phone2" title="인증번호 입력" disabled required />
-						<button type="button" id="phoneChk2" class="doubleChk">본인인증</button>
-						<span class="point successPhoneChk">휴대폰 번호 입력후 인증번호 보내기를 해주십시오.</span>
-						<input type="hidden" id="phoneDoubleChk" />
-					</div> -->
 					<div>
 						<label for="address" class="form-label">주소</label>
 						<input type="text" name="address" class="form-control input" id="address">
@@ -67,7 +59,7 @@
 						<input type="date" name="birth" id="birth">
 						<div id="birthMsg"></div>
 					</div>
-
+					<button type="button" id="regBtn">회원가입</button>
 				</form>
 			</section>
 			<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>

@@ -111,7 +111,7 @@ public class MemberController {
 	public String setInfoUpdate(MemberDTO memberDTO, HttpSession session) throws Exception {
 		int result = memberService.setInfoUpdate(memberDTO);
 
-		return "redirect:./info";
+		return "redirect:./mypage";
 	}
 
 	@PostMapping(value = "updatePw")
@@ -155,5 +155,12 @@ public class MemberController {
 		}
 	}
 	
+	
+	@GetMapping(value="deleteMember")
+	public String deleteMember(MemberDTO memberDTO,HttpSession session) throws Exception{
+		memberDTO = (MemberDTO)session.getAttribute("member");
+		int result = memberService.deleteMember(memberDTO);
+		return "redirect:../";
+	}
 
 }

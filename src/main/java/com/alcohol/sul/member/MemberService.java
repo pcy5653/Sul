@@ -84,5 +84,8 @@ public class MemberService {
 	public MemberDTO findPw(MemberDTO memberDTO) throws Exception{
 		return memberDAO.findPw(memberDTO);
 	}
+	public int deleteMember(MemberDTO memberDTO) throws Exception{
+		return memberDAO.deleteMember(memberDTO);
+	}
 }
 

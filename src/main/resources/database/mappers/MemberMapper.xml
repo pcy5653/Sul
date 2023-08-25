@@ -37,4 +37,8 @@
  		SELECT PW FROM MEMBER WHERE ID=#{id} AND NAME=#{name} AND PHONE=#{phone}
  	</select>
  	
+ 	<delete id="deleteMember" parameterType="MemberDTO">
+ 		DELETE FROM MEMBER WHERE ID=#{id}
+ 	</delete>
+ 	
   </mapper>
