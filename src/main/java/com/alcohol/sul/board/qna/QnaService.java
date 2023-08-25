@@ -42,6 +42,16 @@ public class QnaService implements BoardService {
 
 	@Override
 	public BoardDTO getDetail(BoardDTO boardDTO) throws Exception {
+//		boardDTO=qnaDAO.getDetail(boardDTO);
+//		QnaDTO qnaDTO = (QnaDTO)boardDTO;
+//		if(boardDTO!=null) {
+//			if (qnaDTO.getDepth() >0) {
+//				BoardDTO parent = new BoardDTO();
+//				parent.setNum(qnaDTO.getRef());
+//				qnaDAO.getDetail(parent);
+//			}
+//		}
+		
 		return qnaDAO.getDetail(boardDTO);
 	}
 

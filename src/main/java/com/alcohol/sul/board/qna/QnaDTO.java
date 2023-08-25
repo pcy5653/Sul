@@ -5,6 +5,7 @@ import java.util.List;
 import com.alcohol.sul.board.BoardDTO;
 
 public class QnaDTO extends BoardDTO{
+	private QnaDTO qnaDTO;	// 답글의 부모를 받기 위함
 	private Integer ref;
 	private Integer step;
 	private Integer depth;
@@ -12,6 +13,12 @@ public class QnaDTO extends BoardDTO{
 	private List<QnaFileDTO> fileDTOs;
 	
 	
+	public QnaDTO getQnaDTO() {
+		return qnaDTO;
+	}
+	public void setQnaDTO(QnaDTO qnaDTO) {
+		this.qnaDTO = qnaDTO;
+	}
 	public List<QnaFileDTO> getFileDTOs() {
 		return fileDTOs;
 	}

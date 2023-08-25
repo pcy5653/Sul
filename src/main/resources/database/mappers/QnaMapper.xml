@@ -4,17 +4,10 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="com.alcohol.sul.board.qna.QnaDAO">
- 	<sql id="searchSql">
-		
-	</sql>
- 	
- 	
- 	<select id="getTotal" parameterType="Map" resultType="Long">
- 		SELECT COUNT(QNANUM) FROM QNA
- 		WHERE QNANUM>0
+	<sql id="searchSql">
+		WHERE QNANUM>0
 		AND
 		NAME = #{member.name}
-		AND SUBJECT LIKE '%'||#{pager.search}||'%'
 		<choose>
 			<when test="pager.kind == 'title'">
 				AND SUBJECT LIKE '%'||#{pager.search}||'%'
@@ -23,6 +16,12 @@
 				AND CONTENTS LIKE '%'||#{pager.search}||'%'
 			</otherwise>
 		</choose>	
+	</sql>
+	
+	
+ 	<select id="getTotal" parameterType="Map" resultType="Long">
+ 		SELECT COUNT(QNANUM) FROM QNA
+		<include refid="searchSql"></include>
  	</select>
  	
  	
@@ -31,17 +30,7 @@
  			(SELECT ROWNUM R, B.* FROM
 		  		(
 			  		SELECT * FROM QNA 
-			  		WHERE QNANUM>0
-					AND
-					NAME = #{member.name}
-					<choose>
-						<when test="pager.kind == 'title'">
-							AND SUBJECT LIKE '%'||#{pager.search}||'%'
-						</when>
-						<otherwise>
-							AND CONTENTS LIKE '%'||#{pager.search}||'%'
-						</otherwise>
-					</choose>	
+					<include refid="searchSql"></include>
 			  		ORDER BY REF DESC, STEP ASC
 		  		) B
 	  		)
@@ -50,14 +39,17 @@
  	
  	
  	<select id="getDetail" parameterType="QnaDTO" resultMap="getSelectResult">
- 		SELECT Q.*, QF.* 
- 		FROM QNA Q
- 		LEFT OUTER JOIN
- 		QNAFILE QF
- 		ON (Q.QNANUM = QF.QNANUM)
- 		WHERE Q.QNANUM = #{num}
- 	</select>
-
+ 		SELECT A.*, B.QNANUM AS PNUM, B.NAME AS PNAME, B.CONTENTS AS PCON, B.STEP AS PSTEP, QF.*
+	    FROM 
+	    	QNA A
+	     	LEFT OUTER JOIN 
+	     	QNA B
+	    	ON (A.REF = B.QNANUM)
+	    	LEFT OUTER JOIN 
+	    	QNAFILE QF 
+	    	ON (A.QNANUM=QF.QNANUM) 
+	    WHERE A.QNANUM = #{num}
+	</select>
  	<resultMap type="QnaDTO" id="getSelectResult">
  		<id column = "QNANUM" property="num"/>
  		<result column="NAME" property="name"/>
@@ -68,7 +60,13 @@
  		<result column="REF" property="ref"/>
  		<result column="STEP" property="step"/>
  		<result column="DEPTH" property="depth"/>
- 		
+ 		<!-- 답글 클릭시 부모의 name 변경 -->
+ 		<association property="qnaDTO" javaType="QnaDTO" >
+ 			<result column="PNUM" property="num"/>
+ 			<result column="PNAME" property="name"/>
+ 			<result column="PCON" property="contents"/>
+ 			<result column="PSTEP" property="step"/>
+ 		</association>
  		<!-- fileDTOs -->
  		<collection property="fileDTOs" javaType="List" ofType="QnaFileDTO">
  			<id column="FILENUM" property="fileNum"/>

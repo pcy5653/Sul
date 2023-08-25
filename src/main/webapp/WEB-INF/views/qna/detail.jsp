@@ -19,7 +19,10 @@
 	<div class="main">
 		<input type="hidden" value="${member.roleNum}" id="role" name="roleNum">
 		<h1 id="title">상세 문의</h1>
-		<table>
+		<div id="question" data-step="${dto.qnaDTO.step}" data-con="${dto.qnaDTO.contents}" data-num = "${dto.qnaDTO.num}">
+			<!-- 질문내용 -->
+		</div>
+		<table id="comment" data-step="${dto.step}">
 			<thead>
 				<th>SUBJECT</th><th>작성자</th><th>날짜</th><th>HIT</th>
 			</thead>
@@ -37,10 +40,11 @@
 			<tr><td>${dto.contents}</td></tr>
 		</table>
 		
+		
 
 		<div>
 			<c:forEach items="${dto.fileDTOs}" var="f">
-				<img class="fileImg" data-file-num="${f.fileNum}">${f.originalName}</img>
+				<img src="/resources/upload/qna/${f.fileName}" class="fileImg" data-file-num="${f.fileNum}"></img>
 			</c:forEach>
 		</div>
 		
