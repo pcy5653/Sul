@@ -12,6 +12,7 @@ $("#infoBtn").click(function(){
 
 $(document).on("click","#updateBtn",function(){
     $("#myForm").submit();
+    alert("회원정보가 수정되었습니다.")
 })
 
 
