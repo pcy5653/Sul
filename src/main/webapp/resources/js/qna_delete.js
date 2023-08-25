@@ -65,21 +65,21 @@ if(q != com){
     // i = i.concat('</c:forEach>');
 
     // Fetch file data from the server using Ajax
-    fetch("/qna/detail?num="+vv, {
-        method:"get"
-    })
-        .then((result) => {return result.json()})
-        .then(r => {
-            const pf = document.createElement('div');
-            r.fileDTOs.forEach(f => {
-                const img = document.createElement('img');
-                img.src = '/resources/upload/qna/${f.fileName}/';
-                img.className = 'fileImg';
-                img.setAttribute('data-file-num', f.fileNum);
-                pf.appendChild(img);
-            });
+//     fetch("/qna/detail?num="+vv, {
+//         method:"get"
+//     })
+//         .then((result) => {return result.json()})
+//         .then(r => {
+//             const pf = document.createElement('div');
+//             r.fileDTOs.forEach(f => {
+//                 const img = document.createElement('img');
+//                 img.src = '/resources/upload/qna/${f.fileName}/';
+//                 img.className = 'fileImg';
+//                 img.setAttribute('data-file-num', f.fileNum);
+//                 pf.appendChild(img);
+//             });
 
-            question.appendChild(pf);
-        })
-        .catch(error => console.error('Error fetching data:', error));
-};
+//             question.appendChild(pf);
+//         })
+//         .catch(error => console.error('Error fetching data:', error));
+// };

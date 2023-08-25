@@ -18,8 +18,8 @@
 					<tbody>
 						<c:forEach items="${list}" var="dto" varStatus="i">
 							<tr>
-								<td class="listTitle"  data-num="${dto.num}" name="num">
-									<input type="hidden" value="${dto.num}" data-ref="${dto.ref}" data-step="${dto.step}" name="ref" class="listRef">
+								<td class="listTitle"  data-num="${dto.num}" data-ref="${dto.ref}" data-step="${dto.step}" name="num" >
+									<input type="hidden" value="${dto.num}"  name="ref" class="listRef">
 									<a href="#">
 										<c:catch>
 											<c:forEach begin="1" end="${dto.depth}">

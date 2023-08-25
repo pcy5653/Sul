@@ -34,6 +34,20 @@
 					<td>${dto.hit}</td>
 				</tr>			
 			</tbody>
+		<table>
+			<!-- <c:forEach items="${list}" var="dto" varStatus="i"> -->
+				<thead>
+					<th>SUBJECT</th><th>작성자</th><th>날짜</th><th>HIT</th>
+				</thead>
+				<tbody>
+					<tr>
+						<td>${dto.subject}</td>
+						<td>${dto.name}</td>
+						<td>${dto.createDate}</td>
+						<td>${dto.hit}</td>
+					</tr>			
+				</tbody>
+			<!-- </c:forEach> -->
 		</table>
 		<table>
 			<tr><td>내용</td></tr>
