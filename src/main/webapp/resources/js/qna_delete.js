@@ -47,7 +47,7 @@ const content = question.getAttribute("data-con");
 const vv = question.getAttribute("data-num")
 const com = comment.getAttribute("data-step");
 
-
+console.log(vv);
 
 if(q != com){
     // text
@@ -64,22 +64,34 @@ if(q != com){
     // i = i.concat('<img src="/resources/upload/qna/${f.fileName}" class="fileImg" data-file-num="${f.fileNum}"></img>');
     // i = i.concat('</c:forEach>');
 
-    // Fetch file data from the server using Ajax
-//     fetch("/qna/detail?num="+vv, {
-//         method:"get"
-//     })
-//         .then((result) => {return result.json()})
-//         .then(r => {
-//             const pf = document.createElement('div');
-//             r.fileDTOs.forEach(f => {
-//                 const img = document.createElement('img');
-//                 img.src = '/resources/upload/qna/${f.fileName}/';
-//                 img.className = 'fileImg';
-//                 img.setAttribute('data-file-num', f.fileNum);
-//                 pf.appendChild(img);
-//             });
+    
+    fetch("/qna/detail?num="+vv, {
+        method:"get"
+    })
+    .then((result) => {return result.text()})
+    .then((r) => {
+        console.log(r);
 
-//             question.appendChild(pf);
-//         })
-//         .catch(error => console.error('Error fetching data:', error));
-// };
+        const pf = document.createElement('div');
+        pf.id = 'files';
+        console.log(pf);
+        // r.fileDTOs.forEach( f => {
+        //     const img = document.createElement('img');
+        //     img.src = '/resources/upload/qna/${f.fileName}';
+        //     img.className = 'fileImg';
+        //     img.setAttribute('data-file-num', f.fileNum);
+        //     pf.appendChild(img);
+        // });
+        for(f of r){
+            const img = document.createElement('img');
+            img.src = '/resources/upload/qna/${f.fileName}';
+            img.className = 'fileImg';
+            img.setAttribute('data-file-num', f.fileNum);
+            pf.appendChild(img);
+        }
+
+        question.appendChild(pf);
+        console.log(question);
+    });
+}
+

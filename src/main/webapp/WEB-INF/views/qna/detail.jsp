@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Detail Page</title>
-
+<base href="/">
 <style>
 	#title {font-size: 2.5rem; margin-bottom : 2rem;}
 	table {border: 1px solid black;}
