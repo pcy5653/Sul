@@ -24,10 +24,10 @@ public interface BoardDAO {
 	public int setDelete(BoardDTO boardDTO)throws Exception;
 	
 	//totalCount
-	public Long getTotal(Pager pager)throws Exception;	
+	public Long getTotal(Pager pager)throws Exception;
 	
-	//hit update
 	public int setHitUpdate(BoardDTO boardDTO)throws Exception;
+	
 
 	
 }
