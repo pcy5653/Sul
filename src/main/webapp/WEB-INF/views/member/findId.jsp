@@ -28,7 +28,7 @@ body{
 
 .container > h2{
     font-size: 24px;
-    color:deepskyblue;
+    color: #6A24FE;
     margin-bottom: 20px;
 }
 #findform > input{
@@ -46,7 +46,7 @@ body{
 #findform > input[type="submit"]{
     color: #fff;
     font-size: 16px;
-    color:deepskyblue;
+    color: #6A24FE;
     margin-top: 20px;
 }
 

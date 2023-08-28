@@ -9,7 +9,7 @@
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>Document</title>
             <c:import url="../temp/bootStrap.jsp"></c:import>
-            <link rel="stylesheet" href="/resources/css/terms.css" type="text/css">
+            <link rel="stylesheet" href="/resources/css/member/terms.css" type="text/css">
 
 
         </head>

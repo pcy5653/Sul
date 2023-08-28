@@ -8,7 +8,7 @@
 			<title>Insert title here</title>
 			
 			<c:import url="../temp/bootStrap.jsp"></c:import>
-			<link rel="stylesheet" href="/resources/css/login.css">
+			<link rel="stylesheet" href="/resources/css/member/login.css">
 		</head>
 
 		<body>

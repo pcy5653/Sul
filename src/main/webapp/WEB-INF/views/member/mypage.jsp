@@ -1,47 +1,89 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-        <!DOCTYPE html>
-        <html>
+<!DOCTYPE html>
+<html>
 
-        <head>
-            <meta charset="UTF-8">
-            <title>Insert title here</title>
-            <link rel="stylesheet" href="/resources/css/mypage.css" type="text/css">
-            <c:import url="../temp/bootStrap.jsp"></c:import>
-        </head>
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
 
-        <body>
+  <title>mypage</title>
+  
 
-            <!-- Banner Section Begin -->
-            <section class="a a-normal">
-                <hr>
-                <div class="text-center">
-                    <div class="text">
-                        <h2>MyPage</h2>
-                    </div>
-                </div>
-            </section>
-            <section>
-                <div class="container">
-                    <div class="mypage-text">
-                        <nav>
-                            <a href="#" class="link btn btn-secondary">주문 내역</a>
-                            <a href="#" class="link btn btn-secondary">취소/환불 내역</a>
-                            <a href="#" class="link btn btn-secondary">리뷰</a>
-                            <a href="#" id="infoBtn" class="link btn btn-secondary">회원정보</a>
-                            <a href="#" class="link btn btn-secondary">배송지 관리</a>
-                        </nav>
-                    </div>
-                    <div id="page">
+  <link href="/resources/css/member/style.css" rel="stylesheet" />
 
 
-                    </div>
+  <c:import url="../temp/bootStrap.jsp"></c:import>
+</head>
+
+<body class="sub_page">
+
+  <div class="hero_area">
+    <!-- header section strats -->
+    <div class="brand_box">
+      <a class="navbar-brand" href="#">
+        <span>
+          마이페이지
+        </span>
+      </a>
+    </div>
+    <!-- end header section -->
+  </div>
+
+  <!-- nav section -->
+
+  <section class="nav_section">
+    <div class="container">
+      <div class="custom_nav2">
+        <nav class="navbar navbar-expand custom_nav-container ">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="d-flex  flex-column flex-lg-row align-items-center">
+              <ul class="navbar-nav  ">
+                <li class="nav-item active">
+                  <a class="nav-link" href="#">주문내역</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">취소/환불 내역 </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#" id="qnaBtn">리뷰</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#" id="infoBtn">회원정보</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">배송지 관리</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div id="page">
 
 
-                </div>
-            </section>
-            
-            <script src="/resources/js/mypage.js"></script>
-        </body>
+    </div>
 
-        </html>
+  </section>
+
+
+
+
+  <script src="/resources/js/mypage.js"></script>
+</body>
+
+</html>

@@ -36,10 +36,10 @@ $("#btn").click(function(){
     let a = '<div class="mobileNo">'
 
     a= a + '<label for="phone">휴대폰 번호</label><br>'
-    a= a + '<input id="phone" type="text" name="phone" title="전화번호 입력" class="input" required />'
-    a= a + '<div id="phoneMsg"></div><button type="button" id="phoneChk" class="doubleChk">인증번호 보내기</button>'
+    a= a + '<input id="phone" type="text" name="phone" title="전화번호 입력" class="input" placeholder="-빼고 숫자만 입력" required />'
+    a= a + '<button type="button" id="phoneChk" class="button_big">인증번호 보내기</button><div id="phoneMsg"></div>'
     a= a + '<span class="tip"></span><br><input id="phone2" type="text" name="phone2" title="인증번호 입력" disabled required />'
-    a= a + '<button type="button" id="phoneChk2" class="doubleChk">본인인증</button>'
+    a= a + '<button type="button" id="phoneChk2" class="button_big" >본인인증</button>'
     a= a + '<span class="point successPhoneChk">휴대폰 번호 입력후 인증번호 보내기를 해주십시오.</span>'
     a= a + '<input type="hidden" id="phoneDoubleChk" /></div>'
     $("#pcheck").append(a)
@@ -110,7 +110,7 @@ $('#pcheck').on("click","#phoneChk2",function(){
         $("#phone2").attr("disabled", true);
         p = true;
         if(p){
-            $("#pcheck").append('<button type="submit" id="regBtn">계속하기</button>')
+            $("#pcheck").append('<button type="submit" id="regBtn" class="button_big">계속하기</button>')
         }
     } else {
         $(".successPhoneChk").text("인증번호가 일치하지 않습니다. 확인해주시기 바랍니다.");

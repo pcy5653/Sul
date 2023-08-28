@@ -1,18 +1,54 @@
 $("#infoBtn").click(function(){
     
-    fetch("info",{
-        method:"get"
+    // fetch("info",{
+    //     method:"get"
+    // })
+    // .then((response)=> response.text())
+    // .then((r)=>
+    //     $("#page").html(r)
+    // )
+    $.ajax({
+        type:"get",
+        url:"info",
+        dataType:'html',
+        success:function(data){
+            $("#page").html(data)
+        }
     })
-    .then((response)=> response.text())
-    .then((r)=>
-        $("#page").html(r)
-    )
 })
-//jquery로하면 오류뜸 추가할때 fetch로 추가
+
+$("#qnaBtn").click(function(){
+    
+    // fetch("/qna/list",{
+    //     method:"get"
+    // })
+    // .then((response)=> response.text())
+    // .then((r)=>
+    //     $("#page").html(r)
+    // )
+    $.ajax({
+        type:"get",
+        url:"/qna/list",
+        dataType:'html',
+        success:function(data){
+            $("#page").html(data)
+        }
+    })
+})
+
 
 $(document).on("click","#updateBtn",function(){
-    $("#myForm").submit();
-    alert("회원정보가 수정되었습니다.")
+    $.ajax({
+        type:"post",
+        url:"updateInfo",
+        data:{
+            phone: $('#phone').val(),
+            id:$('#id').val(),
+            birth:$('#birth').val(),
+            address:$('#address').val()
+        }
+    })
+    alert("회원정보가 수정되었습니다.");
 })
 
 
