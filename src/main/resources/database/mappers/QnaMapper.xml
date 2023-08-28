@@ -50,6 +50,16 @@
 	    	ON (A.QNANUM=QF.QNANUM) 
 	    WHERE A.QNANUM = #{num}
 	</select>
+	
+	<select id="getDetailTotal" parameterType="Map" resultMap="getSelectResult">
+ 		SELECT Q.*, QF.*
+	    FROM 
+	    	QNA Q
+	     	LEFT OUTER JOIN 
+	    	QNAFILE QF 
+	    	ON (Q.QNANUM=QF.QNANUM) 
+	    WHERE Q.QNANUM = #{num}
+	</select>
  	<resultMap type="QnaDTO" id="getSelectResult">
  		<id column = "QNANUM" property="num"/>
  		<result column="NAME" property="name"/>
@@ -60,7 +70,7 @@
  		<result column="REF" property="ref"/>
  		<result column="STEP" property="step"/>
  		<result column="DEPTH" property="depth"/>
- 		<!-- 답글 클릭시 부모의 name 변경 -->
+ 		
  		<association property="qnaDTO" javaType="QnaDTO" >
  			<result column="PNUM" property="num"/>
  			<result column="PNAME" property="name"/>

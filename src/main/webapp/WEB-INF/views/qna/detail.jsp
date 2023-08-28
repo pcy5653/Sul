@@ -50,8 +50,8 @@
 			<!-- </c:forEach> -->
 		</table>
 		<table>
-			<tr><td>내용</td></tr>
-			<tr><td>${dto.contents}</td></tr>
+			<tr><td class="dcont">내용</td></tr>
+			<tr><td class="dcon">${dto.contents}</td></tr>
 		</table>
 		
 		

@@ -15,6 +15,9 @@ public interface BoardDAO {
 	//Detail
 	public BoardDTO getDetail(BoardDTO boardDTO)throws Exception;
 	
+	//Detail Total
+	public BoardDTO getDetailTotal(Map<String,Object> map)throws Exception;
+	
 	//Add
 	public int setAdd(BoardDTO boardDTO)throws Exception;
 	

@@ -1,4 +1,4 @@
-const frm = document.getElementById('frm');
+//const frm = document.getElementById('frm');
 const c1 = document.getElementsByClassName('c1');
 const fileImg = document.getElementsByClassName('fileImg')
 const role = document.getElementById('role');
@@ -50,7 +50,7 @@ const com = comment.getAttribute("data-step");
 console.log(vv);
 
 if(q != com){
-    // text
+//     // text
     let i = '<table>';
     i = i.concat('<tr><th>고객님의 질문</th></tr>');
     i = i.concat('<tr><td>'+content+'</td></tr>');
@@ -59,39 +59,62 @@ if(q != com){
     question.innerHTML = i;
     
     
-    // file
-    // i = i.concat('<c:forEach items="${dto.qnaDTO.fileDTOs} var ="f">');
-    // i = i.concat('<img src="/resources/upload/qna/${f.fileName}" class="fileImg" data-file-num="${f.fileNum}"></img>');
-    // i = i.concat('</c:forEach>');
+//     // file
+//     // i = i.concat('<c:forEach items="${dto.qnaDTO.fileDTOs} var ="f">');
+//     // i = i.concat('<img src="/resources/upload/qna/${f.fileName}" class="fileImg" data-file-num="${f.fileNum}"></img>');
+//     // i = i.concat('</c:forEach>');
 
     
-    fetch("/qna/detail?num="+vv, {
-        method:"get"
-    })
-    .then((result) => {return result.text()})
-    .then((r) => {
-        console.log(r);
+//     fetch("/qna/detail?num="+vv, {
+//         method:"get"
+//     })
+//     .then((response) => response.text())
+//     .then((data) => {
+//         //console.log(data);
 
-        const pf = document.createElement('div');
-        pf.id = 'files';
-        console.log(pf);
-        // r.fileDTOs.forEach( f => {
-        //     const img = document.createElement('img');
-        //     img.src = '/resources/upload/qna/${f.fileName}';
-        //     img.className = 'fileImg';
-        //     img.setAttribute('data-file-num', f.fileNum);
-        //     pf.appendChild(img);
-        // });
-        for(f of r){
-            const img = document.createElement('img');
-            img.src = '/resources/upload/qna/${f.fileName}';
-            img.className = 'fileImg';
-            img.setAttribute('data-file-num', f.fileNum);
-            pf.appendChild(img);
-        }
+//         // const pf = document.createElement('div');
+//         // pf.id = 'files';
+//         // console.log(pf);
 
-        question.appendChild(pf);
-        console.log(question);
-    });
+//         // data.forEach( f => {
+//         //     const img = document.createElement('img');
+//         //     img.src = '/resources/upload/qna/${f.fileName}';
+//         //     img.className = 'fileImg';
+//         //     img.setAttribute('data-file-num', f.fileNum);
+//         //     pf.appendChild(img);
+//         // });
+
+//         // for(f of r){
+//         //     const img = document.createElement('img');
+//         //     img.src = '/resources/upload/qna/${f.fileName}';
+//         //     img.className = 'fileImg';
+//         //     img.setAttribute('data-file-num', f.fileNum);
+//         //     pf.appendChild(img);
+//         // }
+
+//         // question.appendChild(pf);
+//         // console.log(question);
+//     });
+
+    //  function getDetail (vv){
+    //      $.ajax({
+    //          type:'GET',
+    //          url:'/qna/detail',
+    //          data:{
+    //              num : vv
+    //          },
+    //          dataType:'text',
+    //          success: function(result){
+    //              $('#question').html(result);
+    //              console.log(result);
+    //              console.log(typeof(result));
+    //          },
+    //          error: function(result){
+    //              console.log(result)
+    //          }
+    //      })
+    //  }
+
+    //  getDetail(vv);
 }
 

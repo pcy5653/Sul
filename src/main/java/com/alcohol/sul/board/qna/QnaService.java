@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
+import org.apache.maven.model.Parent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -42,16 +43,6 @@ public class QnaService implements BoardService {
 
 	@Override
 	public BoardDTO getDetail(BoardDTO boardDTO) throws Exception {
-//		boardDTO=qnaDAO.getDetail(boardDTO);
-//		QnaDTO qnaDTO = (QnaDTO)boardDTO;
-//		if(boardDTO!=null) {
-//			if (qnaDTO.getDepth() >0) {
-//				BoardDTO parent = new BoardDTO();
-//				parent.setNum(qnaDTO.getRef());
-//				qnaDAO.getDetail(parent);
-//			}
-//		}
-		
 		return qnaDAO.getDetail(boardDTO);
 	}
 

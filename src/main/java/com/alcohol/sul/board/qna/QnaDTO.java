@@ -5,13 +5,13 @@ import java.util.List;
 import com.alcohol.sul.board.BoardDTO;
 
 public class QnaDTO extends BoardDTO{
-	private QnaDTO qnaDTO;	// 답글의 부모를 받기 위함
-	private Integer ref;
-	private Integer step;
-	private Integer depth;
+	private QnaDTO qnaDTO;
+	
+	private Long ref;
+	private Long step;
+	private Long depth;
 	// file
 	private List<QnaFileDTO> fileDTOs;
-	
 	
 	public QnaDTO getQnaDTO() {
 		return qnaDTO;
@@ -25,22 +25,23 @@ public class QnaDTO extends BoardDTO{
 	public void setFileDTOs(List<QnaFileDTO> fileDTOs) {
 		this.fileDTOs = fileDTOs;
 	}
-	public Integer getRef() {
+	public Long getRef() {
 		return ref;
 	}
-	public void setRef(Integer ref) {
+	public void setRef(Long ref) {
 		this.ref = ref;
 	}
-	public Integer getStep() {
+	public Long getStep() {
 		return step;
 	}
-	public void setStep(Integer step) {
+	public void setStep(Long step) {
 		this.step = step;
 	}
-	public Integer getDepth() {
+	public Long getDepth() {
 		return depth;
 	}
-	public void setDepth(Integer depth) {
+	public void setDepth(Long depth) {
 		this.depth = depth;
 	}
+	
 }

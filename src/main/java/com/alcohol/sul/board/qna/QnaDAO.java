@@ -22,13 +22,17 @@ public class QnaDAO implements BoardDAO {
 	
 	@Override
 	public List<BoardDTO> getList(Map<String, Object> map) throws Exception {
-		
 		return sqlSession.selectList(NAMESPACE+"getList", map);
 	}
 
 	@Override
 	public BoardDTO getDetail(BoardDTO boardDTO) throws Exception {
 		return sqlSession.selectOne(NAMESPACE+"getDetail", boardDTO);
+	}
+	
+	@Override
+	public BoardDTO getDetailTotal(Map<String, Object> map) throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"getDetail", map);
 	}
 
 	@Override
