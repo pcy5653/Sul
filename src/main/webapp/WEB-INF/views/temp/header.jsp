@@ -22,6 +22,7 @@
             </h1>
             <ul>
                 <c:if test="${not empty member}">
+                <li><a href="/qna/list">1:1문의</a><li>
                     <li class="join"><a href="/member/mypage" style="color: rgb(69, 144, 214);">${member.name}님></a></li>
 	      		<li class="login"><a href="/member/logout">&nbsp&nbsp로그아웃</a></li>
 	      		</c:if>
