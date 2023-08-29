@@ -7,7 +7,10 @@
 <meta charset="UTF-8">
 
 <title>Insert title here</title>
-
+<c:import url="../temp/header.jsp"></c:import>
+<style>
+.title {font-size:2rem}
+</style>
 <c:if test="${empty member}">
 	<script type="text/javascript">
 		alert("로그인이 필요합니다.");
@@ -23,9 +26,10 @@
 <body>
 
 	<section class="container mt-5">
-	<h1 class="my-4 text-center">Update Page</h1>
+	<br><br><br><br><br>
+	<h1 class="title my-4 text-center">Update Page</h1><br><br>
 		<form action="./update" method="post" enctype="multipart/form-data">
-		<input type="hidden" name="num" value="${dto.num}">
+		<input type="hidden" name="noticeNum" value="${dto.noticeNum}">
 		<input type="hidden" name="fileNum" value="${fileDTOs.fileNum}">
 		<div class="mb-3">
 		  <label for="subject" class="form-label">SUBJECT</label>
@@ -59,11 +63,13 @@
 			<button type="submit" class="btn btn-secondary">수정</button>
 		</div>
 	</form>
+	<br><br>
 </section>
 
 <script type="text/javascript">
 	$("#contents").summernote('code');	
 	
 </script>
+<c:import url="../temp/footer.jsp"></c:import>
 </body>
 </html>

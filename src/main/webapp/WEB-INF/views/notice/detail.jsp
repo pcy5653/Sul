@@ -6,13 +6,17 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-	<c:import url="../temp/bootStrap.jsp"></c:import>
+<c:import url="../temp/header.jsp"></c:import>
+<style>
+.title {font-size:2rem}
+</style>
+<c:import url="../temp/bootStrap.jsp"></c:import>
 </head>
 <body>
 
 	<section class="container mt-5">
-	
-		<h1 class="mb-3 text-center">공지사항</h1><br><br>
+		<br><br><br><br><br>
+		<h1 class="title mb-3 text-center">공지사항</h1><br><br>
 		<div class="text-conter">
 		<table class="table">
 		
@@ -28,10 +32,7 @@
 	        <th>작성일</th>
 	        <td>${dto.createDate}</td>
 	    </tr>
-	    <tr>
-	    <th>조회수</th>
-		<td>${dto.hit}</td>
-		</tr>
+	 
 	</table>
 			<div class="mb-3">
 			<label for="contents" class="form-label"></label>
@@ -42,13 +43,13 @@
 	</div>
 	<br><br>
 	<form id="frm" action="">
-		<input type="hidden" name="num" value="${dto.num}">
+		<input type="hidden" name="noticeNum" value="${dto.noticeNum}">
 	</form>
 	<a class="btn btn-outline-secondary" href="./list" style='width:80px;float: right;'>목록</a>
-	<a class="btn btn-outline-secondary" href="./update?num=${dto.num}">수정</a>
+	<a class="btn btn-outline-secondary" href="./update?noticeNum=${dto.noticeNum}">수정</a>
 
 	<button id="del" data-url="delete" data-delete-name="num" data-delete-num="${f.fileNum}" class="btn btn-danger c1">삭제</button>
-	
+	<br><br>
 </section>
 
 
@@ -74,11 +75,11 @@
 	}
 	let noticeNum; 
 	
-	function setNoticeNum(num){
-		noticeNum=num;
+	function setNoticeNum(noticeNum){
+		noticeNum=noticeNum;
 	}
 	
 	</script>
-
+<c:import url="../temp/footer.jsp"></c:import>
 </body>
 </html>

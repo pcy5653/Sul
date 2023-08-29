@@ -6,14 +6,18 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-	<c:import url="../temp/bootStrap.jsp"></c:import>
+<c:import url="../temp/header.jsp"></c:import>
+<style>
+.title {font-size:2rem}
+</style>
+<c:import url="../temp/bootStrap.jsp"></c:import>
 </head>
 
 <body>
 	
 	<section class="container mt-5">
-	
-		<h1 class="mb-3 text-center">공지사항</h1> <br><br>
+		<br><br><br><br><br>
+		<h1 class="title mt-5 text-center">공지사항</h1> <br><br>
 	
 		<table class="table">
 	
@@ -28,8 +32,8 @@
 		<c:forEach items="${list}" var="d" varStatus="i">
 			
 			<tr>
-				<td>${d.num}</td>
-				<td><a href="./detail?num=${d.num}" class="link-offset-2 link-underline link-underline-opacity-0 text-black">${d.subject}</a></td>
+				<td>${d.noticeNum}</td>
+				<td><a href="./detail?noticeNum=${d.noticeNum}" class="link-offset-2 link-underline link-underline-opacity-0 text-black">${d.subject}</a></td>
 				<td>${d.name}</td>
 				<td>${d.createDate}</td>
 				<td>${d.hit}</td>
@@ -63,6 +67,7 @@
 		   </c:if>
 		 </ul>
 	 </nav>
+	 <br>
 	<!-- 검색창 -->	
 	<form action="./list" method="get">
 		<div class="input-group mb-3" id="frm">
@@ -80,8 +85,8 @@
 		</div>
 		</form>
 		
-	<a class="btn btn-outline-secondary" href="./add">Add</a>
+	<a class="btn btn-outline-secondary" href="./add">Add</a><br><br>
 </section>
-
+<c:import url="../temp/footer.jsp"></c:import>
 </body>
 </html>
