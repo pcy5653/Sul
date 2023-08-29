@@ -32,4 +32,8 @@ public interface BoardService {
 	//delete
 	public int setDelete(BoardDTO boardDTO, HttpSession session)throws Exception;
 
+	
+	
+	// 관리자 List
+	public List<BoardDTO> getManagerList(Pager pager)throws Exception;
 }

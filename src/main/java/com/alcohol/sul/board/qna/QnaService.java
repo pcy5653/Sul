@@ -21,7 +21,6 @@ import com.alcohol.sul.util.Pager;
 
 @Service
 public class QnaService implements BoardService {
-	
 	@Autowired
 	private QnaDAO qnaDAO;
 	@Autowired
@@ -131,5 +130,19 @@ public class QnaService implements BoardService {
 		result = qnaDAO.setReplyAdd(qnaDTO);		// reply 대입
 		
 		return result;
+	}
+	
+	
+	
+	// 관리자 List
+	@Override
+	public List<BoardDTO> getManagerList(Pager pager) throws Exception {
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		pager.makeRowNum();
+		Long total = qnaDAO.getManagerTotal(pager);
+		pager.makePageNum(total);
+		
+		return qnaDAO.getManagerList(pager);
 	}
 }

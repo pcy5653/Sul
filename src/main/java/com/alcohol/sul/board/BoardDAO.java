@@ -3,6 +3,8 @@ package com.alcohol.sul.board;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import com.alcohol.sul.board.notice.NoticeDTO;
 import com.alcohol.sul.board.qna.QnaDTO;
 import com.alcohol.sul.util.Pager;
@@ -14,9 +16,6 @@ public interface BoardDAO {
 	
 	//Detail
 	public BoardDTO getDetail(BoardDTO boardDTO)throws Exception;
-	
-	//Detail Total
-	public BoardDTO getDetailTotal(Map<String,Object> map)throws Exception;
 	
 	//Add
 	public int setAdd(BoardDTO boardDTO)throws Exception;
@@ -33,5 +32,10 @@ public interface BoardDAO {
 	public int setHitUpdate(BoardDTO boardDTO)throws Exception;
 	
 
+	
+	// 관리자 List
+	public List<BoardDTO> getManagerList(Pager pager)throws Exception;
+	// 관리자 List Total
+	public Long getManagerTotal(Pager pager)throws Exception;	
 	
 }

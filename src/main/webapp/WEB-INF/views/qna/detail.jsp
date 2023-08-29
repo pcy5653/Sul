@@ -69,14 +69,14 @@
 		
 		
 		<!-- 입력 form으로 method GET -->
-		<button id="update" class="c1" data-url="update">수정</button>
+		<button id="update" class="c1" data-url="qna/update">수정</button>
 		
 		<!-- method POST -->
-		<input type="hidden" data-url="delete" data-delete-name="name" data-delete-num="${member.id}">
-		<button id="del" class="c1" data-url="delete" data-delete-name="num" data-delete-num="${dto.num}">삭제</button>
+		<input type="hidden" data-url="qna/delete" data-delete-name="name" data-delete-num="${member.id}">
+		<button id="del" class="c1" data-url="qna/delete" data-delete-name="num" data-delete-num="${dto.num}">삭제</button>
 		
 		<!-- 입력 form으로 method GET -->
-		<button id="reply" class="c1" data-url="reply">답글</button>
+		<button id="reply" class="c1" data-url="qna/reply">답글</button>
 
 	</div>
 </section>
