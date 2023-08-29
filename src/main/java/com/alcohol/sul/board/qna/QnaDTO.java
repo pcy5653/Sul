@@ -6,7 +6,6 @@ import com.alcohol.sul.board.BoardDTO;
 
 public class QnaDTO extends BoardDTO{
 	private QnaDTO qnaDTO;
-	
 	private Long ref;
 	private Long step;
 	private Long depth;
