@@ -7,7 +7,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Insert title here</title>
-
+<c:import url="../temp/header.jsp"></c:import>
+<style>
+.title {font-size:2rem}
+</style>
 <c:if test="${empty member}">
 	<script type="text/javascript">
 		alert("로그인이 필요합니다.");
@@ -24,7 +27,8 @@
 <body>
 
 	<section class="container mt-5">
-	<h1 class="my-4 text-center">Add Page</h1>
+	<br><br><br><br><br>
+	<h1 class="title my-4 text-center">Add Page</h1><br><br>
 		<form action="./add" method="post" id="frm" enctype="multipart/form-data">
 			<div class="mb-3">
 				<label for="subject" class="form-label">SUBJECT</label>
@@ -108,6 +112,6 @@
 			}
 		})
 	</script>
-
+<c:import url="../temp/footer.jsp"></c:import>
 </body>
 </html>
