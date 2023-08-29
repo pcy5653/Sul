@@ -39,10 +39,10 @@
 	</div>
 	<br><br>
 	<form id="frm" action="">
-		<input type="hidden" name="num" value="${dto.num}">
+		<input type="hidden" name="noticeNum" value="${dto.noticeNum}">
 	</form>
 	<a class="btn btn-outline-secondary" href="./list" style='width:80px;float: right;'>목록</a>
-	<a class="btn btn-outline-secondary" href="./update?num=${dto.num}">수정</a>
+	<a class="btn btn-outline-secondary" href="./update?noticeNum=${dto.noticeNum}">수정</a>
 
 	<button id="del" data-url="delete" data-delete-name="num" data-delete-num="${f.fileNum}" class="btn btn-danger c1">삭제</button>
 	
@@ -71,8 +71,8 @@
 	}
 	let noticeNum; 
 	
-	function setNoticeNum(num){
-		noticeNum=num;
+	function setNoticeNum(noticeNum){
+		noticeNum=noticeNum;
 	}
 	
 	</script>

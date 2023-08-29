@@ -12,15 +12,14 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.alcohol.sul.board.BoardDTO;
-import com.alcohol.sul.board.BoardService;
+
 import com.alcohol.sul.util.FileManager;
 import com.alcohol.sul.util.Pager;
 import com.alcohol.sul.util.FileDTO;
 import com.alcohol.sul.board.notice.NoticeFileDTO;
 
 @Service
-public class NoticeService implements BoardService{
+public class NoticeService{
 	
 	@Autowired
 	private NoticeDAO noticeDAO;
@@ -46,33 +45,33 @@ public class NoticeService implements BoardService{
 	}
 	
 	//List
-	@Override
-	public List<BoardDTO> getList(Pager pager) throws Exception {
+	
+	public List<NoticeDTO> getList(Pager pager) throws Exception {
 		pager.makeRowNum();
 		pager.makePageNum(noticeDAO.getTotal(pager));
 		return noticeDAO.getList(pager);
 	}
 
 	//Detail
-	@Override
-	public BoardDTO getDetail(BoardDTO boardDTO) throws Exception {
+	
+	public NoticeDTO getDetail(NoticeDTO noticeDTO) throws Exception {
 		
-		return noticeDAO.getDetail(boardDTO);
+		return noticeDAO.getDetail(noticeDTO);
 	}
 	
 	//Add
-	@Override
-	public int setAdd(BoardDTO boardDTO, MultipartFile[] files, HttpSession session) throws Exception {
+	
+	public int setAdd(NoticeDTO noticeDTO, MultipartFile[] files, HttpSession session) throws Exception {
 		String path="/resources/upload/notice/";
 		
-		int result = noticeDAO.setAdd(boardDTO);
+		int result = noticeDAO.setAdd(noticeDTO);
 		
 		for(MultipartFile file:files) {
 			if(!file.isEmpty()) {
 				String fileName=fileManager.fileSave(path, file, session);
 				
 				NoticeFileDTO noticeFileDTO = new NoticeFileDTO();
-				noticeFileDTO.setNoticeNum(boardDTO.getNum());
+				noticeFileDTO.setNoticeNum(noticeDTO.getNoticeNum());
 				noticeFileDTO.setFileName(fileName);
 				noticeFileDTO.setOriginalName(file.getOriginalFilename());
 				result=noticeDAO.setFileAdd(noticeFileDTO);
@@ -85,21 +84,21 @@ public class NoticeService implements BoardService{
 
 	//Update
 	
-	@Override
-	public int setUpdate(BoardDTO boardDTO, MultipartFile[] files, HttpSession session) throws Exception {
+	
+	public int setUpdate(NoticeDTO noticeDTO, MultipartFile[] files, HttpSession session) throws Exception {
 
-		return noticeDAO.setUpdate(boardDTO);
+		return noticeDAO.setUpdate(noticeDTO);
 	}
 
-	public int setHitCount(BoardDTO boardDTO)throws Exception{
-		return noticeDAO.setHitUpdate(boardDTO);
+	public int setHitCount(NoticeDTO noticeDTO)throws Exception{
+		return noticeDAO.setHitUpdate(noticeDTO);
 	}
 	
 	//Delete
-	@Override
-	public int setDelete(BoardDTO boardDTO) throws Exception {
+	
+	public int setDelete(NoticeDTO noticeDTO) throws Exception {
 		
-		return noticeDAO.setDelete(boardDTO);
+		return noticeDAO.setDelete(noticeDTO);
 	}
 	
 	//File Delete

@@ -25,7 +25,7 @@
 	<section class="container mt-5">
 	<h1 class="my-4 text-center">Update Page</h1>
 		<form action="./update" method="post" enctype="multipart/form-data">
-		<input type="hidden" name="num" value="${dto.num}">
+		<input type="hidden" name="noticeNum" value="${dto.noticeNum}">
 		<input type="hidden" name="fileNum" value="${fileDTOs.fileNum}">
 		<div class="mb-3">
 		  <label for="subject" class="form-label">SUBJECT</label>

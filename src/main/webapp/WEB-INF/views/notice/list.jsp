@@ -6,6 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+.title : 2
+</style>
 	<c:import url="../temp/bootStrap.jsp"></c:import>
 </head>
 
@@ -28,8 +31,8 @@
 		<c:forEach items="${list}" var="d" varStatus="i">
 			
 			<tr>
-				<td>${d.num}</td>
-				<td><a href="./detail?num=${d.num}" class="link-offset-2 link-underline link-underline-opacity-0 text-black">${d.subject}</a></td>
+				<td>${d.noticeNum}</td>
+				<td><a href="./detail?noticeNum=${d.noticeNum}" class="link-offset-2 link-underline link-underline-opacity-0 text-black">${d.subject}</a></td>
 				<td>${d.name}</td>
 				<td>${d.createDate}</td>
 				<td>${d.hit}</td>

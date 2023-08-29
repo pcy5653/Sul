@@ -6,13 +6,11 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.alcohol.sul.board.BoardDAO;
-import com.alcohol.sul.board.BoardDTO;
 import com.alcohol.sul.board.notice.NoticeFileDTO;
 import com.alcohol.sul.util.Pager;
 
 @Repository
-public class NoticeDAO implements BoardDAO{
+public class NoticeDAO{
 
 	@Autowired
 	private SqlSession sqlSession;
@@ -26,21 +24,21 @@ public class NoticeDAO implements BoardDAO{
 		return sqlSession.delete(NAMESPACE+"setFileDelete", noticeFileDTO);
 	}
 	
-	@Override
-	public List<BoardDTO> getList(Pager pager) throws Exception {
+	
+	public List<NoticeDTO> getList(Pager pager) throws Exception {
 		
 		return sqlSession.selectList(NAMESPACE+"getList", pager);
 	}
-	@Override
-	public BoardDTO getDetail(BoardDTO boardDTO) throws Exception {
+	
+	public NoticeDTO getDetail(NoticeDTO noticeDTO) throws Exception {
 		
-		return sqlSession.selectOne(NAMESPACE+"getDetail", boardDTO);
+		return sqlSession.selectOne(NAMESPACE+"getDetail", noticeDTO);
 	}
 
-	@Override
-	public int setAdd(BoardDTO boardDTO) throws Exception {
+	
+	public int setAdd(NoticeDTO noticeDTO) throws Exception {
 		
-		return sqlSession.insert(NAMESPACE+"setAdd", boardDTO);
+		return sqlSession.insert(NAMESPACE+"setAdd", noticeDTO);
 	}
 	
 	public int setFileAdd(NoticeFileDTO noticeFileDTO)throws Exception{
@@ -48,27 +46,27 @@ public class NoticeDAO implements BoardDAO{
 		return sqlSession.insert(NAMESPACE+"setFileAdd", noticeFileDTO);
 	}
 	
-	@Override
-	public int setUpdate(BoardDTO boardDTO) throws Exception {
+	
+	public int setUpdate(NoticeDTO noticeDTO) throws Exception {
 		
-		return sqlSession.update(NAMESPACE+"setUpdate", boardDTO);
+		return sqlSession.update(NAMESPACE+"setUpdate", noticeDTO);
 	}
 	
-	@Override
-	public int setDelete(BoardDTO boardDTO) throws Exception {
+	
+	public int setDelete(NoticeDTO noticeDTO) throws Exception {
 		
-		return sqlSession.delete(NAMESPACE+"setDelete", boardDTO);
+		return sqlSession.delete(NAMESPACE+"setDelete", noticeDTO);
 	}
-	@Override
+	
 	public Long getTotal(Pager pager) throws Exception {
 		
 		return sqlSession.selectOne(NAMESPACE+"getTotal", pager);
 	}
 
-	@Override
-	public int setHitUpdate(BoardDTO boardDTO) throws Exception {
+	
+	public int setHitUpdate(NoticeDTO noticeDTO) throws Exception {
 		
-		return sqlSession.update(NAMESPACE+"setHitCount", boardDTO);
+		return sqlSession.update(NAMESPACE+"setHitCount", noticeDTO);
 	}
 
 	

@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.alcohol.sul.board.BoardDTO;
 import com.alcohol.sul.board.notice.NoticeFileDTO;
 import com.alcohol.sul.util.Pager;
 
@@ -51,7 +50,7 @@ public class NoticeController {
 	
 	@RequestMapping(value = "list", method = RequestMethod.GET)
 	public String getList(Pager pager, Model model) throws Exception{
-		List<BoardDTO> ar = noticeService.getList(pager);
+		List<NoticeDTO> ar = noticeService.getList(pager);
 		model.addAttribute("list",ar);
 		model.addAttribute("pager", pager);
 		return "notice/list";
@@ -84,11 +83,11 @@ public class NoticeController {
 	
 	@RequestMapping(value = "detail", method = RequestMethod.GET)
 	public String getDetail(NoticeDTO noticeDTO, Model model) throws Exception{
-		BoardDTO boardDTO= noticeService.getDetail(noticeDTO);
-		noticeService.setHitCount(boardDTO);
+		noticeDTO = noticeService.getDetail(noticeDTO);
+		noticeService.setHitCount(noticeDTO);
 		
-		if(boardDTO != null) {
-			model.addAttribute("dto", boardDTO);
+		if(noticeDTO != null) {
+			model.addAttribute("dto", noticeDTO);
 			return "notice/detail";	
 		}else {
 			model.addAttribute("message", "글이 없습니다.");
@@ -100,9 +99,9 @@ public class NoticeController {
 	// Update
 	
 	@RequestMapping(value = "update", method = RequestMethod.GET)
-	public String setUpdate(BoardDTO boardDTO, Model model)throws Exception{
-		boardDTO = noticeService.getDetail(boardDTO);
-		model.addAttribute("dto", boardDTO);
+	public String setUpdate(NoticeDTO noticeDTO, Model model)throws Exception{
+		noticeDTO = noticeService.getDetail(noticeDTO);
+		model.addAttribute("dto", noticeDTO);
 		return "notice/update";
 		
 	}
@@ -111,14 +110,14 @@ public class NoticeController {
 	public String setUpdate(NoticeDTO noticeDTO, MultipartFile[] photos, HttpSession session)throws Exception{
 		int result = noticeService.setUpdate(noticeDTO, photos, session);
 		//return "redirect:./list";
-		return "redirect:./detail?num="+noticeDTO.getNum();
+		return "redirect:./detail?noticeNum="+noticeDTO.getNoticeNum();
 	}
 	
 	// Delete
 	
 	@RequestMapping(value = "delete", method = RequestMethod.POST)
-	public String setDelete(BoardDTO boardDTO)throws Exception{
-		int result = noticeService.setDelete(boardDTO);
+	public String setDelete(NoticeDTO noticeDTO)throws Exception{
+		int result = noticeService.setDelete(noticeDTO);
 		return "redirect:./list";
 	}
 	
