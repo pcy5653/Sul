@@ -31,15 +31,6 @@
 	      		
 	      		</c:if>            </ul>
         </header>
-        
-        <section>
-           <div class="main">
-            
-           </div>
-        </section>
     </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/ScrollTrigger.min.js"></script>
-    <script src="/resources/js/main.js"></script>
 </body>
 </html>

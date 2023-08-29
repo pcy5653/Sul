@@ -1,5 +1,6 @@
 package com.alcohol.sul.board.qna;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -20,13 +21,18 @@ public class QnaDAO implements BoardDAO {
 
 	
 	@Override
-	public List<BoardDTO> getList(Pager pager) throws Exception {
-		return sqlSession.selectList(NAMESPACE+"getList", pager);
+	public List<BoardDTO> getList(Map<String, Object> map) throws Exception {
+		return sqlSession.selectList(NAMESPACE+"getList", map);
 	}
 
 	@Override
 	public BoardDTO getDetail(BoardDTO boardDTO) throws Exception {
 		return sqlSession.selectOne(NAMESPACE+"getDetail", boardDTO);
+	}
+	
+	@Override
+	public BoardDTO getDetailTotal(Map<String, Object> map) throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"getDetail", map);
 	}
 
 	@Override
@@ -49,8 +55,11 @@ public class QnaDAO implements BoardDAO {
 	}
 
 	@Override
-	public Long getTotal(Pager pager) throws Exception {
-		return sqlSession.selectOne(NAMESPACE+"getTotal", pager);
+	public Long getTotal(Pager pager, QnaDTO qnaDTO) throws Exception {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("pager", pager);
+		map.put("member", qnaDTO);
+		return sqlSession.selectOne(NAMESPACE+"getTotal", map);
 	}
 
 	@Override
@@ -68,5 +77,16 @@ public class QnaDAO implements BoardDAO {
 	// 2. DB 내용(파일) 삭제
 	public int setFileDelete(QnaFileDTO qnaFileDTO)throws Exception{
 		return sqlSession.delete(NAMESPACE+"setFileDelete", qnaFileDTO);
+	}
+	
+	
+	// << Reply >>
+	// 1. Reply Insert
+	public int setReplyAdd (QnaDTO qnaDTO)throws Exception{
+		return sqlSession.insert(NAMESPACE+"setReplyAdd", qnaDTO);
+	}
+	// 2. Step Update
+	public int setStepUpdate(QnaDTO qnaDTO)throws Exception{
+		return sqlSession.update(NAMESPACE+"setStepUpdate", qnaDTO);
 	}
 }

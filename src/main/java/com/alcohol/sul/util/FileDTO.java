@@ -5,6 +5,12 @@ public class FileDTO {
 	private String fileName;
 	private String originalName;
 	
+	public String getOriginalName() {
+		return originalName;
+	}
+	public void setOriginalName(String originalName) {
+		this.originalName = originalName;
+	}
 	public Long getFileNum() {
 		return fileNum;
 	}

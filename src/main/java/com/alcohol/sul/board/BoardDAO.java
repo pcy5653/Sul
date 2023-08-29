@@ -4,15 +4,19 @@ import java.util.List;
 import java.util.Map;
 
 import com.alcohol.sul.board.notice.NoticeDTO;
+import com.alcohol.sul.board.qna.QnaDTO;
 import com.alcohol.sul.util.Pager;
 
 public interface BoardDAO {
 
 	//List
-	public List<BoardDTO> getList(Pager pager)throws Exception;
+	public List<BoardDTO> getList(Map<String, Object> map)throws Exception;
 	
 	//Detail
 	public BoardDTO getDetail(BoardDTO boardDTO)throws Exception;
+	
+	//Detail Total
+	public BoardDTO getDetailTotal(Map<String,Object> map)throws Exception;
 	
 	//Add
 	public int setAdd(BoardDTO boardDTO)throws Exception;
@@ -24,7 +28,7 @@ public interface BoardDAO {
 	public int setDelete(BoardDTO boardDTO)throws Exception;
 	
 	//totalCount
-	public Long getTotal(Pager pager)throws Exception;
+	public Long getTotal(Pager pager, QnaDTO qnaDTO)throws Exception;	
 	
 	public int setHitUpdate(BoardDTO boardDTO)throws Exception;
 	

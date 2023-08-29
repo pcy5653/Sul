@@ -15,9 +15,11 @@ public class BoardDTO {
 	public Long getNum() {
 		return num;
 	}
+
 	public void setNum(Long num) {
 		this.num = num;
 	}
+
 	public String getSubject() {
 		return subject;
 	}

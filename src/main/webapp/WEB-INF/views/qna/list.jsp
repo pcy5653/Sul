@@ -1,32 +1,38 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <link rel="stylesheet" href="/resources/style/detail.css">
-<title>${board} List</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-</head>
-<body>
-	<c:import url="../temp/header.jsp"></c:import>
-	<section id="list">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<c:import url="../temp/header.jsp"></c:import>
+	<input type="hidden" value="${member.id}" id="check_id" name="name">
+	<section>
 		<div class="wrap">
 			<div class="main">
 				<h1 id="title">1:1 문의 내역</h1>
 				<table>
 					<thead>
 						<tr>
-							<th>문의내역</th><th>문의일</th><th>조회수</th>
+							<th>문의내역</th><th>작성자</th><th>문의일</th>
 						</tr>
 					</thead>
 					<tbody>
 						<c:forEach items="${list}" var="dto" varStatus="i">
 							<tr>
-								<td><a href="./detail?num=${dto.num}">${dto.subject}</a></td>
+								<td class="listTitle"  data-num="${dto.num}" data-ref="${dto.ref}" data-step="${dto.step}" name="num" >
+									<input type="hidden" value="${dto.num}"  name="ref" class="listRef">
+									<a href="#">
+										<c:catch>
+											<c:forEach begin="1" end="${dto.depth}">
+												<span class="material-icons comment" >
+													subdirectory_arrow_right
+												</span>
+											</c:forEach>
+										</c:catch>
+										${dto.subject}
+									</a>
+								</td>
+								<td id="id_name" data-member-id="${dto.name}">${dto.name}</td>
 								<td>${dto.createDate}</td>
-								<td>${dto.hit}</td>
 							</tr>
 						</c:forEach>
 					</tbody>
@@ -54,30 +60,27 @@
 				</ul>
 			</nav>
 
-			<div class="input-group mb-3">
-				<form action="./list" method="get" id="frm" >
+			<div class="t_search">
+				<form action="./list" method="get" id="frm" class="t_frm">
 					<input type="hidden" id="page" value="${pager.page}" name="page">
 					<!-- parameter(name,value) -->
 					<select name="kind" id="k" data-kind="${pager.kind}">
-						<option value="title" class="kind" data-list-name="kind" data-list="${pager.kind}">Title</option>
-						<option value="contents" class="kind">Contents</option>
+						<option value="title" class="kind">문의내역</option>
+						<option value="contents" class="kind">내용</option>
 					</select>
 					<!-- parameter -->
-					<input type="text" name="search" value="${pager.search}">
-					<div class="col-auto">
-						<button type="submit" class="btn btn-primary">검색</button>
+					<input type="text" name="search" value="${pager.search}" class="search">
+					<div class="t_btn">
+						<button type="submit" class="s_btn">검색</button>
 					</div>
 				</form>
-			</div>
-			<c:if test="${not empty member}">
+				
 				<a class="btn btn-danger" href="./add">게시물 등록</a>
-			</c:if>
+			</div>
 		</div>
     </section>
     
     
     
-	<c:import url="../temp/footer.jsp"></c:import>
-	<script src="/resources/js/qna_list.js"></script>
-</body>
-</html>
+<c:import url="../temp/footer.jsp"></c:import>
+<script src="/resources/js/qna_list.js"></script>

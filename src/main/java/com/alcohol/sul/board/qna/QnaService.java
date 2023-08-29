@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
+import org.apache.maven.model.Parent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -29,12 +30,15 @@ public class QnaService implements BoardService {
 	
 	
 	@Override
-	public List<BoardDTO> getList(Pager pager) throws Exception {
+	public List<BoardDTO> getList(Pager pager, QnaDTO qnaDTO) throws Exception {
+		Map<String, Object> map = new HashMap<String, Object>();
 		pager.makeRowNum();
-		Long total = qnaDAO.getTotal(pager);
+		Long total = qnaDAO.getTotal(pager, qnaDTO);
 		pager.makePageNum(total);
+		map.put("pager", pager);
+		map.put("member",qnaDTO);
 		
-		return qnaDAO.getList(pager);
+		return qnaDAO.getList(map);
 	}
 
 	@Override
@@ -111,4 +115,21 @@ public class QnaService implements BoardService {
 		return 0;	// false
 	}
 	
+	
+	// << Reply >>
+	public int setReplyAdd(QnaDTO qnaDTO, HttpSession session)throws Exception{
+		BoardDTO pDTO = new BoardDTO();
+		pDTO.setNum(qnaDTO.getNum());	// 부모num 받기
+		
+		pDTO = qnaDAO.getDetail(pDTO);
+		QnaDTO p = (QnaDTO)pDTO;
+		qnaDTO.setRef(p.getRef());
+		qnaDTO.setStep(p.getStep()+1);
+		qnaDTO.setDepth(p.getDepth()+1);
+		
+		int result = qnaDAO.setStepUpdate(qnaDTO);	// step 증가
+		result = qnaDAO.setReplyAdd(qnaDTO);		// reply 대입
+		
+		return result;
+	}
 }

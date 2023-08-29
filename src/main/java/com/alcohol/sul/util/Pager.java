@@ -1,5 +1,9 @@
 package com.alcohol.sul.util;
 
+import java.util.Map;
+
+import com.alcohol.sul.board.qna.QnaDTO;
+
 public class Pager {
 	private Long startRow;		// data 첫번째 번호
 	private Long lastRow;		// data 마지막 번호

@@ -38,5 +38,4 @@
 	<context:component-scan base-package="com.alcohol.sul" />
 	
 	
-	
 </beans:beans>
