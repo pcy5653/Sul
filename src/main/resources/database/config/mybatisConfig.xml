@@ -11,5 +11,37 @@
 		<typeAlias type="java.lang.Long" alias="Long"></typeAlias>
 		<typeAlias type="java.util.Map" alias="Map"></typeAlias>
 		<typeAlias type="com.alcohol.sul.member.MemberDTO" alias="MemberDTO"></typeAlias> 
+		<!-- QNA -->
+		<typeAlias type="com.alcohol.sul.board.qna.QnaDTO" alias="QnaDTO"/>
+		<typeAlias type="com.alcohol.sul.board.qna.QnaFileDTO" alias="QnaFileDTO"/>
+		<typeAlias type="com.alcohol.sul.util.Pager" alias="Pager"/>
+		<typeAlias type="java.lang.Long" alias="Long"/>
+		<typeAlias type="java.util.Map" alias="Map"/>
+		
+		
+		<typeAlias type="com.alcohol.sul.member.MemberDTO" alias="MemberDTO"/>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<typeAlias type="com.alcohol.sul.board.notice.NoticeDTO" alias="NoticeDTO"/>
+	<typeAlias type="com.alcohol.sul.board.notice.NoticeFileDTO" alias="NoticeFileDTO"/>
+	<typeAlias type="java.util.List" alias="List"/>
 	</typeAliases>
 </configuration>

@@ -6,6 +6,7 @@
 <head>
 	<meta charset="UTF-8">
  	<meta name="viewport" content="width=device-width, initial-scale=1">
+
 	<link rel="stylesheet" href="/resources/style/reset.css">
 
 	<title>4조 프로젝트</title>
@@ -30,4 +31,5 @@
 	<script src="/resources/js/main.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/ScrollTrigger.min.js"></script>
 </body>
+
 </html>

@@ -30,8 +30,8 @@ public interface BoardDAO {
 	//totalCount
 	public Long getTotal(Pager pager, QnaDTO qnaDTO)throws Exception;	
 	
-	//hit update
 	public int setHitUpdate(BoardDTO boardDTO)throws Exception;
+	
 
 	
 }

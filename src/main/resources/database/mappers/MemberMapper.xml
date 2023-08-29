@@ -4,8 +4,8 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="com.alcohol.sul.member.MemberDAO">
- 	<insert id="setJoin" parameterType="com.alcohol.sul.member.MemberDTO">
- 		INSERT INTO MEMBER(ID,ROLENUM,PW,NAME,PHONE,ADDRESS,BIRTH,MEMBERDATE,POINT) VALUES(#{id},0,#{pw},#{name},#{phone},#{address},
+ 	<insert id="setJoin" parameterType="MemberDTO">
+ 		INSERT INTO MEMBER(ID,ROLENUM,PW,NAME,PHONE,ADDRESS,BIRTH,MEMBERDATE,POINT) VALUES(#{id},1,#{pw},#{name},#{phone},#{address},
  		#{birth},SYSDATE,0)
  	</insert>
  	
@@ -17,8 +17,28 @@
  		SELECT ID FROM MEMBER WHERE ID=#{id}
  	</select>
  	
- 	<update id="setInfoUpdate" parameterType="com.alcohol.sul.member.MemberDTO">
+ 	<select id="getPhoneCheck" resultType="MemberDTO" parameterType="MemberDTO">
+ 		SELECT PHONE FROM MEMBER WHERE PHONE=#{phone}
+ 	</select>
+ 	
+ 	<update id="setInfoUpdate" parameterType="MemberDTO">
  		UPDATE MEMBER SET PHONE=#{phone},ADDRESS=#{address},BIRTH=#{birth} WHERE ID=#{id}
  	</update>
+ 	
+ 	<update id="setPwUpdate" parameterType="MemberDTO">
+ 		UPDATE MEMBER SET PW=#{pw} WHERE ID=#{id}
+ 	</update>
+ 	
+ 	<select id="findId" resultType="MemberDTO" parameterType="MemberDTO">
+ 		SELECT ID FROM MEMBER WHERE NAME=#{name} AND PHONE=#{phone}
+ 	</select>
+ 	
+ 	<select id="findPw" resultType="MemberDTO" parameterType="MemberDTO">
+ 		SELECT PW FROM MEMBER WHERE ID=#{id} AND NAME=#{name} AND PHONE=#{phone}
+ 	</select>
+ 	
+ 	<delete id="deleteMember" parameterType="MemberDTO">
+ 		DELETE FROM MEMBER WHERE ID=#{id}
+ 	</delete>
  	
   </mapper>

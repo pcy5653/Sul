@@ -1,6 +1,7 @@
 package com.alcohol.sul.util;
 
 import java.io.File;
+
 import java.util.Map;
 import java.util.UUID;
 
@@ -12,9 +13,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.view.AbstractView;
 
-import com.alcohol.sul.util.FileDTO;
-
 @Component
+
 public class FileManager extends AbstractView{
 	
 	
@@ -66,4 +66,5 @@ public class FileManager extends AbstractView{
 		// TODO Auto-generated method stub
 		
 	}
+
 }
