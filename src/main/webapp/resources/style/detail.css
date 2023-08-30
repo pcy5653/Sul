@@ -38,3 +38,29 @@ table tbody tr td {border-bottom: 1px solid rgb(139, 139, 139);}
     font-weight: 900;text-align: center;line-height: 2.5rem;
 }
 .btn:hover {background-color: #365496;color: white;border-radius: 10px;transition:all 0.5s;}
+
+
+/* detail.css */
+thead {width: 100%;}
+.subject {width: 60%;}
+.name{width: 20%;}
+.date{width: 13%;}
+.hit{width: 7%;}
+table tr.dcont {height: 20rem; text-align: start; position: relative;}
+table tr td.dcon {
+    display: inline-block;width: 92%;line-height: 1.5;
+    border-bottom: 0;
+    position: absolute; left:2rem; top:2rem;
+}
+
+#detail_file{width: 85%;margin: 0 auto; margin-bottom: 2rem;}
+
+.btn_total {width: 85%;margin: 0 auto;}
+.c1 {width: 8rem;height: 3rem;font-size: 1.1rem;font-weight: 600;}
+.upBtn {background-color: #c1d3ff;}
+.deBtn {background-color: #ffc9cc;}
+.reBtn {background-color: #ffefad;float: right;}
+.upBtn:hover {border-radius: 10px;color:white;background-color:#618fff;transition:all 0.5s;}
+.deBtn:hover {border-radius: 10px;color:white;background-color:#ff4c56;transition:all 0.5s;}
+.reBtn:hover {border-radius: 10px;color:white; background-color:#ffce06;transition:all 0.5s;}
+
