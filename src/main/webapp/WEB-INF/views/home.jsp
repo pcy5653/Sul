@@ -6,9 +6,8 @@
 <head>
 	<meta charset="UTF-8">
  	<meta name="viewport" content="width=device-width, initial-scale=1">
-
 	<link rel="stylesheet" href="/resources/style/reset.css">
-
+	<link rel="stylesheet" href="/resources/style/basic.css">	
 	<title>4조 프로젝트</title>
 </head>
 <body>

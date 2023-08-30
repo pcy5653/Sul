@@ -8,7 +8,7 @@ header {
     transition: top 1s;
 }
 .main_logo {display: block;}
-.main_logo img {width: 80%; height: 80%;}
+.main_logo img {width: 144px; height: 58.5px;}
 header ul {display: flex; align-items: center;}
 header ul > li {margin-right: 1rem;}
 main {background-color: rebeccapurple; margin: 0 auto; width: 100%; margin-top: 100px;text-align: center;}

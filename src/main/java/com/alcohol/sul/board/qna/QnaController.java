@@ -36,12 +36,9 @@ public class QnaController {
 	public String getList(QnaDTO qnaDTO, Pager pager, HttpSession session, Model model)throws Exception{
 		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
 		qnaDTO.setName(memberDTO.getId());
-		System.out.println(qnaDTO.getName());
-		System.out.println(memberDTO.getRoleNum());
 		
 		
 		if(memberDTO.getRoleNum() == 1) {
-			System.out.println("1111111111111111");
 			List<BoardDTO> ar = qnaService.getManagerList(pager);
 			model.addAttribute("list", ar);
 			model.addAttribute("pager", pager);
