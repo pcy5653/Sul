@@ -64,3 +64,9 @@
 				<!-- 입력 form으로 method GET -->
 				<button id="reply" class="c1 reBtn" data-url="qna/reply">답글</button>
 			</div>
+		</div>
+	</section>
+	<c:import url="../temp/footer.jsp"></c:import>
+	<script src="/resources/js/qna_delete.js"></script>
+	</body>
+	</html>
