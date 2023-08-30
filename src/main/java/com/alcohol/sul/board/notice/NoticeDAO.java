@@ -68,6 +68,8 @@ public class NoticeDAO{
 		
 		return sqlSession.update(NAMESPACE+"setHitCount", noticeDTO);
 	}
+	
+	
 
 	
 	

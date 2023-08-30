@@ -1,5 +1,7 @@
 package com.alcohol.sul.member;
 
+import java.util.Random;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -19,7 +21,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class MemberController {
 	@Autowired
 	private MemberService memberService;
-
+	
+	//후대폰 문자인증
 	@RequestMapping(value = "/phoneCheck", method = RequestMethod.GET)
 	@ResponseBody
 	public String sendSMS(@RequestParam("phone") String userPhoneNumber) { // 휴대폰 문자보내기
@@ -28,6 +31,34 @@ public class MemberController {
 		memberService.certifiedPhoneNumber(userPhoneNumber, randomNumber);
 
 		return Integer.toString(randomNumber);
+	}
+	
+	
+	//비밀번호 변경시 랜덤비밀번호 문자전송
+	@RequestMapping(value = "/phonePw", method = RequestMethod.GET)
+	public String phoneFw(@RequestParam("phone") String userPhoneNumber,@RequestParam("id") String id,MemberDTO memberDTO,Model model) throws Exception { // 휴대폰 문자보내기
+		Random random = new Random();
+		StringBuffer randomBuf = new StringBuffer();
+		for (int i = 0; i < 8; i++) {
+			// Random.nextBoolean() : 랜덤으로 true, false 리턴 (true : 랜덤 소문자 영어, false : 랜덤 숫자)
+			if (random.nextBoolean()) {
+				// 26 : a-z 알파벳 개수
+				// 97 : letter 'a' 아스키코드
+				// (int)(random.nextInt(26)) + 97 : 랜덤 소문자 아스키코드
+				randomBuf.append((char)((int)(random.nextInt(26)) + 97));
+			} else {
+				randomBuf.append(random.nextInt(10));
+			}
+		}
+		
+		String randomStr = randomBuf.toString();
+		memberDTO.setId(id);
+		memberDTO.setPw(randomStr);
+		System.out.println(randomStr);
+		memberService.certifiedPhoneNumber(userPhoneNumber, randomStr);
+		int result = memberService.setPwUpdate(memberDTO);
+		model.addAttribute("result", result);
+		return "commons/ajaxResult";
 	}
 	
 	//약관동의
@@ -145,8 +176,11 @@ public class MemberController {
 
 	@PostMapping(value = "findPw")
 	public void findPw(MemberDTO memberDTO, Model model) throws Exception {
+		model.addAttribute("phone","0"+memberDTO.getPhone());
+		model.addAttribute("id", memberDTO.getId());
+		
 		memberDTO = memberService.findPw(memberDTO);
-
+		
 		if (memberDTO == null) {
 			model.addAttribute("check", 1);
 		} else {
