@@ -66,7 +66,7 @@
 			</div>
 		</div>
 	</section>
-	<c:import url="../temp/footer.jsp"></c:import>
-	<script src="/resources/js/qna_delete.js"></script>
-	</body>
-	</html>
+<c:import url="../temp/footer.jsp"></c:import>
+<script src="/resources/js/qna_delete.js"></script>
+</body>
+</html>
