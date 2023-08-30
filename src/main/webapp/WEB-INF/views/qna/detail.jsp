@@ -42,3 +42,25 @@
 				<tr><th class="dcont">내용</th></tr>
 				<tr class="dcont"><td class="dcon">${dto.contents}</td></tr>
 			</table>
+			<div id="detail_file">
+				<c:forEach items="${dto.fileDTOs}" var="f">
+					<img src="/resources/upload/qna/${f.fileName}" class="fileImg" data-file-num="${f.fileNum}"></img>
+				</c:forEach>
+			</div>
+			
+			
+			<form id="frm" action="">
+				<input type="hidden" name="num" value="${dto.num}">
+			</form>
+			
+			<div class="btn_total">
+				<!-- 입력 form으로 method GET -->
+				<button id="update" class="c1 upBtn" data-url="qna/update">수정</button>
+				
+				<!-- method POST -->
+				<input type="hidden" data-url="qna/delete" data-delete-name="name" data-delete-num="${member.id}">
+				<button id="del" class="c1 deBtn" data-url="qna/delete" data-delete-name="num" data-delete-num="${dto.num}">삭제</button>
+				
+				<!-- 입력 form으로 method GET -->
+				<button id="reply" class="c1 reBtn" data-url="qna/reply">답글</button>
+			</div>
