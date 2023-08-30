@@ -95,3 +95,6 @@ table tr td.dcon {
 }
 
 
+/* update.css */
+#add_files{display:flex;justify-content:flex-end;width:15rem;margin:0 auto;}
+.delets{margin-left:8rem;}
