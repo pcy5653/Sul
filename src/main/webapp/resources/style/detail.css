@@ -5,3 +5,36 @@ background-color: rgba(255,255, 255,0);}
 
 /* footer.css */
 footer {margin-top:7rem;}
+
+/* list.css */
+section {width:100% !important; margin-top: 80px !important;}
+.wrap {width: 70%; margin: 0 auto;}
+.main {}
+#title {font-size: 2.5rem; margin-bottom : 2.5rem; text-align: center;}
+.wrap table, .t_page, .t_search{width:85%; margin: 0 auto;margin-bottom: 2rem;}
+table tr {height:3rem; text-align: center;}
+table thead, table tbody{border-top:1px solid black; border-bottom: 1px solid black;}
+table thead tr, table tbody tr th.dcont {background-color:rgb(242 242 242);    border-bottom: 1px solid;}
+table thead tr th, table tbody tr th {font-size: 1.1rem; font-weight: 800;}
+table tbody tr td {border-bottom: 1px solid rgb(139, 139, 139);}
+/* table tbody tr td:first-of-type {}  title 앞으로*/
+
+.t_page ul {display: flex;}
+.t_page ul > li {
+    height: 30px;width: 30px;line-height: 30px;
+    background-color: rgb(211, 211, 211);
+    text-align: center;margin-right: 0.5rem;
+    border-radius: 15%;
+}
+
+.t_search {display: flex;justify-content: space-between;align-items: center;}
+.t_frm {display: flex; height: 2.5rem;}
+#k, .search {margin-right: 0.5rem;}
+.t_btn {position: relative;width: 5rem;background: #80a9ff;border-radius: 5px;}
+.s_btn {position:absolute;left:50%;top:50%;transform:translate(-50%,-50%); font-weight: 900; color: white;}
+.btn {
+    width: 10rem;height: 2.5rem;
+    background-color: #80a9ff;
+    font-weight: 900;text-align: center;line-height: 2.5rem;
+}
+.btn:hover {background-color: #365496;color: white;border-radius: 10px;transition:all 0.5s;}
