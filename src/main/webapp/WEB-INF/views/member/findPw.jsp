@@ -6,6 +6,7 @@
 		<head>
 			<meta charset="UTF-8">
 			<title>Find Password</title>
+			<c:import url="../temp/bootStrap.jsp"></c:import>
 			<style>
 				* {
 					padding: 0;
@@ -45,7 +46,7 @@
 					color: #D2D2D2;
 				}
 
-				#findform>input[type="submit"] {
+				#findform>input[type="button"] {
 					color: #fff;
 					font-size: 16px;
 					color: #6A24FE;
@@ -66,34 +67,29 @@
 					<input type="text" id="name" name="name" class="form-control" placeholder="이름">
 					<input type="text" id="phone" name="phone" class="form-control" placeholder="휴대폰번호">
 
-					<input class="btn btn-lg btn-secondary btn-block text-uppercase" type="submit" value="check">
+					<input class="btn btn-lg btn-secondary btn-block text-uppercase" type="button" id="btn1" value="check">
 
-					<!-- 정보가 일치하지 않을 때-->
-					<c:if test="${check == 1}">
-						<script>
-							opener.document.findform.id.value = "";
-							opener.document.findform.name.value = "";
-							opener.document.findform.phone.value = "";
-						</script>
-						<label>일치하는 정보가 존재하지 않습니다.</label>
-					</c:if>
-
-
-					<c:if test="${check == 0 }">
-						<label>찾으시는 비밀번호는 '${pw}' 입니다.</label>
-						<div class="form-label-group">
-							<input class="btn btn-lg btn-secondary btn-block text-uppercase" type="button" value="OK"
-								onclick="closethewindow()">
-						</div>
-					</c:if>
-
+					
 				</form>
+				<!-- 정보가 일치하지 않을 때-->
+				<c:if test="${check == 1}">
+					<script>
+						opener.document.findform.id.value = "";
+						opener.document.findform.name.value = "";
+						opener.document.findform.phone.value = "";
+					</script>
+					<label>일치하는 정보가 존재하지 않습니다.</label>
+				</c:if>
+
+
+				<c:if test="${check == 0 }">
+					<div class="form-label-group">
+						<input class="btn btn-lg btn-secondary btn-block text-uppercase" id="btn2" type="button" data-phone="${phone}" data-id="${id}" value="임시비밀번호 전송">
+					</div>
+				</c:if>
 			</section>
-			<script type="text/javascript">
-				function closethewindow() {
-					self.close();
-				}
-			</script>
+			<script src="/resources/js/findPw.js"></script>
+			
 		</body>
 
 		</html>
