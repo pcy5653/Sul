@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.alcohol.sul.member.MemberDTO;
 
@@ -29,6 +30,5 @@ public class AdminController {
 		List<MemberDTO> ar = adminService.getMemberList();
 		model.addAttribute("list", ar);	
 	}
-	
 	
 }

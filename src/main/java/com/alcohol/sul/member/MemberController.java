@@ -98,7 +98,7 @@ public class MemberController {
 			session.setAttribute("member", memberDTO);
 			return "redirect:../";
 		}
-		model.addAttribute("result", 0);
+		model.addAttribute("result", 0); 
 		return "commons/ajaxResult";
 	}
 
@@ -195,6 +195,14 @@ public class MemberController {
 		memberDTO = (MemberDTO)session.getAttribute("member");
 		int result = memberService.deleteMember(memberDTO);
 		return "redirect:../";
+	}
+	
+	@GetMapping(value="adminMemberDelete")
+	public String adminMemberDelete(@RequestParam("id") String id,Model model,MemberDTO memberDTO) throws Exception{
+		memberDTO.setId(id);
+		int result = memberService.deleteMember(memberDTO);
+		model.addAttribute("result", result);
+		return "commons/ajaxResult";
 	}
 
 }

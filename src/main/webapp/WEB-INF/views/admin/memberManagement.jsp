@@ -12,6 +12,7 @@
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <link href="/resources/css/admin/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>    
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -112,10 +113,10 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Tables</h1>
+                        <h1 class="mt-4">회원관리</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                            <li class="breadcrumb-item active">Tables</li>
+                            <li class="breadcrumb-item"><a href="admin/main.jsp">메인</a></li>
+                            <li class="breadcrumb-item active">회원관리</li>
                         </ol>
                         <div class="card mb-4">
                             <div class="card-body">
@@ -141,6 +142,7 @@
                                             <th>생년월일</th>
                                             <th>가입날짜</th>
                                             <th>포인트</th>
+                                            <th>탈퇴</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -153,12 +155,13 @@
                                             <th>생년월일</th>
                                             <th>가입날짜</th>
                                             <th>포인트</th>
+                                            <th>탈퇴</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
                                         <c:forEach items="${list}" var="member" varStatus="i">
                                             <tr>
-                                                <td>${member.id}</td>
+                                                <td id="memberId${i.index}">${member.id}</td>
                                                 <td>${member.name}</td>
                                                 <td><c:if test="${member.roleNum==1}">관리자</c:if><c:if test="${member.roleNum==0}">유저</c:if></td>
                                                 <td>${member.phone}</td>
@@ -166,6 +169,7 @@
                                                 <td>${member.birth}</td>
                                                 <td>${member.memberDate}</td>
                                                 <td>${member.point}</td>
+                                                <td><button type="button" class="btns" id="btn${i.index}">탈퇴</button></td>
                                             </tr>
                                         </c:forEach>
                                     </tbody>
@@ -174,20 +178,10 @@
                         </div>
                     </div>
                 </main>
-                <footer class="py-4 bg-light mt-auto">
-                    <div class="container-fluid px-4">
-                        <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Your Website 2023</div>
-                            <div>
-                                <a href="#">Privacy Policy</a>
-                                &middot;
-                                <a href="#">Terms &amp; Conditions</a>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
+                
             </div>
         </div>
+        <script src="/resources/js/memberManagement.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/scripts.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
