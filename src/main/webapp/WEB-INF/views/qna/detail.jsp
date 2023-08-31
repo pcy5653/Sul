@@ -27,14 +27,13 @@
 			</div>
 			<table id="comment" data-step="${dto.step}">
 				<thead>
-					<th class="subject">SUBJECT</th><th class="name">작성자</th><th class="date">날짜</th><th class="hit">HIT</th>
+					<th class="subject">SUBJECT</th><th class="name">작성자</th><th class="date">날짜</th>
 				</thead>
 				<tbody>
 					<tr>
 						<td>${dto.subject}</td>
 						<td>${dto.name}</td>
 						<td>${dto.createDate}</td>
-						<td>${dto.hit}</td>
 					</tr>			
 				</tbody>
 			</table>
