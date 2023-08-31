@@ -5,7 +5,6 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
-import com.alcohol.sul.board.notice.NoticeDTO;
 import com.alcohol.sul.board.qna.QnaDTO;
 import com.alcohol.sul.util.Pager;
 
