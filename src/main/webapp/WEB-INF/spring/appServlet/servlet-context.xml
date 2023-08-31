@@ -27,11 +27,20 @@
 	</beans:bean>
 	
 	<interceptors>
+		<!-- 로그인확인  -->
 		<interceptor>
 			<mapping path="/member/mypage"/>
 			<mapping path="/member/info"/>
+			<mapping path="/admin/*"/>
 			<beans:bean class="com.alcohol.sul.interceptors.LoginInterceptor"></beans:bean>
 		</interceptor>
+		
+		<!-- 권환확인 -->
+		<interceptor>
+			<mapping path="/admin/*"/>
+			<beans:bean class="com.alcohol.sul.interceptors.RoleInterceptor"></beans:bean>
+		</interceptor>
+		
 	</interceptors>
 	
 	

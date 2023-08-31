@@ -43,5 +43,13 @@ public class AdminController {
 		model.addAttribute("result", result);
 		return "commons/ajaxResult";
 	}
-	
+	@GetMapping("pointAdd")
+	public String pointAdd(Long point,String id,MemberDTO memberDTO,Model model) throws Exception{
+		memberDTO.setId(id);
+		memberDTO = adminService.getPoint(memberDTO);
+		memberDTO.setPoint(memberDTO.getPoint()+point);
+		int result = adminService.pointAdd(memberDTO);
+		model.addAttribute("result", result);
+		return "commons/ajaxResult";
+	}
 }

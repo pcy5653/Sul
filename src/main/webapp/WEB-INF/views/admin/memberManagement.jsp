@@ -142,6 +142,7 @@
                                             <th>생년월일</th>
                                             <th>가입날짜</th>
                                             <th>포인트</th>
+                                            <th>포인트주기</th>
                                             <th>탈퇴</th>
                                         </tr>
                                     </thead>
@@ -154,7 +155,7 @@
                                             <th>주소</th>
                                             <th>생년월일</th>
                                             <th>가입날짜</th>
-                                            <th>포인트</th>
+                                            <th>포인트주기</th>
                                             <th>탈퇴</th>
                                         </tr>
                                     </tfoot>
@@ -169,6 +170,7 @@
                                                 <td>${member.birth}</td>
                                                 <td>${member.memberDate}</td>
                                                 <td>${member.point}</td>
+                                                <td><input type="text" name="point" id="point${i.index}"><button type="button" class="pointBtns" id="pointBtn${i.index}">포인트주기</button></td>
                                                 <td><button type="button" class="btns" id="btn${i.index}">탈퇴</button></td>
                                             </tr>
                                         </c:forEach>

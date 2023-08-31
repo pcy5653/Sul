@@ -17,4 +17,12 @@ public class AdminDAO {
 	public List<MemberDTO> getMemberList(MemberDTO memberDTO) throws Exception{
 		return sqlSession.selectList(NAMESPACE+"getMemberList",memberDTO);
 	}
+	
+	public int pointAdd(MemberDTO memberDTO) throws Exception{
+		return sqlSession.update(NAMESPACE+"pointAdd", memberDTO);
+	}
+	
+	public MemberDTO getPoint(MemberDTO memberDTO) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getPoint", memberDTO);
+	}
 }

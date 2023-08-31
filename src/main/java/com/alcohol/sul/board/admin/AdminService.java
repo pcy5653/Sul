@@ -15,4 +15,14 @@ public class AdminService {
 	public List<MemberDTO> getMemberList(MemberDTO memberDTO)throws Exception{
 		return adminDAO.getMemberList(memberDTO);
 	}
+	
+	
+	public int pointAdd(MemberDTO memberDTO) throws Exception{
+		return adminDAO.pointAdd(memberDTO);
+	}
+	
+	
+	public MemberDTO getPoint(MemberDTO memberDTO) throws Exception{
+		return adminDAO.getPoint(memberDTO);
+	}
 }

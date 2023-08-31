@@ -3,7 +3,6 @@
 for(let i=0;i<$(".btns").length;i++){
     $("#btn"+i).click(function(){
         let id=$("#memberId"+i).text();
-        console.log(id)
         $.ajax({
             type:"get",
             url:"/admin/adminMemberDelete?id="+id,
@@ -20,3 +19,23 @@ for(let i=0;i<$(".btns").length;i++){
         })
     })
 }
+
+for(let i=0;i<$(".pointBtns").length;i++){
+    $("#pointBtn"+i).click(function(){
+        let point=$("#point"+i).val();
+        let id=$("#memberId"+i).text();
+        $.ajax({
+            type:"get",
+            url:"/admin/pointAdd?point="+point+"&id="+id,
+            success:function(result){
+                if(result.trim()==1){
+                    
+                    alert("회원["+id+"]에게 ["+point+"]를 추가했습니다.")
+                    document.location.reload();
+                }
+            }
+        })
+    })
+}
+
+

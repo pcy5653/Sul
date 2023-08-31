@@ -7,4 +7,12 @@
  	<select id="getMemberList" parameterType="MemberDTO" resultType="MemberDTO">
  		SELECT * FROM MEMBER WHERE ID NOT IN(#{id}) ORDER BY NAME
  	</select>
+ 	
+ 	<select id="getPoint" parameterType="MemberDTO" resultType="MemberDTO">
+ 		SELECT ID,POINT FROM MEMBER WHERE ID=#{id}
+ 	</select>
+ 	
+ 	<update id="pointAdd" parameterType="MemberDTO">
+ 		UPDATE MEMBER SET POINT=#{point} WHERE ID=#{id}
+ 	</update>
   </mapper>
