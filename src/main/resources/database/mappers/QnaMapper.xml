@@ -141,6 +141,57 @@
  		WHERE REF = #{ref}
  		AND STEP > #{step}
  	</update>
+ 	
+ 	
+ 	
+ 	
+ 	<!-- 관리자 List -->
+ 	<sql id="ManagerSearchSql">
+ 		WHERE QNANUM>0
+		<choose>
+			<when test="kind == 'title'">
+				AND SUBJECT LIKE '%'||#{search}||'%'
+			</when>
+			<otherwise>
+				AND CONTENTS LIKE '%'||#{search}||'%'
+			</otherwise>
+		</choose>	
+ 	</sql>
+ 	
+ 	<select id="getManagerList" parameterType="Map" resultMap="getManagerResult">
+ 		SELECT * FROM
+ 			(SELECT ROWNUM R, B.* FROM
+		  		(
+			  		SELECT * FROM QNA 
+					<include refid="ManagerSearchSql"></include>
+			  		ORDER BY REF DESC, STEP ASC
+		  		) B
+	  		)
+	  	WHERE R BETWEEN #{startRow} AND #{lastRow}
+ 	</select>
+ 	
+ 	<select id="getManagerTotal" parameterType="Pager" resultType="Long">
+ 		SELECT COUNT(QNANUM) FROM QNA
+		<include refid="ManagerSearchSql"></include>
+ 	</select>
+ 	
+ 	<resultMap type="QnaDTO" id="getManagerResult">
+		<id column = "QNANUM" property="num"/>
+		<result column="NAME" property="name"/>
+		<result column="SUBJECT" property="subject"/>
+		<result column="CONTENTS" property="contents"/>
+		<result column="CREATEDATE" property="createDate"/>
+		<result column="QNAHIT" property="hit"/>
+		<result column="REF" property="ref"/>
+		<result column="STEP" property="step"/>
+		<result column="DEPTH" property="depth"/>
+		<!-- fileDTO -->
+		<collection property="fileDTOs" javaType="List" ofType="QnaFileDTO">
+ 			<id column="FILENUM" property="fileNum"/>
+ 			<result column="FILENAME" property="fileName"/>
+ 			<result column="ORIGINALNAME" property="originalName"/>
+ 		</collection>
+ 	</resultMap>
   </mapper>
   
   

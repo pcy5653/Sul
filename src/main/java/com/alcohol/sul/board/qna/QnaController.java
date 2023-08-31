@@ -36,10 +36,18 @@ public class QnaController {
 	public String getList(QnaDTO qnaDTO, Pager pager, HttpSession session, Model model)throws Exception{
 		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
 		qnaDTO.setName(memberDTO.getId());
-		List<BoardDTO> ar = qnaService.getList(pager, qnaDTO);
-		model.addAttribute("list", ar);
-		model.addAttribute("pager", pager);
-		return "qna/list";
+		
+		
+		if(memberDTO.getRoleNum() == 1) {
+			List<BoardDTO> ar = qnaService.getManagerList(pager);
+			model.addAttribute("list", ar);
+			model.addAttribute("pager", pager);
+		}else {
+			List<BoardDTO> ar = qnaService.getList(pager, qnaDTO);
+			model.addAttribute("list", ar);
+			model.addAttribute("pager", pager);
+		}
+		return "/qna/list";
 	}
 	
 	// Detail
@@ -62,7 +70,7 @@ public class QnaController {
 	// Add
 	@RequestMapping(value="add",method=RequestMethod.GET)
 	public String setAdd()throws Exception{
-		return "qna/add";
+		return "/qna/add";
 	}
 	@RequestMapping(value="add",method=RequestMethod.POST)
 	public String setAdd(QnaDTO qnaDTO, MultipartFile [] photos, HttpSession session, Model model)throws Exception{
@@ -84,7 +92,7 @@ public class QnaController {
 		qnaDTO = (QnaDTO)qnaService.getDetail(qnaDTO);
 		model.addAttribute("dto", qnaDTO);
 		
-		return "qna/update";
+		return "/qna/update";
 	}
 	@RequestMapping(value = "update", method = RequestMethod.POST)
 	public String setUpdate(QnaDTO qnaDTO, MultipartFile [] photos, HttpSession session)throws Exception{
@@ -117,7 +125,7 @@ public class QnaController {
 	public String setReplyAdd(Long num, Model model)throws Exception{
 		model.addAttribute("num", num);
 		
-		return "qna/reply";
+		return "/qna/reply";
 	}
 	@PostMapping("reply")
 	public String setReplyAdd(QnaDTO qnaDTO, HttpSession session)throws Exception{

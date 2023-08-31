@@ -1,13 +1,21 @@
+/* header.css */
+.viewport {background-color: #ffc9cc;}
+header {position: relative;
+background-color: rgba(255,255, 255,0);}
+
+/* footer.css */
+footer {margin-top:7rem;}
+
 /* list.css */
-section {width:100% !important; margin-top: 150px !important;}
+section {width:100% !important; margin-top: 80px !important;}
 .wrap {width: 70%; margin: 0 auto;}
 .main {}
-#title {font-size: 2.5rem; margin-bottom : 2rem; text-align: center;}
+#title {font-size: 2.5rem; margin-bottom : 2.5rem; text-align: center;}
 .wrap table, .t_page, .t_search{width:85%; margin: 0 auto;margin-bottom: 2rem;}
 table tr {height:3rem; text-align: center;}
-table thead {border-top:1px solid black; border-bottom: 1px solid black;}
-table thead tr {background-color: rgb(211, 211, 211);}
-table thead tr th {font-size: 1.1rem; font-weight: 800;}
+table thead, table tbody{border-top:1px solid black; border-bottom: 1px solid black;}
+table thead tr, table tbody tr th.dcont {background-color:rgb(242 242 242);    border-bottom: 1px solid;}
+table thead tr th, table tbody tr th {font-size: 1.1rem; font-weight: 800;}
 table tbody tr td {border-bottom: 1px solid rgb(139, 139, 139);}
 /* table tbody tr td:first-of-type {}  title 앞으로*/
 
@@ -20,12 +28,73 @@ table tbody tr td {border-bottom: 1px solid rgb(139, 139, 139);}
 }
 
 .t_search {display: flex;justify-content: space-between;align-items: center;}
-.t_frm {display: flex; height: 2rem;}
+.t_frm {display: flex; height: 2.5rem;}
 #k, .search {margin-right: 0.5rem;}
-.t_btn {width: 5rem;line-height: 2rem;background: #80a9ff;text-align: center;border-radius: 8%;}
-.s_btn {font-weight: 900; color: white;}
+.t_btn {position: relative;width: 5rem;background: #80a9ff;border-radius: 5px;}
+.s_btn {position:absolute;left:50%;top:50%;transform:translate(-50%,-50%); font-weight: 900; color: white;}
 .btn {
-    width: 10rem;height: 2rem;
-    background-color: #365496;color: white;
-    font-weight: 900;text-align: center;line-height: 2rem;border-radius: 5%;
+    width: 10rem;height: 2.5rem;
+    background-color: #80a9ff;
+    font-weight: 900;text-align: center;line-height: 2.5rem;
 }
+.btn:hover {background-color: #365496;color: white;border-radius: 10px;transition:all 0.5s;}
+
+
+/* detail.css */
+thead {width: 100%;}
+.subject {width: 60%;}
+.name{width: 20%;}
+.date{width: 13%;}
+.hit{width: 7%;}
+table tr.dcont {height: 20rem; text-align: start; position: relative;}
+table tr td.dcon {
+    display: inline-block;width: 92%;line-height: 1.5;
+    border-bottom: 0;
+    position: absolute; left:2rem; top:2rem;
+}
+
+#detail_file{width: 85%;margin: 0 auto; margin-bottom: 2rem;}
+
+.btn_total {width: 85%;margin: 0 auto;}
+.c1 {width: 8rem;height: 3rem;font-size: 1.1rem;font-weight: 600;}
+.upBtn {background-color: #c1d3ff;}
+.deBtn {background-color: #ffc9cc;}
+.reBtn {background-color: #ffefad;float: right;}
+.upBtn:hover {border-radius: 10px;color:white;background-color:#618fff;transition:all 0.5s;}
+.deBtn:hover {border-radius: 10px;color:white;background-color:#ff4c56;transition:all 0.5s;}
+.reBtn:hover {border-radius: 10px;color:white; background-color:#ffce06;transition:all 0.5s;}
+
+
+/* add.css */
+#add_view {height:90vh;}
+.add_frm {display:flex;flex-direction:column;width:80%;height:60vh; margin:0 auto; margin-bottom:5rem;}
+.addD {display:flex;width:90%;margin: 0 auto;margin-bottom: 1rem;align-items:center;}
+.in {width:78%;height:2.5rem;}
+.addT {font-size:1.3rem;font-weight:600;width:20%;height:2.5rem;line-height:2.5rem; display:inline-block;text-align:center;letter-spacing:0.3rem;}
+
+.add_name{}
+.name_in{}
+
+.add_sub{}
+.sub_in{font-size: 1rem !important;text-align: left !important;}
+
+.add_con{line-height:0;}
+.con_in{height: 20rem;resize: none;font-size: 1.3rem;}
+
+#files{display:flex;justify-content:space-between;width:90%;margin:0 auto;}
+.addF{}
+.add_file{width:8rem;height:3rem;font-weight:600;background-color: #dddddd;}
+#fileList {display:flex;flex-direction: column;margin-right: 8rem;}
+#file{margin-bottom: 1.5rem;}
+
+.add_btn {display: flex;flex-direction: row-reverse;margin-top: 4rem;}
+.btn_danger {
+    width: 10rem;height: 3rem;
+    background-color: #80a9ff;
+    font-weight: 900;text-align: center;line-height: 2.5rem;
+}
+
+
+/* update.css */
+#add_files{display:flex;justify-content:flex-end;width:15rem;margin:0 auto;}
+.delets{margin-left:8rem;}

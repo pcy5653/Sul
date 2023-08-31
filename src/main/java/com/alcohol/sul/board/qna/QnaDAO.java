@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -28,11 +30,6 @@ public class QnaDAO implements BoardDAO {
 	@Override
 	public BoardDTO getDetail(BoardDTO boardDTO) throws Exception {
 		return sqlSession.selectOne(NAMESPACE+"getDetail", boardDTO);
-	}
-	
-	@Override
-	public BoardDTO getDetailTotal(Map<String, Object> map) throws Exception {
-		return sqlSession.selectOne(NAMESPACE+"getDetail", map);
 	}
 
 	@Override
@@ -88,5 +85,18 @@ public class QnaDAO implements BoardDAO {
 	// 2. Step Update
 	public int setStepUpdate(QnaDTO qnaDTO)throws Exception{
 		return sqlSession.update(NAMESPACE+"setStepUpdate", qnaDTO);
+	}
+
+	
+	
+	// 관리자 List
+	@Override
+	public List<BoardDTO> getManagerList(Pager pager) throws Exception {
+		return sqlSession.selectList(NAMESPACE+"getManagerList", pager);
+	}
+	
+	@Override
+	public Long getManagerTotal(Pager pager) throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"getManagerTotal", pager);
 	}
 }

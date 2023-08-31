@@ -12,7 +12,6 @@ import com.alcohol.sul.board.qna.QnaDTO;
 import com.alcohol.sul.board.qna.QnaFileDTO;
 import com.alcohol.sul.member.MemberDTO;
 import com.alcohol.sul.board.qna.QnaFileDTO;
-import com.alcohol.sul.board.notice.NoticeDTO;
 import com.alcohol.sul.util.Pager;
 
 public interface BoardService {
@@ -32,4 +31,8 @@ public interface BoardService {
 	//delete
 	public int setDelete(BoardDTO boardDTO, HttpSession session)throws Exception;
 
+	
+	
+	// 관리자 List
+	public List<BoardDTO> getManagerList(Pager pager)throws Exception;
 }

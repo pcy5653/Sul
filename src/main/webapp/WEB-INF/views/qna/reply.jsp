@@ -5,6 +5,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="/resources/style/reset.css">
+<link rel="stylesheet" href="/resources/style/basic.css">
+<link rel="stylesheet" href="/resources/style/detail.css">
 <title>Insert title here</title>
 <c:import url="../temp/bootStrap.jsp"></c:import>
 
