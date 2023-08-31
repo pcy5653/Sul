@@ -95,3 +95,5 @@ $(document).on("click","#delBtn",function(){
     alert("회원탈퇴 되었습니다.");
     location.href="/member/deleteMember";
 })
+
+

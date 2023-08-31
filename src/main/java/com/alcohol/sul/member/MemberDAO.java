@@ -49,4 +49,7 @@ public class MemberDAO {
 	public int deleteMember(MemberDTO memberDTO) throws Exception{
 		return sqlSession.delete(NAMESPACE+"deleteMember", memberDTO);
 	}
+	public int setTemporary(MemberDTO memberDTO) throws Exception{
+		return sqlSession.update(NAMESPACE+"setTemporary",memberDTO);
+	}
 }

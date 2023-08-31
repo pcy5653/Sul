@@ -6,7 +6,7 @@
 		<head>
 			<meta charset="UTF-8">
 			<title>Insert title here</title>
-			<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+			<!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script> -->
 			<c:import url="../temp/bootStrap.jsp"></c:import>
 			<style>
 				.f {

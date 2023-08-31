@@ -13,3 +13,4 @@ public class QnaFileDTO extends FileDTO{
 		this.num = num;
 	}
 }
+	
