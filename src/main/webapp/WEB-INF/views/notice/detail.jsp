@@ -9,6 +9,14 @@
 <c:import url="../temp/header.jsp"></c:import>
 <style>
 .title {font-size:2rem}
+
+/* header.css */
+.viewport {background-color: #ffc9cc;}
+header {position: relative;
+background-color: rgba(255,255, 255,0);}
+
+/* footer.css */
+footer {margin-top:7rem;}
 </style>
 <c:import url="../temp/bootStrap.jsp"></c:import>
 </head>
@@ -45,10 +53,11 @@
 	<form id="frm" action="">
 		<input type="hidden" name="noticeNum" value="${dto.noticeNum}">
 	</form>
-	<a class="btn btn-outline-secondary" href="./list" style='width:80px;float: right;'>목록</a>
-	<a class="btn btn-outline-secondary" href="./update?noticeNum=${dto.noticeNum}">수정</a>
-
-	<button id="del" data-url="delete" data-delete-name="num" data-delete-num="${f.fileNum}" class="btn btn-danger c1">삭제</button>
+	<a class="btn btn-outline-secondary" href="./list" >목록</a><br><br>
+	<c:if test="${member.roleNum == 1}">
+		<a class="btn btn-outline-secondary" href="./update?noticeNum=${dto.noticeNum}" style='width:80px; float: right;'>수정</a>
+		<button id="del" data-url="delete" data-delete-name="num" data-delete-num="${f.fileNum}" class="btn btn-danger c1" style='width:80px; float: right;'>삭제</button>
+	</c:if>
 	<br><br>
 </section>
 
