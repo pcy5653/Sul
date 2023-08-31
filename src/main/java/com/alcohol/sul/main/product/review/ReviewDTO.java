@@ -7,7 +7,7 @@ import java.util.List;
 
 public class ReviewDTO {
 
-	private Long reviewNum;
+	private Long reviewNum;   
 	private String id;
 	private Long productNum;
 	private String reviewContents;
