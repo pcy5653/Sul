@@ -1,4 +1,4 @@
-package com.alcohol.sul.board.admin;
+package com.alcohol.sul.admin;
 
 import java.util.List;
 
