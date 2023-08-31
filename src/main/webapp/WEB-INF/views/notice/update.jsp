@@ -10,6 +10,15 @@
 <c:import url="../temp/header.jsp"></c:import>
 <style>
 .title {font-size:2rem}
+
+/* header.css */
+.viewport {background-color: #ffc9cc;}
+header {position: relative;
+background-color: rgba(255,255, 255,0);}
+
+/* footer.css */
+footer {margin-top:7rem;}
+
 </style>
 <c:if test="${empty member}">
 	<script type="text/javascript">
@@ -59,8 +68,8 @@
 
 		<div class="my-3" >
 		<br>
-			<a class="btn btn-outline-secondary" href="./list" style='width:80px;float: right;'>목록</a>
-			<button type="submit" class="btn btn-secondary">수정</button>
+			<a class="btn btn-outline-secondary" href="./list">목록</a>
+			<button type="submit" class="btn btn-secondary" style='width:80px;float: right;'>수정</button>
 		</div>
 	</form>
 	<br><br>

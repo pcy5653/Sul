@@ -9,8 +9,17 @@
 <c:import url="../temp/header.jsp"></c:import>
 <style>
 .title {font-size:2rem}
+
+/* header.css */
+.viewport {background-color: #ffc9cc;}
+header {position: relative;
+background-color: rgba(255,255, 255,0);}
+
+/* footer.css */
+footer {margin-top:7rem;}
+
 </style>
-<c:import url="../temp/bootStrap.jsp"></c:import>
+<c:import url="../temp/bootStrap.jsp"></c:import> 
 </head>
 
 <body>
@@ -85,7 +94,9 @@
 		</div>
 		</form>
 		
-	<a class="btn btn-outline-secondary" href="./add">Add</a><br><br>
+		<c:if test="${member.roleNum == 1}">
+			<a class="btn btn-outline-secondary" href="./add">Add</a><br><br>				
+		</c:if>
 </section>
 <c:import url="../temp/footer.jsp"></c:import>
 </body>
