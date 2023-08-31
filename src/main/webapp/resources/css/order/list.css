@@ -1,0 +1,33 @@
+@charset "UTF-8";
+
+#productInfo > div:first-of-type > p{
+	display:inline-block;
+	margin:0px;
+	font-weight:bold;
+}
+
+#productInfo > div:first-of-type > p:first-of-type{
+	font-size:16px;
+	color:#303030;
+}
+
+#productInfo > div:first-of-type > p:last-of-type{
+	float:right;
+	cursor:pointer;
+}
+
+#sender{
+	width:100%; height:36px;
+	line-height:36px;
+	margin:20px 0px;
+	padding:0px 10px;
+	background-color:rgb(255, 250, 240);
+	font-size:13px;
+	font-weight:700;
+}
+
+#sender > i{
+	margin:0px 4px;
+	font-style:normal;
+	color:rgb(178, 178, 178);
+}

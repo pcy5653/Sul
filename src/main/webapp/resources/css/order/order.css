@@ -1,0 +1,212 @@
+@charset "UTF-8";
+
+#addressInfo > #address{
+	height:45px;
+	line-height:45px;
+	margin:-10px 0px 10px 0px;
+	border-bottom:1px solid #DCDCDC;
+}
+
+#addressInfo > #address > .l_label{
+	margin:0px;
+	font-size:16px;
+	font-weight:700;
+}
+
+#addressInfo > #address > .r_label{
+	margin-top:0px;
+	text-decoration:underline;
+	cursor:pointer;
+}
+
+#addressInfo input[type="text"]{
+	width:100%;
+	color:black;
+}
+
+#addressInfo input[name="orderComment"]{
+	margin-top:5px;
+}
+
+#productInfo > #totalAmount > p{
+	margin:0px;
+}
+
+#point > div > p{
+	width:20%;
+}
+
+#point > div > input[type="number"]{
+	width:80%;
+}
+
+#point > .skyFont{
+	text-align:right;
+}
+
+#payButton{
+	text-align:center;
+}
+
+#payButton > .skyButton{
+	cursor:pointer;
+}
+
+#payButton > .skyButton > span{
+	color:rgb(255, 255, 255);
+	font-size:18px;
+	font-weight:500;
+}
+
+
+/* otherAddress */
+#otherAddressBackground{
+	width:100%; height:100%;
+	position:fixed;
+	top:0px; left:0px;
+	background-color:rgba(190, 190, 190, 0.5);
+}
+
+#otherAddressBackground #title{
+	margin-top:0px;
+	border-bottom:1px solid #DCDCDC;
+}
+
+#otherAddressBackground #title > .title{
+	margin:0px;
+	padding-bottom:10px;
+	display:inline-block;
+	border-bottom:none;
+}
+
+#otherAddressBackground #title > .close{
+	width:20px;
+	float:right;
+	cursor:pointer;
+}
+
+#otherAddressBackground input.error{
+	border-color:#FD2C5A;
+}
+
+#otherAddressBackground .error > img{
+	width:12px; height:11px;
+	margin-right:3px;
+	vertical-align:middle;
+}
+
+#otherAddressBackground .error > span{
+	font-size:12px !important;
+	color:rgb(255, 71, 114) !important;
+	margin:10px 0px 0px 0px;
+}
+
+#otherAddress, #addAddress{
+	width:400px;
+	position:absolute;
+	top:50%; left:50%;
+	transform:translate(-50%, -50%);
+	padding:30px 20px;
+	border:1px solid #A9A9A9;
+	border-radius:7px;
+	background-color:white;
+}
+
+#otherAddress > #otherAddressList > #default{
+	border-color:#A9A9A9;
+}
+
+#otherAddress > #otherAddressList > .wrap{
+	padding:15px 15px;
+	border-radius:7px;
+}
+
+#otherAddress > #otherAddressList > .wrap p{
+	color:black;
+}
+
+#otherAddress > #otherAddressList > .wrap > div > p{
+	display:inline-block;
+	margin:0px;
+}
+
+#otherAddress > #otherAddressList > .wrap > div > .recipient{
+	vertical-align:middle;
+}
+
+#otherAddress > #otherAddressList > .wrap > div > #mark{
+	display:inline-block;
+	min-width:30px; height:17px;
+	line-height:17px;
+	margin:0px 0px 0px 7px;
+	text-align:center;
+	border-radius:3px;
+	background-color:black;
+	font-size:10px;
+	color:white;
+}
+
+#otherAddress > #otherAddressList > .wrap > div > #update,
+#otherAddress > #otherAddressList > .wrap > div > .delete{
+	float:right;
+	font-size:14px;
+	color:#595959;
+	cursor:pointer;
+	text-decoration:underline;
+}
+
+#otherAddress > #otherAddressList > .wrap > div > .recipientAddress{
+	width:88%;
+	padding-right:5px;
+	vertical-align:middle;
+}
+
+#otherAddress > #otherAddressList > .wrap > div > .select{
+	width:12%; height:30px;
+	padding-right:2px;
+	vertical-align:middle;
+	font-size:13px;
+	cursor:pointer;
+}
+
+#otherAddress > #addAddressButton{
+	width:100%; height:52px;
+	margin:-5px 0px 0px 0px;
+	padding:0px;
+	border:1px solid rgba(61, 61, 61, 0.3);
+	border-radius:5px;
+	background-color:rgb(255, 255, 255);
+	font-size:16px;
+	font-weight:500;
+	color:rgba(61, 61, 61, 0.6);
+	cursor:pointer;
+}
+
+#otherAddress > #addAddressButton:hover{
+	background-color:#E7E7E7;
+}
+
+/* addAddress */
+#addAddress{
+	width:360px;
+}
+
+#addAddress input{
+	width:100%; height:50px;
+}
+
+#addAddress > #input p{
+	font-size:15px;
+	font-weight:500;
+	color:black;
+}
+
+#addAddress > #input #address{
+	margin-bottom:5px;
+}
+
+#addAddress > #submit{
+	width:100%;
+	margin-top:30px;
+	cursor:pointer;
+}
