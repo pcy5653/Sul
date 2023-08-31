@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.alcohol.sul.board.BoardDTO;
@@ -37,7 +39,7 @@ public class QnaController {
 		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
 		qnaDTO.setName(memberDTO.getId());
 		
-		
+		// 관리자(1), 회원(0)
 		if(memberDTO.getRoleNum() == 1) {
 			List<BoardDTO> ar = qnaService.getManagerList(pager);
 			model.addAttribute("list", ar);
@@ -132,5 +134,12 @@ public class QnaController {
 		int result = qnaService.setReplyAdd(qnaDTO, session);
 		
 		return "redirect:./list";
+	}
+	
+	
+	// << SMS체크 휴대폰번호 입력 시, 답변달리면 문자전송 >>
+	@RequestMapping(value="/smsCheck", method = RequestMethod.GET)
+	public void sendSMS(@RequestParam("phone") String userPhoneNumber,@RequestParam("subject") String subject) {
+		qnaService.sendSMS(userPhoneNumber, subject);
 	}
 }

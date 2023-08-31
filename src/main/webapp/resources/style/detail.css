@@ -87,7 +87,7 @@ table tr td.dcon {
 #fileList {display:flex;flex-direction: column;margin-right: 8rem;}
 #file{margin-bottom: 1.5rem;}
 
-.add_btn {display: flex;flex-direction: row-reverse;margin-top: 4rem;}
+.add_btn {display: flex;justify-content: space-between;margin-top: 4rem;}
 .btn_danger {
     width: 10rem;height: 3rem;
     background-color: #80a9ff;

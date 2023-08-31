@@ -6,6 +6,7 @@ import com.alcohol.sul.board.BoardDTO;
 
 public class QnaDTO extends BoardDTO{
 	private QnaDTO qnaDTO;
+	private Integer sms;
 	private Long ref;
 	private Long step;
 	private Long depth;
@@ -42,5 +43,10 @@ public class QnaDTO extends BoardDTO{
 	public void setDepth(Long depth) {
 		this.depth = depth;
 	}
-	
+	public Integer getSms() {
+		return sms;
+	}
+	public void setSms(Integer sms) {
+		this.sms = sms;
+	}
 }

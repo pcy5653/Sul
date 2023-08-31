@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 
 import com.alcohol.sul.board.BoardDAO;
 import com.alcohol.sul.board.BoardDTO;
+import com.alcohol.sul.member.MemberDTO;
 import com.alcohol.sul.util.Pager;
 
 @Repository
@@ -85,6 +86,11 @@ public class QnaDAO implements BoardDAO {
 	// 2. Step Update
 	public int setStepUpdate(QnaDTO qnaDTO)throws Exception{
 		return sqlSession.update(NAMESPACE+"setStepUpdate", qnaDTO);
+	}
+	
+	// 3. reply시 부모글 작성자의 번호찾기
+	public MemberDTO getPhoneNumber(MemberDTO memberDTO)throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getPhoneNumber",memberDTO);
 	}
 
 	

@@ -66,7 +66,7 @@
  		<result column="SUBJECT" property="subject"/>
  		<result column="CONTENTS" property="contents"/>
  		<result column="CREATEDATE" property="createDate"/>
- 		<result column="QNAHIT" property="hit"/>
+ 		<result column="SMS" property="sms"/>
  		<result column="REF" property="ref"/>
  		<result column="STEP" property="step"/>
  		<result column="DEPTH" property="depth"/>
@@ -90,8 +90,8 @@
  		<selectKey keyProperty="num" resultType="Long" order="BEFORE">
  			SELECT QNA_SEQ.NEXTVAL FROM DUAL
  		</selectKey>
- 		INSERT INTO QNA (QNANUM, NAME, SUBJECT, CONTENTS, CREATEDATE, QNAHIT, REF, STEP, DEPTH)
-		VALUES (#{num}, #{name}, #{subject}, #{contents}, SYSDATE, 0, #{num}, 0, 0)
+ 		INSERT INTO QNA (QNANUM, NAME, SUBJECT, CONTENTS, CREATEDATE, SMS, REF, STEP, DEPTH)
+		VALUES (#{num}, #{name}, #{subject}, #{contents}, SYSDATE, #{sms}, #{num}, 0, 0)
  	</insert>
  	
  	
@@ -131,7 +131,7 @@
  		<selectKey keyProperty="num" resultType="Long" order="BEFORE">
  			SELECT QNA_SEQ.NEXTVAL FROM DUAL
  		</selectKey>
- 		INSERT INTO QNA (QNANUM, NAME, SUBJECT, CONTENTS, CREATEDATE, QNAHIT, REF, STEP, DEPTH)
+ 		INSERT INTO QNA (QNANUM, NAME, SUBJECT, CONTENTS, CREATEDATE, SMS, REF, STEP, DEPTH)
 		VALUES (#{num}, #{name}, #{subject}, #{contents}, SYSDATE, 0, #{ref}, #{step}, #{depth})
  	</insert>
  	
@@ -141,6 +141,11 @@
  		WHERE REF = #{ref}
  		AND STEP > #{step}
  	</update>
+ 	
+ 	<!-- reply 부모글의 phone 번호 -->
+ 	<select id="getPhoneNumber" parameterType="MemberDTO" resultType="MemberDTO">
+ 		SELECT * FROM MEMBER WHERE ID = #{id}
+ 	</select>
  	
  	
  	
@@ -181,7 +186,7 @@
 		<result column="SUBJECT" property="subject"/>
 		<result column="CONTENTS" property="contents"/>
 		<result column="CREATEDATE" property="createDate"/>
-		<result column="QNAHIT" property="hit"/>
+		<result column="SMS" property="sms"/>
 		<result column="REF" property="ref"/>
 		<result column="STEP" property="step"/>
 		<result column="DEPTH" property="depth"/>

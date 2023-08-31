@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="/resources/style/reset.css">
 <link rel="stylesheet" href="/resources/style/basic.css">
 <link rel="stylesheet" href="/resources/style/detail.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
 <body>
@@ -28,7 +29,7 @@
 				</div>
 				<div class="addD">
 					<label for="contents" class="add_con addT">내용</label>
-					<textarea class="con_in in" name="contents" id="contents" ></textarea>
+					<textarea class="con_in in" name="contents" id="contents"></textarea>
 				</div>	
 				
 				<div id="files">
@@ -39,6 +40,17 @@
 				</div>
 	
 				<div class="add_btn">
+					<div class="phone_total">
+						<span>
+							<span class="material-icons">email</span>
+							답변이 작성되면 알려드립니다.
+						</span><br>
+						<span>SMS 발송</span><br>
+						<label for="sms">YES</label>
+						<input type="radio" id="sms_yes" name="sms" checked>
+						<label for="sms">NO</label>
+						<input type="radio" id="sms_no" name="sms"><br>
+					</div>
 					<button type="button" class="btn btn-danger" id="btn">게시글 등록</button>
 				</div>
 			</form>
