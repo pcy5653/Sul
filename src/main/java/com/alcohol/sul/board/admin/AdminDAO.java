@@ -14,7 +14,7 @@ public class AdminDAO {
 	private SqlSession sqlSession;
 	private final String NAMESPACE="com.alcohol.sul.admin.AdminDAO.";
 	
-	public List<MemberDTO> getMemberList() throws Exception{
-		return sqlSession.selectList(NAMESPACE+"getMemberList");
+	public List<MemberDTO> getMemberList(MemberDTO memberDTO) throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getMemberList",memberDTO);
 	}
 }

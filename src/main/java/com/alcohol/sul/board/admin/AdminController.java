@@ -23,14 +23,16 @@ public class AdminController {
 	private MemberService memberService;
 	
 	@GetMapping(value = "main")
-	public void getMain(MemberDTO memberDTO,Model model) throws Exception{
-		List<MemberDTO> ar = adminService.getMemberList();
+	public void getMain(MemberDTO memberDTO,Model model,HttpSession session) throws Exception{
+		memberDTO = (MemberDTO)session.getAttribute("member");
+		List<MemberDTO> ar = adminService.getMemberList(memberDTO);
 		model.addAttribute("list", ar);	
 	}
 	
 	@GetMapping(value="memberManagement")
-	public void memberManagement(MemberDTO memberDTO,Model model) throws Exception{
-		List<MemberDTO> ar = adminService.getMemberList();
+	public void memberManagement(MemberDTO memberDTO,Model model,HttpSession session) throws Exception{
+		memberDTO = (MemberDTO)session.getAttribute("member");
+		List<MemberDTO> ar = adminService.getMemberList(memberDTO);
 		model.addAttribute("list", ar);	
 	}
 	

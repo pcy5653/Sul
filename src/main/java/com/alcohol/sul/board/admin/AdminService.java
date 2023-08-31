@@ -12,7 +12,7 @@ public class AdminService {
 	@Autowired
 	private AdminDAO adminDAO;
 	
-	public List<MemberDTO> getMemberList()throws Exception{
-		return adminDAO.getMemberList();
+	public List<MemberDTO> getMemberList(MemberDTO memberDTO)throws Exception{
+		return adminDAO.getMemberList(memberDTO);
 	}
 }
