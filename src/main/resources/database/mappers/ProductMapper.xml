@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.alcohol.sul.main.product.ProductDAO">
+  
+    <sql id="searchSql">
+  		WHERE PRODUCTNUM > 0 
+			AND
+				<choose>
+					<when test="kind == 'name'">
+						PRODUCTNAME LIKE '%'||#{search}||'%'
+					</when>
+					<otherwise>
+						CONTENTS LIKE '%'||#{search}||'%'
+					</otherwise>
+				</choose>
+  	</sql>
+  
+  	<select id="getTotal" parameterType="com.alcohol.sul.main.util.PagerK" resultType="Long">
+  		SELECT COUNT(PRODUCTNUM) FROM PRODUCT
+		<include refid="searchSql"/>
+  	</select>
+  	
+  	<!-- 탁주 -->
+  	<select id="getTotalTakju" parameterType="com.alcohol.sul.main.util.PagerK" resultType="Long">
+  		SELECT COUNT(PRODUCTNUM) FROM PRODUCT
+		<include refid="searchSql"/>
+		AND KIND = 'takju'
+  	</select>
+  	
+  	<!-- 약청주 -->
+  	<select id="getTotalChungju" parameterType="com.alcohol.sul.main.util.PagerK" resultType="Long">
+  		SELECT COUNT(PRODUCTNUM) FROM PRODUCT
+		<include refid="searchSql"/>
+		AND KIND = 'chungju'
+  	</select>
+  	
+  	<!-- 과실주 -->
+  	<select id="getTotalWine" parameterType="com.alcohol.sul.main.util.PagerK" resultType="Long">
+  		SELECT COUNT(PRODUCTNUM) FROM PRODUCT
+		<include refid="searchSql"/>
+		AND KIND = 'wine'
+  	</select>
+  	
+  	<!-- 증류주 -->
+  	<select id="getTotalSoju" parameterType="com.alcohol.sul.main.util.PagerK" resultType="Long">
+  		SELECT COUNT(PRODUCTNUM) FROM PRODUCT
+		<include refid="searchSql"/>
+		AND KIND = 'soju'
+  	</select>
+  
+  	<select id="getList" parameterType="com.alcohol.sul.main.util.PagerK" resultType="ProductDTO">
+ 		SELECT PRODUCTNUM, PRODUCTNAME, PROOF, PRICE, CONTENTS, CARBONICACID, TASTE, BASE, SCORE, SAVEPOINT FROM 
+			(SELECT ROWNUM R, B.* FROM
+				(	SELECT * FROM PRODUCT
+					<include refid="searchSql"/>	
+					ORDER BY PRODUCTNUM DESC
+				) B
+			)
+		WHERE R BETWEEN #{startRow} AND #{lastRow}
+  	</select>
+  	
+  <!-- 탁주 -->
+  	<select id="getListTakju" parameterType="com.alcohol.sul.main.util.PagerK" resultType="ProductDTO">
+ 		SELECT PRODUCTNUM, PRODUCTNAME, PROOF, PRICE, CONTENTS, CARBONICACID, TASTE, BASE, SCORE, SAVEPOINT FROM 
+			(SELECT ROWNUM R, B.* FROM
+				(	SELECT * FROM PRODUCT
+					<include refid="searchSql"/>
+					AND KIND = 'takju'	
+					ORDER BY PRODUCTNUM DESC
+				) B
+			)
+		WHERE R BETWEEN #{startRow} AND #{lastRow}
+  	</select>
+  	
+   <!-- 약, 청주 -->	
+  	<select id="getListChungju" parameterType="com.alcohol.sul.main.util.PagerK" resultType="ProductDTO">
+ 		SELECT PRODUCTNUM, PRODUCTNAME, PROOF, PRICE, CONTENTS, CARBONICACID, TASTE, BASE, SCORE, SAVEPOINT FROM 
+			(SELECT ROWNUM R, B.* FROM
+				(	SELECT * FROM PRODUCT
+					<include refid="searchSql"/>
+					AND KIND = 'chungju'	
+					ORDER BY PRODUCTNUM DESC
+				) B
+			)
+		WHERE R BETWEEN #{startRow} AND #{lastRow}
+  	</select>
+  	
+  	<!-- 과실주 -->	
+  	<select id="getListWine" parameterType="com.alcohol.sul.main.util.PagerK" resultType="ProductDTO">
+ 		SELECT PRODUCTNUM, PRODUCTNAME, PROOF, PRICE, CONTENTS, CARBONICACID, TASTE, BASE, SCORE, SAVEPOINT FROM 
+			(SELECT ROWNUM R, B.* FROM
+				(	SELECT * FROM PRODUCT
+					<include refid="searchSql"/>
+					AND KIND = 'wine'	
+					ORDER BY PRODUCTNUM DESC
+				) B
+			)
+		WHERE R BETWEEN #{startRow} AND #{lastRow}
+  	</select>
+  	
+  	<!-- 증류주 -->	
+  	<select id="getListSoju" parameterType="com.alcohol.sul.main.util.PagerK" resultType="ProductDTO">
+ 		SELECT PRODUCTNUM, PRODUCTNAME, PROOF, PRICE, CONTENTS, CARBONICACID, TASTE, BASE, SCORE, SAVEPOINT FROM 
+			(SELECT ROWNUM R, B.* FROM
+				(	SELECT * FROM PRODUCT
+					<include refid="searchSql"/>
+					AND KIND = 'soju'	
+					ORDER BY PRODUCTNUM DESC
+				) B
+			)
+		WHERE R BETWEEN #{startRow} AND #{lastRow}
+  	</select>
+  
+  	<select id="getDetail" resultMap="getDetailResult" parameterType="ProductDTO">
+  		SELECT P.*, PI.* 
+  		FROM PRODUCT P
+  			LEFT OUTER JOIN PRODUCTIMG PI
+  			ON(P.PRODUCTNUM = PI.PRODUCTNUM)
+  		 WHERE P.PRODUCTNUM = #{productNum} 
+  	</select>
+  	
+  	<resultMap type="ProductDTO" id="getDetailResult">
+  		<id column="PRODUCTNUM" property="productNum"/>
+  		<result column="PRODUCTNAME" property="productName"/>
+   		<result column="PRICE" property="price"/> 		
+   		<result column="KIND" property="kind"/> 		
+  		<result column="PROOF" property="proof"/>
+  		<result column="CONTENTS" property="contents"/>
+   		<result column="STOCK" property="stock"/>		
+  		<result column="CARBONICACID" property="carbonicAcid"/>
+  		<result column="TASTE" property="taste"/>
+  		<result column="BASE" property="base"/>
+  		<result column="SCORE" property="score"/>
+  		<result column="SAVEPOINT" property="savePoint"/>
+  		
+  		<!-- 1대 N 관계 -->
+  		<collection property="imgDTOs" javaType="List" ofType="ProductImgDTO">
+  			<id column="PRODUCTIMGNUM" property="productImgNum"/>
+  			<result column="IMGNAME" property="imgName"/>
+  			<result column="ORIGINALNAME" property="originalName"/>
+  		</collection>
+  		
+  	</resultMap>
+  	
+  	<insert id="setAdd" parameterType="ProductDTO">
+  		<selectKey keyProperty="productNum" resultType="Long" order="BEFORE">
+  			SELECT PRODUCT_SEQ.NEXTVAL FROM DUAL 
+  		</selectKey>
+  		INSERT INTO PRODUCT VALUES(#{productNum}, #{productName}, #{price}, 
+  		#{kind}, #{proof},#{contents},#{stock},#{carbonicAcid},
+  		#{taste},#{base}, <!-- 평점 초기값 -->0 ,#{price}*0.01 )
+  	</insert>
+  	
+  	<insert id="setFileAdd" parameterType="ProductImgDTO">
+  		INSERT INTO PRODUCTIMG VALUES 
+  		(PRODUCTIMG_SEQ.NEXTVAL, #{productNum}, #{imgName}, #{originalName})
+  	</insert>
+ 	
+  	<delete id="setDelete" parameterType="ProductDTO">
+  		DELETE PRODUCT WHERE PRODUCTNUM = #{productNum}
+  	</delete>
+  	
+  	<update id="setUpdate" parameterType="ProductDTO">
+  		UPDATE PRODUCT SET 
+  		PRODUCTNAME = #{productName}, PRICE = #{price},	KIND = #{kind}, 
+  		PROOF = #{proof}, CONTENTS = #{contents}, STOCK = #{stock},
+  		CARBONICACID = #{carbonicAcid}, TASTE = #{taste}, BASE = #{base}
+  		WHERE PRODUCTNUM = #{productNum}
+  	</update>
+  	
+  	<delete id="setFileDelete" parameterType="ProductImgDTO">
+		DELETE PRODUCTIMG WHERE PRODUCTIMGNUM = #{productImgNum}
+	</delete>
+	
+	<select id="getFileDetail" parameterType="ProductImgDTO" resultType="ProductImgDTO">
+		SELECT PRODUCTIMGNUM, IMGNAME FROM PRODUCTIMG WHERE PRODUCTIMGNUM = #{productImgNum} 
+	</select>
+	
+	<update id="setReviewStarUpdate" parameterType="ProductDTO" >
+  		UPDATE PRODUCT SET
+  		SCORE = #{score}
+  		WHERE PRODUCTNUM = #{productNum}
+  	</update>
+
+  	
+  </mapper>
