@@ -10,13 +10,16 @@
 <c:import url="../temp/header.jsp"></c:import>
 <style>
 .title {font-size:2rem}
+
+/* header.css */
+.viewport {background-color: #ffc9cc;}
+header {position: relative;
+background-color: rgba(255,255, 255,0);}
+
+/* footer.css */
+footer {margin-top:7rem;}
+
 </style>
-<c:if test="${empty member}">
-	<script type="text/javascript">
-		alert("로그인이 필요합니다.");
-		location.href="../member/login";
-	</script>	
-</c:if>
 
 <c:import url="../temp/bootStrap.jsp"></c:import>
 <!-- include summernote css/js-->
