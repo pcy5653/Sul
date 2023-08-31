@@ -12,12 +12,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.alcohol.sul.member.MemberDTO;
+import com.alcohol.sul.member.MemberService;
 
 @Controller
 @RequestMapping("/admin/*")
 public class AdminController {
 	@Autowired
 	private AdminService adminService;
+	@Autowired
+	private MemberService memberService;
 	
 	@GetMapping(value = "main")
 	public void getMain(MemberDTO memberDTO,Model model) throws Exception{
@@ -29,6 +32,14 @@ public class AdminController {
 	public void memberManagement(MemberDTO memberDTO,Model model) throws Exception{
 		List<MemberDTO> ar = adminService.getMemberList();
 		model.addAttribute("list", ar);	
+	}
+	
+	@GetMapping(value="adminMemberDelete")
+	public String adminMemberDelete(@RequestParam("id") String id,Model model,MemberDTO memberDTO) throws Exception{
+		memberDTO.setId(id);
+		int result = memberService.deleteMember(memberDTO);
+		model.addAttribute("result", result);
+		return "commons/ajaxResult";
 	}
 	
 }

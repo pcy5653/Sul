@@ -6,7 +6,7 @@ for(let i=0;i<$(".btns").length;i++){
         console.log(id)
         $.ajax({
             type:"get",
-            url:"/member/adminMemberDelete?id="+id,
+            url:"/admin/adminMemberDelete?id="+id,
             cache: false,
                 success: function(result){
                     if(result.trim()==1){

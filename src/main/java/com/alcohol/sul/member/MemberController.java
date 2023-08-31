@@ -197,12 +197,6 @@ public class MemberController {
 		return "redirect:../";
 	}
 	
-	@GetMapping(value="adminMemberDelete")
-	public String adminMemberDelete(@RequestParam("id") String id,Model model,MemberDTO memberDTO) throws Exception{
-		memberDTO.setId(id);
-		int result = memberService.deleteMember(memberDTO);
-		model.addAttribute("result", result);
-		return "commons/ajaxResult";
-	}
+	
 
 }
