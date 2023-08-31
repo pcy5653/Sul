@@ -1,5 +1,6 @@
 package com.alcohol.sul.board.notice;
 
+
 import java.sql.Date;
 import java.util.List;
 
