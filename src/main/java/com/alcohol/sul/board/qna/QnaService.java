@@ -133,12 +133,16 @@ public class QnaService implements BoardService {
 		int result = qnaDAO.setStepUpdate(qnaDTO);	// step 증가
 		result = qnaDAO.setReplyAdd(qnaDTO);		// reply 대입
 		
+		
 		// << SMS체크 휴대폰번호 입력 시, 답변달리면 문자전송 >>
-		 // 회원 테이블에서 작성자 이름 조회
-	    String userId = p.getName(); // 작성자 아이디를 가져온다.
-	    String userPhone = getUserPhoneNumber(userId); // 작성자 아이디를 기반으로 이름을 가져온다.
-
-	    sendSMS(userPhone, p.getSubject());
+		// 회원 테이블에서 작성자 이름 조회
+		// 글의 sms가 '1'이면 진행하기
+		if(p.getSms() == 1) {
+			String userId = p.getName(); // 작성자 아이디를 가져온다.
+			String userPhone = getUserPhoneNumber(userId); // 작성자 아이디를 기반으로 이름을 가져온다.
+			
+			sendSMS(userPhone, p.getSubject());
+		}
 	    
 		return result;
 	}

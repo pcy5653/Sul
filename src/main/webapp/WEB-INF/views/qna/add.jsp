@@ -46,10 +46,10 @@
 							답변이 작성되면 알려드립니다.
 						</span><br>
 						<span>SMS 발송</span><br>
-						<label for="sms">YES</label>
-						<input type="radio" id="sms_yes" name="sms" checked>
-						<label for="sms">NO</label>
-						<input type="radio" id="sms_no" name="sms"><br>
+						<label for="sms_yes">YES</label>
+						<input type="radio" id="sms_yes" name="sms" value="1" checked>
+						<label for="sms_no">NO</label>
+						<input type="radio" id="sms_no" name="sms" value="0"><br>
 					</div>
 					<button type="button" class="btn btn-danger" id="btn">게시글 등록</button>
 				</div>
