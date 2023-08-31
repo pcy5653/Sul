@@ -13,6 +13,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.view.AbstractView;
 
+import com.alcohol.sul.main.product.review.ReviewFileDTO;
+
 @Component
 
 public class FileManager extends AbstractView{
@@ -65,6 +67,15 @@ public class FileManager extends AbstractView{
 			HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public boolean reviewFileDelete(ReviewFileDTO fileDTO, String path, HttpSession session) throws Exception {
+		//1. 삭제할 폴더의 실제 경로
+		path = session.getServletContext().getRealPath(path);
+		
+		File file = new File(path, fileDTO.getFileName());
+		
+		return file.delete();
 	}
 
 }
