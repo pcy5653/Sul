@@ -44,11 +44,13 @@
 
 #recipientInfo .l_label{
 	width:25%;
+	vertical-align:middle;
 }
 
 #recipientInfo .r_label{
 	width:75%;
 	float:none;
+	vertical-align:middle;
 	color:#595959;
 }
 

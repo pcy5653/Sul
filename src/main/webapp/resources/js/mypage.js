@@ -1,3 +1,16 @@
+// 주문 내역
+$("#orderListBtn").click(function(){
+	$.ajax({
+        type:"get",
+        url:"../order/list",
+        dataType:'html',
+        success:function(data){
+            $("#page").html(data)
+        }
+    })
+});
+
+
 $("#infoBtn").click(function(){
     
     // fetch("info",{

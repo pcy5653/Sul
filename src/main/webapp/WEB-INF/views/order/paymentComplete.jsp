@@ -24,16 +24,13 @@
 				<div id="buyerInfo" class="wrap">
 					<p class="title">받는 분 정보</p>
 					<div>
-						<p class="l_label">받는 분</p>
-						<p class="r_label">${order.orderAddressDTO.recipient} / ${order.orderAddressDTO.recipientPhone}</p>
+						<p class="l_label">받는 분</p><p class="r_label">${order.orderAddressDTO.recipient} / ${order.orderAddressDTO.recipientPhone}</p>
 					</div>
 					<div>
-						<p class="l_label">주소</p>
-						<p class="r_label">${order.orderAddressDTO.recipientAddress}</p>
+						<p class="l_label">주소</p><p class="r_label">${order.orderAddressDTO.recipientAddress}</p>
 					</div>
 					<div>
-						<p class="l_label">배송 메모</p>
-						<p class="r_label">${order.orderComment}</p>
+						<p class="l_label">배송 메모</p><p class="r_label">${order.orderComment}</p>
 					</div>
 				</div>
 				<div id="productInfo" class="wrap">

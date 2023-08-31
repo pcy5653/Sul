@@ -1,27 +1,34 @@
 function DaumPostcode(){
     new daum.Postcode({
         oncomplete:function(data){
-            var fullRoadAddr = data.roadAddress;
-            var extraRoadAddr = "";
-			
-            if(data.bname !== "" && /[동|로|가]$/g.test(data.bname)){
-                extraRoadAddr += data.bname;
+            let addr = "";
+            let extraAddr = "";
+            let fullAddr = "";
+            
+            if(data.userSelectedType === "R"){ // 도로명(R)
+            	addr = data.roadAddress;
+            }else { // 지번(J)
+            	addr = data.jibunAddress;
             }
-			
-            if(data.buildingName !== "" && data.apartment === 'Y'){
-               extraRoadAddr += (extraRoadAddr !== "" ? ', ' + data.buildingName : data.buildingName);
+            
+            if(data.userSelectedType === "R"){
+            	if(data.bname !== "" && /[동|로|가]$/g.test(data.bname)){
+            		extraAddr += data.bname;
+                }
+    			
+                if(data.buildingName !== "" && data.apartment === "Y"){
+                	extraAddr += (extraAddr !== "" ? ", " + data.buildingName : data.buildingName);
+                }
+    			
+                if(extraAddr !== ""){
+                	extraAddr = "(" + extraAddr + ")";
+                }
+                
+                fullAddr = extraAddr;
             }
-			
-            if(extraRoadAddr !== ""){
-                extraRoadAddr = '(' + extraRoadAddr + ')';
-            }
-			
-            if(fullRoadAddr !== ""){
-                fullRoadAddr += extraRoadAddr;
-            }
-			
-            // data.zonecode; // 우편번호
-            $("#addAddress #address").val(fullRoadAddr);
+            
+            fullAddr = "(" + data.zonecode + ")" + addr + fullAddr;
+            $("#addAddress #address").val(fullAddr);
         }
     }).open();
 };
