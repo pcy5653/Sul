@@ -49,7 +49,7 @@
 	      		</c:if>
 				<c:if test="${empty member}">
 	      		<li class="login"><a href="/member/login">로그인</a></li>
-	      		<li class="join"><a href="/member/join">회원가입</a></li>
+	      		<li class="join"><a href="/member/terms">회원가입</a></li>
 	      		</c:if>            </ul>
         </header>
         <br><br><br>

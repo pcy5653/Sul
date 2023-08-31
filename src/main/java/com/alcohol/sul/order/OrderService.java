@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.alcohol.sul.exception.PaymentAmountException;
 import com.alcohol.sul.member.MemberDTO;
-import com.alcohol.sul.product.ProductDTO;
+import com.alcohol.sul.main.product.ProductDTO;
 import com.alcohol.sul.util.PayService;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
