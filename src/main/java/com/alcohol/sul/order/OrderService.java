@@ -10,8 +10,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.alcohol.sul.exception.PaymentAmountException;
+import com.alcohol.sul.main.product.ProductDTO;
 import com.alcohol.sul.member.MemberDTO;
-import com.alcohol.sul.product.ProductDTO;
 import com.alcohol.sul.util.PayService;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -42,7 +42,7 @@ public class OrderService {
 	
 	@Transactional(rollbackFor = Exception.class)
 	public String paymentSuccess(MemberDTO memberDTO, OrderDTO orderDTO) throws Exception {
-		Integer totalProductAmount = 0;
+		Long totalProductAmount = 0L;
 		List<OrderProductDTO> orderProducts = orderDTO.getOrderProducts();
 		for(OrderProductDTO orderProductDTO : orderProducts) {
 			totalProductAmount += orderProductDTO.getProductDTO().getPrice() * orderProductDTO.getOrderCount();
@@ -53,7 +53,7 @@ public class OrderService {
 		Map<String, String> paymentInfo = payService.paymentInfo(access_token, orderDTO.getOrderNum());
 		
 		int amountPaid = Integer.parseInt(paymentInfo.get("amount"));
-		int totalPay = totalProductAmount + orderDTO.getOrderFee() - orderDTO.getUsedPoint(); // 실제 계산되어야 할 금액
+		long totalPay = totalProductAmount + orderDTO.getOrderFee() - orderDTO.getUsedPoint(); // 실제 계산되어야 할 금액
 		
 		System.out.println("ID : " + memberDTO.getId());
 		System.out.println("결제 금액 : " + amountPaid);

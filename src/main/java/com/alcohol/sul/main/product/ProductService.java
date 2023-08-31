@@ -139,5 +139,4 @@ public class ProductService {
 	public int setReviewStarUpdate(ProductDTO productDTO) throws Exception{
 		return productDAO.setReviewStarUpdate(productDTO);
 	}
-	
 }

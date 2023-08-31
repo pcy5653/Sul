@@ -1,6 +1,6 @@
 package com.alcohol.sul.order;
 
-import com.alcohol.sul.product.ProductDTO;
+import com.alcohol.sul.main.product.ProductDTO;
 
 public class OrderProductDTO {
 	private Long orderProductNum;

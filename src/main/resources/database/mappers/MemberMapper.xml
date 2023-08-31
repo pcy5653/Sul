@@ -41,4 +41,8 @@
  		DELETE FROM MEMBER WHERE ID=#{id}
  	</delete>
  	
+ 	<select id="getMember" parameterType="String" resultType="MemberDTO">
+		SELECT * FROM member WHERE id = #{value}
+	</select>
+	
   </mapper>

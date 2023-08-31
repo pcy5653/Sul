@@ -52,4 +52,8 @@ public class MemberDAO {
 	public int setTemporary(MemberDTO memberDTO) throws Exception{
 		return sqlSession.update(NAMESPACE+"setTemporary",memberDTO);
 	}
+	
+	public MemberDTO getMember(String id) {
+		return sqlSession.selectOne(NAMESPACE + "getMember", id);
+	}
 }
