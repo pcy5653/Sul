@@ -14,14 +14,14 @@ const sms = document.getElementById("smsCheck")
 
 btn.addEventListener("click", function(){
     // 1번
-    if(subject.value==""){
-        alert("제목은 필수 입니다.");
+    if(subject.value=="" && contents.value==""){
+        alert("제목과 내용은 필수 입니다.");
         subject.focus();
-        if(contents.value==""){
-            alert("내용을 작성해 주세요.")
-            contents.focus();
-        }
-    }else {
+        
+    }else if(subject.value=="" || contents.value==""){
+        alert("제목과 내용은 필수 입니다.")
+        subject.focus();
+    } else {
         frm.submit();
     }
 
