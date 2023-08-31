@@ -138,20 +138,21 @@ public class MemberController {
 		model.addAttribute("result", result);
 		return "commons/ajaxResult";
 	}
-
+	
+	//회원정보 정보업데이트
 	@PostMapping(value = "updateInfo")
 	public void setInfoUpdate(MemberDTO memberDTO, HttpSession session) throws Exception {
 		int result = memberService.setInfoUpdate(memberDTO);
 		
 	}
-
+	//회원정보 비번업데이트
 	@PostMapping(value = "updatePw")
 	public String setPwUpdate(MemberDTO memberDTO, HttpSession session) throws Exception {
 		int result = memberService.setPwUpdate(memberDTO);
 		session.invalidate();
 		return "redirect:./login";
 	}
-
+	//아이디찾기
 	@GetMapping(value = "findId")
 	public void findId() throws Exception {
 
@@ -168,7 +169,8 @@ public class MemberController {
 			model.addAttribute("id", memberDTO.getId());
 		}
 	}
-
+	
+	//비번찾기
 	@GetMapping(value = "findPw")
 	public void findPw() throws Exception {
 
@@ -176,7 +178,7 @@ public class MemberController {
 
 	@PostMapping(value = "findPw")
 	public void findPw(MemberDTO memberDTO, Model model) throws Exception {
-		model.addAttribute("phone","0"+memberDTO.getPhone());
+		model.addAttribute("phone",memberDTO.getPhone());
 		model.addAttribute("id", memberDTO.getId());
 		
 		memberDTO = memberService.findPw(memberDTO);
@@ -187,9 +189,11 @@ public class MemberController {
 			model.addAttribute("check", 0);
 			model.addAttribute("pw", memberDTO.getPw());
 		}
-	}
+	}	
 	
 	
+	
+	//회원탈퇴
 	@GetMapping(value="deleteMember")
 	public String deleteMember(MemberDTO memberDTO,HttpSession session) throws Exception{
 		memberDTO = (MemberDTO)session.getAttribute("member");

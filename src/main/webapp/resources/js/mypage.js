@@ -17,7 +17,7 @@ $("#infoBtn").click(function(){
     })
 })
 
-$("#qnaBtn").click(function(){
+$("#reviewBtn").click(function(){
     
     // fetch("/qna/list",{
     //     method:"get"

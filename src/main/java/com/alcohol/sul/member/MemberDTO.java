@@ -8,7 +8,7 @@ public class MemberDTO {
 	private Integer roleNum;
 	private String pw;
 	private String name;
-	private Long phone;
+	private String phone;
 	private String address;
 	private Date birth;
 	private Date memberDate;
@@ -39,10 +39,10 @@ public class MemberDTO {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Long getPhone() {
+	public String getPhone() {
 		return phone;
 	}
-	public void setPhone(Long phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 	public String getAddress() {
