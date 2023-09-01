@@ -1,6 +1,7 @@
 package com.alcohol.sul.admin;
 
 import java.util.List;
+import java.util.Random;
 
 import javax.servlet.http.HttpSession;
 
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.alcohol.sul.member.MemberDTO;
@@ -33,9 +35,13 @@ public class AdminController {
 	public void memberManagement(MemberDTO memberDTO,Model model,HttpSession session) throws Exception{
 		memberDTO = (MemberDTO)session.getAttribute("member");
 		List<MemberDTO> ar = adminService.getMemberList(memberDTO);
-		model.addAttribute("list", ar);	
+		List<MemberDTO> cr = adminService.getSmsCheckList(memberDTO);
+		model.addAttribute("list", ar);
+		model.addAttribute("checkList", cr);
 	}
 	
+	
+	//회원삭제
 	@GetMapping(value="adminMemberDelete")
 	public String adminMemberDelete(@RequestParam("id") String id,Model model,MemberDTO memberDTO) throws Exception{
 		memberDTO.setId(id);
@@ -43,6 +49,8 @@ public class AdminController {
 		model.addAttribute("result", result);
 		return "commons/ajaxResult";
 	}
+	
+	//포인트
 	@GetMapping("pointAdd")
 	public String pointAdd(Long point,String id,MemberDTO memberDTO,Model model) throws Exception{
 		memberDTO.setId(id);
@@ -52,4 +60,12 @@ public class AdminController {
 		model.addAttribute("result", result);
 		return "commons/ajaxResult";
 	}
+	
+	//단체문자
+		@RequestMapping(value = "/groupSMS", method = RequestMethod.GET)
+		public void phoneFw(@RequestParam("phone") String userPhoneNumber,String smsContents,String id,MemberDTO memberDTO,Model model) throws Exception { // 휴대폰 문자보내기
+			
+			memberService.certifiedPhoneNumber(userPhoneNumber, smsContents);
+			
+		}
 }

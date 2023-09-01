@@ -13,8 +13,15 @@ public class MemberDTO {
 	private Date birth;
 	private Date memberDate;
 	private Long point;
+	private Integer sms;
 	
 	
+	public Integer getSms() {
+		return sms;
+	}
+	public void setSms(Integer sms) {
+		this.sms = sms;
+	}
 	public String getId() {
 		return id;
 	}

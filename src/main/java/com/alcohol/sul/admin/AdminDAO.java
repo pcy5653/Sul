@@ -25,4 +25,8 @@ public class AdminDAO {
 	public MemberDTO getPoint(MemberDTO memberDTO) throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"getPoint", memberDTO);
 	}
+	
+	public List<MemberDTO> getSmsCheckList(MemberDTO memberDTO) throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getSmsCheckList", memberDTO);
+	}
 }

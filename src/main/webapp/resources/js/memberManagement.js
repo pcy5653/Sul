@@ -1,5 +1,6 @@
 
 
+//회원삭제
 for(let i=0;i<$(".btns").length;i++){
     $("#btn"+i).click(function(){
         let id=$("#memberId"+i).text();
@@ -20,6 +21,7 @@ for(let i=0;i<$(".btns").length;i++){
     })
 }
 
+//포인트
 for(let i=0;i<$(".pointBtns").length;i++){
     $("#pointBtn"+i).click(function(){
         let point=$("#point"+i).val();
@@ -37,5 +39,29 @@ for(let i=0;i<$(".pointBtns").length;i++){
         })
     })
 }
+
+
+//단체문자
+$("#smsBtn").click(function(){
+    let smsContents=$("#smsContents").val()
+    for(let i=0;i<$(".smsChecks").length;i++){
+        let phone = $("#phone"+i).text()
+        let id = $("#id"+i).text()
+        if($("#smsCheck"+i).is(':checked')){
+            $.ajax({
+                type:"get",
+                url:"/admin/groupSMS?phone="+phone+"&smsContents="+ smsContents + "&id="+id,
+                success:function(){
+                    alert("단체문자를 발송했습니다.");
+                }
+            })
+        }
+        
+    }    
+})
+
+
+
+
 
 

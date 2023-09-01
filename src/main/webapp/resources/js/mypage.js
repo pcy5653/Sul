@@ -11,6 +11,7 @@ $("#orderListBtn").click(function(){
 });
 
 
+//회원정보
 $("#infoBtn").click(function(){
     
     // fetch("info",{
@@ -30,6 +31,7 @@ $("#infoBtn").click(function(){
     })
 })
 
+//작성리뷰(현재는 qna로 돼있음)
 $("#reviewBtn").click(function(){
     
     // fetch("/qna/list",{

@@ -128,7 +128,7 @@
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                                DataTable Example
+                                회원목록
                             </div>
                             <div class="card-body">
                                 <table id="datatablesSimple">
@@ -177,6 +177,60 @@
                                     </tbody>
                                 </table>
                             </div>
+
+                        </div>
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-table me-1"></i>
+                                SMS수신동의회원목록
+                            </div>
+                            <div class="card-body">
+                                <table id="datatablesSimple">
+                                    <thead>
+                                        <tr>
+                                            <th>아이디</th>
+                                            <th>이름</th>
+                                            <th>권한</th>
+                                            <th>휴대폰번호</th>
+                                            <th>주소</th>
+                                            <th>생년월일</th>
+                                            <th>가입날짜</th>
+                                            <th>SMS수신여부</th>
+                                            <th>SMS발송체크</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>아이디</th>
+                                            <th>이름</th>
+                                            <th>권한</th>
+                                            <th>휴대폰번호</th>
+                                            <th>주소</th>
+                                            <th>생년월일</th>
+                                            <th>가입날짜</th>
+                                            <th>SMS수신여부</th>
+                                            <th>SMS발송체크</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        <c:forEach items="${checkList}" var="checkList" varStatus="i">
+                                            <tr>
+                                                    <td id="memberId${i.index}">${checkList.id}</td>
+                                                    <td>${checkList.name}</td>
+                                                    <td><c:if test="${checkList.roleNum==1}">관리자</c:if><c:if test="${checkList.roleNum==0}">유저</c:if></td>
+                                                    <td id="phone${i.index}">${checkList.phone}</td>
+                                                    <td>${checkList.address}</td>
+                                                    <td>${checkList.birth}</td>
+                                                    <td>${checkList.memberDate}</td>
+                                                    <td>O</td>
+                                                    <td><input type="checkbox" class="smsChecks" id="smsCheck${i.index}"></td>
+                                            </tr>
+                                        </c:forEach>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <textarea name="smsContents" id="smsContents" cols="10" rows="3" width="50%"></textarea>
+                            <button type="button" id="smsBtn">단체문자발송</button>
                         </div>
                     </div>
                 </main>
