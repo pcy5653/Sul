@@ -142,8 +142,7 @@
                                             <th>생년월일</th>
                                             <th>가입날짜</th>
                                             <th>포인트</th>
-                                            <th>포인트주기</th>
-                                            <th>탈퇴</th>
+                                            <th>선택</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -155,8 +154,8 @@
                                             <th>주소</th>
                                             <th>생년월일</th>
                                             <th>가입날짜</th>
-                                            <th>포인트주기</th>
-                                            <th>탈퇴</th>
+                                            <th>선택</th>
+                                            
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -170,12 +169,14 @@
                                                 <td>${member.birth}</td>
                                                 <td>${member.memberDate}</td>
                                                 <td>${member.point}</td>
-                                                <td><input type="text" name="point" id="point${i.index}"><button type="button" class="pointBtns" id="pointBtn${i.index}">포인트주기</button></td>
-                                                <td><button type="button" class="btns" id="btn${i.index}">탈퇴</button></td>
+                                                <td><input type="checkbox" class="memberChecks" id="memberCheck${i.index}"></td>
                                             </tr>
                                         </c:forEach>
                                     </tbody>
                                 </table>
+                                <input type="text" name="point" id="point">
+                                <button type="button" class="pointBtns" id="pointBtn">포인트지급</button><br>
+                                <button type="button" class="btns" id="deleteBtn">탈퇴</button>
                             </div>
 
                         </div>
@@ -196,7 +197,7 @@
                                             <th>생년월일</th>
                                             <th>가입날짜</th>
                                             <th>SMS수신여부</th>
-                                            <th>SMS발송체크</th>
+                                            <th>SMS발송대상</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -209,7 +210,7 @@
                                             <th>생년월일</th>
                                             <th>가입날짜</th>
                                             <th>SMS수신여부</th>
-                                            <th>SMS발송체크</th>
+                                            <th>SMS발송대상</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -222,7 +223,7 @@
                                                     <td>${checkList.address}</td>
                                                     <td>${checkList.birth}</td>
                                                     <td>${checkList.memberDate}</td>
-                                                    <td>O</td>
+                                                    <td>수신동의</td>
                                                     <td><input type="checkbox" class="smsChecks" id="smsCheck${i.index}"></td>
                                             </tr>
                                         </c:forEach>
