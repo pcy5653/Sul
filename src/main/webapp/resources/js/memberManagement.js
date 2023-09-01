@@ -47,6 +47,7 @@ $("#smsBtn").click(function(){
     for(let i=0;i<$(".smsChecks").length;i++){
         let phone = $("#phone"+i).text()
         let id = $("#id"+i).text()
+        //체크된사람만 전송
         if($("#smsCheck"+i).is(':checked')){
             $.ajax({
                 type:"get",

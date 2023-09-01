@@ -43,7 +43,7 @@ $("#reviewBtn").click(function(){
     // )
     $.ajax({
         type:"get",
-        url:"/qna/list",
+        url:"/qna/list",    
         dataType:'html',
         success:function(data){
             $("#page").html(data)
@@ -110,5 +110,4 @@ $(document).on("click","#delBtn",function(){
     alert("회원탈퇴 되었습니다.");
     location.href="/member/deleteMember";
 })
-
 
