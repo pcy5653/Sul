@@ -155,4 +155,7 @@ public class ProductService {
 		productDAO.deleteBasket(basketDTO);
 	}
 	
+	public int updateBasket(BasketDTO basketDTO)throws Exception{
+		return productDAO.updateBasket(basketDTO);
+	}
 }

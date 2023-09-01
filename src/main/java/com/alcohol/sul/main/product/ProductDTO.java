@@ -21,8 +21,16 @@ public class ProductDTO {
 	private List<ProductImgDTO> imgDTOs;
 	private List<ReviewDTO> reviews;
 	
+	private int productCount;
 	
 	
+	
+	public int getProductCount() {
+		return productCount;
+	}
+	public void setProductCount(int productCount) {
+		this.productCount = productCount;
+	}
 	public List<ReviewDTO> getReviews() {
 		return reviews;
 	}

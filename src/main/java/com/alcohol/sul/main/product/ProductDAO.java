@@ -116,5 +116,8 @@ public class ProductDAO {
 	public void deleteBasket(BasketDTO basketDTO)throws Exception{
 		sqlSession.delete(NAMESPACE+"deleteBasket", basketDTO);
 	}
-
+	
+	public int updateBasket(BasketDTO basketDTO)throws Exception{
+		return sqlSession.update(NAMESPACE+"updateBasket", basketDTO);
+	}
 }

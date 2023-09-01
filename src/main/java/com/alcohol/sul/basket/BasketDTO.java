@@ -1,18 +1,20 @@
 package com.alcohol.sul.basket;
 
-public class BasketDTO {
+import com.alcohol.sul.main.util.ImgFileDTO;
+
+public class BasketDTO extends ImgFileDTO{
 
 	private Long basketNum;
 	private String id;
 	private Long productNum;
-	private int productCount;
+	private Long productCount;
 	
 	// product
 	
 	private String productName;
 	private Long price;
-	
-	
+
+
 	public Long getBasketNum() {
 		return basketNum;
 	}
@@ -31,10 +33,10 @@ public class BasketDTO {
 	public void setProductNum(Long productNum) {
 		this.productNum = productNum;
 	}
-	public int getProductCount() {
+	public Long getProductCount() {
 		return productCount;
 	}
-	public void setProductCount(int productCount) {
+	public void setProductCount(Long productCount) {
 		this.productCount = productCount;
 	}
 	public String getProductName() {
