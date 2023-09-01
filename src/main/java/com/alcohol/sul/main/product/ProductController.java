@@ -11,11 +11,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-
+import com.alcohol.sul.basket.BasketDTO;
 import com.alcohol.sul.main.util.PagerK;
+import com.alcohol.sul.member.MemberDTO;
 
 @Controller
 @RequestMapping("product/*")
@@ -127,4 +130,61 @@ public class ProductController {
 		return "redirect:./detail?productNum=" + productDTO.getProductNum();
 	}
 
+	//장바구니
+	
+	@ResponseBody
+	@RequestMapping(value = "/basketList/addBasket", method = RequestMethod.POST)
+	public int addBasket(BasketDTO basketDTO, HttpSession session)throws Exception{
+		
+		int result = 0;
+		
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		
+		if(memberDTO!=null) {
+			basketDTO.setId(memberDTO.getId());
+			productService.addBasket(basketDTO);
+			result = 1;
+		}
+		
+		return result;
+		
+	}
+	
+	//장바구니 목록
+	@RequestMapping(value = "/basketList", method = RequestMethod.GET)
+	public void basketList(HttpSession session, Model model)throws Exception{
+		
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		String id = memberDTO.getId();
+		
+		List<BasketDTO> list = productService.basketList(id);
+		
+		model.addAttribute("basketList", list);
+	}
+	
+	//장바구니 삭제
+	@ResponseBody
+	@RequestMapping(value = "/basketList/deleteBasket", method = RequestMethod.POST)
+	public int deleteBasket(HttpSession session, @RequestParam(value = "chbox[]") List<String> chArr, BasketDTO basketDTO)throws Exception{
+		
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		String id = memberDTO.getId();
+		
+		int result = 0;
+		Long basketNum = 0L;
+		
+		if(memberDTO != null) {
+			basketDTO.setId(id);
+			
+			for(String i : chArr) {
+				basketNum = Long.parseLong(i);
+				basketDTO.setBasketNum(basketNum);
+				productService.deleteBasket(basketDTO);
+			}
+			result = 1;
+		}
+		
+		return result;	
+	}
+	
 }

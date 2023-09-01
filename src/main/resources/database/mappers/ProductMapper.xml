@@ -185,5 +185,39 @@
   		WHERE PRODUCTNUM = #{productNum}
   	</update>
 
+	<!-- 장바구니 -->
+	
+	<select id="getSequence" resultType="Long">
+  	SELECT BASKET_SEQ.NEXTVAL FROM DUAL
+	</select>
+	
+	<!-- 장바구니 추가 -->
+
+	<insert id="addBasket" parameterType="com.alcohol.sul.basket.BasketDTO">
+		<selectKey keyProperty="basketNum" resultType="Long" order="BEFORE">
+	  		SELECT BASKET_SEQ.NEXTVAL FROM DUAL
+	  	</selectKey>
+		INSERT INTO BASKET (BASKETNUM, ID, PRODUCTNUM, PRODUCTCOUNT)
+		VALUES(#{basketNum}, #{id}, #{productNum}, #{productCount})
+	</insert>
+	
+	<!-- 장바구니 리스트 -->
+	<select id="basketList" resultType="com.alcohol.sul.basket.BasketDTO">
+		SELECT B.*, P.*
+		FROM BASKET B INNER JOIN PRODUCT P
+		ON B.PRODUCTNUM=P.PRODUCTNUM
+		WHERE B.PRODUCTNUM=P.PRODUCTNUM
+		AND B.ID=#{id}
+	</select>
+	
+	<!-- 삭제 -->
+	<delete id="deleteBasket" parameterType="com.alcohol.sul.basket.BasketDTO">
+		DELETE BASKET
+		WHERE BASKETNUM = #{basketNum}
+		AND ID=#{id}
+	</delete>
+
+	<!-- 수량 업데이트 -->
+
   	
   </mapper>

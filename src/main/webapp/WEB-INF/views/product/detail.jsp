@@ -11,8 +11,10 @@
 </head>
 <body>
 	<c:import url="../temp/header.jsp"></c:import>
-            
-                
+    <section>        
+         <form role="form" method="post">
+            <input type="hidden" class="productNum" value="${dto.productNum}" />
+        </form>       
                 
 		<h1>제품 상세정보 페이지</h1>
 		
@@ -28,7 +30,16 @@
 		<h3>${dto.score}</h3>
 		<h3>${dto.savePoint}</h3>
  	
-	 	
+	 	<br>
+	 	<div class="basketStock">
+            <span>수량</span>
+            <button type="button" class="plus">+</button>
+            <input type="number" class="numBox" min="1" max="${dto.stock}" value="1" readonly="readonly">
+            <button type="button" class="minus">-</button>
+        </div><br>
+	 	<div class="addToBasket">
+            <button type="button" class="addBasket_btn">장바구니</button>
+        </div>
 	 	<c:forEach items="${dto.imgDTOs}" var="f">
 	 		<img alt="" style="width:300px; height:300px;" src="/resources/upload/product/${f.imgName}">
 	 	</c:forEach>
@@ -116,7 +127,63 @@
 				}
 			});
 		}
-
+		
 		</script>
+		<!-- 수량, 장바구니 script -->
+		<script>
+        $(".plus").click(function () {
+            let num = $(".numBox").val();
+            let plusNum = Number(num) + 1;
+            
+            if (plusNum >= ${dto.stock}) {
+                $(".numBox").val(num);
+            } else {
+                $(".numBox").val(plusNum);
+            }
+        });
+
+        $(".minus").click(function () {
+            let num = $(".numBox").val();
+            let minusNum = Number(num) - 1;
+            
+            if (minusNum <= 0) {
+                $(".numBox").val(num);
+            } else {
+                $(".numBox").val(minusNum);
+            }
+        });
+
+        $(".addBasket_btn").click(function () {
+            let productNum = $(".productNum").val();
+            let productCount = $(".numBox").val();
+
+            let data = {
+                productNum: productNum,
+                productCount: productCount
+            };
+          $.ajax({
+                url: "/product/basketList/addBasket",
+                type: "post",
+                data: data,
+                success: function (result) {
+             
+                    if (result === 1) {
+                        alert("장바구니에 담기 성공했습니다.");
+                        $(".numBox").val("1");
+                    } else {
+                        alert("회원만 사용할 수 있습니다.");
+                        $(".numBox").val("1");
+                    }
+                },
+                error: function () {
+                    alert("장바구니에 담을 수 없습니다.");
+                    console.log(typeof productCount);
+                }
+
+            }); 
+        });
+    </script>
+		
+		
 </body>
 </html>
