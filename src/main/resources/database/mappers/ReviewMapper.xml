@@ -2,105 +2,130 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
-  <mapper namespace="com.alcohol.sul.main.product.review.ReviewDAO">
-  
- 	 <select id="getReviewTotal" parameterType="ReviewDTO" resultType="Long">
-  		SELECT COUNT(REVIEWNUM) FROM REVIEW WHERE PRODUCTNUM = #{productNum}
-  	 </select>
-  	 
-  	 <select id="getReviewStarAvg" parameterType="ReviewDTO" resultType="Double">
-  		SELECT AVG(REVIEWSTAR) FROM REVIEW WHERE PRODUCTNUM = #{productNum}
-  	 </select>
 
-  	<select id="getReviewList" parameterType="Map" resultMap="getListResult">
-         	SELECT * FROM 
-  			    (SELECT ROWNUM R, B.* FROM
-  				(SELECT * FROM REVIEW RV LEFT OUTER JOIN REVIEWFILE RF
-  			     ON RV.REVIEWNUM = RF.REVIEWNUM
-  					WHERE RV.PRODUCTNUM = #{review.productNum}
-  					ORDER BY RV.REVIEWNUM DESC) 
-  			B 
-  			) 
-  		WHERE R BETWEEN #{pager.startRow} AND #{pager.lastRow}
-  	</select>
-  	
-  		<resultMap type="ReviewDTO" id="getListResult">
-  		<id column="REVIEWNUM" property="reviewNum"/>
-  		<result column="ID" property="id"/>
-   		<result column="PRODUCTNUM" property="productNum"/> 		
-   		<result column="REVIEWCONTENTS" property="reviewContents"/> 		
-  		<result column="REVIEWSTAR" property="reviewStar"/>
-   		<result column="REVIEWTIME" property="reviewTime"/>
-  		
-  		<!-- 1대 N 관계 -->
-  		<collection property="reviewFileDTOs" javaType="List" ofType="ReviewFileDTO">
-  			<id column="FILENUM" property="fileNum"/>
-  			<result column="REVIEWNUM" property="reviewNum"/>
-  			<result column="FILENAME" property="fileName"/>
-  			<result column="ORIGINALNAME" property="originalName"/>
-  		</collection>
-  		
-  	</resultMap>
-  	
-  	<insert id="setReviewAdd" parameterType="ReviewDTO">
-  		<selectKey keyProperty="reviewNum" resultType="Long" order="BEFORE">
-  			SELECT REVIEW_SEQ.NEXTVAL FROM DUAL 
-  		</selectKey>
-  		INSERT INTO REVIEW 
-  			VALUES(#{reviewNum}, #{id}, #{productNum}, #{reviewContents},#{reviewStar}, SYSDATE)
-  	</insert>
-  	
-  	<delete id="setReviewDelete" parameterType="ReviewDTO">
-  		DELETE REVIEW WHERE REVIEWNUM = #{reviewNum}
-  	</delete>
-    
-  	<insert id="setReviewFileAdd" parameterType="ReviewFileDTO">
-  		INSERT INTO REVIEWFILE VALUES 
-  		(REVIEWFILE_SEQ.NEXTVAL, #{reviewNum}, #{fileName}, #{originalName})
-  	</insert>
- 	
-  	 <select id="getReviewDetail" resultMap="getDetailResult" parameterType="ReviewDTO">
-  		SELECT R.*, RF.* 
-  		FROM REVIEW R
-  			LEFT OUTER JOIN REVIEWFILE RF
-  			ON(R.REVIEWNUM = RF.REVIEWNUM)
-  		 WHERE R.REVIEWNUM = #{reviewNum} 
-  	</select>
-  	
-  	<resultMap type="ReviewDTO" id="getDetailResult">
-  		<id column="REVIEWNUM" property="reviewNum"/>
-  		<result column="ID" property="id"/>
-   		<result column="PRODUCTNUM" property="productNum"/> 		
-   		<result column="REVIEWCONTENTS" property="reviewContents"/> 		
-  		<result column="REVIEWSTAR" property="reviewStar"/>
-   		<result column="REVIEWTIME" property="reviewTime"/>
-  		
-  		<!-- 1대 N 관계 -->
-  		<collection property="reviewFileDTOs" javaType="List" ofType="ReviewFileDTO">
-  			<id column="FILENUM" property="fileNum"/>
-  			<result column="REVIEWNUM" property="reviewNum"/>
-  			<result column="FILENAME" property="fileName"/>
-  			<result column="ORIGINALNAME" property="originalName"/>
-  		</collection>
-  		
-  	</resultMap>
-  	
-  	<update id="setReviewUpdate" parameterType="ReviewDTO">
-  		UPDATE REVIEW SET 
-  		REVIEWCONTENTS = #{reviewContents}, REVIEWSTAR = #{reviewStar},	REVIEWTIME = SYSDATE 
-  		WHERE REVIEWNUM = #{reviewNum}
-  	</update>
-  	
-  	<delete id="setReviewFileDelete" parameterType="ReviewFileDTO">
-		DELETE REVIEWFILE WHERE FILENUM = #{fileNum}
-	</delete>
-	
-	<select id="getReviewFileDetail" parameterType="ReviewFileDTO" resultType="ReviewFileDTO">
-		SELECT FILENUM, FILENAME FROM REVIEWFILE WHERE FILENUM = #{fileNum} 
+<mapper namespace="com.alcohol.sul.main.product.review.ReviewDAO">
+
+	<select id="getReviewTotal" parameterType="ReviewDTO"
+		resultType="Long">
+		SELECT COUNT(REVIEWNUM) FROM REVIEW WHERE PRODUCTNUM = #{productNum}
 	</select>
-  
-  </mapper>
+
+	<select id="getReviewStarAvg" parameterType="ReviewDTO"
+		resultType="Double">
+		SELECT AVG(REVIEWSTAR) FROM REVIEW WHERE PRODUCTNUM = #{productNum}
+	</select>
+
+	<select id="getReviewList" parameterType="Map"
+		resultMap="getListResult">
+		SELECT * FROM
+		(SELECT ROWNUM R, B.* FROM
+		(SELECT * FROM REVIEW RV LEFT OUTER JOIN REVIEWFILE RF
+		ON RV.REVIEWNUM = RF.REVIEWNUM
+		WHERE RV.PRODUCTNUM = #{review.productNum}
+		ORDER BY RV.REVIEWNUM DESC)
+		B
+		)
+		WHERE R BETWEEN #{pager.startRow} AND #{pager.lastRow}
+	</select>
+
+	<resultMap type="ReviewDTO" id="getListResult">
+		<id column="REVIEWNUM" property="reviewNum" />
+		<result column="ID" property="id" />
+		<result column="PRODUCTNUM" property="productNum" />
+		<result column="REVIEWCONTENTS" property="reviewContents" />
+		<result column="REVIEWSTAR" property="reviewStar" />
+		<result column="REVIEWTIME" property="reviewTime" />
+
+		<!-- 1대 N 관계 -->
+		<collection property="reviewFileDTOs" javaType="List"
+			ofType="ReviewFileDTO">
+			<id column="FILENUM" property="fileNum" />
+			<result column="REVIEWNUM" property="reviewNum" />
+			<result column="FILENAME" property="fileName" />
+			<result column="ORIGINALNAME" property="originalName" />
+		</collection>
+
+	</resultMap>
+
+	<insert id="setReviewAdd" parameterType="ReviewDTO">
+		<selectKey keyProperty="reviewNum" resultType="Long"
+			order="BEFORE">
+			SELECT REVIEW_SEQ.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO REVIEW
+		VALUES(#{reviewNum}, #{id}, #{productNum}, #{reviewContents},#{reviewStar}, SYSDATE)
+	</insert>
+
+	<delete id="setReviewDelete" parameterType="ReviewDTO">
+		DELETE REVIEW WHERE REVIEWNUM = #{reviewNum}
+	</delete>
+
+	<insert id="setReviewFileAdd" parameterType="ReviewFileDTO">
+		INSERT INTO REVIEWFILE VALUES
+		(REVIEWFILE_SEQ.NEXTVAL, #{reviewNum}, #{fileName}, #{originalName})
+	</insert>
+
+	<select id="getReviewDetail" resultMap="getDetailResult"
+		parameterType="ReviewDTO">
+		SELECT R.*, RF.*
+		FROM REVIEW R
+		LEFT OUTER JOIN REVIEWFILE RF
+		ON(R.REVIEWNUM = RF.REVIEWNUM)
+		WHERE R.REVIEWNUM = #{reviewNum}
+	</select>
+
+	<resultMap type="ReviewDTO" id="getDetailResult">
+		<id column="REVIEWNUM" property="reviewNum" />
+		<result column="ID" property="id" />
+		<result column="PRODUCTNUM" property="productNum" />
+		<result column="REVIEWCONTENTS" property="reviewContents" />
+		<result column="REVIEWSTAR" property="reviewStar" />
+		<result column="REVIEWTIME" property="reviewTime" />
+
+		<!-- 1대 N 관계 -->
+		<collection property="reviewFileDTOs" javaType="List"
+			ofType="ReviewFileDTO">
+			<id column="FILENUM" property="fileNum" />
+			<result column="REVIEWNUM" property="reviewNum" />
+			<result column="FILENAME" property="fileName" />
+			<result column="ORIGINALNAME" property="originalName" />
+		</collection>
+
+	</resultMap>
+
+	<update id="setReviewUpdate" parameterType="ReviewDTO">
+		UPDATE REVIEW SET
+		REVIEWCONTENTS = #{reviewContents}, REVIEWSTAR = #{reviewStar}, REVIEWTIME = SYSDATE
+		WHERE REVIEWNUM = #{reviewNum}
+	</update>
+
+	<delete id="setReviewFileDelete" parameterType="ReviewFileDTO">
+		DELETE REVIEWFILE
+		WHERE FILENUM = #{fileNum}
+	</delete>
+
+	<select id="getReviewFileDetail" parameterType="ReviewFileDTO"
+		resultType="ReviewFileDTO">
+		SELECT FILENUM, FILENAME FROM REVIEWFILE WHERE FILENUM =
+		#{fileNum}
+	</select>
+	<select id="getMyReviewList" parameterType="Map"
+		resultMap="getListResult">
+		SELECT * FROM
+		(SELECT ROWNUM R, B.* FROM
+		(SELECT * FROM REVIEW RV LEFT OUTER JOIN REVIEWFILE RF
+		ON RV.REVIEWNUM = RF.REVIEWNUM
+		WHERE RV.ID = #{review.id}
+		ORDER BY RV.REVIEWNUM DESC)
+		B
+		)
+		WHERE R BETWEEN #{pager.startRow} AND #{pager.lastRow}
+	</select>
+	<select id="getMyReviewTotal" parameterType="ReviewDTO"
+		resultType="Long">
+		SELECT COUNT(REVIEWNUM) FROM REVIEW WHERE ID=#{id}
+	</select>
+</mapper>
   
   
   

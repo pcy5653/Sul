@@ -14,13 +14,7 @@ $("#orderListBtn").click(function(){
 //회원정보
 $("#infoBtn").click(function(){
     
-    // fetch("info",{
-    //     method:"get"
-    // })
-    // .then((response)=> response.text())
-    // .then((r)=>
-    //     $("#page").html(r)
-    // )
+    
     $.ajax({
         type:"get",
         url:"info",
@@ -31,19 +25,13 @@ $("#infoBtn").click(function(){
     })
 })
 
-//작성리뷰(현재는 qna로 돼있음)
+//작성리뷰
 $("#reviewBtn").click(function(){
     
-    // fetch("/qna/list",{
-    //     method:"get"
-    // })
-    // .then((response)=> response.text())
-    // .then((r)=>
-    //     $("#page").html(r)
-    // )
+    
     $.ajax({
         type:"get",
-        url:"/qna/list",    
+        url:"/product/myReviewList",    
         dataType:'html',
         success:function(data){
             $("#page").html(data)

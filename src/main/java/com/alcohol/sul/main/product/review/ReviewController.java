@@ -56,4 +56,13 @@ public class ReviewController {
 		
 		return "redirect:./list";
 	}
+	
+	@GetMapping("myReviewList")
+	public void getMyReviewList(ReviewDTO reviewDTO, PagerK pager, Model model,HttpSession session)throws Exception{
+		pager.setPerPage(2L);
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		reviewDTO.setId(memberDTO.getId());
+		List<ReviewDTO> ar = reviewService.getMyReviewList(pager, reviewDTO);			
+		model.addAttribute("myReviewList", ar);
+	}
 }
