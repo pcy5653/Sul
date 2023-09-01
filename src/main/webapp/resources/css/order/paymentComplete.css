@@ -16,10 +16,14 @@
 
 #buyerInfo .l_label{
 	width:25%;
+	vertical-align:middle;
 }
 
 #buyerInfo .r_label{
+	width:75%;
 	float:none;
+	vertical-align:middle;
+	color:#595959;
 }
 
 #buttons{

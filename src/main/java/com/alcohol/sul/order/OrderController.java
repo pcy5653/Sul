@@ -17,9 +17,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alcohol.sul.main.product.ProductDTO;
 import com.alcohol.sul.member.MemberDTO;
 import com.alcohol.sul.member.MemberService;
-import com.alcohol.sul.main.product.ProductDTO;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Controller

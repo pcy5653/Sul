@@ -102,5 +102,4 @@ public class ProductDAO {
 	public int setReviewStarUpdate(ProductDTO productDTO) throws Exception{
 		return sqlSession.update(NAMESPACE + "setReviewStarUpdate", productDTO);
 	}
-	
 }

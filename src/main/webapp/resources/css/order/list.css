@@ -31,3 +31,8 @@
 	font-style:normal;
 	color:rgb(178, 178, 178);
 }
+
+#notExist{
+	text-align:center;
+	font-weight:500;
+}

@@ -15,7 +15,6 @@
                 
                 
 		<h1>제품 상세정보 페이지</h1>
-		
 		<h3>${dto.productName}</h3>
 		<h3>${dto.price}</h3>
 		<h3>${dto.kind}</h3>
@@ -52,6 +51,7 @@
 	 	<a class="btn btn-danger" href="./list/soju">증류주 목록</a>	   	 	
 		</c:if>
 		<a class="btn btn-danger" href="./reviewAdd?productNum=${dto.productNum}">리뷰작성</a>
+		<button class="btn btn-danger" onclick="buyNow()">바로 구매</button>
 		<hr>
 		
 	<!-- 댓글 -->
@@ -112,11 +112,21 @@
 				
 				},
 				error:function(){
-					alert("관리자에게 문의")
+					alert("관리자에게 문의");
 				}
 			});
 		}
-
-		</script>
+		
+		// '바로 구매'
+		function buyNow(){
+			let form = $("<form></form>");
+			form.attr("method", "POST");		
+			form.attr("action", "../order/")
+			form.append($("<input />", {type:"hidden", name:"orderProducts[0].productNum", value:${dto.productNum}}));
+			form.append($("<input />", {type:"hidden", name:"orderProducts[0].orderCount", value:1}));
+			form.appendTo("body");
+			form.submit();
+		}
+	</script>
 </body>
 </html>

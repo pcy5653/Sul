@@ -109,5 +109,9 @@ public class MemberService {
 	public int deleteMember(MemberDTO memberDTO) throws Exception{
 		return memberDAO.deleteMember(memberDTO);
 	}
+	
+	public MemberDTO getMember(String id) {
+		return memberDAO.getMember(id);
+	}
 }
 
