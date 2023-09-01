@@ -125,7 +125,7 @@
                                 .
                             </div>
                         </div>
-                        <div class="card mb-4">
+                        <div class="card mb-4 col-xl-7">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
                                 회원목록
@@ -180,7 +180,7 @@
                             </div>
 
                         </div>
-                        <div class="card mb-4">
+                        <div class="card mb-4 col-xl-7">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
                                 SMS수신동의회원목록
@@ -197,7 +197,7 @@
                                             <th>생년월일</th>
                                             <th>가입날짜</th>
                                             <th>SMS수신여부</th>
-                                            <th>SMS발송대상</th>
+                                            <th>선택</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -210,7 +210,7 @@
                                             <th>생년월일</th>
                                             <th>가입날짜</th>
                                             <th>SMS수신여부</th>
-                                            <th>SMS발송대상</th>
+                                            <th>선택</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
