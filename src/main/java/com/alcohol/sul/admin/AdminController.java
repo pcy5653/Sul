@@ -31,6 +31,11 @@ public class AdminController {
 		model.addAttribute("list", ar);	
 	}
 	
+	@GetMapping(value = "salesRevenue")
+	public void salesRevenue() throws Exception{
+		
+	}
+	
 	@GetMapping(value="memberManagement")
 	public void memberManagement(MemberDTO memberDTO,Model model,HttpSession session) throws Exception{
 		memberDTO = (MemberDTO)session.getAttribute("member");
