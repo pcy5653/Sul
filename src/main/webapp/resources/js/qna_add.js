@@ -30,13 +30,9 @@ btn.addEventListener("click", function(){
     let yesVal = yes.value;
     let noVal = no.value;
     if (yes.checked) {
-        console.log(yesVal);
-        console.log(noVal);
 
     } else {
         yesVal = 0; 
         noVal = 1;// 체크가 안 되었을 때
-        console.log(yesVal);
-        console.log(noVal);
     }
 });

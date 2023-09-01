@@ -44,10 +44,21 @@ const question = document.getElementById('question');
 const comment = document.getElementById('comment');
 const q = question.getAttribute("data-step");
 const content = question.getAttribute("data-con");
-const vv = question.getAttribute("data-num")
+const pnum = question.getAttribute("data-num");
 const com = comment.getAttribute("data-step");
 
-console.log(vv);
+
+// file test
+const file = document.getElementById("file");
+const files = file.getAttribute("data-file");
+
+
+console.log(pnum);
+console.log(files); // 배열 2개
+// for(f of files){
+//     console.log(f);
+// }
+
 
 if(q != com){
 //     // text
@@ -55,66 +66,12 @@ if(q != com){
     i = i.concat('<tr><th>고객님의 질문</th></tr>');
     i = i.concat('<tr><td>'+content+'</td></tr>');
     i = i.concat('</table>');
+
+    // i = i.concat('<c:forEach items="'+files+'"'+' var ="f">');
+    // i = i.concat('<img src="/resources/upload/qna/'+files+'" class="fileImg"></img>')
+    // i = i.concat('</c:forEach>');
     
     question.innerHTML = i;
     
-    
-//     // file
-//     // i = i.concat('<c:forEach items="${dto.qnaDTO.fileDTOs} var ="f">');
-//     // i = i.concat('<img src="/resources/upload/qna/${f.fileName}" class="fileImg" data-file-num="${f.fileNum}"></img>');
-//     // i = i.concat('</c:forEach>');
-
-    
-//     fetch("/qna/detail?num="+vv, {
-//         method:"get"
-//     })
-//     .then((response) => response.text())
-//     .then((data) => {
-//         //console.log(data);
-
-//         // const pf = document.createElement('div');
-//         // pf.id = 'files';
-//         // console.log(pf);
-
-//         // data.forEach( f => {
-//         //     const img = document.createElement('img');
-//         //     img.src = '/resources/upload/qna/${f.fileName}';
-//         //     img.className = 'fileImg';
-//         //     img.setAttribute('data-file-num', f.fileNum);
-//         //     pf.appendChild(img);
-//         // });
-
-//         // for(f of r){
-//         //     const img = document.createElement('img');
-//         //     img.src = '/resources/upload/qna/${f.fileName}';
-//         //     img.className = 'fileImg';
-//         //     img.setAttribute('data-file-num', f.fileNum);
-//         //     pf.appendChild(img);
-//         // }
-
-//         // question.appendChild(pf);
-//         // console.log(question);
-//     });
-
-    //  function getDetail (vv){
-    //      $.ajax({
-    //          type:'GET',
-    //          url:'/qna/detail',
-    //          data:{
-    //              num : vv
-    //          },
-    //          dataType:'text',
-    //          success: function(result){
-    //              $('#question').html(result);
-    //              console.log(result);
-    //              console.log(typeof(result));
-    //          },
-    //          error: function(result){
-    //              console.log(result)
-    //          }
-    //      })
-    //  }
-
-    //  getDetail(vv);
 }
 

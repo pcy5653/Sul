@@ -48,6 +48,10 @@ public class QnaService implements BoardService {
 	public BoardDTO getDetail(BoardDTO boardDTO) throws Exception {
 		return qnaDAO.getDetail(boardDTO);
 	}
+	
+	public List<QnaFileDTO> getReplyDetailFiles (QnaDTO qnaDTO)throws Exception{
+		return qnaDAO.getReplyDetailFiles(qnaDTO); 
+	}
 
 	@Override
 	public int setAdd(BoardDTO boardDTO, MultipartFile[] files, HttpSession session) throws Exception {		
@@ -126,6 +130,7 @@ public class QnaService implements BoardService {
 		
 		pDTO = qnaDAO.getDetail(pDTO);
 		QnaDTO p = (QnaDTO)pDTO;
+		
 		qnaDTO.setRef(p.getRef());
 		qnaDTO.setStep(p.getStep()+1);
 		qnaDTO.setDepth(p.getDepth()+1);
@@ -169,7 +174,7 @@ public class QnaService implements BoardService {
 	    params.put("to", userPhoneNumber);    // 수신전화번호
 	    params.put("from", "01091957075");    // 발신전화번호. 테스트시에는 발신,수신 둘다 본인 번호로 하면 됨
 	    params.put("type", "SMS");
-	    params.put("text", "고객님의 "+"<"+subject+">"+" 글에 답글이 달렸습니다. 확인해보세요!"); // 문자 내용 입력
+	    params.put("text", "고객님의 "+"<"+subject+">"+" 질문에 답글이 달렸습니다. 확인해보세요!"); // 문자 내용 입력
 	    params.put("app_version", "test app 1.2"); // application name and version
 
 	    try {
@@ -194,4 +199,6 @@ public class QnaService implements BoardService {
 		
 		return qnaDAO.getManagerList(pager);
 	}
+
+	
 }

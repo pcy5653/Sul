@@ -25,6 +25,8 @@
 			<div id="question" data-step="${dto.qnaDTO.step}" data-con="${dto.qnaDTO.contents}" data-num = "${dto.qnaDTO.num}">
 				<!-- 질문내용 -->
 			</div>
+			
+			<input type="hidden" id="file" data-file="${file}">
 			<table id="comment" data-step="${dto.step}">
 				<thead>
 					<th class="subject">SUBJECT</th><th class="name">작성자</th><th class="date">날짜</th>

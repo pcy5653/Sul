@@ -5,9 +5,10 @@
   
   <mapper namespace="com.alcohol.sul.board.qna.QnaDAO">
 	<sql id="searchSql">
-		WHERE QNANUM>0
-		AND
-		NAME = #{member.name}
+		SELECT * FROM QNA Q
+		WHERE Q.REF IN (SELECT C.REF FROM QNA C
+		          		WHERE c.NAME = #{member.name})
+		AND QNANUM>0
 		<choose>
 			<when test="pager.kind == 'title'">
 				AND SUBJECT LIKE '%'||#{pager.search}||'%'
@@ -20,16 +21,16 @@
 	
 	
  	<select id="getTotal" parameterType="Map" resultType="Long">
- 		SELECT COUNT(QNANUM) FROM QNA
+ 		SELECT COUNT(QNANUM) FROM (
 		<include refid="searchSql"></include>
+		)
  	</select>
  	
  	
  	<select id="getList" parameterType="Map" resultMap="getSelectResult" >
- 		SELECT * FROM
+		SELECT * FROM
  			(SELECT ROWNUM R, B.* FROM
 		  		(
-			  		SELECT * FROM QNA 
 					<include refid="searchSql"></include>
 			  		ORDER BY REF DESC, STEP ASC
 		  		) B
@@ -50,16 +51,7 @@
 	    	ON (A.QNANUM=QF.QNANUM) 
 	    WHERE A.QNANUM = #{num}
 	</select>
-	
-	<select id="getDetailTotal" parameterType="Map" resultMap="getSelectResult">
- 		SELECT Q.*, QF.*
-	    FROM 
-	    	QNA Q
-	     	LEFT OUTER JOIN 
-	    	QNAFILE QF 
-	    	ON (Q.QNANUM=QF.QNANUM) 
-	    WHERE Q.QNANUM = #{num}
-	</select>
+
  	<resultMap type="QnaDTO" id="getSelectResult">
  		<id column = "QNANUM" property="num"/>
  		<result column="NAME" property="name"/>
@@ -141,6 +133,11 @@
  		WHERE REF = #{ref}
  		AND STEP > #{step}
  	</update>
+ 	
+ 	<!-- replu 부모글의 file 찾기 -->
+ 	<select id="getReplyDetailFiles" parameterType="QnaDTO" resultType="QnaFileDTO">
+ 		SELECT * FROM QNAFILE WHERE QNANUM = #{num}
+ 	</select>
  	
  	<!-- reply 부모글의 phone 번호 -->
  	<select id="getPhoneNumber" parameterType="MemberDTO" resultType="MemberDTO">

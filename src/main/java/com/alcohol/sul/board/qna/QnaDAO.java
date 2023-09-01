@@ -88,7 +88,13 @@ public class QnaDAO implements BoardDAO {
 		return sqlSession.update(NAMESPACE+"setStepUpdate", qnaDTO);
 	}
 	
-	// 3. reply시 부모글 작성자의 번호찾기
+	// 3. reply시 부모글의 file 찾기
+	public List<QnaFileDTO> getReplyDetailFiles (QnaDTO qnaDTO)throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getReplyDetailFiles", qnaDTO);
+	}
+	
+	
+	// 4. reply시 부모글 작성자의 번호찾기
 	public MemberDTO getPhoneNumber(MemberDTO memberDTO)throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"getPhoneNumber",memberDTO);
 	}
