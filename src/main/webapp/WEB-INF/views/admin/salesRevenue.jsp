@@ -1,7 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -12,7 +10,6 @@
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <link href="/resources/css/admin/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>    
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -113,10 +110,10 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">회원관리</h1>
+                        <h1 class="mt-4">Tables</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a href="admin/main.jsp">메인</a></li>
-                            <li class="breadcrumb-item active">회원관리</li>
+                            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                            <li class="breadcrumb-item active">Tables</li>
                         </ol>
                         <div class="card mb-4">
                             <div class="card-body">
@@ -125,120 +122,65 @@
                                 .
                             </div>
                         </div>
-                        <div class="card mb-4 col-xl-7">
+                        <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                                회원목록
+                                DataTable Example
                             </div>
                             <div class="card-body">
-                                <table class="datatablesSimple">
+                                <table id="datatablesSimple">
                                     <thead>
                                         <tr>
-                                            <th>아이디</th>
-                                            <th>이름</th>
-                                            <th>권한</th>
-                                            <th>휴대폰번호</th>
-                                            <th>주소</th>
-                                            <th>생년월일</th>
-                                            <th>가입날짜</th>
-                                            <th>포인트</th>
-                                            <th>선택</th>
+                                            <th>Name</th>
+                                            <th>Position</th>
+                                            <th>Office</th>
+                                            <th>Age</th>
+                                            <th>Start date</th>
+                                            <th>Salary</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>아이디</th>
-                                            <th>이름</th>
-                                            <th>권한</th>
-                                            <th>휴대폰번호</th>
-                                            <th>주소</th>
-                                            <th>생년월일</th>
-                                            <th>가입날짜</th>
-                                            <th>선택</th>
-                                            
+                                            <th>Name</th>
+                                            <th>Position</th>
+                                            <th>Office</th>
+                                            <th>Age</th>
+                                            <th>Start date</th>
+                                            <th>Salary</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                        <c:forEach items="${list}" var="member" varStatus="i">
-                                            <tr>
-                                                <td id="memberId${i.index}">${member.id}</td>
-                                                <td>${member.name}</td>
-                                                <td><c:if test="${member.roleNum==1}">관리자</c:if><c:if test="${member.roleNum==0}">유저</c:if></td>
-                                                <td>${member.phone}</td>
-                                                <td>${member.address}</td>
-                                                <td>${member.birth}</td>
-                                                <td>${member.memberDate}</td>
-                                                <td>${member.point}</td>
-                                                <td><input type="checkbox" class="memberChecks" id="memberCheck${i.index}"></td>
-                                            </tr>
-                                        </c:forEach>
-                                    </tbody>
-                                </table>
-                                <input type="text" name="point" id="point">
-                                <button type="button" class="pointBtns" id="pointBtn">포인트지급</button><br>
-                                <button type="button" class="btns" id="deleteBtn">탈퇴</button>
-                            </div>
-
-                        </div>
-                        <div class="card mb-4 col-xl-7">
-                            <div class="card-header">
-                                <i class="fas fa-table me-1"></i>
-                                SMS수신동의회원목록
-                            </div>
-                            <div class="card-body">
-                                <table class="datatablesSimple">
-                                    <thead>
                                         <tr>
-                                            <th>아이디</th>
-                                            <th>이름</th>
-                                            <th>권한</th>
-                                            <th>휴대폰번호</th>
-                                            <th>주소</th>
-                                            <th>생년월일</th>
-                                            <th>가입날짜</th>
-                                            <th>SMS수신여부</th>
-                                            <th>선택</th>
+                                            <td>Tiger Nixon</td>
+                                            <td>System Architect</td>
+                                            <td>Edinburgh</td>
+                                            <td>61</td>
+                                            <td>2011/04/25</td>
+                                            <td>$320,800</td>
                                         </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>아이디</th>
-                                            <th>이름</th>
-                                            <th>권한</th>
-                                            <th>휴대폰번호</th>
-                                            <th>주소</th>
-                                            <th>생년월일</th>
-                                            <th>가입날짜</th>
-                                            <th>SMS수신여부</th>
-                                            <th>선택</th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-                                        <c:forEach items="${checkList}" var="checkList" varStatus="i">
-                                            <tr>
-                                                    <td id="memberId${i.index}">${checkList.id}</td>
-                                                    <td>${checkList.name}</td>
-                                                    <td><c:if test="${checkList.roleNum==1}">관리자</c:if><c:if test="${checkList.roleNum==0}">유저</c:if></td>
-                                                    <td id="phone${i.index}">${checkList.phone}</td>
-                                                    <td>${checkList.address}</td>
-                                                    <td>${checkList.birth}</td>
-                                                    <td>${checkList.memberDate}</td>
-                                                    <td>수신동의</td>
-                                                    <td><input type="checkbox" class="smsChecks" id="smsCheck${i.index}"></td>
-                                            </tr>
-                                        </c:forEach>
+                                      
                                     </tbody>
                                 </table>
                             </div>
-                            <textarea name="smsContents" id="smsContents" cols="10" rows="3" width="50%"></textarea>
-                            <button type="button" id="smsBtn">단체문자발송</button>
                         </div>
                     </div>
                 </main>
-                
+                <footer class="py-4 bg-light mt-auto">
+                    <div class="container-fluid px-4">
+                        <div class="d-flex align-items-center justify-content-between small">
+                            <div class="text-muted">Copyright &copy; Your Website 2023</div>
+                            <div>
+                                <a href="#">Privacy Policy</a>
+                                &middot;
+                                <a href="#">Terms &amp; Conditions</a>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
             </div>
         </div>
-        <script src="/resources/js/memberManagement.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
+        <script src="/resources/js/table/datatables-simple-demo.js"></script>
     </body>
 </html>

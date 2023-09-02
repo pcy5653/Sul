@@ -208,4 +208,5 @@
 			</association>
 		</collection>
 	</resultMap>
+	
 </mapper>

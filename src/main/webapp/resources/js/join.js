@@ -16,7 +16,7 @@ let checks = [false, false, false, false, false, false];
 let phoneCheck = true;
 
 
-$("#adrBtn").click(function(){
+$("#adrBtn").click(function () {
     addr();
 })
 
@@ -63,7 +63,7 @@ function addr() {
             a = data.zonecode + addr + a;
             address.value = a;
             // 커서를 상세주소 필드로 이동한다.
-            checks[4]=true;
+            checks[4] = true;
             address.focus();
         }
     }).open();
@@ -132,7 +132,7 @@ address.addEventListener("blur", function () {
     if (address.value == '') {
         addressMsg.innerHTML = "주소를 입력하세요.";
         addressMsg.className = "f";
-    } 
+    }
 })
 
 birth.addEventListener("change", function () {
@@ -157,6 +157,11 @@ function emptyCheck(element) {
 $("#regBtn").click(function () {
     let allCheck = checks.includes(false);
     if (!allCheck) {
+        if ($("#smsCheck").is(':checked')) {
+            $("#sms").val(1);
+        } else {
+            $("#sms").val(0);
+        }
         frm.submit();
     } else {
         for (let i = 0; checks.length; i++) {

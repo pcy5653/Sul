@@ -25,7 +25,7 @@ public class MemberController {
 	//후대폰 문자인증
 	@RequestMapping(value = "/phoneCheck", method = RequestMethod.GET)
 	@ResponseBody
-	public String sendSMS(@RequestParam("phone") String userPhoneNumber) { // 휴대폰 문자보내기
+	public String registerSMS(@RequestParam("phone") String userPhoneNumber) { // 휴대폰 문자보내기
 		int randomNumber = (int) ((Math.random() * (9999 - 1000 + 1)) + 1000);// 난수 생성
 		System.out.println(randomNumber);
 		memberService.certifiedPhoneNumber(userPhoneNumber, randomNumber);
@@ -36,7 +36,7 @@ public class MemberController {
 	
 	//비밀번호 변경시 랜덤비밀번호 문자전송
 	@RequestMapping(value = "/phonePw", method = RequestMethod.GET)
-	public String phoneFw(@RequestParam("phone") String userPhoneNumber,@RequestParam("id") String id,MemberDTO memberDTO,Model model) throws Exception { // 휴대폰 문자보내기
+	public String phoneFw(@RequestParam("phone") String userPhoneNumber,String id,MemberDTO memberDTO,Model model) throws Exception { // 휴대폰 문자보내기
 		Random random = new Random();
 		StringBuffer randomBuf = new StringBuffer();
 		for (int i = 0; i < 8; i++) {

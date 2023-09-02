@@ -66,5 +66,13 @@ public class ReviewDAO {
 		return sqlSession.selectOne(NAMESPACE + "getReviewFileDetail", reviewFileDTO);
 	}
 	
+	//작성리뷰
+	public List<ReviewDTO> getMyReviewList(Map<String, Object> map) throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getMyReviewList", map);
+	}
 	
+	//작성리뷰토탈
+	public long getMyReviewTotal(ReviewDTO reviewDTO)throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getMyReviewTotal", reviewDTO);
+	}
 }

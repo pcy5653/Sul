@@ -99,4 +99,16 @@ public class ReviewService {
 		return reviewDAO.getReviewStarAvg(reviewDTO);
 	}
 	
+	
+	public List<ReviewDTO> getMyReviewList(PagerK pager, ReviewDTO reviewDTO)throws Exception{
+		Map<String, Object> map = new HashMap<String, Object>();
+		pager.makeRowNum();
+		pager.makePageNum(reviewDAO.getMyReviewTotal(reviewDTO));		
+						
+		map.put("pager", pager);
+		map.put("review", reviewDTO);
+		
+		return reviewDAO.getMyReviewList(map);
+	}
+	
 }

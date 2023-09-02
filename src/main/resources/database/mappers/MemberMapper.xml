@@ -5,8 +5,8 @@
   
   <mapper namespace="com.alcohol.sul.member.MemberDAO">
  	<insert id="setJoin" parameterType="MemberDTO">
- 		INSERT INTO MEMBER(ID,ROLENUM,PW,NAME,PHONE,ADDRESS,BIRTH,MEMBERDATE,POINT) VALUES(#{id},1,#{pw},#{name},#{phone},#{address},
- 		#{birth},SYSDATE,0)
+ 		INSERT INTO MEMBER(ID,ROLENUM,PW,NAME,PHONE,ADDRESS,BIRTH,MEMBERDATE,POINT,SMS) VALUES(#{id},1,#{pw},#{name},#{phone},#{address},
+ 		#{birth},SYSDATE,0,#{sms})
  	</insert>
  	
  	<select id="getLogin" resultType="com.alcohol.sul.member.MemberDTO" parameterType="com.alcohol.sul.member.MemberDTO">
