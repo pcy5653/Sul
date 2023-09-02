@@ -79,6 +79,7 @@
 		<if test="kind == 'all'">
 			WHERE o.id = #{value}
 		</if>
+		ORDER BY o.orderDate DESC
 	</select>
 	
 	<resultMap id="getOrderResult" type="OrderDTO">
@@ -166,6 +167,7 @@
 		<if test="kind == 'all'">
 			WHERE c.orderNum = #{value}
 		</if>
+		ORDER BY c.cancelDate DESC
 	</select>
 	
 	<resultMap id="getCancelResult" type="CancelDTO">

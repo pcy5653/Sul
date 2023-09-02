@@ -1,37 +1,48 @@
+let postcodePopup;
 function DaumPostcode(){
-    new daum.Postcode({
-        oncomplete:function(data){
-            let addr = "";
-            let extraAddr = "";
-            let fullAddr = "";
-            
-            if(data.userSelectedType === "R"){ // 도로명(R)
-            	addr = data.roadAddress;
-            }else { // 지번(J)
-            	addr = data.jibunAddress;
-            }
-            
-            if(data.userSelectedType === "R"){
-            	if(data.bname !== "" && /[동|로|가]$/g.test(data.bname)){
-            		extraAddr += data.bname;
-                }
-    			
-                if(data.buildingName !== "" && data.apartment === "Y"){
-                	extraAddr += (extraAddr !== "" ? ", " + data.buildingName : data.buildingName);
-                }
-    			
-                if(extraAddr !== ""){
-                	extraAddr = "(" + extraAddr + ")";
-                }
-                
-                fullAddr = extraAddr;
-            }
-            
-            fullAddr = "(" + data.zonecode + ")" + addr + fullAddr;
-            $("#addAddress #address").val(fullAddr);
-        }
-    }).open();
-};
+	if(postcodePopup == undefined){
+		postcodePopup  = new daum.Postcode({
+	        oncomplete:function(data){
+	            let addr = "";
+	            let extraAddr = "";
+	            let fullAddr = "";
+	            
+	            if(data.userSelectedType === "R"){ // 도로명(R)
+	            	addr = data.roadAddress;
+	            }else { // 지번(J)
+	            	addr = data.jibunAddress;
+	            }
+	            
+	            if(data.userSelectedType === "R"){
+	            	if(data.bname !== "" && /[동|로|가]$/g.test(data.bname)){
+	            		extraAddr += data.bname;
+	                }
+	    			
+	                if(data.buildingName !== "" && data.apartment === "Y"){
+	                	extraAddr += (extraAddr !== "" ? ", " + data.buildingName : data.buildingName);
+	                }
+	    			
+	                if(extraAddr !== ""){
+	                	extraAddr = "(" + extraAddr + ")";
+	                }
+	                
+	                fullAddr = extraAddr;
+	            }
+	            
+	            fullAddr = "(" + data.zonecode + ")" + addr + fullAddr;
+	            $("#addAddress #address").val(fullAddr);
+	            $("#addressDetail").focus();
+	        },
+	        onclose:function(state){
+	        	postcodePopup = undefined;
+	        }
+	    });
+	    
+		postcodePopup.open();
+	}else{
+		alert("팝업 창이 이미 존재합니다.");
+	}
+}
 
 function validation(element, isSubmit = false){
 	let errorMsg = "<div class='error'>" +
@@ -39,7 +50,7 @@ function validation(element, isSubmit = false){
 							"<span>필수 입력 항목입니다.</span>" +
 						"</div>";
 	
-	var phone_regExp = /^(?:(010\d{4}))(\d{4})$/;
+	let phone_regExp = /^(?:(010\d{4}))(\d{4})$/;
 	
 	if(element.val() == ""){
 		if(!isSubmit){
@@ -79,9 +90,9 @@ $(function(){
 	});
 	
 	$("body").on("click", "#otherAddressList #update", function(){
-		if(confirm("회원 정보 수정 페이지로 이동하시겠습니까?")){
-			location.href = "/";
-		}
+        if(confirm("회원 정보 수정 페이지로 이동하시겠습니까?")){
+            window.location.href = "../member/mypage";
+        }
 	});
 	
 	$("body").on("click", "#otherAddressList .delete", function(){
@@ -143,7 +154,7 @@ $(function(){
 				"<button id='submit' class='skyButton'>저장</button>" +
 			"</div>");
 		
-		$("#addAddress #address").click(function(){			
+		$("#addAddress #address").click(function(){
 			DaumPostcode();
 		});
 		

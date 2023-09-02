@@ -1,3 +1,9 @@
+$(function(){
+	if(document.referrer.indexOf("order") != -1){
+		$("#infoBtn").trigger("click");
+	}
+})
+
 // 주문 내역
 $("#orderListBtn").click(function(){
 	$.ajax({
