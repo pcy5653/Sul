@@ -39,6 +39,8 @@ public class OrderController {
 			orderProductDTO.setProductDTO(productDTO);
 		}
 		
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		session.setAttribute("member", memberService.getMember(memberDTO.getId())); // 갱신
 		session.setAttribute("orderProducts", orderProductsWrapper.getOrderProducts());
 		model.addAttribute("orderProducts", orderProductsWrapper.getOrderProducts());
 		
@@ -70,8 +72,11 @@ public class OrderController {
 		
 		@SuppressWarnings("unchecked")
 		List<OrderProductDTO> orderProducts = (List<OrderProductDTO>)session.getAttribute("orderProducts");
-		orderDTO.setOrderProducts(orderProducts);
+		if(orderProducts == null) {
+			return "";
+		}
 		
+		orderDTO.setOrderProducts(orderProducts);
 		return orderService.paymentSuccess(memberDTO, orderDTO);
 	}
 	
@@ -126,6 +131,7 @@ public class OrderController {
 	@RequestMapping(value = "cancel")
 	public String cancel(@RequestParam String orderNum, Model model) {
 		OrderDTO orderDTO = orderService.getOrderOne(createQueryParameter("target", orderNum));
+		orderDTO.setCancels(orderService.getCancelAll(createQueryParameter("all", orderDTO.getOrderNum())));
 		model.addAttribute("order", orderDTO);
 		
 		return "order/cancel";

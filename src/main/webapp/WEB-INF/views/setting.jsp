@@ -44,6 +44,11 @@
 			<input type="text" name="orderProducts[1].productNum" placeholder="상품번호 입력">
 			<input type="text" name="orderProducts[1].orderCount" placeholder="수량 입력">
 		</div>
+		<div>
+			<h2>세 번째 상품</h2>
+			<input type="text" name="orderProducts[2].productNum" placeholder="상품번호 입력">
+			<input type="text" name="orderProducts[2].orderCount" placeholder="수량 입력">
+		</div>
 		<button>구매하기</button>
 	</form>
 	

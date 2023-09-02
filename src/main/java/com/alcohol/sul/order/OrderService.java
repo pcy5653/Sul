@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.alcohol.sul.exception.PaymentAmountException;
+import com.alcohol.sul.exception.OverUsablePointException;
 import com.alcohol.sul.main.product.ProductDTO;
 import com.alcohol.sul.member.MemberDTO;
 import com.alcohol.sul.util.PayService;
@@ -42,6 +43,10 @@ public class OrderService {
 	
 	@Transactional(rollbackFor = Exception.class)
 	public String paymentSuccess(MemberDTO memberDTO, OrderDTO orderDTO) throws Exception {
+		if(orderDTO.getUsedPoint() > memberDTO.getPoint()) {
+			throw new OverUsablePointException("사용 가능 포인트 초과");
+		}
+		
 		Long totalProductAmount = 0L;
 		List<OrderProductDTO> orderProducts = orderDTO.getOrderProducts();
 		for(OrderProductDTO orderProductDTO : orderProducts) {
@@ -119,18 +124,22 @@ public class OrderService {
 		PayService payService = new PayService();
 		String access_token = payService.getToken(REST_API_KEY, REST_API_SECRET);
 		
-		int result = payService.paymentCancel(access_token, cancelDTO.getOrderNum(), String.valueOf(cancelDTO.getCancelAmount()), cancelDTO.getCancelReason());
-		if(result > 0) {
-			cancelDTO.setCancelState("complete");
-			cancelDTO.setCancelDate(new Date(System.currentTimeMillis()));
-			orderDTO.setUsedPoint(cancelDTO.getCancelPoint());
-			
-			orderDAO.cancel(cancelDTO, orderDTO);
-			return cancelDTO.getCancelNum();
+		int result = payService.paymentCancel(access_token, cancelDTO.getOrderNum(), String.valueOf(cancelDTO.getCancelCash()), cancelDTO.getCancelReason());
+		if(cancelDTO.getCancelNum() != -1) {
+			if(result > 0) {
+				cancelDTO.setCancelState("complete");
+				cancelDTO.setCancelDate(new Date(System.currentTimeMillis()));
+				orderDTO.setUsedPoint(cancelDTO.getCancelPoint());
+				
+				orderDAO.cancel(cancelDTO, orderDTO);
+				return cancelDTO.getCancelNum();
+			}else {
+				cancelDTO.setCancelState("fail"); // 취소 실패
+				orderDAO.cancel(cancelDTO, orderDTO);
+				return 0L;
+			}
 		}else {
-			cancelDTO.setCancelState("fail"); // 취소 실패
-			orderDAO.cancel(cancelDTO, orderDTO);
-			return 0L;
+			return Long.valueOf(result);
 		}
 	}
 	
