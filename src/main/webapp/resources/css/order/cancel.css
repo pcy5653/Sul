@@ -72,7 +72,3 @@
 #cancelButton{
 	text-align:center;
 }
-
-#cancelButton > button{
-	cursor:pointer;
-}

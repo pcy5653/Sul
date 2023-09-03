@@ -79,6 +79,7 @@
 		<if test="kind == 'all'">
 			WHERE o.id = #{value}
 		</if>
+		ORDER BY o.orderDate DESC
 	</select>
 	
 	<resultMap id="getOrderResult" type="OrderDTO">
@@ -135,8 +136,8 @@
 			SELECT cancel_seq.NEXTVAL FROM DUAL
 		</selectKey>
 		
-		INSERT INTO cancel(cancelNum, orderNum, cancelAmount, cancelPoint, cancelOrderFee, cancelReason, cancelState, cancelDate)
-		VALUES(#{cancelNum}, #{orderNum}, #{cancelAmount}, #{cancelPoint}, #{cancelOrderFee}, #{cancelReason}, #{cancelState}, #{cancelDate})
+		INSERT INTO cancel(cancelNum, orderNum, cancelCash, cancelPoint, cancelOrderFee, cancelReason, cancelState, cancelDate)
+		VALUES(#{cancelNum}, #{orderNum}, #{cancelCash}, #{cancelPoint}, #{cancelOrderFee}, #{cancelReason}, #{cancelState}, #{cancelDate})
 	</insert>
 	
 	<insert id="addCancelInfo" parameterType="List">
@@ -166,12 +167,13 @@
 		<if test="kind == 'all'">
 			WHERE c.orderNum = #{value}
 		</if>
+		ORDER BY c.cancelDate DESC
 	</select>
 	
 	<resultMap id="getCancelResult" type="CancelDTO">
 		<id column="cancelNum" property="cancelNum" />
 		<result column="orderNum" property="orderNum" />
-		<result column="cancelAmount" property="cancelAmount" />
+		<result column="cancelCash" property="cancelCash" />
 		<result column="cancelPoint" property="cancelPoint" />
 		<result column="cancelOrderFee" property="cancelOrderFee" />
 		<result column="cancelReason" property="cancelReason" />

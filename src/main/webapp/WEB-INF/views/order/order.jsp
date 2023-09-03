@@ -1,6 +1,5 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 
 <html>
@@ -223,7 +222,9 @@
 		// 결제
 		$("#payButton > button").click(function(){
 			let represent_name = $(".product:first-of-type > div > p:first-child").html();
-			represent_name += " 외 " + ${orderProductCount - 1} + "개";
+			if(${orderProductCount - 1} > 0){
+				represent_name += " 외 " + ${orderProductCount - 1} + "개";
+			}
 			
 			let recipient = $("#addressInfo #recipient").html();
 			let recipientPhone = $("#addressInfo #recipientPhone").html();
@@ -232,75 +233,92 @@
 			let amount = ${totalAmount + orderFee} - usedPoint;
 			
 			let orderComment = ($("input[name='orderComment']").val() != "") ? $("input[name='orderComment']").val() : "(없음)";
-
-			IMP.init("imp81422537");
-			IMP.request_pay({
-				pg:"nice.iamport00m",
-				pay_method:"card",
-				merchant_uid:"merchant_" + new Date().getTime(),
-				name:represent_name,
-				amount:amount,
-				buyer_email:"",
-				buyer_name:"${member.name}",
-				buyer_tel:"${member.phone}",
-				buyer_addr:"${member.address}"
-			}, function(rsp) {
-				if(rsp.success){
-					let payData = new Object();
-					payData.orderNum = rsp.imp_uid;
-					payData.orderFee = ${orderFee};
-					payData.orderComment = orderComment;
-					payData.usedPoint = usedPoint;
-					
-					let orderAddressDTO = new Object();
-					orderAddressDTO.orderNum = rsp.imp_uid;
-					orderAddressDTO.recipient = recipient;
-					orderAddressDTO.recipientPhone = recipientPhone;
-					orderAddressDTO.recipientAddress = recipientAddress;
-					
-					payData.orderAddressDTO = orderAddressDTO;
-
-					$.ajax({
-						url:"./paymentSuccess",
-						method:"POST",
-						headers:{ "Content-Type":"application/json" },
-						data:JSON.stringify(payData),
-						success:function(paymentInfo){
-							let form = $("<form></form>");
-							form.attr("method", "POST");
-							form.attr("action", "./paymentComplete")
-							form.append($("<input />", {type:"hidden", name:"paymentInfo", value:paymentInfo}));
-							form.appendTo("body");
-							form.submit();
-						},
-						error:function(error){
-							let cancelData = new Object();
-							cancelData.orderNum = rsp.imp_uid;
-							cancelData.cancel_amount = rsp.paid_amount;
-							cancelData.reason = "결제 금액 오류";
-							
-							$.ajax({
-								url:"./cancel",
-								method:"POST",
-								headers:{ "Content-Type":"application/json" },
-								data:JSON.stringify(cancelData),
-								success:function(result){
-									if(result > 0){
-										alert("결제 취소");
-									}else{
+			
+			if(amount >= 100){
+				IMP.init("imp81422537");
+				IMP.request_pay({
+					pg:"nice.iamport00m",
+					pay_method:"card",
+					merchant_uid:"merchant_" + new Date().getTime(),
+					name:represent_name,
+					amount:amount,
+					buyer_email:"",
+					buyer_name:"${member.name}",
+					buyer_tel:"${member.phone}",
+					buyer_addr:"${member.address}"
+				}, function(rsp){
+					if(rsp.success){
+						let payData = new Object();
+						payData.orderNum = rsp.imp_uid;
+						payData.orderFee = ${orderFee};
+						payData.orderComment = orderComment;
+						payData.usedPoint = usedPoint;
+						
+						let orderAddressDTO = new Object();
+						orderAddressDTO.orderNum = rsp.imp_uid;
+						orderAddressDTO.recipient = recipient;
+						orderAddressDTO.recipientPhone = recipientPhone;
+						orderAddressDTO.recipientAddress = recipientAddress;
+						
+						payData.orderAddressDTO = orderAddressDTO;
+	
+						$.ajax({
+							url:"./paymentSuccess",
+							method:"POST",
+							headers:{ "Content-Type":"application/json" },
+							data:JSON.stringify(payData),
+							success:function(paymentInfo){
+								if(paymentInfo != ""){
+									let form = $("<form></form>");
+									form.attr("method", "POST");
+									form.attr("action", "./paymentComplete")
+									form.append($("<input />", {type:"hidden", name:"paymentInfo", value:paymentInfo}));
+									form.appendTo("body");
+									form.submit();
+								}else{
+									alert("세션이 만료되었습니다.");
+									location.href = document.referrer;
+								}
+							},
+							error:function(error){
+								let errorMsg;
+								if(error.responseText.indexOf("사용 가능 포인트 초과") != -1){
+									errorMsg = "사용 가능 포인트 초과";
+								}else if(error.responseText.indexOf("결제 금액 오류") != -1){
+									errorMsg = "결제 금액 오류";
+								}
+								
+								let cancelData = new Object();
+								cancelData.cancelNum = -1;
+								cancelData.orderNum = rsp.imp_uid;
+								cancelData.cancelCash = rsp.paid_amount;
+								cancelData.cancelReason = errorMsg;
+								
+								$.ajax({
+									url:"./cancel",
+									method:"POST",
+									headers:{ "Content-Type":"application/json" },
+									data:JSON.stringify(cancelData),
+									success:function(result){
+										if(result > 0){
+											alert("결제 취소(" + errorMsg + ")");
+										}else{
+											alert("관리자에게 문의하세요.");
+										}
+									},
+									error:function(error){
 										alert("관리자에게 문의하세요.");
 									}
-								},
-								error:function(error){
-									alert("관리자에게 문의하세요.");
-								}
-							});
-						}
-					});
-				}else{
-					alert("결제 실패");
-				}
-			});
+								});
+							}
+						});
+					}else{
+						alert("결제 실패");
+					}
+				});
+			}else{
+				alert("최소 결제 금액은 100원입니다.");
+			}
 		});
 	</script>
 </body>

@@ -100,7 +100,7 @@
 						<p class="line" />
 						<div>
 							<p class="l_label">환불 상품 금액</p>
-							<p class="r_label"><span>${cancel.cancelAmount}</span>원</p>
+							<p class="r_label"><span>${cancel.cancelCash + cancel.cancelPoint - cancel.cancelOrderFee}</span>원</p>
 						</div>
 						<div>
 							<p class="l_label">환불 배송비</p>
@@ -110,7 +110,7 @@
 						<div>
 							<p class="l_label pinkFont">총 환불액</p>
 							<p class="r_label pinkFont">
-								<span style="font-size:16px; color:#F47070;">${cancel.cancelAmount + cancel.cancelOrderFee}</span>원
+								<span style="font-size:16px; color:#F47070;">${cancel.cancelCash + cancel.cancelPoint}</span>원
 							</p>
 						</div>
 					</div>

@@ -4,9 +4,9 @@ import java.sql.Date;
 import java.util.List;
 
 public class CancelDTO {
-	private Long cancelNum;
+	private Long cancelNum = 0L;
 	private String orderNum;
-	private Integer cancelAmount;
+	private Integer cancelCash;
 	private Integer cancelPoint;
 	private Integer cancelOrderFee;
 	private String cancelReason;
@@ -22,8 +22,8 @@ public class CancelDTO {
 		return orderNum;
 	}
 	
-	public Integer getCancelAmount() {
-		return cancelAmount;
+	public Integer getCancelCash() {
+		return cancelCash;
 	}
 	
 	public Integer getCancelPoint() {
@@ -58,8 +58,8 @@ public class CancelDTO {
 		this.orderNum = orderNum;
 	}
 	
-	public void setCancelAmount(Integer cancelAmount) {
-		this.cancelAmount = cancelAmount;
+	public void setCancelCash(Integer cancelCash) {
+		this.cancelCash = cancelCash;
 	}
 	
 	public void setCancelPoint(Integer cancelPoint) {

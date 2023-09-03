@@ -9,106 +9,6 @@
 	
 	<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 	<script src="../resources/js/order/cancel.js"></script>
-	<script type="text/javascript">
-		$(function(){
-			$("#checkAll > input[type='checkbox']").change(function(){
-				let isChecked = $(this).is(":checked");
-				$("#orderProductWrap > input[type='checkbox']").prop("checked", isChecked);
-				
-				
-				let productAmount = 0;
-				let orderFee = 0;
-				let point = 0;
-				
-				if(isChecked){
-					$("#orderProductWrap > input[type='checkbox']:checked").each(function(index, element){
-						productAmount += parseInt($(element).siblings(".orderProduct").attr("data-orderPrice"));
-					});
-					
-					orderFee = ${order.orderFee};
-					point = ${order.usedPoint};
-				}
-				
-				$("#productAmount > p:last-child").html(productAmount + "원");
-				$("#orderFee span").html(orderFee);
-				$("#total > p:last-child").html(productAmount + orderFee + "원");
-				$("#cash span").html(productAmount + orderFee - point);
-				$("#point span").html(point);
-			});
-			
-			$("#orderProductWrap > input[type='checkbox']").change(function(){
-				let isCheckAll = $("#orderProductWrap > input[type='checkbox']:checked").length == $("#orderProductWrap > input[type='checkbox']").length;
-				$("#checkAll > input[type='checkbox']").prop("checked", isCheckAll);
-				
-				
-				let productAmount = 0;
-				let orderFee = 0;
-				let point = 0;
-				
-				$("#orderProductWrap > input[type='checkbox']:checked").each(function(index, element){
-					productAmount += parseInt($(element).siblings(".orderProduct").attr("data-orderPrice"));
-				});
-				
-				if(isCheckAll){
-					orderFee = ${order.orderFee};
-					point = ${order.usedPoint};
-				}
-				
-				$("#productAmount > p:last-child").html(productAmount + "원");
-				$("#orderFee span").html(orderFee);
-				$("#total > p:last-child").html(productAmount + orderFee + "원");
-				$("#cash span").html(productAmount + orderFee - point);
-				$("#point span").html(point);
-			});
-			
-			
-			$("#cancelButton > button").click(function(){
-				if(confirm("해당 주문을 취소하시겠습니까?")){
-					const checked = $("input[type='radio']:checked");
-					let cancelReason;
-					
-					if(checked.attr("id") == "otherReason"){
-						cancelReason = $("#reasonInputField > textarea").val();
-					}else{
-						cancelReason = checked.siblings("span").html();
-					}
-					
-					let cancel = new Object();
-					cancel.orderNum = "${order.orderNum}";
-					cancel.cancelAmount = parseInt($("#cash span").html());
-					cancel.cancelPoint = parseInt($("#point span").html());
-					cancel.cancelOrderFee = parseInt($("#orderFee span").html());
-					cancel.cancelReason = (cancelReason == undefined || cancelReason == "") ? "(기타)" : cancelReason;
-					
-					let cancelInfos = new Array();
-					$("#orderProductWrap > input[type='checkbox']:checked").each(function(index, element){
-						let cancelInfo = new Object();
-						cancelInfo.orderProductNum = $(element).siblings(".orderProduct").attr("data-orderProductNum");
-						cancelInfos.push(cancelInfo);
-					});
-					
-					cancel.cancelInfos = cancelInfos;
-					
-					$.ajax({
-						url:"./cancel",
-						method:"POST",
-						headers:{ "Content-Type":"application/json" },
-						data:JSON.stringify(cancel),
-						success:function(result){
-							if(result > 0){
-								location.href = "./cancelDetail?cancelNum=" + result;
-							}else{
-								alert("관리자에게 문의하세요.");
-							}
-						},
-						error:function(error){
-							alert("관리자에게 문의하세요.");
-						}
-					});
-				}
-			});
-		});
-	</script>
 	
 	<link rel="stylesheet" href="../resources/css/order/common.css" />
 	<link rel="stylesheet" href="../resources/css/order/cancel.css" />
@@ -197,5 +97,125 @@
 			</div>
 		</div>
 	</div>
+	
+	<c:set var="totalCanceledAmount" value="0" />
+	<c:set var="totalCanceledPoint" value="0" />
+	<c:forEach items="${order.cancels}" var="cancel" varStatus="status">
+		<c:set var="totalCanceledCash" value="${totalCanceledCash = totalCanceledCash + cancel.cancelCash}" />
+		<c:set var="totalCanceledPoint" value="${totalCanceledPoint = totalCanceledPoint + cancel.cancelPoint}" />
+	</c:forEach>
+	<c:set var="payCash" value="${order.total - order.usedPoint}" />
+	<c:set var="remainingCancelCash" value="${payCash - totalCanceledCash}" />
+	<c:set var="remainingCancelPoint" value="${order.usedPoint - totalCanceledPoint}" />
+	
+	<script type="text/javascript">
+		$("#checkAll > input[type='checkbox']").change(function(){
+			let isChecked = $(this).is(":checked");
+			$("#orderProductWrap > input[type='checkbox']").prop("checked", isChecked);
+			
+			let productAmount = 0;
+			let orderFee = 0;
+			let remainingCancelCash = 0;
+			let remainingCancelPoint = 0;
+			
+			if(isChecked){
+				$("#orderProductWrap > input[type='checkbox']:checked").each(function(index, element){
+					productAmount += parseInt($(element).siblings(".orderProduct").attr("data-orderPrice"));
+				});
+				
+				orderFee = ${order.orderFee};
+				remainingCancelCash = ${remainingCancelCash};
+				remainingCancelPoint = ${remainingCancelPoint};
+			}
+			
+			$("#productAmount > p:last-child").html(productAmount + "원");
+			$("#orderFee span").html(orderFee);
+			$("#total > p:last-child").html(productAmount + orderFee + "원");
+			$("#cash span").html(remainingCancelCash);
+			$("#point span").html(remainingCancelPoint);
+		});
+		
+		$("#orderProductWrap > input[type='checkbox']").change(function(){
+			let isCheckAll = $("#orderProductWrap > input[type='checkbox']:checked").length == $("#orderProductWrap > input[type='checkbox']").length;
+			$("#checkAll > input[type='checkbox']").prop("checked", isCheckAll);
+			
+			if(isCheckAll){
+				$("#checkAll > input[type='checkbox']").trigger("change");
+				return;
+			}
+			
+			let productAmount = 0;
+			$("#orderProductWrap > input[type='checkbox']:checked").each(function(index, element){
+				productAmount += parseInt($(element).siblings(".orderProduct").attr("data-orderPrice"));
+			});
+			
+			let refundCash = 0;
+			let refundPoint = 0;
+			if(${remainingCancelCash} >= productAmount){
+				refundCash = productAmount;
+			}else{
+				refundCash = ${remainingCancelCash};
+				refundPoint = productAmount - refundCash;
+			}
+			
+			$("#productAmount > p:last-child").html(productAmount + "원");
+			$("#orderFee span").html(0);
+			$("#total > p:last-child").html(productAmount + "원");
+			$("#cash span").html(refundCash);
+			$("#point span").html(refundPoint);
+		});
+		
+		
+		$("#cancelButton > button").click(function(){
+			if($("#orderProductWrap > input[type='checkbox']:checked").length == 0){
+				alert("취소하실 상품을 선택해주세요.");
+				return;
+			}
+			
+			if(confirm("해당 주문을 취소하시겠습니까?")){
+				const checked = $("input[type='radio']:checked");
+				let cancelReason;
+				
+				if(checked.attr("id") == "otherReason"){
+					cancelReason = $("#reasonInputField > textarea").val();
+				}else{
+					cancelReason = checked.siblings("span").html();
+				}
+				
+				let cancel = new Object();
+				cancel.orderNum = "${order.orderNum}";
+				cancel.cancelCash = parseInt($("#cash span").html());
+				cancel.cancelPoint = parseInt($("#point span").html());
+				cancel.cancelOrderFee = parseInt($("#orderFee span").html());
+				cancel.cancelReason = (cancelReason == undefined || cancelReason == "") ? "(기타)" : cancelReason;
+				
+				let cancelInfos = new Array();
+				$("#orderProductWrap > input[type='checkbox']:checked").each(function(index, element){
+					let cancelInfo = new Object();
+					cancelInfo.orderProductNum = $(element).siblings(".orderProduct").attr("data-orderProductNum");
+					cancelInfos.push(cancelInfo);
+				});
+				
+				cancel.cancelInfos = cancelInfos;
+				
+				$.ajax({
+					url:"./cancel",
+					method:"POST",
+					headers:{ "Content-Type":"application/json" },
+					data:JSON.stringify(cancel),
+					success:function(result){
+						if(result > 0){
+							location.href = "./cancelDetail?cancelNum=" + result;
+						}else{
+							alert("관리자에게 문의하세요.");
+						}
+					},
+					error:function(error){
+						alert("관리자에게 문의하세요.");
+					}
+				});
+			}
+		});
+	</script>
 </body>
 </html>

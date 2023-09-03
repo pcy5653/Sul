@@ -1,3 +1,13 @@
+/*
+	이전 페이지 URL(document.referrer)을 확인하여 URL에 order이 포함되어 있다면,
+	즉 order 페이지에서 기본 배송지 수정 버튼을 눌러서 온 것이라면 회원정보 버튼을 trigger
+*/
+$(function(){
+	if(document.referrer.indexOf("order") != -1){
+		$("#infoBtn").trigger("click");
+	}
+})
+
 // 주문 내역
 $("#orderListBtn").click(function(){
 	$.ajax({

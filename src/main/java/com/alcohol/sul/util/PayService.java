@@ -91,47 +91,56 @@ public class PayService {
 	}
 	
 	public int paymentCancel(String access_token, String imp_uid, String cancel_amount, String reason) throws Exception {
-		HttpsURLConnection conn = null;
-		URL url = new URL("https://api.iamport.kr/payments/cancel");
-		
-		conn = (HttpsURLConnection)url.openConnection();
-		conn.setRequestMethod("POST");
-		conn.setRequestProperty("Content-type", "application/json");
-		conn.setRequestProperty("Accept", "application/json");
-		conn.setRequestProperty("Authorization", access_token);
-		conn.setDoOutput(true);
-		
-		Map<String, String> paymentInfo = paymentInfo(access_token, imp_uid);
-		int amount = Integer.parseInt(paymentInfo.get("amount"));
-		int canceled_amount = Integer.parseInt(paymentInfo.get("canceled_amount"));
-		int cancelable_amount = amount - canceled_amount;
-		
-		{
-			JsonObject json = new JsonObject();
-			json.addProperty("imp_uid", imp_uid);
-			json.addProperty("amount", cancel_amount); // 취소 금액
-			json.addProperty("reason", reason); // 취소 사유
-			json.addProperty("checksum", cancelable_amount); // 앞으로 취소 가능한 금액
+		if(Integer.parseInt(cancel_amount) > 0) {
+			HttpsURLConnection conn = null;
+			URL url = new URL("https://api.iamport.kr/payments/cancel");
 			
-			BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
-			bw.write(json.toString());
-			bw.flush();
-			bw.close();
+			conn = (HttpsURLConnection)url.openConnection();
+			conn.setRequestMethod("POST");
+			conn.setRequestProperty("Content-type", "application/json");
+			conn.setRequestProperty("Accept", "application/json");
+			conn.setRequestProperty("Authorization", access_token);
+			conn.setDoOutput(true);
+			
+			Map<String, String> paymentInfo = paymentInfo(access_token, imp_uid);
+			int amount = Integer.parseInt(paymentInfo.get("amount"));
+			int canceled_amount = Integer.parseInt(paymentInfo.get("canceled_amount"));
+			int cancelable_amount = amount - canceled_amount;
+			
+			{
+				JsonObject json = new JsonObject();
+				json.addProperty("imp_uid", imp_uid);
+				json.addProperty("amount", cancel_amount); // 취소 금액
+				json.addProperty("reason", reason); // 취소 사유
+				json.addProperty("checksum", cancelable_amount); // 앞으로 취소 가능한 금액
+				
+				BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
+				bw.write(json.toString());
+				bw.flush();
+				bw.close();
+			}
+			
+			BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
+			
+			JSONParser parser = new JSONParser();
+			JSONObject json = (JSONObject)parser.parse(br.readLine());
+			
+			/*
+				잘못된 요청을 할 경우에 응답 결과는 다음과 같으므로 NullPointerException이 발생하게 된다.
+				{"code":1, "response":null, "message":"..."}
+				※잘못된 요청 ex) 취소 금액이 0원이거나 앞으로 취소 가능한 금액보다 더 많은 취소 금액을 요청할 경우
+			*/
+			String response = json.get("response").toString();
+			json = (JSONObject)parser.parse(response);
+			
+			String status = json.get("status").toString();
+			
+			br.close();
+			conn.disconnect();
+			
+			return status.equalsIgnoreCase("cancelled") ? 1 : 0;
+		}else {
+			return 1;
 		}
-		
-		BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
-		
-		JSONParser parser = new JSONParser();
-		JSONObject json = (JSONObject)parser.parse(br.readLine());
-		
-		String response = json.get("response").toString();
-		json = (JSONObject)parser.parse(response);
-		
-		String status = json.get("status").toString();
-		
-		br.close();
-		conn.disconnect();
-		
-		return status.equalsIgnoreCase("cancelled") ? 1 : 0;
 	}
 }

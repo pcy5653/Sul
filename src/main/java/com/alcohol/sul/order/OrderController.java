@@ -39,6 +39,8 @@ public class OrderController {
 			orderProductDTO.setProductDTO(productDTO);
 		}
 		
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		session.setAttribute("member", memberService.getMember(memberDTO.getId())); // 회원 정보 갱신
 		session.setAttribute("orderProducts", orderProductsWrapper.getOrderProducts());
 		model.addAttribute("orderProducts", orderProductsWrapper.getOrderProducts());
 		
@@ -66,13 +68,19 @@ public class OrderController {
 	@RequestMapping(value = "paymentSuccess", method = RequestMethod.POST, produces = "text/plain; charset=UTF-8")
 	@ResponseBody
 	public String paymentSuccess(@RequestBody OrderDTO orderDTO, HttpSession session) throws Exception {
-		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
-		
 		@SuppressWarnings("unchecked")
 		List<OrderProductDTO> orderProducts = (List<OrderProductDTO>)session.getAttribute("orderProducts");
+		if(orderProducts == null) {
+			return "";
+		}
+		
 		orderDTO.setOrderProducts(orderProducts);
 		
-		return orderService.paymentSuccess(memberDTO, orderDTO);
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		memberDTO = memberService.getMember(memberDTO.getId());
+		session.setAttribute("member", memberDTO); // 회원 정보 갱신
+		
+		return orderService.paymentSuccess(orderDTO, memberDTO);
 	}
 	
 	@RequestMapping(value = "paymentComplete")
@@ -126,6 +134,7 @@ public class OrderController {
 	@RequestMapping(value = "cancel")
 	public String cancel(@RequestParam String orderNum, Model model) {
 		OrderDTO orderDTO = orderService.getOrderOne(createQueryParameter("target", orderNum));
+		orderDTO.setCancels(orderService.getCancelAll(createQueryParameter("all", orderDTO.getOrderNum())));
 		model.addAttribute("order", orderDTO);
 		
 		return "order/cancel";
