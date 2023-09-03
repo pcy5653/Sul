@@ -91,7 +91,7 @@ $(function(){
 	
 	$("body").on("click", "#otherAddressList #update", function(){
         if(confirm("회원 정보 수정 페이지로 이동하시겠습니까?")){
-            window.location.href = "../member/mypage";
+            location.href = "../member/mypage";
         }
 	});
 	

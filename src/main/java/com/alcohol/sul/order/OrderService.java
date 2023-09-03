@@ -42,7 +42,7 @@ public class OrderService {
 	}
 	
 	@Transactional(rollbackFor = Exception.class)
-	public String paymentSuccess(MemberDTO memberDTO, OrderDTO orderDTO) throws Exception {
+	public String paymentSuccess(OrderDTO orderDTO, MemberDTO memberDTO) throws Exception {
 		if(orderDTO.getUsedPoint() > memberDTO.getPoint()) {
 			throw new OverUsablePointException("사용 가능 포인트 초과");
 		}

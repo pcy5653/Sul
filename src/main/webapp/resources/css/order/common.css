@@ -9,6 +9,12 @@
 	color:#595959;
 }
 
+input::-webkit-inner-spin-button{
+	appearance:none;
+	-moz-appearance:none;
+	-webkit-appearance:none;
+}
+
 input[type="checkbox"], input[type="radio"]{
 	-webkit-appearance:none;
 	position:relative;
@@ -66,10 +72,8 @@ input[type="text"], input[type="number"]{
     border-radius:5px;
 }
 
-input::-webkit-inner-spin-button{
-	appearance:none;
-	-moz-appearance:none;
-	-webkit-appearance:none;
+button{
+	cursor:pointer;
 }
 
 #outerWrap{
@@ -172,6 +176,22 @@ input::-webkit-inner-spin-button{
 	color:rgb(255, 255, 255);
 	font-size:18px;
 	font-weight:500;
+}
+
+#productInfo > #sender{
+	width:100%; height:36px;
+	line-height:36px;
+	margin:20px 0px;
+	padding:0px 10px;
+	background-color:rgb(255, 250, 240);
+	font-size:13px;
+	font-weight:700;
+}
+
+#productInfo > #sender > i{
+	margin:0px 4px;
+	font-style:normal;
+	color:rgb(178, 178, 178);
 }
 
 #productInfo > .product{

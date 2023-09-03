@@ -4,7 +4,7 @@ import java.sql.Date;
 import java.util.List;
 
 public class CancelDTO {
-	private Long cancelNum;
+	private Long cancelNum = 0L;
 	private String orderNum;
 	private Integer cancelCash;
 	private Integer cancelPoint;

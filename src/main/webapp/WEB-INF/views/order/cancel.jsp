@@ -167,6 +167,11 @@
 		
 		
 		$("#cancelButton > button").click(function(){
+			if($("#orderProductWrap > input[type='checkbox']:checked").length == 0){
+				alert("취소하실 상품을 선택해주세요.");
+				return;
+			}
+			
 			if(confirm("해당 주문을 취소하시겠습니까?")){
 				const checked = $("input[type='radio']:checked");
 				let cancelReason;
