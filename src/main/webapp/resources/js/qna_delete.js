@@ -49,15 +49,27 @@ const com = comment.getAttribute("data-step");
 
 
 // file test
-const file = document.getElementById("file");
-const files = file.getAttribute("data-file");
+const files = document.getElementById("files");
+const file = files.getAttribute("data-file");
+const fn = files.getAttribute("data-name")
 
 
 console.log(pnum);
-console.log(files); // 배열 2개
-// for(f of files){
+console.log(file); // 배열 2개
+console.log(typeof(file));
+console.log(fn);
+
+
+// const fileArray = document.getElementById('file').getAttribute('data-file');
+// const fileData = fileArray.slice(1, -1);
+// const file = fileData.split(',');
+
+// file.forEach(f => {
+//     console.log("배열");
 //     console.log(f);
-// }
+//     console.log()
+// });
+
 
 
 if(q != com){
@@ -75,3 +87,13 @@ if(q != com){
     
 }
 
+
+/// ex
+const ex = document.getElementById("detail_file");
+const e = ex.getAttribute("data-file")
+//const en = ex.getAttribute("data-file-name")
+
+console.log("--------------------------------")
+console.log(e);
+//console.log(en)
+console.log(typeof(e));
