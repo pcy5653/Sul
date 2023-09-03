@@ -22,9 +22,16 @@ public class ProductDTO {
 	private List<ReviewDTO> reviews;
 	
 	private int productCount;
+	private Long basketNum;
 	
 	
 	
+	public Long getBasketNum() {
+		return basketNum;
+	}
+	public void setBasketNum(Long basketNum) {
+		this.basketNum = basketNum;
+	}
 	public int getProductCount() {
 		return productCount;
 	}

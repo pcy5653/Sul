@@ -7,14 +7,21 @@ public class BasketDTO extends ImgFileDTO{
 	private Long basketNum;
 	private String id;
 	private Long productNum;
-	private Long productCount;
+	private int productCount;
 	
 	// product
 	
 	private String productName;
 	private Long price;
+	private Long stock;
+	
 
-
+	public Long getStock() {
+		return stock;
+	}
+	public void setStock(Long stock) {
+		this.stock = stock;
+	}
 	public Long getBasketNum() {
 		return basketNum;
 	}
@@ -33,11 +40,11 @@ public class BasketDTO extends ImgFileDTO{
 	public void setProductNum(Long productNum) {
 		this.productNum = productNum;
 	}
-	public Long getProductCount() {
+	public int getProductCount() {
 		return productCount;
 	}
-	public void setProductCount(Long productCount) {
-		this.productCount = productCount;
+	public void setProductCount(int i) {
+		this.productCount = i;
 	}
 	public String getProductName() {
 		return productName;

@@ -143,7 +143,9 @@ public class ProductController {
 		if(memberDTO!=null) {
 			basketDTO.setId(memberDTO.getId());
 			productService.addBasket(basketDTO);
+			
 			result = 1;
+		
 		}
 		
 		return result;
@@ -188,6 +190,24 @@ public class ProductController {
 	}
 	
 	//장바구니 수량변경
-	
 
+	@ResponseBody
+	@RequestMapping(value = "/basketList/updateBasket", method = RequestMethod.POST)
+	public int updateBasket(BasketDTO basketDTO, HttpSession session)throws Exception{
+		
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		String id = memberDTO.getId();
+		
+		int result = 0;
+		
+		if(memberDTO != null) {
+			basketDTO.setId(memberDTO.getId());
+			productService.updateBasket(basketDTO);
+			
+			result = 1;
+		}
+		
+		return result;	
+	}
+	
 }

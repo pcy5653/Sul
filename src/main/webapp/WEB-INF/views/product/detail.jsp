@@ -31,11 +31,18 @@
 		<h3>${dto.savePoint}</h3>
  	
 	 	<br>
+        <div class="label">
+             <label>수량</label>
+        </div>
+        <br>
 	 	<div class="basketStock">
-            <span>수량</span>
-            <button type="button" class="minus">-</button>
-            <input type="number" class="numBox" min="1" max="${dto.stock}" value="1" readonly="readonly">
-            <button type="button" class="plus">+</button>
+            <button type="button" class="minus">
+            	<img alt="" src="/resources/images/basket/icon_minus_counter_inactive.png" style="width: 15px">
+            </button>
+            <input type="number" class="numBox" min="1" max="${dto.stock}" value="1" readonly="readonly" style="width: 30px">
+            <button type="button" class="plus">
+            	<img alt="" src="/resources/images/basket/icon_plus_counter.png" style="width: 15px">
+            </button>
         </div><br>
 	 
 	 	<c:forEach items="${dto.imgDTOs}" var="f">
@@ -44,6 +51,7 @@
 	 	<br>
 		<form action="" id="frm">
 			<input type="hidden" name="productNum" id="add" value="${dto.productNum}">
+			<input type="hidden" name="stock" value="${dto.stock}">
 		</form>
 	 	<a class="btn btn-danger" href="./update?productNum=${dto.productNum}">수정</a>
 	 	<button class="btn btn-danger c1" id="del" data-url="delete" >삭제</button>
@@ -184,6 +192,9 @@
 	            if (result === 1) {
 	                alert("장바구니에 담기 성공했습니다.");
 	                $(".numBox").val("1");
+	                if(confirm("장바구니로 이동하시겠습니까?")){
+	                	location.href = "/product/basketList";
+	                }
 	            } else{
 	                alert("회원만 사용할 수 있습니다.");
 	                $(".numBox").val("1");
