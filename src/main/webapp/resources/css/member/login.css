@@ -1,8 +1,18 @@
+@charset "UTF-8";
+
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
+
 *{
+	box-sizing:border-box;
+	font-family:"Spoqa Han Sans Neo", "sans-serif";
+	font-size:13px;
+	color:#595959;
     padding: 0;
     margin: auto;
     border: none;
 }
+
+
 body{
     font-size: 14px;
     font-family: 'Roboto', sans-serif;
@@ -16,7 +26,7 @@ body{
 
 .login-wrapper > h2{
     font-size: 24px;
-    color: #6A24FE;
+    color: #F47070;
     margin-bottom: 20px;
 }
 #loginFrm > input{
@@ -31,7 +41,7 @@ body{
 .btn{
     color: #fff;
     font-size: 16px;
-    background-color: #6A24FE;
+    background-color: #F47070;
     margin-top: 20px;
 }
 #loginFrm > input::placeholder{
