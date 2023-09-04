@@ -16,7 +16,7 @@
     <div class="viewport">
         <header>
             <h1>
-                <a href="../" class="main_logo">
+                <a href="${pageContext.request.contextPath}/" class="main_logo">
 					<img src="/resources/images/main_logo.png" alt="메인로고">
                 </a>
             </h1>
@@ -33,7 +33,7 @@
             
             <ul>
 			        <li class="nav-item">
-			          <a class="nav-link active" aria-current="page" href="/">Home&nbsp;&nbsp;&nbsp;&nbsp;</a>
+			          <a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath}/">Home&nbsp;&nbsp;&nbsp;&nbsp;</a>
 			        </li>
 			        <li class="nav-item">
 			          <a class="nav-link active" href="/product/list">전체 제품&nbsp;&nbsp;&nbsp;&nbsp;</a>

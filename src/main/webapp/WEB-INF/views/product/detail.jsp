@@ -11,7 +11,7 @@
 </head>
 <body>
 	<c:import url="../temp/header.jsp"></c:import>
-    <section>        
+    <section>
          <form role="form" method="post">
             <input type="hidden" class="productNum" value="${dto.productNum}" />
             <input type="hidden" value="${dto.stock}" class="stock" />

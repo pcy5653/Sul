@@ -1,4 +1,14 @@
 /* header.css */
+
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
+
+*{
+	box-sizing:border-box;
+	font-family:"Spoqa Han Sans Neo", "sans-serif";
+	font-size:13px;
+	color:#595959;
+}
+
 body {margin: 0 auto;}
 .viewport {width: 100%;}
 
