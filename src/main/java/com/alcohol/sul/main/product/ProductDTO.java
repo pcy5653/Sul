@@ -25,7 +25,6 @@ public class ProductDTO {
 	private Long basketNum;
 	
 	
-	
 	public Long getBasketNum() {
 		return basketNum;
 	}
