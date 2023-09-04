@@ -159,7 +159,5 @@ public class ProductService {
 		return productDAO.updateBasket(basketDTO);
 	}
 	
-//	public boolean checkProductInBasket(BasketDTO basketDTO)throws Exception{
-//		return productDAO.checkProductInBasket(basketDTO);
-//	}
+
 }

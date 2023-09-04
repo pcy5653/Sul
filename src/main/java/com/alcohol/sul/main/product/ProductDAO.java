@@ -120,9 +120,5 @@ public class ProductDAO {
 	public int updateBasket(BasketDTO basketDTO)throws Exception{
 		return sqlSession.update(NAMESPACE+"updateBasket", basketDTO);
 	}
-	
-//	public boolean checkProductInBasket(BasketDTO basketDTO)throws Exception{
-//		int rowCount = sqlSession.selectOne(NAMESPACE+"countBasketEntry", basketDTO);
-//		return rowCount > 0;
-//	}
+
 }
