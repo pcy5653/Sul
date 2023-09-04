@@ -27,7 +27,7 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 	
-	//전체 List
+	// 전체 List
 	@GetMapping(value = "list")
 	public String getList(PagerK pager, Model model) throws Exception {
 		List<ProductDTO> ar = productService.getList(pager);
@@ -42,7 +42,7 @@ public class ProductController {
 		List<ProductDTO> ar = productService.getListTakju(pager);
 		model.addAttribute("list", ar);
 		model.addAttribute("pager", pager);		
-		return "product/takjuList";
+		return "product/list";
 	}
 	
 	//약청주 List
@@ -51,7 +51,7 @@ public class ProductController {
 		List<ProductDTO> ar = productService.getListChungju(pager);
 		model.addAttribute("list", ar);
 		model.addAttribute("pager", pager);		
-		return "product/chungjuList";
+		return "product/list";
 	}
 	
 	//과실주 List
@@ -60,7 +60,7 @@ public class ProductController {
 		List<ProductDTO> ar = productService.getListWine(pager);
 		model.addAttribute("list", ar);
 		model.addAttribute("pager", pager);		
-		return "product/wineList";
+		return "product/list";
 	}
 	
 	//증류주 List
@@ -69,7 +69,7 @@ public class ProductController {
 		List<ProductDTO> ar = productService.getListSoju(pager);
 		model.addAttribute("list", ar);
 		model.addAttribute("pager", pager);		
-		return "product/sojuList";
+		return "product/list";
 	}
 
 	
