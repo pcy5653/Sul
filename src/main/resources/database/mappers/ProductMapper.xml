@@ -238,8 +238,5 @@
 		WHERE PRODUCTNUM=#{productNum}	
 	</update>
 	
-	<!-- <select id="countBasketEntry" resultType="int" parameterType="com.alcohol.sul.basket.BasketDTO">
-	    SELECT COUNT(*) FROM BASKET
-	    WHERE PRODUCTNUM = #{productNum} AND BASKETNUM = #{basketNum}
-	</select> -->
+
   </mapper>
