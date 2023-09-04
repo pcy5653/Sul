@@ -6,8 +6,8 @@
 		<head>
 			<meta charset="UTF-8">
 			<title>Insert title here</title>
-			<!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script> -->
 			<c:import url="../temp/bootStrap.jsp"></c:import>
+			<link href="/resources/css/order/common.css" rel="stylesheet" />
 			<style>
 				.f {
 					color: red;
@@ -21,51 +21,55 @@
 		</head>
 
 		<body>
-			<section class="container mt-5">
-				<h1>회원가입</h1>
+			<div id="outerWrap" class="container">
+				<div id="title">
+					<p>회원가입</p>
+				</div>	
+				<div id="formWrap">
+					<form action="./join" method="post" id="frm">
+						<div id="idDiv">
+							<label for="id" class="form-label">아이디</label>
+							<input type="text" name="id" class="form-control input" id="id">
+							<div id="idMsg"></div>
+						</div>
+						<div>
+							<label for="pw" class="form-label">패스워드</label>
+							<input type="password" name="pw" class="form-control input" id="pw">
+							<div id="pwMsg"></div>
+						</div>
+						<div>
+							<label for="pw2" class="form-label">패스워드확인</label>
+							<input type="password" name="pw2" class="form-control input" id="pw2">
+							<div id="pw2Msg"></div>
+						</div>
+						<div>
+							<label for="name1" class="form-label">이름</label>
+							<input type="text" name="name" class="form-control input" id="name1">
+							<div id="nameMsg"></div>
+						</div>
+						<div class="mobileNo">
+							<label for="phone" class="form-label">휴대폰 번호</label><br>
+							<input id="phone" type="text" name="phone" class="form-control input" title="전화번호 입력" value="${phone}" readonly>
+						<div>
+							<label for="address" class="form-label">주소</label>
+							<input type="text" name="address" class="form-control input" id="address"><br>
+							<button type="button" id="adrBtn">주소검색</button>
+							<div id="addressMsg"></div>
+						</div><br>
+						<div>
+							<label for="birth" class="form-label input" data-name="생년월일">생년월일</label>
+							<input type="date" name="birth" id="birth">
+							<div id="birthMsg"></div>
+						</div><br>
 
-				<form action="./join" method="post" id="frm">
-					<div id="idDiv">
-						<label for="id" class="form-label">아이디</label>
-						<input type="text" name="id" class="form-control input" id="id">
-						<div id="idMsg"></div>
-					</div>
-					<div>
-						<label for="pw" class="form-label">패스워드</label>
-						<input type="password" name="pw" class="form-control input" id="pw">
-						<div id="pwMsg"></div>
-					</div>
-					<div>
-						<label for="pw2" class="form-label">패스워드확인</label>
-						<input type="password" name="pw2" class="form-control input" id="pw2">
-						<div id="pw2Msg"></div>
-					</div>
-					<div>
-						<label for="name1" class="form-label">이름</label>
-						<input type="text" name="name" class="form-control input" id="name1">
-						<div id="nameMsg"></div>
-					</div>
-					<div class="mobileNo">
-						<label for="phone">휴대폰 번호</label><br>
-						<input id="phone" type="text" name="phone" title="전화번호 입력" value="${phone}" readonly>
-					<div>
-						<label for="address" class="form-label">주소</label>
-						<input type="text" name="address" class="form-control input" id="address">
-						<button type="button" id="adrBtn">주소검색</button>
-						<div id="addressMsg"></div>
-					</div>
-					<div>
-						<label for="birth" class="form-label input" data-name="생년월일">생년월일</label>
-						<input type="date" name="birth" id="birth">
-						<div id="birthMsg"></div>
-					</div>
-					<div class="mb-5">
-						<input type="checkbox" name="smsCheck" id="smsCheck" checked>SMS수신동의(이벤트문자) 
-						<input type="hidden" name="sms" id="sms" value="1">
-					</div>
-					<button type="button" id="regBtn">회원가입</button>
-				</form>
-			</section>
+						<div class="mb-5">
+							<input type="checkbox" name="smsCheck" id="smsCheck" checked>&nbsp;&nbsp;SMS수신동의(이벤트문자) 
+							<input type="hidden" name="sms" id="sms" value="1">
+						</div>
+						<button type="button" id="regBtn">회원가입</button>
+					</form>
+				</div>
+			</div>
 			<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 			<script src="/resources/js/join.js"></script>
 		</body>
