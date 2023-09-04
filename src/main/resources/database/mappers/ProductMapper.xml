@@ -235,8 +235,7 @@
 	<update id="updateBasket" parameterType="com.alcohol.sul.basket.BasketDTO">
 		UPDATE BASKET SET
 		PRODUCTCOUNT=#{productCount}
-		WHERE PRODUCTNUM=#{productNum}
-		
+		WHERE PRODUCTNUM=#{productNum}	
 	</update>
 	
 	<!-- <select id="countBasketEntry" resultType="int" parameterType="com.alcohol.sul.basket.BasketDTO">
