@@ -52,8 +52,7 @@
 	      		<li class="join"><a href="/member/terms">회원가입</a></li>
 	      		</c:if>            </ul>
         </header>
-        <br><br><br>
-        <hr>
+        
         <section>
            <div class="main">
             

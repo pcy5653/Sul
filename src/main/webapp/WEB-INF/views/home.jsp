@@ -16,7 +16,7 @@
 	<main>
 		<section id="video_wrap">
 			<div class="video_div">
-				<video src="" type="" autoplay loop muted></video>
+				<video src="/resources/main_bnr.mp4" type="video.mp4" autoplay loop muted></video>
 			</div>
 			<!-- /video_wrap -->
 		</section>
