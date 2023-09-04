@@ -12,7 +12,6 @@
 				href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 			<c:import url="../temp/bootStrap.jsp"></c:import>
 
-
 			<title>회원정보</title>
 		</head>
 

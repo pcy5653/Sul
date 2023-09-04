@@ -21,6 +21,7 @@ body{
     width: 400px;
     height: 350px;
     padding: 40px;
+	margin:30px auto;
     box-sizing: border-box;
 }
 

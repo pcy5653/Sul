@@ -16,6 +16,7 @@
         </head>
 
         <body>
+            <c:import url="../temp/header.jsp"></c:import>
             <div id="outerWrap">
                 <article id="content" class="cols-d">
                     <div id="title">

@@ -18,13 +18,14 @@
   
   
   <link href="/resources/css/member/style.css" rel="stylesheet" />
+  <link href="/resources/css/order/common.css" rel="stylesheet"/>
 
 
   <c:import url="../temp/bootStrap.jsp"></c:import>
 </head>
 
 <body class="sub_page">
-
+  <c:import url="../temp/header.jsp"></c:import>
   <div class="hero_area">
     <!-- header section strats -->
     <div class="brand_box">

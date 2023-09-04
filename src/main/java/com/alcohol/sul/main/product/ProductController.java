@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -193,15 +194,18 @@ public class ProductController {
 
 	@ResponseBody
 	@RequestMapping(value = "/basketList/updateBasket", method = RequestMethod.POST)
-	public int updateBasket(BasketDTO basketDTO, HttpSession session)throws Exception{
+	public int updateBasket(@RequestBody BasketDTO basketDTO, HttpSession session) throws Exception {
 		
 		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
 		String id = memberDTO.getId();
-		
+		Long productNum = basketDTO.getProductNum();
+		int productCount = basketDTO.getProductCount();
 		int result = 0;
 		
 		if(memberDTO != null) {
 			basketDTO.setId(memberDTO.getId());
+			basketDTO.setProductNum(basketDTO.getProductNum());
+			basketDTO.setProductCount(basketDTO.getProductCount());
 			productService.updateBasket(basketDTO);
 			
 			result = 1;
