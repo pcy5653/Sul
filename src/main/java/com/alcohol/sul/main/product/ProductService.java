@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.alcohol.sul.basket.BasketDTO;
 import com.alcohol.sul.main.util.FileManagerK;
 import com.alcohol.sul.main.util.PagerK;
 
@@ -139,4 +140,26 @@ public class ProductService {
 	public int setReviewStarUpdate(ProductDTO productDTO) throws Exception{
 		return productDAO.setReviewStarUpdate(productDTO);
 	}
+
+	//장바구니
+	
+	public void addBasket(BasketDTO basketDTO)throws Exception{
+		productDAO.addBasket(basketDTO);
+	}
+	
+	public List<BasketDTO> basketList(String id)throws Exception{
+		return productDAO.basketList(id);
+	}
+	
+	public void deleteBasket(BasketDTO basketDTO)throws Exception{
+		productDAO.deleteBasket(basketDTO);
+	}
+	
+	public int updateBasket(BasketDTO basketDTO)throws Exception{
+		return productDAO.updateBasket(basketDTO);
+	}
+	
+//	public boolean checkProductInBasket(BasketDTO basketDTO)throws Exception{
+//		return productDAO.checkProductInBasket(basketDTO);
+//	}
 }

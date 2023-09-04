@@ -28,7 +28,7 @@
 
 				.container>h2 {
 					font-size: 24px;
-					color: #6A24FE;
+					color: #F47070;
 					margin-bottom: 20px;
 				}
 
@@ -49,7 +49,7 @@
 				#findform>input[type="button"] {
 					color: #fff;
 					font-size: 16px;
-					color: #6A24FE;
+					color: #F47070;
 					margin-top: 20px;
 				}
 			</style>

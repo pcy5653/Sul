@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.alcohol.sul.basket.BasketDTO;
 import com.alcohol.sul.main.util.PagerK;
 
 @Repository
@@ -102,4 +103,26 @@ public class ProductDAO {
 	public int setReviewStarUpdate(ProductDTO productDTO) throws Exception{
 		return sqlSession.update(NAMESPACE + "setReviewStarUpdate", productDTO);
 	}
+	
+	//장바구니
+	public void addBasket(BasketDTO basketDTO)throws Exception{
+		sqlSession.insert(NAMESPACE+"addBasket", basketDTO);
+	}
+	
+	public List<BasketDTO> basketList(String id)throws Exception{
+		return sqlSession.selectList(NAMESPACE+"basketList", id);
+	}
+	
+	public void deleteBasket(BasketDTO basketDTO)throws Exception{
+		sqlSession.delete(NAMESPACE+"deleteBasket", basketDTO);
+	}
+	
+	public int updateBasket(BasketDTO basketDTO)throws Exception{
+		return sqlSession.update(NAMESPACE+"updateBasket", basketDTO);
+	}
+	
+//	public boolean checkProductInBasket(BasketDTO basketDTO)throws Exception{
+//		int rowCount = sqlSession.selectOne(NAMESPACE+"countBasketEntry", basketDTO);
+//		return rowCount > 0;
+//	}
 }
