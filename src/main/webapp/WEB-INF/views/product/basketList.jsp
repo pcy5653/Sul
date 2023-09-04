@@ -184,7 +184,7 @@
                                     <fmt:formatNumber pattern="###,###,###" value="${basketList.price * basketList.productCount}" /> 원
                                 </div> --%>
 
-                                <div class="delete" style="width:60px; height:100px; float:left; text-align: center; margin-top: 30px; ">
+                                <div class="delete" style="width:60px; height:100px; float:right; text-align: right; margin-top: 30px; ">
                                     <button type="button" class="delete_${basketList.basketNum}_btn" data-basketNum="${basketList.basketNum}">
                                         x
                                     </button>
@@ -223,7 +223,7 @@
 
                     </c:forEach>
                 </ul>
-
+				<br>
                 <div class="listResult">
                     <div class="sum">
                         총 합계 : <span class="totalPriceDisplay"><fmt:formatNumber pattern="###,###,###" value="${sum}" /></span> 원
