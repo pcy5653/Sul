@@ -40,7 +40,7 @@ $("#btn").click(function(){
     a= a + '<button type="button" id="phoneChk" class="button_big">인증번호 보내기</button><div id="phoneMsg"></div>'
     a= a + '<span class="tip"></span><br><input id="phone2" type="text" name="phone2" title="인증번호 입력" disabled required />'
     a= a + '<button type="button" id="phoneChk2" class="button_big" >본인인증</button>'
-    a= a + '<span class="point successPhoneChk">휴대폰 번호 입력후 인증번호 보내기를 해주십시오.</span>'
+    a= a + '<span class="point successPhoneChk"></span>'
     a= a + '<input type="hidden" id="phoneDoubleChk" /></div>'
     $("#pcheck").append(a)
 })

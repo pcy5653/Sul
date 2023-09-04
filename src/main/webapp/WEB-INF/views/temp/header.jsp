@@ -21,6 +21,17 @@
                 </a>
             </h1>
 
+		    </ul>
+            <ul>
+            	<c:if test="${not empty basketList}">
+            		<li class="not_empty_Basket"><a href="/product/basketList">
+            		<!-- <img alt="" src="/resources/basket/basketIcon_black.png"> --> </a></li>
+            	</c:if>
+            	<c:if test="${empty basketList}">
+            		<li class="empty_Basket"><a href="/product/basketList"> 장바구니
+            		<!-- <img alt="" src="/resources/basket/basketIcon_white.png"> --> </a></li>
+            	</c:if>
+            </ul>
             <ul>
                 <c:if test="${not empty member}">
 	      		<li class="login"><a href="/member/logout">로그아웃</a></li>
