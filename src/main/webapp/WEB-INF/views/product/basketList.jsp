@@ -8,7 +8,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset="UTF-8">
 <title>Insert title here</title>
-
+<link rel="stylesheet" href="/resources/css/basket/basketList.css">
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <style type="text/css">
     .wrap { width: 1000px; height: 800px; margin: auto; }
@@ -26,30 +26,19 @@
     .checkBox { float: left; width: 30px; }
     .checkBox input { width: 16px; height: 16px; }
 
-    .listResult { padding: 20px; background: #eee; }
-    .listResult .sum { float: left; width: 45%; font-size: 22px; }
-
-    .listResult .orderOpne { float: right; width: 45%; text-align: right; }
-    .listResult .orderOpne button { font-size: 18px; padding: 5px 10px; border: 1px solid #999; background: #fff; }
-    .listResult::after { content: ""; display: block; clear: both; }
 </style>
 </head>
 <body>
 <c:import url="../temp/header.jsp" /><br><br><br><br><br><br><br>
 
 <!-- 장바구니 상품 없을 때 -->
-<c:if test="${empty basketList}">
-    <tr>
-        <td colspan="2"></td>
-        <td colspan="2">
-            <div style="text-align: center; margin-top: 25px;">
-                <img src="/resources/images/basket/cartList.png" style="width: 32px; height: 32px; ">
-                <div style="font-size: 1.5em; margin-top: 25px;">장바구니가 비었습니다.</div><br>
-                <a href="./list" class="btn">쇼핑하러 가기</a>
-            </div>
-        </td>
-        <td colspan="2"></td>
-    </tr>
+<c:if test="${empty basketList}">    
+   <div style="text-align: center; margin-top: 100px;">
+       <img src="/resources/images/basket/cartList.png" style="width: 32px; height: 32px; ">
+         <div style="font-size: 1.5em; margin-top: 25px;">장바구니가 비었습니다.</div><br>
+             <a href="./list" class="btn">쇼핑하러 가기</a>
+   </div>
+        
 </c:if>
 <c:if test="${not empty basketList}">
     <section id="container">
@@ -152,37 +141,33 @@
 
                                 <script>
 								    $(".update_btn").click(function () {
-								        let productNum = $(this).data("product-Num");
+								        let productNum = $(this).attr("data-product-Num");
 								        let productCount = $(this).closest("li").find(".numBox").val();
 							
 								        let requestData = {
-								            productNum: productNum,
-								            productCount: productCount
-								        };
-								        $.ajax({
-								            url: "/product/basketList/updateBasket",
-								            type: "post",
-								            contentType: "application/json", 
-								            data: JSON.stringify(requestData), 
-								            success: function (result) {
-								                if (result === '1') {
-								                    alert("수정되었습니다.");
-								                } else {
-								                    alert("수정 실패");
-								                }
-								            },
-								            error: function () {
-								                alert("AJAX 요청 실패");
-								            }
-								        });
+									            productNum: productNum,
+									            productCount: productCount
+									        };
+									        $.ajax({
+									            url: "/product/basketList/updateBasket",
+									            type: "post",
+									            contentType: "application/json", 
+									            data: JSON.stringify(requestData), 
+									            success: function (result) {
+									                if (result === 1) {
+									                    alert("수정되었습니다.");
+									                } else {
+									                    alert("수정 실패");
+									                }
+									            },
+									            error: function () {
+									                alert("AJAX 요청 실패");
+									            }
+									        });
 								
 								        updateTotalPrice();
 								    });
 								</script>
-
-                                <%-- <div class="totalPrice" style="width:120px; height:100px; float:left; text-align: center; margin-top: 30px; ">
-                                    <fmt:formatNumber pattern="###,###,###" value="${basketList.price * basketList.productCount}" /> 원
-                                </div> --%>
 
                                 <div class="delete" style="width:60px; height:100px; float:right; text-align: right; margin-top: 30px; ">
                                     <button type="button" class="delete_${basketList.basketNum}_btn" data-basketNum="${basketList.basketNum}">
@@ -224,13 +209,37 @@
                     </c:forEach>
                 </ul>
 				<br>
-                <div class="listResult">
-                    <div class="sum">
-                        총 합계 : <span class="totalPriceDisplay"><fmt:formatNumber pattern="###,###,###" value="${sum}" /></span> 원
-
+				<div class="style__CartBillWrapper-sc-zhmz48-5 calculate">
+                <div class="bill">
+                    <div class="title">계산서</div>
+                    <div class="solid-top"></div>
+                    <div class="content">
+                        <div class="row">
+                            <div>총 상품금액</div>
+                            <div class="price">
+								<span class="totalPriceDisplay"><fmt:formatNumber pattern="###,###,###" value="${sum}" /></span> 원
+							</div>
+                        </div>
+                        
+                        <div class="row">
+                            <div>총 배송비</div>
+                            <div class="price">0<!-- -->원</div>
+                        </div>
+                        <div class="info">
+                            <div class="text">제주도 및 도서산간의 경우 배송비가 추가될 수 있습니다.</div>
+                        </div>
                     </div>
-
+                
+                    <div class="solid-bottom"></div>
+                    <div class="footer"><div class="text">총 결제 예상 금액</div>
+                    <div class="price"><span class="totalPriceDisplay"><fmt:formatNumber pattern="###,###,###" value="${sum}" /></span> 원</div>
                 </div>
+            </div>
+            <div class="action-button-wrapper">                
+                    <button class="purchase-button" height="48px">구매하기</button>
+                </div>
+            </div>
+
             </section>
         </div>
     </section>

@@ -1,0 +1,29 @@
+@charset "UTF-8";
+
+/* 장바구니 비었을 때 */
+@media (max-width:886px){.c1 .empty{font-size:14px;}}
+@media (max-width:886px){.c1 .text{font-size:12px;}.c1 button{font-size:11px;}}
+@media (max-width:886px){.empty .guide{height:18px;line-height:18px;font-size:14px;}}
+
+data-styled.g300[id="style__CartBillWrapper-sc-zhmz48-5"]{content:"empty,"}
+
+.empty{background-color:#fff;}
+.empty .below{width:100%;height:100vh;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;font-size:14px;}
+.empty .above{padding:80px 20px;border-radius:10px;border:0.5px solid #e0e0e0;font-size:16px;}
+.empty .guide{height:21px;line-height:21px;color:#707070;font-weight:bold;}
+
+@media (max-width:1023px){.calculate{margin-left:25px;}}
+@media (max-width:886px){.calculate{margin-left:20px;}.calculate .title{height:20px;line-height:20px;font-size:12px;}.calculate .content .row{font-size:11px;}.calculate .footer .price{font-size:15px;}}
+@media (max-width:886px){.calculate{margin:0;}.calculate .bill{margin-bottom:0px;padding-bottom:33px;background-color:#fff;border:none;border-radius:0px;}.calculate .header{font-size:12px;}}
+data-styled.g300[id="style__CartBillWrapper-sc-zhmz48-5"]{content:"empty,"}
+.calculate{margin-left:45px;padding-bottom:97px;}
+.calculate .bill{height:100%;padding:20px;border-radius:10px;border:0.5px solid #e0e0e0;margin-bottom:60px;background-color:#fff;}
+.calculate .title{height:24px;line-height:24px;text-align:left;color:#3e3e3e;font-size:13px;font-weight:bold;}
+.calculate .row{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;margin-bottom:10px;height:15px;font-size:12px;}
+.calculate .price{font-weight:bold;}
+.calculate .info{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;color:#b2b2b2;font-size:10px;text-align:left;}
+.calculate .solid-top{border-top:0.5px solid #b2b2b2;margin:15px 0px 20px 0px;}
+.calculate .solid-bottom{border-top:0.5px solid #b2b2b2;margin:15px 0px;}
+.calculate .footer{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;height:21px;line-height:21px;font-weight:bold;}
+.calculate .footer .text{font-size:13px;color:#3e3e3e;}
+.calculate .footer .price{font-size:16px;color:#0096f3;}
