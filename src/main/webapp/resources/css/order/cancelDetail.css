@@ -1,0 +1,24 @@
+@charset "UTF-8";
+
+#productInfo > div:first-of-type > p{
+	font-size:13px;
+	font-weight:700;
+	margin:0px 0px 10px 0px;
+}
+
+#productInfo > div:first-of-type > div{
+	height:25px;
+	line-height:25px;
+}
+
+#productInfo > div:first-of-type > div > span:first-of-type{
+	font-size:16px;
+	font-weight:bold;
+	color:black;
+}
+
+#productInfo > div:first-of-type > div > span:last-of-type{
+	float:right;
+	font-weight:600;
+	cursor:pointer;
+}

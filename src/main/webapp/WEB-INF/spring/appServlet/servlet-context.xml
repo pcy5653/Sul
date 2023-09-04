@@ -27,15 +27,25 @@
 	</beans:bean>
 	
 	<interceptors>
+		<!-- 로그인확인  -->
 		<interceptor>
 			<mapping path="/member/mypage"/>
 			<mapping path="/member/info"/>
+			<mapping path="/admin/*"/>
+			
+			<mapping path="/order/**"/>
 			<beans:bean class="com.alcohol.sul.interceptors.LoginInterceptor"></beans:bean>
+		</interceptor>
+		
+		<!-- 권환확인 -->
+		<interceptor>
+			<mapping path="/admin/*"/>
+			<beans:bean class="com.alcohol.sul.interceptors.RoleInterceptor"></beans:bean>
 		</interceptor>
 	</interceptors>
 	
 	
-	<context:component-scan base-package="com.alcohol.sul" />
-	
-	
+	<context:component-scan base-package="com.alcohol.sul" use-default-filters="false">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
 </beans:beans>

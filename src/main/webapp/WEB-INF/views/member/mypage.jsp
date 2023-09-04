@@ -51,13 +51,10 @@
             <div class="d-flex  flex-column flex-lg-row align-items-center">
               <ul class="navbar-nav  ">
                 <li class="nav-item active">
-                  <a class="nav-link" href="#">주문내역</a>
+                  <a class="nav-link" href="#" id="orderListBtn">주문내역</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">취소/환불 내역 </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#" id="qnaBtn">리뷰</a>
+                  <a class="nav-link" href="#" id="reviewBtn">작성리뷰</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="#" id="infoBtn">회원정보</a>

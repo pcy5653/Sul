@@ -1,12 +1,30 @@
+/*
+	이전 페이지 URL(document.referrer)을 확인하여 URL에 order이 포함되어 있다면,
+	즉 order 페이지에서 기본 배송지 수정 버튼을 눌러서 온 것이라면 회원정보 버튼을 trigger
+*/
+$(function(){
+	if(document.referrer.indexOf("order") != -1){
+		$("#infoBtn").trigger("click");
+	}
+})
+
+// 주문 내역
+$("#orderListBtn").click(function(){
+	$.ajax({
+        type:"get",
+        url:"../order/list",
+        dataType:'html',
+        success:function(data){
+            $("#page").html(data)
+        }
+    })
+});
+
+
+//회원정보
 $("#infoBtn").click(function(){
     
-    // fetch("info",{
-    //     method:"get"
-    // })
-    // .then((response)=> response.text())
-    // .then((r)=>
-    //     $("#page").html(r)
-    // )
+    
     $.ajax({
         type:"get",
         url:"info",
@@ -17,18 +35,13 @@ $("#infoBtn").click(function(){
     })
 })
 
-$("#qnaBtn").click(function(){
+//작성리뷰
+$("#reviewBtn").click(function(){
     
-    // fetch("/qna/list",{
-    //     method:"get"
-    // })
-    // .then((response)=> response.text())
-    // .then((r)=>
-    //     $("#page").html(r)
-    // )
+    
     $.ajax({
         type:"get",
-        url:"/qna/list",
+        url:"/product/myReviewList",    
         dataType:'html',
         success:function(data){
             $("#page").html(data)
@@ -95,5 +108,4 @@ $(document).on("click","#delBtn",function(){
     alert("회원탈퇴 되었습니다.");
     location.href="/member/deleteMember";
 })
-
 

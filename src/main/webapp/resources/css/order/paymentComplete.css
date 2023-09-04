@@ -1,0 +1,52 @@
+@charset "UTF-8";
+
+#notification{
+	text-align:center;
+}
+
+#notification > img{
+	width:70px;
+}
+
+#notification > p{
+	margin:0px 0px 50px 0px;
+	font-size:24px;
+	font-weight:700;
+}
+
+#buyerInfo .l_label{
+	width:25%;
+	vertical-align:middle;
+}
+
+#buyerInfo .r_label{
+	width:75%;
+	float:none;
+	vertical-align:middle;
+	color:#595959;
+}
+
+#buttons{
+	text-align:center;
+}
+
+#buttons > button{
+	width:39%; height:48px;
+	padding:0px;
+	border:1px solid rgb(255, 186, 0);
+	border-radius:5px;
+	font-size:18px;
+    font-weight:bold;
+}
+
+#buttons > button:first-of-type{
+	margin-right:5px;
+    background-color:white;
+    color:rgb(255, 186, 0);
+}
+
+#buttons > button:last-of-type{
+	margin-left:5px;
+	background-color:rgb(255, 186, 0);
+    color:rgb(255, 255, 255);
+}

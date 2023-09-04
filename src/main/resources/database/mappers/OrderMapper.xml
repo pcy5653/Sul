@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.alcohol.sul.order.OrderDAO">
+	<select id="getProduct" parameterType="Long" resultType="ProductDTO">
+		SELECT * FROM product WHERE productNum = #{value}
+	</select>
+	
+	<select id="getOtherAddress" parameterType="String" resultType="OtherAddressDTO">
+		SELECT * FROM otherAddress WHERE id = #{value} ORDER BY addressNum ASC
+	</select>
+	
+	<insert id="addOtherAddress" parameterType="OtherAddressDTO">
+		<selectKey keyProperty="addressNum" order="BEFORE" resultType="Long">
+			SELECT otherAddress_seq.NEXTVAL FROM DUAL
+		</selectKey>
+		
+		INSERT INTO otherAddress(addressNum, id, recipient, recipientPhone, recipientAddress)
+		VALUES(#{addressNum}, #{id}, #{recipient}, #{recipientPhone}, #{recipientAddress})
+	</insert>
+	
+	<delete id="deleteOtherAddress" parameterType="Long">
+		DELETE FROM otherAddress WHERE addressNum = #{value}
+	</delete>
+	
+	<insert id="addOrder" parameterType="OrderDTO">
+		INSERT INTO order_(orderNum, id, total, orderFee, orderComment, usedPoint, orderDate)
+		VALUES(#{orderNum}, #{id}, #{total}, #{orderFee}, #{orderComment}, #{usedPoint}, #{orderDate})
+	</insert>
+	
+	<insert id="addOrderProduct">
+		INSERT INTO orderProduct(orderProductNum, orderNum, productNum, orderCount)
+		VALUES(orderProduct_seq.NEXTVAL, #{orderNum}, #{productNum}, #{orderCount})
+	</insert>
+	
+	<!-- 
+		<insert id="addOrderProducts" parameterType="List">
+			INSERT ALL
+			<foreach collection="list" item="orderProduct">
+				INTO orderProduct(orderProductNum, orderNum, productNum, orderCount) VALUES
+				(
+					orderProduct_seq.NEXTVAL, #{orderProduct.orderNum}, #{orderProduct.productNum}, #{orderProduct.orderCount}
+				)
+			</foreach>
+			SELECT * FROM DUAL
+		</insert>
+	 -->
+	
+	<insert id="addOrderAddress" parameterType="OrderAddressDTO">
+		INSERT INTO orderAddress(orderNum, recipient, recipientPhone, recipientAddress)
+		VALUES(#{orderNum}, #{recipient}, #{recipientPhone}, #{recipientAddress})
+	</insert>
+	
+	<insert id="addPayment" parameterType="PaymentDTO">
+		INSERT INTO payment(payNum, orderNum, pay, payWay, payDate)
+		VALUES(payment_seq.NEXTVAL, #{orderNum}, #{pay}, #{payWay}, #{payDate})
+	</insert>
+	
+	<update id="addMemberPoint" parameterType="OrderDTO">
+		UPDATE member SET point = point + #{usedPoint} WHERE id = #{id}
+	</update>
+	
+	<update id="subMemberPoint" parameterType="OrderDTO">
+		UPDATE member SET point = point - #{usedPoint} WHERE id = #{id}
+	</update>
+	
+	<select id="getOrder" parameterType="Map" resultMap="getOrderResult">
+		SELECT *
+			FROM order_ o INNER JOIN orderProduct op
+				ON o.orderNum = op.orderNum INNER JOIN product pd
+				ON op.productNum = pd.productNum INNER JOIN orderAddress oa
+				ON o.orderNum = oa.orderNum INNER JOIN payment pm 
+				ON o.orderNum = pm.orderNum
+		<if test="kind == 'target'">
+			WHERE o.orderNum = #{value}
+		</if>
+		<if test="kind == 'all'">
+			WHERE o.id = #{value}
+		</if>
+		ORDER BY o.orderDate DESC
+	</select>
+	
+	<resultMap id="getOrderResult" type="OrderDTO">
+		<id column="orderNum" property="orderNum" />
+		<result column="id" property="id" />
+		<result column="total" property="total" />
+		<result column="orderFee" property="orderFee" />
+		<result column="orderComment" property="orderComment" />
+		<result column="usedPoint" property="usedPoint" />
+		<result column="orderDate" property="orderDate" />
+		
+		<association property="orderAddressDTO" javaType="OrderAddressDTO">
+			<result column="orderNum" property="orderNum" />
+			<result column="recipient" property="recipient" />
+			<result column="recipientPhone" property="recipientPhone" />
+			<result column="recipientAddress" property="recipientAddress" />
+		</association>
+		
+		<association property="paymentDTO" javaType="PaymentDTO">
+			<id column="payNum" property="payNum" />
+			<result column="orderNum" property="orderNum" />
+			<result column="pay" property="pay" />
+			<result column="payWay" property="payWay" />
+			<result column="payDate" property="payDate" />
+		</association>
+		
+		<collection property="orderProducts" javaType="List" ofType="OrderProductDTO">
+			<id column="orderProductNum" property="orderProductNum" />
+			<result column="orderNum" property="orderNum" />
+			<result column="productNum" property="productNum" />
+			<result column="orderCount" property="orderCount" />
+			<result column="isCanceled" property="isCanceled" />
+			
+			<association property="productDTO" javaType="ProductDTO">
+				<id column="productNum" property="productNum" />
+				<result column="productName" property="productName" />
+				<result column="price" property="price" />
+				<result column="kind" property="kind" />
+				<result column="proof" property="proof" />
+				<result column="contents" property="contents" />
+				<result column="stock" property="stock" />
+				<result column="carbonicAcid" property="carbonicAcid" />
+				<result column="taste" property="taste" />
+				<result column="base" property="base" />
+				<result column="score" property="score" />
+				<result column="savePoint" property="savePoint" />
+				<result column="productHit" property="productHit" />
+			</association>
+		</collection>
+	</resultMap>
+	
+	<insert id="addCancel" parameterType="CancelDTO">
+		<selectKey keyProperty="cancelNum" order="BEFORE" resultType="Long">
+			SELECT cancel_seq.NEXTVAL FROM DUAL
+		</selectKey>
+		
+		INSERT INTO cancel(cancelNum, orderNum, cancelCash, cancelPoint, cancelOrderFee, cancelReason, cancelState, cancelDate)
+		VALUES(#{cancelNum}, #{orderNum}, #{cancelCash}, #{cancelPoint}, #{cancelOrderFee}, #{cancelReason}, #{cancelState}, #{cancelDate})
+	</insert>
+	
+	<insert id="addCancelInfo" parameterType="List">
+		INSERT ALL
+		<foreach collection="list" item="cancelInfo">
+			INTO cancelInfo(cancelNum, orderProductNum) VALUES
+			(
+				#{cancelInfo.cancelNum}, #{cancelInfo.orderProductNum}
+			)
+		</foreach>
+		SELECT * FROM DUAL
+	</insert>
+	
+	<update id="updateOrderProductIsCanceled" parameterType="Long">
+		UPDATE orderProduct SET isCanceled = 1 WHERE orderProductNum = #{value}
+	</update>
+	
+	<select id="getCancel" parameterType="String" resultMap="getCancelResult">
+		SELECT *
+			FROM cancel c INNER JOIN cancelInfo ci
+				ON c.cancelNum = ci.cancelNum INNER JOIN orderProduct o
+				ON ci.orderProductNum = o.orderProductNum INNER JOIN product p
+				ON o.productNum = p.productNum
+		<if test="kind == 'target'">
+			WHERE c.cancelNum = #{value}
+		</if>
+		<if test="kind == 'all'">
+			WHERE c.orderNum = #{value}
+		</if>
+		ORDER BY c.cancelDate DESC
+	</select>
+	
+	<resultMap id="getCancelResult" type="CancelDTO">
+		<id column="cancelNum" property="cancelNum" />
+		<result column="orderNum" property="orderNum" />
+		<result column="cancelCash" property="cancelCash" />
+		<result column="cancelPoint" property="cancelPoint" />
+		<result column="cancelOrderFee" property="cancelOrderFee" />
+		<result column="cancelReason" property="cancelReason" />
+		<result column="cancelState" property="cancelState" />
+		<result column="cancelDate" property="cancelDate" />
+		
+		<collection property="cancelInfos" javaType="List" ofType="CancelInfoDTO">
+			<result column="cancelNum" property="cancelNum" />
+			<result column="orderProductNum" property="orderProductNum" />
+			
+			<association property="orderProductDTO" javaType="OrderProductDTO">
+				<id column="orderProductNum" property="orderProductNum" />
+				<result column="orderNum" property="orderNum" />
+				<result column="productNum" property="productNum" />
+				<result column="orderCount" property="orderCount" />
+				
+				<association property="productDTO" javaType="ProductDTO">
+					<id column="productNum" property="productNum" />
+					<result column="productName" property="productName" />
+					<result column="price" property="price" />
+					<result column="kind" property="kind" />
+					<result column="proof" property="proof" />
+					<result column="contents" property="contents" />
+					<result column="stock" property="stock" />
+					<result column="carbonicAcid" property="carbonicAcid" />
+					<result column="taste" property="taste" />
+					<result column="base" property="base" />
+					<result column="score" property="score" />
+					<result column="savePoint" property="savePoint" />
+					<result column="productHit" property="productHit" />
+				</association>
+			</association>
+		</collection>
+	</resultMap>
+	
+</mapper>

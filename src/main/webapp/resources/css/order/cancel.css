@@ -1,0 +1,74 @@
+@charset "UTF-8";
+
+#checkAll{
+	margin-bottom:15px;
+}
+
+#checkAll > input[type="checkbox"]{
+	margin-right:15px;
+}
+
+#checkAll > span{
+	vertical-align:super;
+	font-size:13px;
+	font-weight:400;
+}
+
+#orderProductWrap{
+	position:relative;
+	overflow:hidden;
+}
+
+#orderProductWrap > input[type="checkbox"]{
+	float:left;
+	margin-right:15px;
+}
+
+#orderProductWrap > img{
+	width:59px; height:74px;
+	margin-right:10px;
+	float:left;
+}
+
+.orderProduct{
+	display:inline-block;
+	position:absolute;
+    top:50%;
+    transform:translate(0%, -50%);
+}
+
+.orderProduct > p{
+	margin:0px;
+	font-size:13px;
+	color:#2C2C2C;
+}
+
+.orderProduct > p:first-of-type{
+	font-weight:700;
+}
+
+.orderProduct > p:last-of-type{
+	font-size:11px;
+	color:#2C2C2C;
+}
+
+#reason > div:not(:last-of-type){
+	margin-bottom:15px;
+}
+
+#reasonInputField > textarea{
+	width:100%; height:100px;
+	padding:10px 10px;
+	border:1px solid #DCDCDC;
+	border-radius:5px;
+}
+
+#reasonInputField > #counter{
+	padding-right:5px;
+	text-align:right;
+	font-size:11px;
+}
+
+#cancelButton{
+	text-align:center;
+}

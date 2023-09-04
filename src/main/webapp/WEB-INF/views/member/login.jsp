@@ -15,9 +15,9 @@
 			<div class="login-wrapper">
 				<h2>Login</h2>
 				<form action="./login" id="loginFrm" method="post">
-					<input type="text" id="id" name="id" placeholder="아이디" value="sunday1">
+					<input type="text" id="id" name="id" placeholder="아이디">
 
-					<input type="password" placeholder="비밀번호" id="pw" name="pw" value="123456">
+					<input type="password" placeholder="비밀번호" id="pw" name="pw">
 
 
 				</form>

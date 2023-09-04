@@ -125,13 +125,13 @@
                                 .
                             </div>
                         </div>
-                        <div class="card mb-4">
+                        <div class="card mb-4 col-xl-7">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                                DataTable Example
+                                회원목록
                             </div>
                             <div class="card-body">
-                                <table id="datatablesSimple">
+                                <table class="datatablesSimple">
                                     <thead>
                                         <tr>
                                             <th>아이디</th>
@@ -142,7 +142,7 @@
                                             <th>생년월일</th>
                                             <th>가입날짜</th>
                                             <th>포인트</th>
-                                            <th>탈퇴</th>
+                                            <th>선택</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -154,8 +154,8 @@
                                             <th>주소</th>
                                             <th>생년월일</th>
                                             <th>가입날짜</th>
-                                            <th>포인트</th>
-                                            <th>탈퇴</th>
+                                            <th>선택</th>
+                                            
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -169,12 +169,69 @@
                                                 <td>${member.birth}</td>
                                                 <td>${member.memberDate}</td>
                                                 <td>${member.point}</td>
-                                                <td><button type="button" class="btns" id="btn${i.index}">탈퇴</button></td>
+                                                <td><input type="checkbox" class="memberChecks" id="memberCheck${i.index}"></td>
+                                            </tr>
+                                        </c:forEach>
+                                    </tbody>
+                                </table>
+                                <input type="text" name="point" id="point">
+                                <button type="button" class="pointBtns" id="pointBtn">포인트지급</button><br>
+                                <button type="button" class="btns" id="deleteBtn">탈퇴</button>
+                            </div>
+
+                        </div>
+                        <div class="card mb-4 col-xl-7">
+                            <div class="card-header">
+                                <i class="fas fa-table me-1"></i>
+                                SMS수신동의회원목록
+                            </div>
+                            <div class="card-body">
+                                <table class="datatablesSimple">
+                                    <thead>
+                                        <tr>
+                                            <th>아이디</th>
+                                            <th>이름</th>
+                                            <th>권한</th>
+                                            <th>휴대폰번호</th>
+                                            <th>주소</th>
+                                            <th>생년월일</th>
+                                            <th>가입날짜</th>
+                                            <th>SMS수신여부</th>
+                                            <th>선택</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>아이디</th>
+                                            <th>이름</th>
+                                            <th>권한</th>
+                                            <th>휴대폰번호</th>
+                                            <th>주소</th>
+                                            <th>생년월일</th>
+                                            <th>가입날짜</th>
+                                            <th>SMS수신여부</th>
+                                            <th>선택</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        <c:forEach items="${checkList}" var="checkList" varStatus="i">
+                                            <tr>
+                                                    <td id="memberId${i.index}">${checkList.id}</td>
+                                                    <td>${checkList.name}</td>
+                                                    <td><c:if test="${checkList.roleNum==1}">관리자</c:if><c:if test="${checkList.roleNum==0}">유저</c:if></td>
+                                                    <td id="phone${i.index}">${checkList.phone}</td>
+                                                    <td>${checkList.address}</td>
+                                                    <td>${checkList.birth}</td>
+                                                    <td>${checkList.memberDate}</td>
+                                                    <td>수신동의</td>
+                                                    <td><input type="checkbox" class="smsChecks" id="smsCheck${i.index}"></td>
                                             </tr>
                                         </c:forEach>
                                     </tbody>
                                 </table>
                             </div>
+                            <textarea name="smsContents" id="smsContents" cols="10" rows="3" width="50%"></textarea>
+                            <button type="button" id="smsBtn">단체문자발송</button>
                         </div>
                     </div>
                 </main>
@@ -183,8 +240,5 @@
         </div>
         <script src="/resources/js/memberManagement.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="js/scripts.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
-        <script src="js/datatables-simple-demo.js"></script>
     </body>
 </html>

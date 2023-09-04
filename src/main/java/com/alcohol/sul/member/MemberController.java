@@ -25,7 +25,7 @@ public class MemberController {
 	//후대폰 문자인증
 	@RequestMapping(value = "/phoneCheck", method = RequestMethod.GET)
 	@ResponseBody
-	public String sendSMS(@RequestParam("phone") String userPhoneNumber) { // 휴대폰 문자보내기
+	public String registerSMS(@RequestParam("phone") String userPhoneNumber) { // 휴대폰 문자보내기
 		int randomNumber = (int) ((Math.random() * (9999 - 1000 + 1)) + 1000);// 난수 생성
 		System.out.println(randomNumber);
 		memberService.certifiedPhoneNumber(userPhoneNumber, randomNumber);
@@ -36,7 +36,7 @@ public class MemberController {
 	
 	//비밀번호 변경시 랜덤비밀번호 문자전송
 	@RequestMapping(value = "/phonePw", method = RequestMethod.GET)
-	public String phoneFw(@RequestParam("phone") String userPhoneNumber,@RequestParam("id") String id,MemberDTO memberDTO,Model model) throws Exception { // 휴대폰 문자보내기
+	public String phoneFw(@RequestParam("phone") String userPhoneNumber,String id,MemberDTO memberDTO,Model model) throws Exception { // 휴대폰 문자보내기
 		Random random = new Random();
 		StringBuffer randomBuf = new StringBuffer();
 		for (int i = 0; i < 8; i++) {
@@ -138,20 +138,21 @@ public class MemberController {
 		model.addAttribute("result", result);
 		return "commons/ajaxResult";
 	}
-
+	
+	//회원정보 정보업데이트
 	@PostMapping(value = "updateInfo")
 	public void setInfoUpdate(MemberDTO memberDTO, HttpSession session) throws Exception {
 		int result = memberService.setInfoUpdate(memberDTO);
 		
 	}
-
+	//회원정보 비번업데이트
 	@PostMapping(value = "updatePw")
 	public String setPwUpdate(MemberDTO memberDTO, HttpSession session) throws Exception {
 		int result = memberService.setPwUpdate(memberDTO);
 		session.invalidate();
 		return "redirect:./login";
 	}
-
+	//아이디찾기
 	@GetMapping(value = "findId")
 	public void findId() throws Exception {
 
@@ -168,7 +169,8 @@ public class MemberController {
 			model.addAttribute("id", memberDTO.getId());
 		}
 	}
-
+	
+	//비번찾기
 	@GetMapping(value = "findPw")
 	public void findPw() throws Exception {
 
@@ -176,7 +178,7 @@ public class MemberController {
 
 	@PostMapping(value = "findPw")
 	public void findPw(MemberDTO memberDTO, Model model) throws Exception {
-		model.addAttribute("phone","0"+memberDTO.getPhone());
+		model.addAttribute("phone",memberDTO.getPhone());
 		model.addAttribute("id", memberDTO.getId());
 		
 		memberDTO = memberService.findPw(memberDTO);
@@ -187,9 +189,11 @@ public class MemberController {
 			model.addAttribute("check", 0);
 			model.addAttribute("pw", memberDTO.getPw());
 		}
-	}
+	}	
 	
 	
+	
+	//회원탈퇴
 	@GetMapping(value="deleteMember")
 	public String deleteMember(MemberDTO memberDTO,HttpSession session) throws Exception{
 		memberDTO = (MemberDTO)session.getAttribute("member");

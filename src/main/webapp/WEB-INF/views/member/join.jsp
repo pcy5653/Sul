@@ -54,10 +54,14 @@
 						<button type="button" id="adrBtn">주소검색</button>
 						<div id="addressMsg"></div>
 					</div>
-					<div class="mb-5">
+					<div>
 						<label for="birth" class="form-label input" data-name="생년월일">생년월일</label>
 						<input type="date" name="birth" id="birth">
 						<div id="birthMsg"></div>
+					</div>
+					<div class="mb-5">
+						<input type="checkbox" name="smsCheck" id="smsCheck" checked>SMS수신동의(이벤트문자) 
+						<input type="hidden" name="sms" id="sms" value="1">
 					</div>
 					<button type="button" id="regBtn">회원가입</button>
 				</form>

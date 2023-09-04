@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+#productInfo > div:first-of-type > p{
+	display:inline-block;
+	margin:0px;
+	font-weight:bold;
+}
+
+#productInfo > div:first-of-type > p:first-of-type{
+	font-size:16px;
+	color:#303030;
+}
+
+#productInfo > div:first-of-type > p:last-of-type{
+	float:right;
+	cursor:pointer;
+}
+
+#notExist{
+	text-align:center;
+	font-weight:500;
+}
