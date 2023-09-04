@@ -12,6 +12,7 @@
 		</head>
 
 		<body>
+			<c:import url="../temp/header.jsp"></c:import>
 			<div class="login-wrapper">
 				<h2>Login</h2>
 				<form action="./login" id="loginFrm" method="post">
