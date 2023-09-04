@@ -1,4 +1,11 @@
 
+$("#allCheckBtn").click(function(){
+    if($(".smsChecks").prop("checked")){
+        $(".smsChecks").prop("checked",false);
+        return;
+    }
+    $(".smsChecks").prop("checked",true);
+})
 
 //선택한 회원삭제
 $("#deleteBtn").click(function () {

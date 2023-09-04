@@ -28,6 +28,7 @@ public class AdminController {
 	public void getMain(MemberDTO memberDTO,Model model,HttpSession session) throws Exception{
 		memberDTO = (MemberDTO)session.getAttribute("member");
 		List<MemberDTO> ar = adminService.getMemberList(memberDTO);
+		model.addAttribute("member", memberDTO);
 		model.addAttribute("list", ar);	
 	}
 	
@@ -41,6 +42,7 @@ public class AdminController {
 		memberDTO = (MemberDTO)session.getAttribute("member");
 		List<MemberDTO> ar = adminService.getMemberList(memberDTO);
 		List<MemberDTO> cr = adminService.getSmsCheckList(memberDTO);
+		model.addAttribute("member",memberDTO);
 		model.addAttribute("list", ar);
 		model.addAttribute("checkList", cr);
 	}
