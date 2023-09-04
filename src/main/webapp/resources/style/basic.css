@@ -44,3 +44,23 @@ footer {
 .f_bottom > p {color: black; margin-bottom: 0.2rem;}
 .f_bottom > p:last-of-type {margin-bottom: 2rem;}
 .f_bottom > span {line-height: 1.5;}
+
+
+/* search */
+#search select{
+	width:70px; height:40px;
+	text-align:center;
+	vertical-align:middle;
+	border:1px solid #E3E3E3;
+	border-radius:5px;
+}
+
+#search input[type="text"]{
+	width:270px; height:40px;
+	vertical-align:middle;
+	padding-left:35px;
+	border:none;
+	border-radius:5px;
+	font-size:14px;
+	background:rgb(247, 247, 247) url("/resources/images/product/searchIcon.svg") no-repeat 10px center;
+}

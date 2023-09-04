@@ -97,34 +97,3 @@
 	display:table;
 	margin:0px auto;
 }
-
-#search{
-	margin-bottom:15px;
-}
-
-#search select{
-	width:70px; height:40px;
-	text-align:center;
-	border:1px solid #E3E3E3;
-	border-radius:5px;
-}
-
-#search input[type="text"]{
-	width:270px; height:40px;
-	padding-left:35px;
-	border:none;
-	border-radius:5px;
-	font-size:14px;
-	background:rgb(247, 247, 247) url("/resources/images/product/searchIcon.svg") no-repeat 10px center;
-}
-
-#search button{
-	width:55px; height:40px;
-	background-color:rgb(0, 150, 243);
-	border:1px solid rgb(0, 150, 243);
-	border-radius:5px;
-	padding:0px;
-	color:rgb(237, 237, 237);
-	font-size:14px;
-	font-weight:500;
-}

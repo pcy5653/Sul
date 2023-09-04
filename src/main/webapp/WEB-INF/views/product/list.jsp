@@ -49,16 +49,6 @@
 		</div>
 		
 		<div id="searchWrap">
-			<div id="search">
-				<form action="${pageContext.request.contextPath}/product/list" method="get">
-					<select name="kind">
-						<option value="name">이름</option>
-						<option value="contents">내용</option>
-					</select>
-					<input type="text" name="search" placeholder="무엇을 찾고 계신가요?">
-					<button type="submit">검색</button>
-	 		  </form>
-			</div>
 			<nav aria-label="Page navigation example">
 				<ul class="pagination justify-content-center">
 					<li class="page-item ${pager.pre?'':'disabled'}">

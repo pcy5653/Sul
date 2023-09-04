@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/resources/style/reset.css">
     <link rel="stylesheet" href="/resources/style/basic.css">
+ 	
     <title>header</title>
 </head>
 <body>
@@ -16,10 +17,20 @@
         <header>
             <h1>
                 <a href="../" class="main_logo">
-
-                    <img src="/resources/images/main_logo.png" alt="메인로고">
+					<img src="/resources/images/main_logo.png" alt="메인로고">
                 </a>
             </h1>
+            
+            <div id="search">
+				<form action="${pageContext.request.contextPath}/product/list" method="get">
+					<select name="kind">
+						<option value="name">이름</option>
+						<option value="contents">내용</option>
+					</select>
+					<input type="text" name="search" placeholder="무엇을 찾고 계신가요?">
+	 		  </form>
+			</div>
+            
             <ul>
 			        <li class="nav-item">
 			          <a class="nav-link active" aria-current="page" href="/">Home&nbsp;&nbsp;&nbsp;&nbsp;</a>
@@ -69,7 +80,7 @@
            </div>
         </section>
     </div>
-
+	
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/ScrollTrigger.min.js"></script>
     <script src="/resources/js/main.js"></script>
 </body>
