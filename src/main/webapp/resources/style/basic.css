@@ -67,18 +67,37 @@ footer {
 
 /* pro = best&pick */
 /* 공통 */
-#pro_wrap{}
-#pro_wrap .pro_div{}
+#pro_wrap{margin:0 auto 7rem; background-color: cadetblue;}
+#pro_wrap .pro_div{width: 80%;margin: 0px auto;}
 #pro_wrap .pro_div .pro_top{}
 #pro_wrap .pro_div .pro_btm{}
 #pro_wrap .pro_div .pro_top .pro_text{}
-#pro_wrap .pro_div .pro_top ul{}
-#pro_wrap .pro_div .pro_top ul > li{}
-#pro_wrap .pro_div .pro_top ul > li > a{}
+#pro_wrap .pro_div .pro_top .pro_text .pro_title{}
+#pro_wrap .pro_div .pro_top .pro_text .pro_title .pt{}
+#pro_wrap .pro_div .pro_top .pro_text .pro_title > p{}
+
+#pro_wrap .pro_div .pro_btm ul{display: flex;justify-content: space-around; width:100%;}
+#pro_wrap .pro_div .pro_btm ul > li{width:23%;}
+#pro_wrap .pro_div .pro_btm ul > li > a{display:flex;flex-direction:column; width:100%;height:100%;}
+#pro_wrap .pro_div .pro_btm ul > li > a.best{}
+#pro_wrap .pro_div .pro_btm ul > li > a > .pro_img{height:100%;margin: 0 auto;}
+#pro_wrap .pro_div .pro_btm ul > li > a > .pro_img > img{display:block;width:100%;height:85%;}
+/* pro_data */
+#pro_wrap .pro_div .pro_btm ul > li > a > .img_data {}
+#pro_wrap .pro_div .pro_btm ul > li > a > .img_data .i_name {}
+#pro_wrap .pro_div .pro_btm ul > li > a > .img_data .i_price {}
+#pro_wrap .pro_div .pro_btm ul > li > a > .img_data .i_price .cost {}
+#pro_wrap .pro_div .pro_btm ul > li > a > .img_data .i_price .cost .won {}
+#pro_wrap .pro_div .pro_btm ul > li > a > .img_data .i_price .i_score {}
+#pro_wrap .pro_div .pro_btm ul > li > a > .img_data .i_price .i_score .score {}
+#pro_wrap .pro_div .pro_btm ul > li > a > .img_data .i_price .i_score .review_total {}
+#pro_wrap .pro_div .pro_btm ul > li > a > .img_data .i_hash {}
+#pro_wrap .pro_div .pro_btm ul > li > a > .img_data .i_hash > p {}
+
+
 
 /* best */
-#pro_wrap {}
-#pro_wrap .best_div {}
+#pro_wrap .best_div {background-color: cornflowerblue; margin-bottom:5rem;}
 #pro_wrap .best_div .best_top {}
 #pro_wrap .best_div .best_top .best {}
 #pro_wrap .best_div .best_top > ul {}
@@ -88,8 +107,7 @@ footer {
 
 
 /* pick */
-#pro_wrap {}
-#pro_wrap .pick_div {}
+#pro_wrap .pick_div {background: darkgoldenrod;}
 #pro_wrap .pick_div .pick_top {}
 #pro_wrap .pick_div .pick_top .best {}
 #pro_wrap .pick_div .pick_top > ul {}
