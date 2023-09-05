@@ -11,7 +11,7 @@
 .title {font-size:2rem}
 
 /* header.css */
-.viewport {background-color: #ffc9cc;}
+.viewport {background-color: ;}
 header {position: relative;
 background-color: rgba(255,255, 255,0);}
 
@@ -25,7 +25,7 @@ footer {margin-top:7rem;}
 <body>
 	
 	<section class="container mt-5">
-		<br><br><br><br><br>
+		
 		<h1 class="title mt-5 text-center">공지사항</h1> <br><br>
 	
 		<table class="table">
