@@ -1,0 +1,15 @@
+.info_wrap {}
+.info_wrap .info {background-color: cadetblue; width: 1150px;}
+.info_wrap .info .info_top {}
+.info_wrap .info .member_point {}
+.info_wrap .info .info_frm {}
+.info_wrap .info .info_frm #myForm {}
+.info_wrap .info .info_frm #myForm > p {}
+.info_wrap .info .info_frm #myForm > p > label {}
+.info_wrap .info .info_frm #myForm > p > .w3_input {}
+
+
+
+/* btn.css */
+.info_wrap .info .info_frm #myForm .info_btn,
+.info_wrap .info .info_frm #pwForm .info_btn {}
