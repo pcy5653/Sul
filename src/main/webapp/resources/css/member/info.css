@@ -1,0 +1,39 @@
+.info_wrap {margin:3rem auto 5rem; width:1150px;border:1px solid #dddddd; border-radius:15px;}
+.info_wrap .info {width: 900px;margin:5rem auto;}
+.info_wrap .info .info_top {}
+.info_wrap .info .info_top > h3 {font-size:1.5rem;font-weight:bold;text-align:center;}
+.info_wrap .info .member_point {}
+.info_wrap .info .member_point .point_value {color:coral;}
+.info_wrap .info .member_point .point {
+    background-image: url(/resources/images/member/point.png);background-size: contain;background-repeat: no-repeat;
+    width: 18px;height: 18px;display: inline-block;margin-left: 0.5rem;
+}
+.info_wrap .info .info_frm {border:1px solid #dddddd; border-radius:15px;margin-top:2rem;}
+.info_wrap .info .info_frm #myForm {padding:3rem;}
+.info_wrap .info .info_frm #myForm > p,
+.info_wrap .info .info_frm #pwForm > p {width:100%;height:35px;text-align:center;}
+.info_wrap .info .info_frm #myForm > p > label,
+.info_wrap .info .info_frm #pwForm > p > label {width:20%;}
+.info_wrap .info .info_frm #myForm > p > .input,
+.info_wrap .info .info_frm #pwForm > p > .input {width:75%;height:100%;border:1px solid #dddddd; border-radius:10px;}
+.info_wrap .info .info_frm #myForm > p > .date_input {
+    border-bottom: 1px solid #dddddd; border-radius:0;
+    border-top: none;border-left: none;border-right: none;
+}
+.info_wrap .info .info_frm #pwForm {padding:3rem;padding-top:0;}
+
+
+/* btn.css */
+.info_wrap .info .info_frm #myForm > .inBtn,
+.info_wrap .info .info_frm #pwForm > .inBtn,
+.info_wrap .info .inBtn {
+    width: 95%;height: 40px;line-height: 40px;margin:0 auto;
+    border: 1px solid black;border-radius: 10px;background: black;
+}
+.info_wrap .info .info_frm #myForm > .inBtn > button,
+.info_wrap .info .info_frm #pwForm > .inBtn > button,
+.info_wrap .info .info_frm .inBtn > button {
+    color: white; font-size: 1rem;font-weight:bold;
+}
+
+.info_wrap .info .info_frm #pwForm > .infoDelBtn {margin-top:2rem;}

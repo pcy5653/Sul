@@ -14,8 +14,8 @@
 
 .viewport{background-color:#ffc9cc;}
 header{
-    position:relative;
-    background-color:rgba(255,255,255,0);
+    position:relative !important; top: 0px !important;
+    background-color:rgba(255,255,255,0) !important;
 }
 footer{margin-top:7rem;}
 
@@ -47,6 +47,8 @@ footer{margin-top:7rem;}
     font-size: 16px;
     background-color: #F47070;
     margin-top: 20px;
+    border: 1px solid !important;
+    width: 20rem !important;
 }
 #loginFrm > input::placeholder{
     color: #D2D2D2;
