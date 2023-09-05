@@ -13,13 +13,14 @@
 	<section class="container mt-5">
 	<h1 class="my-4">리뷰 등록 페이지</h1>
 	
-	<form action="./reviewAdd" method="post" enctype="multipart/form-data">
+	<form action="./reviewAdd" method="post" enctype="multipart/form-data" id="frm">
 		<input type="hidden" name="productNum" value="${dto.productNum}">
 	
 		
 		<div class="mb-3">
 		 	 <label for="reviewContents" class="form-label">리뷰 내용</label>
 		 	 <textarea class="form-control" name="reviewContents" id="reviewContents" rows="3"></textarea>
+		 	 <div id="rcMsg"></div>
 		</div>	
 
 		
@@ -52,6 +53,6 @@
 	</form>
 	</section>
 
-
+	<script src="/resources/js/khj/review.js"></script>
 </body>
 </html>
