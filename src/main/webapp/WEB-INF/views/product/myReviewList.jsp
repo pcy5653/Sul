@@ -32,30 +32,15 @@
 				</c:if>
 				<c:if test="${fn:length(myReviewList)>0}">
 					<c:forEach items="${myReviewList}" var="review" varStatus="i">
-						<c:choose>
-							<c:when test="${i.first}">
-								<tr id="totalPage" data-totalPage="${pager.totalPage}">
-							</c:when>
-							<c:otherwise>
-								<tr>
-							</c:otherwise>
-						</c:choose>
-
-
-						<td>아이디 ${review.id}</td>
-						<br>
-						<td>별점 ${review.reviewStar}</td>
-						<td>작성시간 ${review.reviewTime}</td>
-						<br>
-						<tr>
-							<td></td>
-						<tr>
-							<td>내용 ${review.reviewContents}</td>
-						<tr>
-							<td><img height="100" width="100"
-								src="/resources/upload/product/review/${review.reviewFileDTOs[0].fileName}">
-								<img height="100" width="100"
-								src="/resources/upload/product/review/${review.reviewFileDTOs[1].fileName}"></td>
+						<div id="myReview"+i class="wrap">
+							<div>
+								<p>${review.id}</p>
+								<p>별점 ${review.reviewStar} ${review.reviewTime}</p>
+								<p>${review.reviewContents}</p>
+								<img height="100" width="100" src="/resources/upload/product/review/${review.reviewFileDTOs[0].fileName}">		
+								<img height="100" width="100" src="/resources/upload/product/review/${review.reviewFileDTOs[1].fileName}">
+							</div>
+						</div>
 					</c:forEach>
 				</c:if>
 

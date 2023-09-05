@@ -94,9 +94,9 @@
                                         </c:forEach>
                                     </tbody>
                                 </table>
-                                <input type="text" name="search" id="search"><button type="button" id="searchBtn">회원선택/해제</button>
+                                <input type="text" name="search" id="search" placeholder="선택할 회원의 id 입력"><button type="button" id="searchBtn">회원선택/해제</button>
                                 <button type="button" id="allCheckBtn2" >전체선택/해제</button><br><br>
-                                <input type="text" name="point" id="point">
+                                <input type="text" name="point" id="point" placeholder="지급할 포인트 입력">
                                 <button type="button" class="pointBtns" id="pointBtn">포인트지급</button><br><br>
                                 <button type="button" class="btns" id="deleteBtn">탈퇴</button>
                             </div>
@@ -151,10 +151,10 @@
                                         </c:forEach>
                                     </tbody>
                                 </table>
-                                <input type="text" name="search2" id="search2"><button type="button" id="searchBtn2">회원선택/해제</button>
+                                <input type="text" name="search2" id="search2" placeholder="선택할 회원의 id 입력"><button type="button" id="searchBtn2">회원선택/해제</button>
                                 <button type="button" id="allCheckBtn">전체선택/해제</button>
                             </div>
-                            <textarea name="smsContents" id="smsContents" cols="10" rows="3" width="50%"></textarea>
+                            <textarea name="smsContents" id="smsContents" cols="10" rows="3" width="50%" placeholder="전송할 문자 내용을 입력하세요."></textarea>
                             <button type="button" id="smsBtn">단체문자발송</button>
                         </div>
                     </div>
