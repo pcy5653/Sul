@@ -11,36 +11,7 @@
 
 <link rel="stylesheet" href="/resources/css/basket/basketList.css">
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<style type="text/css">
-    .wrap { width: 800px; height:800px; margin: auto; }
 
-    section#content ul li { margin: 10px 0; padding: 10px 0;}
-    section#content ul li img { width:; height: 250px; }
-    section#content div.productInfo .delete { text-align: right; }
-    section#content div.productInfo .delete button { font-size: 18px; padding: 5px 10px;}
-
-    .allCheck input {width: 16px; height: 16px;}
-    .checkBox { float: left; width: 30px; }
-    .checkBox input { width: 16px; height: 16px; }
-
-    #payment{
-		
-    	margin-top : 30px;
-    	width:100%; height:50px;
-    	background-color:;
-    	border-radius:5px;
-    	color:#3e3e3e;
-    }
-	
-	#list{
-
-		margin-top: 30px;
-		width: 95%; height: 50px;
-		background-color:;
-    	border-radius:5px;
-    	color:#3e3e3e;
-	}
-</style>
 </head>
 <body>
 <c:import url="../temp/header.jsp" /><br><br><br><br><br><br><br>
