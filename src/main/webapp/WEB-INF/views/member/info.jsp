@@ -8,16 +8,15 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="/resources/css/member/info.css">
-	<!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
 	<c:import url="../temp/bootStrap.jsp"></c:import>
 
 	<title>회원정보</title>
 </head>
 
 <body>
-	<div class="w3-content w3-container w3-margin-top info_wrap">
-		<div class="w3-container w3-card-4 info">
-			<div class="w3-center w3-large w3-margin-top info_top">
+	<div class="info_wrap">
+		<div class="info">
+			<div class="info_top">
 				<h3>회원정보</h3>
 			</div>
 			<div class="member_point">
@@ -27,26 +26,26 @@
 				<form id="myForm" action="../member/updateInfo" method="post">
 					<p>
 						<label>아이디</label>
-						<input class="w3-input input" type="text" id="id" name="id" readonly value="${ member.id }">
+						<input class="input" type="text" id="id" name="id" readonly value="${ member.id }">
 					</p>
 					<p>
 						<label>휴대폰번호</label>
-						<input class="w3-input input" type="text" id="phone" name="phone" readonly
+						<input class="input" type="text" id="phone" name="phone" readonly
 							value="${ member.phone }" required>
 					</p>
 					<p>
 						<label>주소</label>
-						<input class="w3-input input" type="text" id="address" name="address"
+						<input class="input" type="text" id="address" name="address"
 							value="${ member.address }" required>
 					</p>
 					<p>
 						<label>생년월일</label>
-						<input class="w3-input input date_input" type="date" id="birth" name="birth" value="${ member.birth }"
+						<input class="input date_input" type="date" id="birth" name="birth" value="${ member.birth }"
 							required>
 					</p>
-					<p class="w3-center inBtn">
+					<p class="inBtn">
 						<button type="button"
-							class="w3-button w3-block w3-black w3-ripple w3-margin-top w3-round info_btn"
+							class="info_btn"
 							id="updateBtn">회원정보 변경</button>
 					</p>
 				</form>
@@ -55,27 +54,27 @@
 					<input type="hidden" name="id" value="${ member.id }">
 					<p>
 						<label>기존 비밀번호</label>
-						<input class="w3-input input" id="old_pw" name="old_pw" data-pw="${member.pw}" type="password"
+						<input class="input" id="old_pw" name="old_pw" data-pw="${member.pw}" type="password"
 							required>
 					</p>
 					<p>
 						<label>새 비밀번호</label>
-						<input class="w3-input input" id="pw" name="pw" type="password" required>
+						<input class="input" id="pw" name="pw" type="password" required>
 					<div id="pwMsg"></div>
 					</p>
 					<p>
 						<label>비밀번호확인</label>
-						<input class="w3-input input" type="password" id="pw2" type="password" required>
+						<input class="input" type="password" id="pw2" type="password" required>
 					<div id="pw2Msg"></div>
 					</p>
-					<p class="w3-center inBtn">
+					<p class="inBtn">
 						<button type="button" id="pwBtn"
-							class="w3-button w3-block w3-black w3-ripple w3-margin-top w3-round info_btn">비밀번호
+							class="info_btn">비밀번호
 							변경</button>
 					</p>
-					<p class="w3-center inBtn infoDelBtn">
+					<p class="inBtn infoDelBtn">
 						<button type="button" id="deleteBtn"
-							class="w3-button w3-block w3-black w3-ripple w3-margin-top w3-round info_btn"
+							class="info_btn"
 							data-bs-toggle="modal" data-bs-target="#exampleModal">회원탈퇴</button>
 					</p>
 				</form>

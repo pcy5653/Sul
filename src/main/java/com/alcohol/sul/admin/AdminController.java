@@ -70,7 +70,7 @@ public class AdminController {
 	
 	//단체문자
 		@RequestMapping(value = "/groupSMS", method = RequestMethod.GET)
-		public void phoneFw(@RequestParam("phone") String userPhoneNumber,String smsContents,String id,MemberDTO memberDTO,Model model) throws Exception { // 휴대폰 문자보내기
+		public void phoneFw(@RequestParam("phone") String userPhoneNumber,String smsContents) throws Exception { // 휴대폰 문자보내기
 			
 			memberService.certifiedPhoneNumber(userPhoneNumber, smsContents);
 			

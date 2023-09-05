@@ -2,6 +2,13 @@
     font-family: 'malgun gothic';
 }
 
+.viewport{background-color:#ffc9cc;}
+header{
+    position:relative !important; top: 0px !important;
+    background-color:rgba(255,255,255,0) !important;
+}
+footer{margin-top:7rem;}
+
 #content.cols-d {
     width: 583px;
     min-width: 583px;
