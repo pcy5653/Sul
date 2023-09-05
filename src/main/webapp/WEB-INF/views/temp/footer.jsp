@@ -11,10 +11,10 @@
                     <p>평일 10:00 ~ 18:00, 주말 휴무</p>
                 </div>
                 <ul>
-                    <li><a href="https://www.instagram.com/sooldamhwa/?hl=ko" target="_blank"><img src="/resources/images/icon_instagram.png" alt="SNS 바로가기"></a></li>
-                    <li><a href="https://www.youtube.com/channel/UCuhTvdO3VD-S3md_CkWYtbw" target="_blank"><img src="/resources/images/icon_youtube.png" alt="유튜브 바로가기"></a></li>
-                    <li><a href="https://pf.kakao.com/_xktAgj" target="_blank"><img src="/resources/images/icon_kakao.png" alt="카카오 바로가기"></a></li>
-                    <li><a href="https://blog.naver.com/sooldamhwa" target="_blank"><img src="/resources/images/icon_naver.png" alt="네이버 바로가기"></a></li>
+                    <li><a href="https://www.instagram.com/sooldamhwa/?hl=ko" target="_blank"><img src="/resources/images/main/icon_instagram.png" alt="SNS 바로가기"></a></li>
+                    <li><a href="https://www.youtube.com/channel/UCuhTvdO3VD-S3md_CkWYtbw" target="_blank"><img src="/resources/images/main/icon_youtube.png" alt="유튜브 바로가기"></a></li>
+                    <li><a href="https://pf.kakao.com/_xktAgj" target="_blank"><img src="/resources/images/main/icon_kakao.png" alt="카카오 바로가기"></a></li>
+                    <li><a href="https://blog.naver.com/sooldamhwa" target="_blank"><img src="/resources/images/main/icon_naver.png" alt="네이버 바로가기"></a></li>
                 </ul>
             </div>
             <div class="f_middle">

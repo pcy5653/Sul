@@ -44,10 +44,33 @@ const question = document.getElementById('question');
 const comment = document.getElementById('comment');
 const q = question.getAttribute("data-step");
 const content = question.getAttribute("data-con");
-const vv = question.getAttribute("data-num")
+const pnum = question.getAttribute("data-num");
 const com = comment.getAttribute("data-step");
 
-console.log(vv);
+
+// file test
+const files = document.getElementById("files");
+const file = files.getAttribute("data-file");
+const fn = files.getAttribute("data-name")
+
+
+console.log(pnum);
+console.log(file); // 배열 2개
+console.log(typeof(file));
+console.log(fn);
+
+
+// const fileArray = document.getElementById('file').getAttribute('data-file');
+// const fileData = fileArray.slice(1, -1);
+// const file = fileData.split(',');
+
+// file.forEach(f => {
+//     console.log("배열");
+//     console.log(f);
+//     console.log()
+// });
+
+
 
 if(q != com){
 //     // text
@@ -55,66 +78,22 @@ if(q != com){
     i = i.concat('<tr><th>고객님의 질문</th></tr>');
     i = i.concat('<tr><td>'+content+'</td></tr>');
     i = i.concat('</table>');
+
+    // i = i.concat('<c:forEach items="'+files+'"'+' var ="f">');
+    // i = i.concat('<img src="/resources/upload/qna/'+files+'" class="fileImg"></img>')
+    // i = i.concat('</c:forEach>');
     
     question.innerHTML = i;
     
-    
-//     // file
-//     // i = i.concat('<c:forEach items="${dto.qnaDTO.fileDTOs} var ="f">');
-//     // i = i.concat('<img src="/resources/upload/qna/${f.fileName}" class="fileImg" data-file-num="${f.fileNum}"></img>');
-//     // i = i.concat('</c:forEach>');
-
-    
-//     fetch("/qna/detail?num="+vv, {
-//         method:"get"
-//     })
-//     .then((response) => response.text())
-//     .then((data) => {
-//         //console.log(data);
-
-//         // const pf = document.createElement('div');
-//         // pf.id = 'files';
-//         // console.log(pf);
-
-//         // data.forEach( f => {
-//         //     const img = document.createElement('img');
-//         //     img.src = '/resources/upload/qna/${f.fileName}';
-//         //     img.className = 'fileImg';
-//         //     img.setAttribute('data-file-num', f.fileNum);
-//         //     pf.appendChild(img);
-//         // });
-
-//         // for(f of r){
-//         //     const img = document.createElement('img');
-//         //     img.src = '/resources/upload/qna/${f.fileName}';
-//         //     img.className = 'fileImg';
-//         //     img.setAttribute('data-file-num', f.fileNum);
-//         //     pf.appendChild(img);
-//         // }
-
-//         // question.appendChild(pf);
-//         // console.log(question);
-//     });
-
-    //  function getDetail (vv){
-    //      $.ajax({
-    //          type:'GET',
-    //          url:'/qna/detail',
-    //          data:{
-    //              num : vv
-    //          },
-    //          dataType:'text',
-    //          success: function(result){
-    //              $('#question').html(result);
-    //              console.log(result);
-    //              console.log(typeof(result));
-    //          },
-    //          error: function(result){
-    //              console.log(result)
-    //          }
-    //      })
-    //  }
-
-    //  getDetail(vv);
 }
 
+
+/// ex
+const ex = document.getElementById("detail_file");
+const e = ex.getAttribute("data-file")
+//const en = ex.getAttribute("data-file-name")
+
+console.log("--------------------------------")
+console.log(e);
+//console.log(en)
+console.log(typeof(e));

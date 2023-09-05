@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="/resources/style/basic.css">
  	
     <title>header</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
 <body>
     <div class="viewport">
@@ -30,28 +31,6 @@
 					<input type="text" name="search" placeholder="무엇을 찾고 계신가요?">
 	 		  </form>
 			</div>
-            
-            <ul>
-			        <li class="nav-item">
-			          <a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath}/">Home&nbsp;&nbsp;&nbsp;&nbsp;</a>
-			        </li>
-			        <li class="nav-item">
-			          <a class="nav-link active" href="/product/list">전체 제품&nbsp;&nbsp;&nbsp;&nbsp;</a>
-			        </li>
-			        <li class="nav-item">
-			          <a class="nav-link active" href="/product/list/takju">탁주&nbsp;&nbsp;&nbsp;&nbsp;</a>
-			        </li>
-			        <li class="nav-item">
-			          <a class="nav-link active" href="/product/list/chungju">약, 청주&nbsp;&nbsp;&nbsp;&nbsp;</a>
-			        </li>			        
-			        <li class="nav-item">
-			          <a class="nav-link active" href="/product/list/wine">과실주&nbsp;&nbsp;&nbsp;&nbsp;</a>
-			        </li>
-			        <li class="nav-item">
-			          <a class="nav-link active" href="/product/list/soju">증류주</a>
-			        </li>
-
-		    </ul>
           
             <ul>
                 <c:if test="${not empty member}">
@@ -65,13 +44,6 @@
 	      		<li class="join"><a href="/member/terms">회원가입</a></li>
 	      		</c:if>            </ul>
         </header>
-        <br><br><br>
-        <hr>
-        <section>
-           <div class="main">
-            
-           </div>
-        </section>
     </div>
 	
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/ScrollTrigger.min.js"></script>
