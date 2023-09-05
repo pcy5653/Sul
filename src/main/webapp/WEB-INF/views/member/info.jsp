@@ -60,13 +60,13 @@
 					<p>
 						<label>새 비밀번호</label>
 						<input class="input" id="pw" name="pw" type="password" required>
-					<div id="pwMsg"></div>
 					</p>
+					<div id="pwMsg" style="text-align:center"></div>
 					<p>
 						<label>비밀번호확인</label>
 						<input class="input" type="password" id="pw2" type="password" required>
-					<div id="pw2Msg"></div>
 					</p>
+					<div id="pw2Msg" style="text-align:center"></div>
 					<p class="inBtn">
 						<button type="button" id="pwBtn"
 							class="info_btn">비밀번호
