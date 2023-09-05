@@ -18,7 +18,7 @@
         <header>
             <h1>
                 <a href="${pageContext.request.contextPath}/" class="main_logo">
-					<img src="/resources/images/main_logo.png" alt="메인로고">
+					<img src="/resources/images/main/main_logo.png" alt="메인로고">
                 </a>
             </h1>
             
