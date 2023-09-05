@@ -27,11 +27,19 @@
     .checkBox input { width: 16px; height: 16px; }
 
     .listResult { padding: 20px; background: #eee; }
-    .listResult .sum { float: left; width: 45%; font-size: 22px; }
+    .listResult .sum { float: left; width: 45%; height:40px; line-height:40px; font-size: 22px; }
 
     .listResult .orderOpne { float: right; width: 45%; text-align: right; }
     .listResult .orderOpne button { font-size: 18px; padding: 5px 10px; border: 1px solid #999; background: #fff; }
     .listResult::after { content: ""; display: block; clear: both; }
+    
+    #payment{
+    	width:55px; height:40px;
+    	float:right;
+    	background-color:#DC3545;
+    	border-radius:5px;
+    	color:white;
+    }
 </style>
 </head>
 <body>
@@ -152,20 +160,23 @@
 
                                 <script>
 								    $(".update_btn").click(function () {
-								        let productNum = $(this).data("product-Num");
+								    	let productNum = $(this).attr("data-product-Num");
 								        let productCount = $(this).closest("li").find(".numBox").val();
 							
 								        let requestData = {
 								            productNum: productNum,
 								            productCount: productCount
 								        };
+								        
 								        $.ajax({
 								            url: "/product/basketList/updateBasket",
 								            type: "post",
 								            contentType: "application/json", 
 								            data: JSON.stringify(requestData), 
 								            success: function (result) {
-								                if (result === '1') {
+								            	console.log(result);
+								            	
+								            	if (result === 1) {
 								                    alert("수정되었습니다.");
 								                } else {
 								                    alert("수정 실패");
@@ -229,7 +240,7 @@
                         총 합계 : <span class="totalPriceDisplay"><fmt:formatNumber pattern="###,###,###" value="${sum}" /></span> 원
 
                     </div>
-
+					<button id="payment" class="btn btn-danger">결제</button>
                 </div>
             </section>
         </div>
@@ -308,6 +319,25 @@
 
     $(".chBox").change(function () {
         updateTotalPrice();
+    });
+    
+    
+    // 결제 버튼
+    $("#payment").click(function(){
+    	let form = $("<form></form>");
+		form.attr("method", "POST");
+		form.attr("action", "../order/")
+		
+    	$("ul > li > .productInfo").each(function(index, element){
+    		let productNum = $(element).find(".productNum").val();
+    		let count = $(element).find(".amount > .numBox").val();
+    		
+    		form.append($("<input />", {type:"hidden", name:"orderProducts[" + index + "].productNum", value:productNum}));
+    		form.append($("<input />", {type:"hidden", name:"orderProducts[" + index + "].orderCount", value:count}));
+    	});
+    	
+    	form.appendTo("body");
+		form.submit();
     });
 </script>
 </body>
