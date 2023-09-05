@@ -79,6 +79,17 @@ $("#smsBtn").click(function () {
     }
 })
 
+$("#searchBtn").click(function(){
+    let id = "."+$("#search").val();
+    let check = "#memberCheck"+$(id).attr("id").substr("8");
+    if(!$(check).is(':checked')){
+        $(check).prop("checked",true);
+        alert("회원["+$("#search").val()+"]이 선택 되었습니다.")
+    }else{
+        $(check).prop("checked",false);
+        alert("회원["+$("#search").val()+"]이 선택 해제 되었습니다.")
+    }
+})
 
 
 
