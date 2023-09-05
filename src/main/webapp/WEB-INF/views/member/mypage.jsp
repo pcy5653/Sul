@@ -85,8 +85,6 @@
   </section>
 
 
-
-
   <script src="/resources/js/mypage.js"></script>
 </body>
 
