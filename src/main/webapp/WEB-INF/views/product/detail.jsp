@@ -53,8 +53,10 @@
 			<input type="hidden" name="productNum" id="add" value="${dto.productNum}">
 			<input type="hidden" name="stock" value="${dto.stock}">
 		</form>
+		<c:if test="${member.roleNum eq 1}">  
 	 	<a class="btn btn-danger" href="./update?productNum=${dto.productNum}">수정</a>
 	 	<button class="btn btn-danger c1" id="del" data-url="delete" >삭제</button>
+	 	</c:if>
 	 	<a class="btn btn-danger" href="./list">전체 목록</a>	
 	 	<c:if test="${dto.kind=='takju'}">
 	 	<a class="btn btn-danger" href="./list/takju">탁주 목록</a>	 
