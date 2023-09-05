@@ -16,15 +16,30 @@
 				.t {
 					color: blue;
 				}
+
+				.viewport {
+					background-color: #ffc9cc;
+				}
+
+				header {
+					position: relative !important;
+					top: 0px !important;
+					background-color: rgba(255, 255, 255, 0) !important;
+				}
+
+				footer {
+					margin-top: 7rem;
+				}
 			</style>
 
 		</head>
 
 		<body>
+			<c:import url="../temp/header.jsp"></c:import>
 			<div id="outerWrap" class="container">
 				<div id="title">
 					<p>회원가입</p>
-				</div>	
+				</div>
 				<div id="formWrap">
 					<form action="./join" method="post" id="frm">
 						<div id="idDiv">
@@ -49,24 +64,25 @@
 						</div>
 						<div class="mobileNo">
 							<label for="phone" class="form-label">휴대폰 번호</label><br>
-							<input id="phone" type="text" name="phone" class="form-control input" title="전화번호 입력" value="${phone}" readonly>
-						<div>
-							<label for="address" class="form-label">주소</label>
-							<input type="text" name="address" class="form-control input" id="address"><br>
-							<button type="button" id="adrBtn">주소검색</button>
-							<div id="addressMsg"></div>
-						</div><br>
-						<div>
-							<label for="birth" class="form-label input" data-name="생년월일">생년월일</label>
-							<input type="date" name="birth" id="birth">
-							<div id="birthMsg"></div>
-						</div><br>
+							<input id="phone" type="text" name="phone" class="form-control input" title="전화번호 입력"
+								value="${phone}" readonly>
+							<div>
+								<label for="address" class="form-label">주소</label>
+								<input type="text" name="address" class="form-control input" id="address"><br>
+								<button type="button" id="adrBtn">주소검색</button>
+								<div id="addressMsg"></div>
+							</div><br>
+							<div>
+								<label for="birth" class="form-label input" data-name="생년월일">생년월일</label>
+								<input type="date" name="birth" id="birth">
+								<div id="birthMsg"></div>
+							</div><br>
 
-						<div class="mb-5">
-							<input type="checkbox" name="smsCheck" id="smsCheck" checked>&nbsp;&nbsp;SMS수신동의(이벤트문자) 
-							<input type="hidden" name="sms" id="sms" value="1">
-						</div>
-						<button type="button" id="regBtn">회원가입</button>
+							<div class="mb-5">
+								<input type="checkbox" name="smsCheck" id="smsCheck" checked>&nbsp;&nbsp;SMS수신동의(이벤트문자)
+								<input type="hidden" name="sms" id="sms" value="1">
+							</div>
+							<button type="button" id="regBtn">회원가입</button>
 					</form>
 				</div>
 			</div>

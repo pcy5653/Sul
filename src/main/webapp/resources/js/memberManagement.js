@@ -2,9 +2,17 @@
 $("#allCheckBtn").click(function(){
     if($(".smsChecks").prop("checked")){
         $(".smsChecks").prop("checked",false);
-        return;
+    }else{
+
+        $(".smsChecks").prop("checked",true);
     }
-    $(".smsChecks").prop("checked",true);
+})
+$("#allCheckBtn2").click(function(){
+    if($(".memberChecks").prop("checked")){
+        $(".memberChecks").prop("checked",false);
+    }else{
+        $(".memberChecks").prop("checked",true);
+    }
 })
 
 //선택한 회원삭제
@@ -64,19 +72,19 @@ $("#smsBtn").click(function () {
     let smsContents = $("#smsContents").val()
     for (let i = 0; i < $(".smsChecks").length; i++) {
         let phone = $("#phone" + i).text()
-        let id = $("#id" + i).text()
         //체크된사람만 전송
         if ($("#smsCheck" + i).is(':checked')) {
             $.ajax({
                 type: "get",
-                url: "/admin/groupSMS?phone=" + phone + "&smsContents=" + smsContents + "&id=" + id,
+                url: "/admin/groupSMS?phone=" + phone + "&smsContents=" + smsContents,
                 success: function () {
-                    alert("단체문자를 발송했습니다.");
+
                 }
             })
         }
 
     }
+    alert("단체문자를 발송했습니다.");
 })
 
 $("#searchBtn").click(function(){
@@ -88,6 +96,18 @@ $("#searchBtn").click(function(){
     }else{
         $(check).prop("checked",false);
         alert("회원["+$("#search").val()+"]이 선택 해제 되었습니다.")
+    }
+})
+
+$("#searchBtn2").click(function(){
+    let id = "."+$("#search2").val()+"two";
+    let check = "#smsCheck"+$(id).attr("id").substr("11")
+    if(!$(check).is(':checked')){
+        $(check).prop("checked",true);
+        alert("회원["+$("#search2").val()+"]이 선택 되었습니다.")
+    }else{
+        $(check).prop("checked",false);
+        alert("회원["+$("#search2").val()+"]이 선택 해제 되었습니다.")
     }
 })
 
