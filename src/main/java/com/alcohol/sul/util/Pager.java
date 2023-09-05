@@ -17,7 +17,6 @@ public class Pager {
 	private String kind;		// 검색 분류
 	private String search;		// 검색 내용
 	
-	
 	// 1. 보여질 data 갯수
 	public void makeRowNum() {
 		this.startRow = (this.getPage()-1)*this.getPerPage()+1;		// *=10의자리 | +1=1의자리
@@ -144,5 +143,4 @@ public class Pager {
 	public void setSearch(String search) {
 		this.search = search;
 	}
-
 }

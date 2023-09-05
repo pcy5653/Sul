@@ -11,7 +11,7 @@
 </head>
 <body>
 	<c:import url="../temp/header.jsp"></c:import>
-    <section>        
+    <section>
          <form role="form" method="post">
             <input type="hidden" class="productNum" value="${dto.productNum}" />
             <input type="hidden" value="${dto.stock}" class="stock" />
@@ -198,6 +198,9 @@
 	            } else{
 	                alert("회원만 사용할 수 있습니다.");
 	                $(".numBox").val("1");
+	                if(confirm("로그인 창으로 이동하시겠습니까?")){
+	                	location.href = "/member/login";
+	                }
 	              
 	            }
 	        },

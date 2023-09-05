@@ -30,7 +30,11 @@ public class PagerK {
 	//다음블럭 활성화
 	private boolean next; //false -> 마지막블럭, true -> 마지막블럭
 	
+	private Long total;
+	
 	public void makePageNum(Long total) {
+		this.total = total;
+		
 		//130 -> 13
 		//131 ~ 139 -> 14
 		//90 -> 9
@@ -183,7 +187,12 @@ public class PagerK {
 	public void setSearch(String search) {
 		this.search = search;
 	}
-	
-	
-	
+
+	public Long getTotal() {
+		return total;
+	}
+
+	public void setTotal(Long total) {
+		this.total = total;
+	}
 }

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -27,7 +28,7 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 	
-	//전체 List
+	// 전체 List
 	@GetMapping(value = "list")
 	public String getList(PagerK pager, Model model) throws Exception {
 		List<ProductDTO> ar = productService.getList(pager);
@@ -42,7 +43,7 @@ public class ProductController {
 		List<ProductDTO> ar = productService.getListTakju(pager);
 		model.addAttribute("list", ar);
 		model.addAttribute("pager", pager);		
-		return "product/takjuList";
+		return "product/list";
 	}
 	
 	//약청주 List
@@ -51,7 +52,7 @@ public class ProductController {
 		List<ProductDTO> ar = productService.getListChungju(pager);
 		model.addAttribute("list", ar);
 		model.addAttribute("pager", pager);		
-		return "product/chungjuList";
+		return "product/list";
 	}
 	
 	//과실주 List
@@ -60,7 +61,7 @@ public class ProductController {
 		List<ProductDTO> ar = productService.getListWine(pager);
 		model.addAttribute("list", ar);
 		model.addAttribute("pager", pager);		
-		return "product/wineList";
+		return "product/list";
 	}
 	
 	//증류주 List
@@ -69,7 +70,7 @@ public class ProductController {
 		List<ProductDTO> ar = productService.getListSoju(pager);
 		model.addAttribute("list", ar);
 		model.addAttribute("pager", pager);		
-		return "product/sojuList";
+		return "product/list";
 	}
 
 	
@@ -193,15 +194,18 @@ public class ProductController {
 
 	@ResponseBody
 	@RequestMapping(value = "/basketList/updateBasket", method = RequestMethod.POST)
-	public int updateBasket(BasketDTO basketDTO, HttpSession session)throws Exception{
+	public int updateBasket(@RequestBody BasketDTO basketDTO, HttpSession session) throws Exception {
 		
 		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
 		String id = memberDTO.getId();
-		
+		Long productNum = basketDTO.getProductNum();
+		int productCount = basketDTO.getProductCount();
 		int result = 0;
 		
 		if(memberDTO != null) {
 			basketDTO.setId(memberDTO.getId());
+			basketDTO.setProductNum(basketDTO.getProductNum());
+			basketDTO.setProductCount(basketDTO.getProductCount());
 			productService.updateBasket(basketDTO);
 			
 			result = 1;

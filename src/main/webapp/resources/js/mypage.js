@@ -20,6 +20,17 @@ $("#orderListBtn").click(function(){
     })
 });
 
+// //1:1문의
+// $("#qnaBtn").click(function(){
+//     $.ajax({
+//         type:"get",
+//         url:"/qna/list",
+//         dataType:'html',
+//         success:function(data){
+//             $("#page").html(data)
+//         }
+//     })
+// })
 
 //회원정보
 $("#infoBtn").click(function(){
