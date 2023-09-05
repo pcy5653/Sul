@@ -12,11 +12,14 @@
     border: none;
 }
 
-
-body{
-    font-size: 14px;
-    font-family: 'Roboto', sans-serif;
+.viewport{background-color:#ffc9cc;}
+header{
+    position:relative;
+    background-color:rgba(255,255,255,0);
 }
+footer{margin-top:7rem;}
+
+
 .login-wrapper{
     width: 400px;
     height: 350px;

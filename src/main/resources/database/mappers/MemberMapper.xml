@@ -9,11 +9,11 @@
  		#{birth},SYSDATE,0,#{sms})
  	</insert>
  	
- 	<select id="getLogin" resultType="com.alcohol.sul.member.MemberDTO" parameterType="com.alcohol.sul.member.MemberDTO">
+ 	<select id="getLogin" resultType="MemberDTO" parameterType="MemberDTO">
  		SELECT * FROM MEMBER WHERE ID=#{id} AND PW=#{pw}
  	</select>
  	
- 	<select id="getIdCheck" resultType="com.alcohol.sul.member.MemberDTO" parameterType="com.alcohol.sul.member.MemberDTO">
+ 	<select id="getIdCheck" resultType="MemberDTO" parameterType="MemberDTO">
  		SELECT ID FROM MEMBER WHERE ID=#{id}
  	</select>
  	

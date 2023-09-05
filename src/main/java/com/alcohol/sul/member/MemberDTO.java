@@ -1,6 +1,6 @@
 package com.alcohol.sul.member;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class MemberDTO {
 
