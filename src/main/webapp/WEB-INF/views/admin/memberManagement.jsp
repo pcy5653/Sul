@@ -101,7 +101,7 @@
                                     <tbody>
                                         <c:forEach items="${list}" var="member" varStatus="i">
                                             <tr>
-                                                <td id="memberId${i.index}">${member.id}</td>
+                                                <td id="memberId${i.index}" class="${member.id}">${member.id}</td>
                                                 <td>${member.name}</td>
                                                 <td><c:if test="${member.roleNum==1}">관리자</c:if><c:if test="${member.roleNum==0}">유저</c:if></td>
                                                 <td>${member.phone}</td>
@@ -114,8 +114,9 @@
                                         </c:forEach>
                                     </tbody>
                                 </table>
+                                <input type="text" name="search" id="search"><button type="button" id="searchBtn">회원체크</button><br><br>
                                 <input type="text" name="point" id="point">
-                                <button type="button" class="pointBtns" id="pointBtn">포인트지급</button><br>
+                                <button type="button" class="pointBtns" id="pointBtn">포인트지급</button><br><br>
                                 <button type="button" class="btns" id="deleteBtn">탈퇴</button>
                             </div>
 
@@ -123,7 +124,7 @@
                         <div class="card mb-4 col-xl-7">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                                SMS수신동의회원목록
+                                SMS수신동의회원목록(단체문자)
                             </div>
                             <div class="card-body">
                                 <table class="datatablesSimple">
