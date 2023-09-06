@@ -111,7 +111,7 @@ public class ProductController {
 //		return "redirect:./detail?productNum=" + productDTO.getProductNum();
 //	}
 	
-	@RequestMapping(value = "delete", method = RequestMethod.POST)
+	@RequestMapping(value = "delete", method = RequestMethod.GET)
 	public String setDelete(ProductDTO productDTO) throws Exception {
 		int result = productService.setDelete(productDTO);
 		return "redirect:./list";
