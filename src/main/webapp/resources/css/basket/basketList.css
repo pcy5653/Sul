@@ -11,9 +11,6 @@ data-styled.g300[id="style__CartBillWrapper-sc-zhmz48-5"]{content:"empty,"}
 @media (max-width:886px){.calculate{margin-left:20px;}.calculate .title{height:20px;line-height:20px;font-size:12px;}.calculate .content .row{font-size:11px;}.calculate .footer .price{font-size:15px;}}
 @media (max-width:886px){.calculate{margin:0;}.calculate .bill{margin-bottom:0px;padding-bottom:33px;background-color:#fff;border:none;border-radius:0px;}.calculate .header{font-size:12px;}}
 
-	.basketBill{
-		background-color:#f1f3f5;
-	}
 	
 	.calculate{
 		margin-left:45px;
@@ -76,7 +73,7 @@ data-styled.g300[id="style__CartBillWrapper-sc-zhmz48-5"]{content:"empty,"}
 		padding:20px 60px 120px;
 		}
 	
-    .wrap { width: 800px; height:500px; margin: auto; }
+    .wrap { width: 800px; height:800px; margin-top: 50px; margin: auto;}
 
     section#content ul li { margin: 10px 0; padding: 10px 0;}
     section#content ul li img { width:; height: 250px; }
