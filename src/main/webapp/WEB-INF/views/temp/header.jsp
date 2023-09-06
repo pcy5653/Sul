@@ -20,23 +20,13 @@
                 <a href="${pageContext.request.contextPath}/" class="main_logo">
 					<img src="/resources/images/main/main_logo.png" alt="메인로고">
                 </a>
-            </h1>
-            
-            <div id="search">
-				<form action="${pageContext.request.contextPath}/product/list" method="get">
-					<select name="kind">
-						<option value="name">이름</option>
-						<option value="contents">내용</option>
-					</select>
-					<input type="text" name="search" placeholder="무엇을 찾고 계신가요?">
-	 		  </form>
-			</div>
-          
+            </h1>    
             <ul>
                 <c:if test="${not empty member}">
-                <li class="not_empty_Basket"><a href="/product/basketList">
-            		<img alt="" src="../resources/images/basket/basketIcon_white.png" style="width: 30px; height: 30px;"></a></li>
-	      		<li class="login"><a href="/member/logout">로그아웃</a></li>
+                    <li class="not_empty_Basket"><a href="/product/basketList">
+                        <img alt="" src="../resources/images/basket/basketIcon_white.png" style="width: 30px; height: 30px;"></a></li>
+                <li class="qna"><a href="/qna/list">1:1문의</a></li>
+                <li class="login"><a href="/member/logout">로그아웃</a></li>
 	      		<li class="join"><a href="/member/mypage">mypage</a></li>
 	      		</c:if>
 				<c:if test="${empty member}">

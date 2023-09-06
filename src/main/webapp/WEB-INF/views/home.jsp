@@ -69,6 +69,18 @@
 			</ul>				
 		</div>
 	</section>
+	<section id="search_wrap">
+		<div id="search">
+			<p id="searchTitle">무슨 술을 마실지 고민되시나요?</p>
+			<form id="searchFrm" action="${pageContext.request.contextPath}/product/list" method="get">
+				<select name="kind">
+					<option value="name">이름</option>
+					<option value="contents">내용</option>
+				</select>
+				<input type="text" name="search" placeholder="원하시는 술을 검색해보세요!">
+		   </form>
+		</div>
+	</section>
 	<section id="pro_wrap">
 		<div class="best_div pro_div">
 			<div class="best_top pro_top">
@@ -77,7 +89,7 @@
 						<p class="pt">술담화 BEST 상품</p>
 						<p>MD 추천</p>
 					</div>
-					<a href="#" class="best_more more">더보기</a>
+					<a href="/product/list" class="best_more more">더보기</a>
 				</div>
 			</div>
 			<div class="best_btm pro_btm">
@@ -170,7 +182,7 @@
 						<p class="pt">이번주 술담화 PICK!</p>
 						<p>더운 여름에 청량감을 더한다면?</p>
 					</div>
-					<a href="#" class="pick_more more">더보기</a>
+					<a href="/product/list" class="pick_more more">더보기</a>
 				</div>
 			</div>
 			<div class="pick_btm pro_btm">

@@ -67,7 +67,6 @@ public class QnaService implements BoardService {
 			
 			// fileManager에서 리턴 값
 			String fileName = fileManager.fileSave(path, session, file);
-			
 			QnaFileDTO qnaFileDTO = new QnaFileDTO();
 			qnaFileDTO.setFileName(fileName);
 			qnaFileDTO.setNum(boardDTO.getNum());

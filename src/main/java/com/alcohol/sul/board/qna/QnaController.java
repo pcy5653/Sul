@@ -71,11 +71,13 @@ public class QnaController {
 				System.out.println("file[] "+files); 
 				System.out.println("fileType "+files.getClass()); 
 				
-				for(QnaFileDTO file : files) {
-					System.out.println(file.getOriginalName());
-					System.out.println(file.getFileName());
-					model.addAttribute("file", file);
+				for(int i = 0; i<files.size(); i++) {
+					//System.out.println(files.get(i));
+					System.out.println(files.get(i).getFileName());
+					model.addAttribute("file"+i, files.get(i).getFileName());
+					
 				}
+				//model.addAttribute("files", files);
 			
 			}
 			model.addAttribute("dto",qnaDTO);
