@@ -1,4 +1,3 @@
-let reviewDel = document.getElementById("reviewDel");
 const c1 = document.getElementsByClassName("c1");
 
 
