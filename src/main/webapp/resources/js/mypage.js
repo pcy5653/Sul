@@ -7,7 +7,7 @@ $(function(){
 		$("#infoBtn").trigger("click");
 	}
 })
-
+                
 // 주문 내역
 $("#orderListBtn").click(function(){
 	$.ajax({
@@ -34,11 +34,9 @@ $("#orderListBtn").click(function(){
 
 //회원정보
 $("#infoBtn").click(function(){
-    
-    
     $.ajax({
         type:"get",
-        url:"info",
+        url:"/member/info",
         dataType:'html',
         success:function(data){
             $("#page").html(data)
@@ -68,11 +66,11 @@ $(document).on("click","#updateBtn",function(){
         data:{
             phone: $('#phone').val(),
             id:$('#id').val(),
-            birth:$('#birth').val(),
-            address:$('#address').val()
+            address:$('#address').val(),
+            birth:$('#birth').val()
         }
     })
-    alert("회원정보가 수정되었습니다.");
+   alert("회원정보가 수정되었습니다.")
 })
 
 

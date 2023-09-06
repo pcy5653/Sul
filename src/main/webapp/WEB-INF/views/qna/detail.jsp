@@ -25,16 +25,18 @@
 			<div id="question" data-step="${dto.qnaDTO.step}" data-con="${dto.qnaDTO.contents}" data-num = "${dto.qnaDTO.num}">
 				<!-- 질문내용 -->
 			</div>
+			
+			<input type="hidden" id="files" data-file="${file}" data-name="${file.fileName}">
+			
 			<table id="comment" data-step="${dto.step}">
 				<thead>
-					<th class="subject">SUBJECT</th><th class="name">작성자</th><th class="date">날짜</th><th class="hit">HIT</th>
+					<th class="subject">SUBJECT</th><th class="name">작성자</th><th class="date">날짜</th>
 				</thead>
 				<tbody>
 					<tr>
 						<td>${dto.subject}</td>
 						<td>${dto.name}</td>
 						<td>${dto.createDate}</td>
-						<td>${dto.hit}</td>
 					</tr>			
 				</tbody>
 			</table>
@@ -42,7 +44,7 @@
 				<tr><th class="dcont">내용</th></tr>
 				<tr class="dcont"><td class="dcon">${dto.contents}</td></tr>
 			</table>
-			<div id="detail_file">
+			<div id="detail_file" data-file="${dto.fileDTOs}">
 				<c:forEach items="${dto.fileDTOs}" var="f">
 					<img src="/resources/upload/qna/${f.fileName}" class="fileImg" data-file-num="${f.fileNum}"></img>
 				</c:forEach>

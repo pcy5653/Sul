@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.alcohol.sul.board.BoardDTO;
@@ -37,7 +39,7 @@ public class QnaController {
 		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
 		qnaDTO.setName(memberDTO.getId());
 		
-		
+		// 관리자(1), 회원(0)
 		if(memberDTO.getRoleNum() == 1) {
 			List<BoardDTO> ar = qnaService.getManagerList(pager);
 			model.addAttribute("list", ar);
@@ -57,6 +59,25 @@ public class QnaController {
 		
 		// null여부에 따른 return 경로
 		if(qnaDTO != null) {
+			
+			System.out.println("답글 "+ qnaDTO.getNum());
+			
+			if(qnaDTO.getStep() == 1) {
+				QnaDTO pDTO = new QnaDTO(); 
+				pDTO.setNum(qnaDTO.getRef());
+				System.out.println("부모글 "+pDTO.getNum());
+
+				List<QnaFileDTO> files = qnaService.getReplyDetailFiles(pDTO);
+				System.out.println("file[] "+files); 
+				System.out.println("fileType "+files.getClass()); 
+				
+				for(QnaFileDTO file : files) {
+					System.out.println(file.getOriginalName());
+					System.out.println(file.getFileName());
+					model.addAttribute("file", file);
+				}
+			
+			}
 			model.addAttribute("dto",qnaDTO);
 			return "qna/detail";
 		}else {
@@ -132,5 +153,12 @@ public class QnaController {
 		int result = qnaService.setReplyAdd(qnaDTO, session);
 		
 		return "redirect:./list";
+	}
+	
+	
+	// << SMS체크 휴대폰번호 입력 시, 답변달리면 문자전송 >>
+	@RequestMapping(value="/smsCheck", method = RequestMethod.GET)
+	public void sendSMS(@RequestParam("phone") String userPhoneNumber,@RequestParam("subject") String subject) {
+		qnaService.sendSMS(userPhoneNumber, subject);
 	}
 }

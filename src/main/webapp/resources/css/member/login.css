@@ -12,11 +12,14 @@
     border: none;
 }
 
-
-body{
-    font-size: 14px;
-    font-family: 'Roboto', sans-serif;
+.viewport{background-color:#ffc9cc;}
+header{
+    position:relative !important; top: 0px !important;
+    background-color:rgba(255,255,255,0) !important;
 }
+footer{margin-top:7rem;}
+
+
 .login-wrapper{
     width: 400px;
     height: 350px;
@@ -44,6 +47,8 @@ body{
     font-size: 16px;
     background-color: #F47070;
     margin-top: 20px;
+    border: 1px solid !important;
+    width: 20rem !important;
 }
 #loginFrm > input::placeholder{
     color: #D2D2D2;

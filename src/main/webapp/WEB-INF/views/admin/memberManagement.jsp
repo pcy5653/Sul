@@ -18,27 +18,7 @@
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
             <a class="navbar-brand ps-3" href="main">AdminHome</a>
-            <!-- Sidebar Toggle-->
-            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
-            <!-- Navbar Search-->
-            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-                <div class="input-group">
-                    <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
-                    <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
-                </div>
-            </form>
-            <!-- Navbar-->
-            <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#!">Settings</a></li>
-                        <li><a class="dropdown-item" href="#!">Activity Log</a></li>
-                        <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="#!">Logout</a></li>
-                    </ul>
-                </li>
-            </ul>
+           
         </nav>
         <div id="layoutSidenav">
             <div id="layoutSidenav_nav">
@@ -101,7 +81,7 @@
                                     <tbody>
                                         <c:forEach items="${list}" var="member" varStatus="i">
                                             <tr>
-                                                <td id="memberId${i.index}">${member.id}</td>
+                                                <td id="memberId${i.index}" class="${member.id}">${member.id}</td>
                                                 <td>${member.name}</td>
                                                 <td><c:if test="${member.roleNum==1}">관리자</c:if><c:if test="${member.roleNum==0}">유저</c:if></td>
                                                 <td>${member.phone}</td>
@@ -114,8 +94,10 @@
                                         </c:forEach>
                                     </tbody>
                                 </table>
-                                <input type="text" name="point" id="point">
-                                <button type="button" class="pointBtns" id="pointBtn">포인트지급</button><br>
+                                <input type="text" name="search" id="search" placeholder="선택할 회원의 id 입력"><button type="button" id="searchBtn">회원선택/해제</button>
+                                <button type="button" id="allCheckBtn2" >전체선택/해제</button><br><br>
+                                <input type="text" name="point" id="point" placeholder="지급할 포인트 입력">
+                                <button type="button" class="pointBtns" id="pointBtn">포인트지급</button><br><br>
                                 <button type="button" class="btns" id="deleteBtn">탈퇴</button>
                             </div>
 
@@ -123,7 +105,7 @@
                         <div class="card mb-4 col-xl-7">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                                SMS수신동의회원목록
+                                SMS수신동의회원목록(단체문자)
                             </div>
                             <div class="card-body">
                                 <table class="datatablesSimple">
@@ -156,7 +138,7 @@
                                     <tbody>
                                         <c:forEach items="${checkList}" var="checkList" varStatus="i">
                                             <tr>
-                                                    <td id="memberId${i.index}">${checkList.id}</td>
+                                                    <td id="checkListId${i.index}" class="${checkList.id}two">${checkList.id}</td>
                                                     <td>${checkList.name}</td>
                                                     <td><c:if test="${checkList.roleNum==1}">관리자</c:if><c:if test="${checkList.roleNum==0}">유저</c:if></td>
                                                     <td id="phone${i.index}">${checkList.phone}</td>
@@ -169,9 +151,10 @@
                                         </c:forEach>
                                     </tbody>
                                 </table>
+                                <input type="text" name="search2" id="search2" placeholder="선택할 회원의 id 입력"><button type="button" id="searchBtn2">회원선택/해제</button>
                                 <button type="button" id="allCheckBtn">전체선택/해제</button>
                             </div>
-                            <textarea name="smsContents" id="smsContents" cols="10" rows="3" width="50%"></textarea>
+                            <textarea name="smsContents" id="smsContents" cols="10" rows="3" width="50%" placeholder="전송할 문자 내용을 입력하세요."></textarea>
                             <button type="button" id="smsBtn">단체문자발송</button>
                         </div>
                     </div>
