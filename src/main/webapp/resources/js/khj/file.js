@@ -25,13 +25,30 @@ for(del of deletes){
     });
 }
 
-let max = 10;
+let max = 1;
 let count = 0;
 // if(deletes != null) {
 //     count = deletes.length;
 //     alert(count);
 // }
 let idx = 0;
+
+$("#fileAdd").click(function(){
+    if(count>=max){
+        alert("최대 1개만 가능");
+        return;
+    }
+    count++;
+
+    let r = '<div class="input-group mb-3" id="file'+idx+'">'
+    r = r+'<input type="file" class="form-control" id="photos" name="photos">'
+    r = r+ '<span class="df" data-id="file'+idx+'">X</span>'
+    r= r+"</div>";
+    count++;
+
+    $("#fileList").append(r);
+
+});
 
 fileList.addEventListener("click", function(event){
     let cl = event.target.classList;
@@ -42,57 +59,6 @@ fileList.addEventListener("click", function(event){
     }
 })
 
-fileAdd.addEventListener("click", function(){
-    if(count >= max){
-        alert("최대 10개까지 가능합니다.");
-        return;
-    }
-    count++;
 
-    //div
-    let d = document.createElement("div");  //<div></div>
-    let a = document.createAttribute("class"); //class=
-    a.value = "mb-3"; //class = "mb-3"
-    d.setAttributeNode(a); //<div class="mb-3">
-    a = document.createAttribute("id");
-    a.value = "file" + idx;
-    d.setAttributeNode(a);
-    
-    //input
-    let i = document.createElement("input");
-    a = document.createAttribute("type");
-    a.value = "file";
-    i.setAttributeNode(a);
-
-    a = document.createAttribute("class");
-    a.value = "form-control";
-    i.setAttributeNode(a);
-
-    a = document.createAttribute("name");
-    a.value = "photos";
-    i.setAttributeNode(a);
-
-    a = document.createAttribute("id");
-    a.value = "pic";
-    i.setAttributeNode(a);
-    
-    d.appendChild(i);
-
-    let s = document.createElement("span");
-    let t = document.createTextNode("X");
-    a = document.createAttribute("class");
-    a.value = "df"; //deleteFile
-    s.setAttributeNode(a);
-    s.appendChild(t);
-
-    a = document.createAttribute("data-id");
-    a.value = "file" + idx;
-    s.setAttributeNode(a);
-
-    d.appendChild(s);
-
-    fileList.appendChild(d);
-    idx++;
-})
 
 
