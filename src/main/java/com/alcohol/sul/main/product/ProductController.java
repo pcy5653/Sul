@@ -143,7 +143,10 @@ public class ProductController {
 		
 		if(memberDTO!=null) {
 			basketDTO.setId(memberDTO.getId());
-			result = productService.addBasket(basketDTO);
+			productService.addBasket(basketDTO);
+			
+			result = 1;
+		
 		}
 		
 		return result;

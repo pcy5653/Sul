@@ -189,15 +189,13 @@
 	        type: "post",
 	        data: data,
 	        success: function (result) {
-	            if (result === 1) {
+	        	if (result === 1) {
 	                alert("장바구니에 담기 성공했습니다.");
 	                $(".numBox").val("1");
 	                if(confirm("장바구니로 이동하시겠습니까?")){
 	                	location.href = "/product/basketList";
 	                }
-	            }if(result === -1){
-	            	alert("재고가 부족합니다.");
-	            }else{
+	            } else{
 	                alert("회원만 사용할 수 있습니다.");
 	                $(".numBox").val("1");
 	                if(confirm("로그인 창으로 이동하시겠습니까?")){
