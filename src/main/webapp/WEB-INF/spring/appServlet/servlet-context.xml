@@ -26,6 +26,10 @@
 		<beans:property name="order" value="0"></beans:property>
 	</beans:bean>
 	
+	<!-- NaverLoginBO Class에 대한 Bean설정 추가 -->
+	<beans:bean id="naverLoginBO" class="com.alcohol.sul.member.NaverLoginBO" />
+
+	
 	<interceptors>
 		<!-- 로그인확인  -->
 		<interceptor>
