@@ -37,9 +37,12 @@ body {
  
 /*header section*/
 .sub_page .brand_box {
-  position: relative;
-  background-image: url(/resources/images/mypage.jpg);
-  padding: 45px 0;
+    position: relative;
+    background-image: url(/resources/images/mypage.jpg);
+    background-repeat: no-repeat;
+    padding: 45px 0;
+    background-size: cover;
+    background-position: center center;
 }
 
 .sub_page .nav_section {

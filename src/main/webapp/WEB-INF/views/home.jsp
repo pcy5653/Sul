@@ -8,6 +8,9 @@
  	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="/resources/style/reset.css">
 	<link rel="stylesheet" href="/resources/style/basic.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@200;300;400;500;600;700;800&family=Jua&display=swap" rel="stylesheet">
 	<title>4조 프로젝트</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/ScrollTrigger.min.js"></script>
@@ -69,15 +72,27 @@
 			</ul>				
 		</div>
 	</section>
+	<section id="search_wrap">
+		<div id="search">
+			<p id="searchTitle">무슨 술을 마실지 고민되시나요?</p>
+			<form id="searchFrm" action="${pageContext.request.contextPath}/product/list" method="get">
+				<select name="kind">
+					<option value="name">이름</option>
+					<option value="contents">내용</option>
+				</select>
+				<input type="text" name="search" placeholder="원하는 술을 검색해보세요!">
+		   </form>
+		</div>
+	</section>
 	<section id="pro_wrap">
 		<div class="best_div pro_div">
 			<div class="best_top pro_top">
 				<div class="best_text pro_text">
 					<div class="best_title pro_title">
 						<p class="pt">술담화 BEST 상품</p>
-						<p>MD 추천</p>
+						<p>센스쟁이 MD 추천</p>
 					</div>
-					<a href="#" class="best_more more">더보기</a>
+					<a href="/product/list" class="best_more more">더보기</a>
 				</div>
 			</div>
 			<div class="best_btm pro_btm">
@@ -170,7 +185,7 @@
 						<p class="pt">이번주 술담화 PICK!</p>
 						<p>더운 여름에 청량감을 더한다면?</p>
 					</div>
-					<a href="#" class="pick_more more">더보기</a>
+					<a href="/product/list" class="pick_more more">더보기</a>
 				</div>
 			</div>
 			<div class="pick_btm pro_btm">
