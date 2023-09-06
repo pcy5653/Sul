@@ -38,6 +38,7 @@ public class QnaService implements BoardService {
 		pager.makeRowNum();
 		Long total = qnaDAO.getTotal(pager, qnaDTO);
 		pager.makePageNum(total);
+		
 		map.put("pager", pager);
 		map.put("member",qnaDTO);
 		
@@ -67,7 +68,6 @@ public class QnaService implements BoardService {
 			
 			// fileManager에서 리턴 값
 			String fileName = fileManager.fileSave(path, session, file);
-			
 			QnaFileDTO qnaFileDTO = new QnaFileDTO();
 			qnaFileDTO.setFileName(fileName);
 			qnaFileDTO.setNum(boardDTO.getNum());
@@ -108,6 +108,11 @@ public class QnaService implements BoardService {
 		return qnaDAO.setDelete(boardDTO);
 	}
 
+	// << list 갯수 >>
+	public Long getTotalNum(BoardDTO boardDTO)throws Exception{
+		return qnaDAO.getTotalNum(boardDTO);
+	}
+		
 	
 	// << 수정 중 파일 삭제 >>
 	public int setFileDelete (QnaFileDTO qnaFileDTO, HttpSession session)throws Exception{

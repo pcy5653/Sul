@@ -66,6 +66,10 @@ public class QnaDAO implements BoardDAO {
 		return 0;
 	}
 	
+	// << list 갯수 >>
+	public Long getTotalNum(BoardDTO boardDTO)throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getTotalNum", boardDTO);
+	}
 	
 	// <<수정 시 파일 삭제>>
 	// 1. 폴더 내용(파일) 삭제
