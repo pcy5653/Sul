@@ -1,0 +1,281 @@
+@charset "UTF-8";
+
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
+
+*{
+	box-sizing:border-box;
+	font-family:"Spoqa Han Sans Neo", "sans-serif";
+	font-size:13px;
+	color:#595959;
+}
+
+input::-webkit-inner-spin-button{
+	appearance:none;
+	-moz-appearance:none;
+	-webkit-appearance:none;
+}
+
+.line{
+	clear:both;
+	margin:10px 0px;
+	border-top:1px solid #efefef;
+}
+
+#outerWrap{
+	display:table;
+	margin:100px auto;
+}
+
+#contents{
+	float:left;
+}
+
+#contents > #productInfo{
+	overflow:hidden;
+	margin-bottom:50px;
+}
+
+#productInfo > img{
+	width:320px; height:426px;
+	float:left;
+	margin-right:30px;
+}
+
+#productInfo > div{
+	width:320px; height:426px;
+	position:relative;
+	float:left;
+}
+
+#productInfo > div p{
+	margin:10px 0px;
+	font-size:14px;
+	font-weight:700;
+	color:#818181;
+}
+
+#productInfo #name{
+	font-size:24px;
+	color:#545454;
+}
+
+#productInfo #subTitle{
+	font-size:16px;
+	color:rgb(255, 186, 0);
+}
+
+#productInfo #score{
+	margin-bottom:20px;
+}
+
+#productInfo #score > img{
+	vertical-align:middle;
+}
+
+#productInfo #score > span{
+	vertical-align:middle;
+	font-size:15px;
+	font-weight:700;
+}
+
+#productInfo #score > span:last-of-type{
+	margin-left:5px;
+	font-size:14px;
+	color:rgb(0, 150, 243);
+}
+
+#productInfo #price{
+	margin-top:50px;
+}
+
+#productInfo #price > p:first-of-type{
+	
+	color:rgb(112, 112, 112);
+}
+
+#productInfo #price > p:last-of-type{
+	font-size:30px;
+	color:#2E2E2E;
+}
+
+#productInfo #note{
+	position:absolute;
+	bottom:0px;
+}
+
+#productInfo #note > p{
+	color:rgb(0, 150, 243);
+}
+
+
+/* sideBar */
+#sideBar{
+	width:300px;
+	position:sticky; /* top 속성 필수 */
+	top:100px;
+	float:right;
+	margin-left:50px;
+	padding:30px 10px;
+	box-shadow:rgba(0, 0, 0, 0.16) 0px 0px 3px 0px;
+	border-radius:10px;
+}
+
+#sideBar > div:not(:last-of-type){
+	margin-bottom:30px;
+}
+
+#sideBar .title{
+	margin-bottom:10px;
+	font-weight:500;
+	color:#4E4E4E;
+}
+
+#sideBar #counter{
+	border:1px solid rgb(224, 224, 224);
+}
+
+#counter > button{
+	width:70px; height:40px;
+	vertical-align:middle;
+}
+
+#counter > .minus{
+	background:url("/resources/images/product/minus-icon.png") no-repeat center center / 24px 24px;
+}
+
+#counter > .plus{
+	background:url("/resources/images/product/plus-icon.png") no-repeat center center / 24px 24px;
+}
+
+#counter > input[type="number"]{
+	width:120px; height:40px;
+	vertical-align:middle;
+	text-align:center;
+	border:none;
+	border-left:1px solid rgb(224, 224, 224);
+	border-right:1px solid rgb(224, 224, 224);
+	outline:none;
+}
+
+#sideBar > #total{
+	
+}
+
+#total > p:last-of-type{
+	width:100%; height:45px;
+	line-height:45px;
+	text-align:center;
+	border:1px solid rgb(224, 224, 224);
+	border-radius:5px;
+	font-size:13px;
+}
+
+#sideBar > #buy{
+	
+}
+
+#buy > button{
+	width:100%; height:48px;
+	margin-top:10px;
+	border:1px solid rgb(224, 224, 224);
+	border-radius:5px;
+}
+
+#buy > button > img{
+	width:24px;
+	vertical-align:middle;
+}
+
+#buy > button > span{
+	vertical-align:middle;
+	font-size:17px;
+	font-weight:500;
+	color:#6E6E6E;
+}
+
+#buy > #now{
+	width:100%; height:48px;
+	padding:0px;
+	border:1px solid rgb(0, 150, 243);
+	background-color:rgb(0, 150, 243);
+	font-size:18px;
+	font-weight:bold;
+	color:rgb(255, 255, 255);
+}
+
+
+/* review */
+#reviewWrap{
+	margin-top:200px;
+}
+
+#reviewWrap > .review{
+	
+}
+
+.review:not(:last-of-type){
+	margin-bottom:70px;
+}
+
+.review > .title{
+	height:45px;
+	overflow:hidden;
+	padding:0px 30px;
+	border-radius:10px;
+	background-color:rgb(244, 244, 244);
+	font-size:14px;
+}
+
+.review > .title > p{
+	height:45px;
+	line-height:45px;
+	display:inline-block;
+}
+
+.review > .title > .id{
+	font-weight:600;
+	float:left;
+}
+
+.review > .title > .createDate{
+	float:right;
+	margin-left:20px;
+}
+
+.review > .title > .score{
+	float:right;
+}
+
+.review > .title > .score > img{
+	vertical-align:middle;
+	width:25px;
+}
+
+.review > .title > .score > span{
+	font-weight:600;
+	color:#363636;
+}
+
+.review > .contents{
+	padding:20px 30px;
+}
+
+.review > .contents > .images{
+	margin-top:15px;
+}
+
+.review > .contents > .images > img{
+	margin-right:5px;
+}
+
+#more{
+	margin-top:100px;
+	text-align:center;
+}
+
+#more > span{
+	text-decoration:underline;
+	font-weight:600;
+	color:rgb(0, 150, 243);
+	cursor:pointer;
+}
