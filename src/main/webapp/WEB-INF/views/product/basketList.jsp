@@ -6,15 +6,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset="UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Insert title here</title>
-
 <link rel="stylesheet" href="/resources/css/basket/basketList.css">
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
 </head>
 <body>
-<c:import url="../temp/header.jsp" /><br><br><br><br><br><br><br>
+	<c:import url="../temp/header.jsp"></c:import>
+<div class="header" style="height: 100px;">
+</div>
 
 <!-- 장바구니 상품 없을 때 -->
 <c:if test="${empty basketList}">    
@@ -195,7 +197,7 @@
                     </c:forEach>
                 </ul>
 
-				<div class="basketBill calculate">
+				<div class="basketBill calculate box">
 
 			        <div class="solid-bottom"></div>
                     <div class="footer"><div class="text" style="margin-left:80px; font-size: 18px;">총 상품 금액</div>
@@ -204,11 +206,11 @@
                     </div>
                 </div>
                 <div class="solid-bottom"></div>
-           	<div style="width: 800px;">
+           	<div style="width: 600px;">
 				<div style="width: 50%; float: left;">
 					<button id = "list" class="btn btn-danger" onclick="location.href='./list'"> <img alt="" src="/resources/images/basket/listIcon.png" style="width: 30px; height: 30px;"> 상품 더보기</button>
 				</div>
-	            <div class="action-button-wrapper" style="width: 45%; float: left; margin-right: 20px;">                
+	            <div class="action-button-wrapper" style="width: 45%; float: left;">                
 	              	<button id="payment" class="btn btn-danger">주문하기<img alt="" src="/resources/images/basket/payIcon.png" style="width: 25px; height: 25px;"></button>
 	            </div>
 	        </div>
@@ -312,5 +314,6 @@
 		form.submit();
     });
 </script>
+<c:import url="../temp/footer.jsp"></c:import>
 </body>
 </html>
