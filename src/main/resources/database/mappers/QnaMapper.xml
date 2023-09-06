@@ -38,6 +38,11 @@
 	  	WHERE R BETWEEN #{pager.startRow} AND #{pager.lastRow}
  	</select>
  	
+ 	<select id="getTotalNum" parameterType="QnaDTO" resultType="Long">
+ 		SELECT COUNT(QNANUM) FROM QNA
+		WHERE NAME = #{name}
+ 	</select>
+ 	
  	
  	<select id="getDetail" parameterType="QnaDTO" resultMap="getSelectResult">
  		SELECT A.*, B.QNANUM AS PNUM, B.NAME AS PNAME, B.CONTENTS AS PCON, B.STEP AS PSTEP, QF.*

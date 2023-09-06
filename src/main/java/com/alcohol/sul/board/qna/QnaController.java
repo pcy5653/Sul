@@ -46,8 +46,11 @@ public class QnaController {
 			model.addAttribute("pager", pager);
 		}else {
 			List<BoardDTO> ar = qnaService.getList(pager, qnaDTO);
+			Long tn = qnaService.getTotalNum(qnaDTO);
+
 			model.addAttribute("list", ar);
 			model.addAttribute("pager", pager);
+			model.addAttribute("total", tn);
 		}
 		return "/qna/list";
 	}
