@@ -37,8 +37,15 @@
 								<p>${review.id}</p>
 								<p>별점 ${review.reviewStar} ${review.reviewTime}</p>
 								<p>${review.reviewContents}</p>
-								<img height="100" width="100" src="/resources/upload/product/review/${review.reviewFileDTOs[0].fileName}">		
+								<c:if test="${not empty review.reviewFileDTOs[0].fileName}">
+								<img height="100" width="100" src="/resources/upload/product/review/${review.reviewFileDTOs[0].fileName}">	
+								</c:if>
+								<c:if test="${not empty review.reviewFileDTOs[1].fileName}">	
 								<img height="100" width="100" src="/resources/upload/product/review/${review.reviewFileDTOs[1].fileName}">
+								</c:if>
+								<a class="btn btn-primary " href="../product/reviewUpdate?reviewNum=${review.reviewNum}&productNum=${review.productNum}" target="_blank">수정</a>
+								<button class="btn btn-primary c1" id="reviewDel" data-delete-name="reviewNum" data-delete-num="${review.reviewNum}">삭제</button> 
+								
 							</div>
 						</div>
 					</c:forEach>
@@ -51,7 +58,7 @@
 
 		</div>
 	</div>
-
+<script type="text/javascript" src="/resources/js/khj/delete2.js"></script>
 </body>
 
 </html>

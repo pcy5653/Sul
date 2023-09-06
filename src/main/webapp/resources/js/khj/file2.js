@@ -8,7 +8,7 @@ for(del of deletes){
         let num = this.getAttribute("data-delete-num");
         let check = confirm("삭제시 복구가 불가능합니다.");
         if(check){
-            fetch("./fileDelete?productImgNum="+num, {method:"GET"})
+            fetch("../product/reviewFileDelete?fileNum="+num, {method:"GET"})
                 .then((result)=>{return result.text()})
                 .then((r)=>{
                     if(r.trim() == '1'){
@@ -38,57 +38,20 @@ fileList.addEventListener("click", function(event){
     }
 })
 
-fileAdd.addEventListener("click", function(){
-    if(count >= max){
-        alert("최대 10개까지 가능합니다.");
+$("#fileAdd").click(function(){
+    if(count>=max){
+        alert("최대 2개만 가능");
         return;
     }
     count++;
 
-    //div
-    let d = document.createElement("div");  //<div></div>
-    let a = document.createAttribute("class"); //class=
-    a.value = "mb-3"; //class = "mb-3"
-    d.setAttributeNode(a); //<div class="mb-3">
-    a = document.createAttribute("id");
-    a.value = "file" + idx;
-    d.setAttributeNode(a);
-    
-    //input
-    let i = document.createElement("input");
-    a = document.createAttribute("type");
-    a.value = "file";
-    i.setAttributeNode(a);
-
-    a = document.createAttribute("class");
-    a.value = "form-control";
-    i.setAttributeNode(a);
-
-    a = document.createAttribute("name");
-    a.value = "photos";
-    i.setAttributeNode(a);
-
-    a = document.createAttribute("id");
-    a.value = "pic";
-    i.setAttributeNode(a);
-    
-    d.appendChild(i);
-
-    let s = document.createElement("span");
-    let t = document.createTextNode("X");
-    a = document.createAttribute("class");
-    a.value = "df"; //deleteFile
-    s.setAttributeNode(a);
-    s.appendChild(t);
-
-    a = document.createAttribute("data-id");
-    a.value = "file" + idx;
-    s.setAttributeNode(a);
-
-    d.appendChild(s);
-
-    fileList.appendChild(d);
+    let r = '<div class="input-group mb-3" id="file'+idx+'">'
+    r = r+'<input type="file" class="form-control" id="photos" name="photos">'
+    r = r+ '<span class="df" data-id="file'+idx+'">X</span>'
+    r= r+"</div>";
     idx++;
-})
 
+    $("#fileList").append(r);
+
+});
 
