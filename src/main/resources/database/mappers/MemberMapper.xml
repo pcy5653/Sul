@@ -45,4 +45,8 @@
 		SELECT * FROM member WHERE id = #{value}
 	</select>
 	
+	<select id="getNaverLogin" parameterType="String" resultType="MemberDTO">
+		SELECT * FROM MEMBER WHERE PHONE = #{phone}
+	</select>
+	
   </mapper>
