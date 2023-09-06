@@ -25,7 +25,7 @@
 
 		
 		<div class="mb-3">
-				<h4>별점</h4>
+				<h4>평점</h4>
 				<select name="reviewStar">
 					<option value="5">★★★★★</option>
 					<option value="4">★★★★</option>

@@ -1,10 +1,14 @@
 package com.alcohol.sul.member;
 
+import java.io.IOException;
+import java.util.List;
 import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,11 +20,47 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.github.scribejava.core.model.OAuth2AccessToken;
+
 @Controller
 @RequestMapping("/member/*")
 public class MemberController {
 	@Autowired
 	private MemberService memberService;
+	
+	/* NaverLoginBO */
+	private NaverLoginBO naverLoginBO;
+	private String apiResult = null;
+	
+	@Autowired
+	private void setNaverLoginBO(NaverLoginBO naverLoginBO) {
+		this.naverLoginBO = naverLoginBO;
+	}
+
+//	
+
+	//네이버 로그인 성공시 callback호출 메소드
+	@RequestMapping(value = "/callback", method = { RequestMethod.GET, RequestMethod.POST })
+	public String callback(Model model, @RequestParam String code, @RequestParam String state, HttpSession session,MemberDTO memberDTO)
+			throws IOException {
+		System.out.println("여기는 callback");
+		OAuth2AccessToken oauthToken;
+        oauthToken = naverLoginBO.getAccessToken(session, code, state);
+        //로그인 사용자 정보를 읽어온다.
+	    apiResult = naverLoginBO.getUserProfile(oauthToken);
+		model.addAttribute("result", apiResult);
+		String phone=(apiResult.substring(apiResult.indexOf("mobile")+9,apiResult.indexOf("mobile")+22)).replaceAll("-","");
+		memberDTO = memberService.getNaverLogin(phone);
+		session.setAttribute("member", memberDTO);
+        /* 네이버 로그인 성공 페이지 View 호출 */
+		return "redirect:/";
+	}
+
+
+
+
+
+
 	
 	//후대폰 문자인증
 	@RequestMapping(value = "/phoneCheck", method = RequestMethod.GET)
@@ -86,7 +126,16 @@ public class MemberController {
 
 	// 로그인
 	@GetMapping(value = "login")
-	public void getLogin() throws Exception {
+	public void getLogin(HttpSession session,Model model) throws Exception {
+		/* 네이버아이디로 인증 URL을 생성하기 위하여 naverLoginBO클래스의 getAuthorizationUrl메소드 호출 */
+		String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session);
+		
+		//https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=sE***************&
+		//redirect_uri=http%3A%2F%2F211.63.89.90%3A8090%2Flogin_project%2Fcallback&state=e68c269c-5ba9-4c31-85da-54c16c658125
+		System.out.println("네이버:" + naverAuthUrl);
+		
+		//네이버 
+		model.addAttribute("url", naverAuthUrl);
 
 	}
 
