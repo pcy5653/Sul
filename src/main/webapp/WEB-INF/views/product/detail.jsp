@@ -189,7 +189,9 @@
 	                if(confirm("장바구니로 이동하시겠습니까?")){
 	                	location.href = "/product/basketList";
 	                }
-	            } else{
+	            }if(result === -1){
+	            	alert("재고가 부족합니다.");
+	            }else{
 	                alert("회원만 사용할 수 있습니다.");
 	                $(".numBox").val("1");
 	                if(confirm("로그인 창으로 이동하시겠습니까?")){

@@ -143,8 +143,26 @@ public class ProductService {
 
 	//장바구니
 	
-	public void addBasket(BasketDTO basketDTO)throws Exception{
-		productDAO.addBasket(basketDTO);
+	public int addBasket(BasketDTO basketDTO)throws Exception{
+		ProductDTO productDTO = new ProductDTO();
+		
+		// 재고 구하기 위한
+		productDTO.setProductNum(basketDTO.getProductNum());
+		productDTO = productDAO.getDetail(productDTO);
+		
+		// 기존 장바구니 수량 구하기 위한
+		BasketDTO existingBasketDTO = productDAO.getBasket(basketDTO);
+		
+		// if(장바구니에 추가하려는 수량 + 기존 장바구니에 설정되어 있는 수량 <= 재고)
+		System.out.println("추가하려는 수량 : " + basketDTO.getProductCount());
+		System.out.println("기존 장바구니 수량 : " + existingBasketDTO.getProductCount());
+		System.out.println("재고 : " + productDTO.getStock());
+		
+		if(!(basketDTO.getProductCount() + existingBasketDTO.getProductCount() <= productDTO.getStock())) {
+			return productDAO.addBasket(basketDTO);
+		}else {
+			return -1;
+		}
 	}
 	
 	public List<BasketDTO> basketList(String id)throws Exception{

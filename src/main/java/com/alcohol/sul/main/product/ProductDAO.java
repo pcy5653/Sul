@@ -105,8 +105,12 @@ public class ProductDAO {
 	}
 	
 	//장바구니
-	public void addBasket(BasketDTO basketDTO)throws Exception{
-		sqlSession.insert(NAMESPACE+"addBasket", basketDTO);
+	public int addBasket(BasketDTO basketDTO)throws Exception{
+		return sqlSession.insert(NAMESPACE+"addBasket", basketDTO);
+	}
+	
+	public BasketDTO getBasket(BasketDTO basketDTO)throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getBasket", basketDTO);
 	}
 	
 	public List<BasketDTO> basketList(String id)throws Exception{
