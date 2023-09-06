@@ -21,7 +21,10 @@
 		<tr>
 		<td>내용 ${review.reviewContents}</td>	
 		<tr>			
- 		<td><img height="100" width="100" src="/resources/upload/product/review/${review.reviewFileDTOs[0].fileName}">		
-	    <img height="100" width="100" src="/resources/upload/product/review/${review.reviewFileDTOs[1].fileName}"></td>
-		
+ 		<c:if test="${not empty review.reviewFileDTOs[0].fileName}">
+ 			<td><img height="100" width="100" src="/resources/upload/product/review/${review.reviewFileDTOs[0].fileName}">
+ 		</c:if>
+ 		<c:if test="${not empty review.reviewFileDTOs[1].fileName}">
+	    	<img height="100" width="100" src="/resources/upload/product/review/${review.reviewFileDTOs[1].fileName}">
+		</c:if>
 	</c:forEach>
