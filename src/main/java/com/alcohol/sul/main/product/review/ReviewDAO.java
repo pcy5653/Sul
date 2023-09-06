@@ -75,4 +75,6 @@ public class ReviewDAO {
 	public long getMyReviewTotal(ReviewDTO reviewDTO)throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"getMyReviewTotal", reviewDTO);
 	}
+	
+
 }
