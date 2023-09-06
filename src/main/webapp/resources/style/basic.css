@@ -113,7 +113,9 @@ footer {
 #pro_wrap .pro_div .pro_top .pro_text .best_title::before {background-image: url("/resources/images/main/best.png"); }
 #pro_wrap .pro_div .pro_top .pro_text .pick_title::before {background-image: url("/resources/images/main/pick.png");background-color: white;}
 #pro_wrap .pro_div .pro_top .pro_text .pro_title .pt{font-size:2rem;font-weight:800;color:black;margin-bottom:0.5rem;}
-#pro_wrap .pro_div .pro_top .pro_text .pro_title > p{font-size:1.4rem;font-weight:500;font-family: 'Jua', sans-serif;color:rgb(106, 106, 255);}
+#pro_wrap .pro_div .pro_top .pro_text .pro_title > p{font-size:1.4rem;font-weight:500;font-family: 'Jua', sans-serif;}
+#pro_wrap .pro_div .pro_top .pro_text .best_title > p {color: rgb(255 139 56);}
+#pro_wrap .pro_div .pro_top .pro_text .pick_title > p {color: rgb(56 174 255);;}
 #pro_wrap .pro_div .pro_top .pro_text .more {position:relative; font-size: 1.1rem; font-weight:600;}
 #pro_wrap .pro_div .pro_top .pro_text .more::after {
 	display: inline-block; content: ""; width: 18px; height:18px;
