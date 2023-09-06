@@ -15,10 +15,17 @@
 <link rel="stylesheet" href="/resources/style/basic.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/ScrollTrigger.min.js"></script>
 <script src="/resources/js/main.js"></script>
+<style type="text/css">
+/* header.css */
+header {position: relative;}
+
+/* footer.css */
+footer {margin-top:7rem;}
+</style>
 </head>
 <body>
 
-<div class="viewport" style="width: 1120px; height: 100px;">
+<div class="viewport">
 		<!-- 헤더 -->
         <header>
             <h1>

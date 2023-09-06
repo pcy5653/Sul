@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 <c:import url="../temp/header.jsp"></c:import>
 <style>
-.wrap {width: 1000px; height:500px; margin-bottom: 200px;}
+.wrap {width: 1000px; height:auto; margin-bottom: 200px;}
 .tb{width: 1000px;	
 	text-align: center; 
 
@@ -116,8 +116,8 @@ footer {margin-top:7rem;}
 				  <input type="hidden" value="${pager.page}" id="page" name="page">
 				    <!-- 파라미터 이름 kind -->
 				  <select name="kind" id="k" class="search">
-					  <option class="kind" value="subject">Subject</option>
-					  <option class="kind" value="contents">Contents</option>
+					  <option class="kind" value="subject">제목</option>
+					  <option class="kind" value="contents">내용</option>
 				  </select>
 				  
 				  <input type="text" name="search" value="${pager.search}" class="search" placeholder="검색어를 입력하세요.">
