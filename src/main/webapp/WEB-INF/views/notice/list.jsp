@@ -8,42 +8,76 @@
 <title>Insert title here</title>
 <c:import url="../temp/header.jsp"></c:import>
 <style>
-.wrap {width: 1000px; height:800px; margin: auto; }
-.tb{width: 900px;	
+.wrap {width: 1000px; height:500px; margin-bottom: 200px;}
+.tb{width: 1000px;	
+	text-align: center; 
+
 	
-}
-.title {font-size:2rem; text-align: center;}
-.head{height: 50px; background-color: #f1f3f5;}
-.body{height: 40px;
-	border-top:0.5px solid #b2b2b2;
-	margin:15px 0px;
 	}
+.title {font-size:2.5rem; text-align: center;}
+.head{height: 50px; background-color: #f1f3f5; width: 1200px;}
+.body{
+	height: 40px;
+	border-top:0.5px solid #b2b2b2;
+	margin-right: 200px;
+	
+	}
+
+.search{
+	border:0.5px  solid#e0e0e0;
+	border-radius: 3px;
+	}
+
+	
 /* header.css */
-.viewport {background-color: ;}
-header {position: relative;
-background-color: rgba(255,255, 255,0);}
+header {position: relative; height: 100px; padding: 0;}
 
 /* footer.css */
 footer {margin-top:7rem;}
 
 </style>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/ScrollTrigger.min.js"></script>
+<script src="/resources/js/main.js"></script>
+
 </head>
 
 <body>
-	
+	<!-- 헤더 -->
+        <header>
+            <h1>
+                <a href="${pageContext.request.contextPath}/" class="main_logo">
+					<img src="/resources/images/main/main_logo.png" alt="메인로고">
+                </a>
+            </h1>
+          
+            <ul>
+                <c:if test="${not empty member}">
+                <li class="not_empty_Basket"><a href="/product/basketList">
+            		<img alt="" src="../resources/images/basket/cart.png" style="width: 30px; height: 30px;"></a></li>
+	      		<li class="login"><a href="/member/logout">로그아웃</a></li>
+	      		<li class="join"><a href="/member/mypage">mypage</a></li>
+	      		</c:if>
+				<c:if test="${empty member}">
+	      		<li class="login"><a href="/member/login">로그인</a></li>
+	      		<li class="join"><a href="/member/terms">회원가입</a></li>
+	      		</c:if>            </ul>
+        </header>
+
 	<section id="container" class="wrap">
 		
-		<div class="title" style="height:80px; margin-top: 20px;"> <img alt="" src="/resources/images/notice/notice.png" style="width: 50px;" height="50px;"> 공지사항</div> <br><br>
+		<div class="title" style="height:80px; margin-right: 20px; margin-bottom: 50px;"> 
+			<img alt="" src="/resources/images/notice/notice.png" style="width: 50px;" height="50px;"> 공지사항
+		</div>
 	
-		<table class="tb" style="text-align: center; margin-left:auto;margin-right:auto;">
+		<table class="tb">
 	
 		<thead class="head">
-			<th scope="col" width=10%>NO</th>
-			<th scope="col" width=50%>SUBJECT</th>
-			<th scope="col" width=15%>NAME</th>
-			<th scope="col" width=15%>DATE</th>
-			<th scope="col" width=10%>HIT</th>
+			<th width=10%>NO</th>
+			<th width=50%>SUBJECT</th>
+			<th width=15%>NAME</th>
+			<th width=15%>DATE</th>
+			<th width=10%>HIT</th>
 		</thead>
 		<tbody>
 		<c:forEach items="${list}" var="d" varStatus="i">
@@ -62,50 +96,44 @@ footer {margin-top:7rem;}
 	<!-- 페이지 번호 -->
 	<br>
 	<nav >
-	  <ul class="">
+	  <ul class="" style="text-align: center; height: 50px; margin-top: 20px; margin-left: 340px;">
 	  <c:if test="${pager.pre}">
-	    <li class="page-item">
-	      <a class="page-link link-offset-2 link-underline link-underline-opacity-0 text-black" href="./list?page=${pager.startNum-1}&kind=${param.kind}&search=${param.search}" aria-label="Previous">
+	      <a class="" href="./list?page=${pager.startNum-1}&kind=${param.kind}&search=${param.search}" aria-label="Previous">
 	        <span aria-hidden="true">&laquo;</span>
 	      </a>
-	    </li>
 	   </c:if>
 			<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">		    
-		    	<li class="page-item" style="text-align: center; height: 50px; margin-top: 20px;">
-		    	<a class="" href="./list?page=${i}&kind=${param.kind}&search=${param.search}">${i}</a>
-		    	<li>
+		    	<a class="" href="./list?page=${i}&kind=${param.kind}&search=${param.search}" style="margin-left: 20px;">${i}</a>
 			</c:forEach>
 		<c:if test="${pager.next}">
-		    <li class="page-item">
 		  	   	<a class="" href="./list?page=${pager.lastNum+1}&kind=${param.kind}&search=${param.search}" aria-label="Next">
-		    	<span aria-hidden="true">&raquo;</span>
+		    	<span aria-hidden="true">&nbsp;&raquo;</span>
 		      	</a>
-		   	</li>
 		   </c:if>
-		 </ul>
-	 </nav>
-	 <br>
-	<!-- 검색창 -->	
-	<form action="./list" method="get" style="width: 70%">
-		<div class="input-group" id="frm" style="width: 300px;">
-			  <input type="hidden" value="${pager.page}" id="page" name="page">
-			    <!-- 파라미터 이름 kind -->
-			  <select name="kind" id="k" class="form-select form-select-sm" aria-label="Small select example">
-				  <option class="kind" value="subject">Subject</option>
-				  <option class="kind" value="contents">Contents</option>
-			  </select>
-			  
-			  <input type="text" name="search" value="${pager.search}" class="form-control" placeholder="검색어를 입력하세요." aria-label="Recipient's username" aria-describedby="button-addon2">
-		</div>
-			   <div class="col-auto" style="width: 45%; float: right;">
-			  	<button class="btn btn-secondary" type="submit" id="button-addon2">Search</button>
-		  	   </div>
+	   <!-- 검색창 -->	
+		<form action="./list" method="get" style="width: 20%; float: right; margin-right: 210px;">
+			<div id="frm" style="width: 300px;">
+				  <input type="hidden" value="${pager.page}" id="page" name="page">
+				    <!-- 파라미터 이름 kind -->
+				  <select name="kind" id="k" class="search">
+					  <option class="kind" value="subject">Subject</option>
+					  <option class="kind" value="contents">Contents</option>
+				  </select>
+				  
+				  <input type="text" name="search" value="${pager.search}" class="search" placeholder="검색어를 입력하세요.">
+				  <button class="btn btn-secondary" type="submit" id="button-addon2" style="float: right;">
+				  	<img alt="" src="/resources/images/search.png" style="width: 20px; height: 20px;">
+				  </button>
+			</div>
+	  	   
 		</form>
-		
+		 </ul>
 		<c:if test="${member.roleNum == 1}">
-			<a class="btn btn-outline-secondary" href="./add">Add</a><br><br>				
+			<a class="btn btn-outline-secondary" href="./add" style="float: right; margin-right: 50px; background-color: #f1f3f5">Add</a><br><br>				
 		</c:if>
+	 </nav>
 </section>
+</div>
 <c:import url="../temp/footer.jsp"></c:import>
 </body>
 </html>
