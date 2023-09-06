@@ -33,7 +33,7 @@ public class ReviewController {
 		pager.setPerPage(2L);
 		List<ReviewDTO> ar = reviewService.getReviewList(pager, reviewDTO, model);			
 		model.addAttribute("reviewList", ar);
-		
+		model.addAttribute("pager", pager);
 	}
 	
 	//form으로 이동
