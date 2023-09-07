@@ -212,6 +212,10 @@ button{
     transform:translate(0%, -50%);
 }
 
+#productInfo > .product > div > .cancelState{
+	font-size:13px !important;
+}
+
 #productInfo > .product > div > p{
 	margin:0px;
 	font-size:13px;
@@ -255,5 +259,3 @@ button{
 	font-weight:bold;
 	color:black;
 }
-
-
