@@ -96,6 +96,39 @@
 				</div>
 			</div>
 			<div class="best_btm pro_btm">
+				<div class="bestReview">
+					
+						<ul>
+	
+							<li>
+								<a href="#" class="best pro">
+									<div class="best_img pro_img">
+										<img src="${pageContext.request.contextPath}/resources/images/product/${dto.productName}.jpg" 
+										onclick="location.href='${pageContext.request.contextPath}/product/detail?productNum=${dto.productNum}'">
+									</div>
+									<div class="img_data">
+										<p class="i_name">${dto.productName}</p>
+										<div class="i_price">
+											<p class="cost"><fmt:formatNumber value="${dto.price}" pattern="#,###" /><span class="won">원</span></p>
+											<p class="i_score">
+												<span class="score">${dto.score}</span>
+											</p>
+										</div>
+										<div class="i_hash">
+											${dto.contents}
+										</div>
+									</div>
+								</a>
+							</li>
+
+						</ul>
+					
+				</div>
+
+
+
+<!-- 
+
 				<ul>
 					<li><a href="#" class="best pro">
 						<div class="best_img pro_img">
@@ -176,7 +209,8 @@
 				</ul>
 			</div>
 		<!-- /best_div -->
-		</div>
+		</div> -->
+
 
 		<div class="pick_div pro_div">
 			<div class="pick_top pro_top">
