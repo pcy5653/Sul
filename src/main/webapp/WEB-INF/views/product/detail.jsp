@@ -51,6 +51,11 @@
 			<a class="btn btn-outline-danger" href="./update?productNum=${dto.productNum}">수정</a>
 	 		<button class="btn btn-outline-danger c1" id="del" data-delete-name="productNum" data-delete-num="${dto.productNum}">삭제</button>
 			</c:if>
+			<c:if test="${empty dto.reviews}">
+				<div>
+					<img src="../resources/images/firstReview.jpg">
+				</div>
+			</c:if>			
 			<div id="reviewWrap">
 				<!-- AJAX 처리 -->
 			</div>
