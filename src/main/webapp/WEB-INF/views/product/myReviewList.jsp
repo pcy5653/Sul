@@ -35,12 +35,12 @@
 					<c:forEach items="${myReviewList}" var="review" varStatus="i">
 						<div id="myReview"+i class="wrap">
 							<div>
-								<p class="id">${review.id}</p>
-								<p class="createDate">${review.reviewTime}</p>			
-								<p class="score">
+										
+								<p class="score createDate">
 									<img src="../resources/images/product/star-icon.svg">
 									<span>${review.reviewStar}</span>
-								</p><br>
+								&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+								<span>${review.reviewTime}</p></span>	<br>
 								<div class="contents">
 									<div>
 										${review.reviewContents}

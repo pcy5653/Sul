@@ -72,7 +72,7 @@ public class AdminController {
 		@RequestMapping(value = "/groupSMS", method = RequestMethod.GET)
 		public void phoneFw(@RequestParam("phone") String userPhoneNumber,String smsContents) throws Exception { // 휴대폰 문자보내기
 			
-			memberService.certifiedPhoneNumber(userPhoneNumber, smsContents);
+			adminService.certifiedPhoneNumber(userPhoneNumber, smsContents);
 			
 		}
 }
