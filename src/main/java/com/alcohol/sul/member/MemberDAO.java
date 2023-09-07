@@ -56,4 +56,8 @@ public class MemberDAO {
 	public MemberDTO getMember(String id) {
 		return sqlSession.selectOne(NAMESPACE + "getMember", id);
 	}
+	
+	public MemberDTO getNaverLogin(String phone) {
+		return sqlSession.selectOne(NAMESPACE+"getNaverLogin",phone);
+	}
 }

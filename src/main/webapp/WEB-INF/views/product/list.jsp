@@ -29,7 +29,7 @@
 		        <ul>
 		    </c:if>
 			    <li>
-			        <img src="${pageContext.request.contextPath}/resources/images/${dto.productName}.jpg"
+			        <img src="${pageContext.request.contextPath}/resources/images/product/${dto.productName}.jpg"
 							onclick="location.href='${pageContext.request.contextPath}/product/detail?productNum=${dto.productNum}'">
 			        <div>
 			            <p class="name">${dto.productName}</p>
@@ -71,6 +71,6 @@
 		</div>
 	</div>
 	
-	<script type="text/javascript" src="../resources/js/khj/productList.js"></script>
+	<script type="text/javascript" src="/resources/js/khj/productList.js"></script>
 </body>
 </html>

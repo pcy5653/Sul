@@ -13,6 +13,7 @@
 #reviewNotExist {
 	text-align: center;
 }
+
 </style>
 </head>
 
@@ -34,24 +35,39 @@
 					<c:forEach items="${myReviewList}" var="review" varStatus="i">
 						<div id="myReview"+i class="wrap">
 							<div>
-								<p>${review.id}</p>
-								<p>별점 ${review.reviewStar} ${review.reviewTime}</p>
-								<p>${review.reviewContents}</p>
-								<img height="100" width="100" src="/resources/upload/product/review/${review.reviewFileDTOs[0].fileName}">		
-								<img height="100" width="100" src="/resources/upload/product/review/${review.reviewFileDTOs[1].fileName}">
+								<p class="id">${review.id}</p>
+								<p class="createDate">${review.reviewTime}</p>			
+								<p class="score">
+									<img src="../resources/images/product/star-icon.svg">
+									<span>${review.reviewStar}</span>
+								</p><br>
+								<div class="contents">
+									<div>
+										${review.reviewContents}
+									</div>
+									<br>
+									<div class="images">
+										<c:if test="${not empty review.reviewFileDTOs[0].fileName}">
+											<img height="100" width="100" src="/resources/upload/product/review/${review.reviewFileDTOs[0].fileName}">
+										</c:if>
+										<c:if test="${not empty review.reviewFileDTOs[1].fileName}">
+											<img height="100" width="100" src="/resources/upload/product/review/${review.reviewFileDTOs[1].fileName}">
+										</c:if>
+									</div>
+								</div>
+								<br>
+								<a class="btn btn-outline-secondary " href="../product/reviewUpdate?reviewNum=${review.reviewNum}&productNum=${review.productNum}" target="_blank">수정</a>
+								<button class="btn btn-outline-secondary c1" id="reviewDel" data-delete-name="reviewNum" data-delete-num="${review.reviewNum}">삭제</button> 
+								
+							
 							</div>
 						</div>
 					</c:forEach>
 				</c:if>
-
 			</div>
-
-
-
-
 		</div>
 	</div>
-
+<script type="text/javascript" src="/resources/js/khj/delete2.js"></script>
 </body>
 
 </html>

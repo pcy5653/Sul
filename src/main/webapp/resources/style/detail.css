@@ -1,16 +1,22 @@
 /* header.css */
-.viewport {background-color: #ffc9cc;}
-header {position: relative;
-background-color: rgba(255,255, 255,0);}
+.viewport {}
+.headerWrap {
+    position: relative !important; top:0px !important;
+    background-color: rgba(255,255, 255,0) !important;
+}
+header {position: absolute !important;left:0px !important; top:0px !important;
+background-color: rgba(255,255, 255,0) !important;}
 
 /* footer.css */
 footer {margin-top:7rem;}
 
 /* list.css */
-section {width:100% !important; margin-top: 80px !important;}
+section {width:100% !important; margin-top: 3rem !important;margin-bottom: 5rem !important;}
 .wrap {width: 70%; margin: 0 auto;}
 .main {}
-#title {font-size: 2.5rem; margin-bottom : 2.5rem; text-align: center;}
+#title {font-size: 2.5rem; margin-bottom : 4rem; text-align: center;}
+#totalNum {width: 85%;margin: 0 auto 2rem;}
+#totalNum .totalN {font-size:1.2rem; font-weight: 600;}
 .wrap table, .t_page, .t_search{width:85%; margin: 0 auto;margin-bottom: 2rem;}
 table tr {height:3rem; text-align: center;}
 table thead, table tbody{border-top:1px solid black; border-bottom: 1px solid black;}
@@ -64,6 +70,10 @@ table tr td.dcon {
 .deBtn:hover {border-radius: 10px;color:white;background-color:#ff4c56;transition:all 0.5s;}
 .reBtn:hover {border-radius: 10px;color:white; background-color:#ffce06;transition:all 0.5s;}
 
+/* detail totalNum = 0 */
+#NumZero {border: 1px solid black;height: 30vh;}
+#NumZero > tr {}
+#NumZero > tr > td {}
 
 /* add.css */
 #add_view {height:90vh;}
