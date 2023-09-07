@@ -1,74 +1,75 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset="UTF-8">
-<title>Insert title here</title>
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>${member.name}님의 장바구니</title>
+<link rel="stylesheet" href="/resources/css/basket/basketList.css">
+<link rel="stylesheet" href="/resources/style/reset.css">
+<link rel="stylesheet" href="/resources/style/basic.css">
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/ScrollTrigger.min.js"></script>
+<script src="/resources/js/main.js"></script>
 <style type="text/css">
-    .wrap { width: 1000px; height: 800px; margin: auto; }
+/* header.css */
+header {  
+	position: fixed;
+  	top: 0;
+  	left: 0;
+  	right: 0;}
 
-    section#content ul li { margin: 10px 0; padding: 10px 0; border-bottom: 1px solid #999; }
-    section#content ul li img { width:; height: 250px; }
-    section#content ul li::after { content: ""; display: block; clear: both; }
-    section#content div.thumb { float: left; width: 250px; }
-    section#content div.productInfo { width: calc(100% - 320px); font-size: 18px; line-height: 2; }
-    section#content div.productInfo span { display: inline-block; width: 100px; font-weight: bold; margin-right: 10px; }
-    section#content div.productInfo .delete { text-align: right; }
-    section#content div.productInfo .delete button { font-size: 18px; padding: 5px 10px; border: 1px solid #eee; background: #eee; }
-    .delBtn { width: 300px; }
-
-    .checkBox { float: left; width: 30px; }
-    .checkBox input { width: 16px; height: 16px; }
-
-    .listResult { padding: 20px; background: #eee; }
-    .listResult .sum { float: left; width: 45%; height:40px; line-height:40px; font-size: 22px; }
-
-    .listResult .orderOpne { float: right; width: 45%; text-align: right; }
-    .listResult .orderOpne button { font-size: 18px; padding: 5px 10px; border: 1px solid #999; background: #fff; }
-    .listResult::after { content: ""; display: block; clear: both; }
-    
-    #payment{
-    	width:55px; height:40px;
-    	float:right;
-    	background-color:#DC3545;
-    	border-radius:5px;
-    	color:white;
-    }
+/* footer.css */
+footer {margin-top:7rem;}
 </style>
 </head>
 <body>
-<c:import url="../temp/header.jsp" /><br><br><br><br><br><br><br>
-
+		<!-- 헤더 -->
+        <header>
+            <h1>
+                <a href="${pageContext.request.contextPath}/" class="main_logo">
+					<img src="/resources/images/main/main_logo.png" alt="메인로고">
+                </a>
+            </h1>
+          
+            <ul>
+                <c:if test="${not empty member}">
+                <li class="not_empty_Basket"><a href="/product/basketList">
+            		<img alt="" src="../resources/images/basket/cart.png" style="width: 30px; height: 30px;"></a></li>
+            	<li class="notice"><a href="/notice/list">공지사항</a></li>
+                <li class="qna"><a href="/qna/list">1:1문의</a></li>	
+	      		<li class="login"><a href="/member/logout">로그아웃</a></li>
+	      		<li class="join"><a href="/member/mypage">mypage</a></li>
+	      		</c:if>
+				<c:if test="${empty member}">
+	      		<li class="login"><a href="/member/login">로그인</a></li>
+	      		<li class="join"><a href="/member/terms">회원가입</a></li>
+	      		</c:if>            
+	      	</ul>
+        </header>
 <!-- 장바구니 상품 없을 때 -->
-<c:if test="${empty basketList}">
-    <tr>
-        <td colspan="2"></td>
-        <td colspan="2">
-            <div style="text-align: center; margin-top: 25px;">
-                <img src="/resources/images/basket/cartList.png" style="width: 32px; height: 32px; ">
-                <div style="font-size: 1.5em; margin-top: 25px;">장바구니가 비었습니다.</div><br>
-                <a href="./list" class="btn">쇼핑하러 가기</a>
-            </div>
-        </td>
-        <td colspan="2"></td>
-    </tr>
+<c:if test="${empty basketList}">    
+   <div style="text-align: center; margin-top: 100px; margin-bottom: 100px;" class="above">
+       <img src="/resources/images/basket/cartList.png" style="width: 32px; height: 32px; ">
+         <div style="font-size: 1.5em; margin-top: 25px;">장바구니가 비었습니다.</div><br>
+             <a href="./list" class="btn">쇼핑하러 가기</a>
+   </div>
+        
 </c:if>
 <c:if test="${not empty basketList}">
-    <section id="container">
+    <section id="container" style="margin-top: 100px;">
         <div id="container_box" class="wrap">
 
             <section id="content">
 
                 <ul>
                     <li>
-                        <div class="allCheck" style="width:150px; float:left;">
-                            <input type="checkbox" name="allCheck" id="allCheck" checked /><label for="allCheck">&nbsp;&nbsp;모두 선택</label>
+                        <div class="allCheck" style="width:170px; float:left; margin-left: 50px">
+                            <input type="checkbox" name="allCheck" id="allCheck" checked style="margin-left: 10px;"/>
+                            <label style="width: 100px; float:right;" for="allCheck">모두 선택</label>
 
                             <script>
                                 $("#allCheck").click(function () {
@@ -83,7 +84,7 @@
 
                         </div>
 
-                        <div class="delBtn" style="width:150px; float:right; text-align: right;">
+                        <div class="delBtn" style="width:100px; float:left; text-align: left; margin-right: 10px;">
                             <button type="button" class="selectDelete_btn">선택 삭제</button>
 
                             <script>
@@ -123,7 +124,7 @@
 
                     <c:forEach items="${basketList}" var="basketList">
                         <li>
-                            <div class="checkBox">
+                            <div class="checkBox ch" style="width: 16px; height: 16px;">
                                 <input type="checkbox" name="chBox" class="chBox" data-basketNum="${basketList.basketNum}" checked/>
                             </div>
                             <script>
@@ -133,29 +134,29 @@
                                 });
                             </script>
 
-                            <div class="productInfo">
+                            <div class="productInfo box">
                                 <input type="hidden" class="productNum" value="${basketList.productNum}" />
                                 <input type="hidden" class="stock" value="${basketList.stock}" />
                                 <div style="width:120px; height:100px; float:left;">
-                                    <img alt="" style="width:100px; height:100px; " src="/resources/images/${basketList.productName}.jpg">
+                                    <img alt="" style="width:100px; height:100px; " src="/resources/images/product/${basketList.productName}.jpg" onclick="location.href='${pageContext.request.contextPath}/product/detail?productNum=${basketList.productNum}'">
                                 </div>
                                 <p>
-                                <div class="price" style="width:120px; height:80px; float:left; text-align: center; margin-top: 30px;">
-                                    ${basketList.productName}<br><br><fmt:formatNumber pattern="###,###,###" value="${basketList.price}" /> 원
-                                </div>
-                                <div style="width:120px; height:100px; float:left; ">
-
+                                <div class="price" style="width:250px; height:80px; float:left; text-align: center; margin-top: 30px; font-weight: bold;" onclick="location.href='${pageContext.request.contextPath}/product/detail?productNum=${basketList.productNum}'">
+                                    ${basketList.productName}<br><br>상품금액 : <fmt:formatNumber pattern="###,###,###" value="${basketList.price}" /> 원
                                 </div>
 
 
-                                <div class="basketStock" style="width:100px; height:100px; float:left; text-align: center; margin-top: 30px;">
+                                <div class="basketStock" style="width:130px; height:100px; float:left; margin-top: 30px; margin-left: 60px;">
                                     <div class="amount">
                                         <button type="button" class="minus">-</button>
-                                        <input type="number" class="numBox" pattern="\d*" maxlength="3" value="${basketList.productCount}" style="width: 40px;" readonly="readonly">
+                                        <input type="number" class="numBox" pattern="\d*" maxlength="3" value="${basketList.productCount}" style="width: 40px; text-align: right;"readonly="readonly">
                                         <button type="button" class="plus">+</button>
                                     </div>
                                     <br>
-                                    <button type="button" class="update_btn" data-product-Num="${basketList.productNum}">수정</button>
+                                    <button type="button" class="update_btn" data-product-Num="${basketList.productNum}" style="border-radius:10px; margin-left: 12px; margin-bottom: 3px; width: 40px; height: 20px; background-color: rgb(255,187,0);">수정</button>
+                                	<div class="text" style=" width:110px; font-size: 8px; margin-top: 5px; margin-left: 12px;">
+                                	<img alt="" src="/resources/images/basket/circle.png" style="width: 10px; height: 10px;">
+                                	수정버튼을 눌러주세요!</div>
                                 </div>
 
                                 <script>
@@ -191,11 +192,7 @@
 								    });
 								</script>
 
-                                <%-- <div class="totalPrice" style="width:120px; height:100px; float:left; text-align: center; margin-top: 30px; ">
-                                    <fmt:formatNumber pattern="###,###,###" value="${basketList.price * basketList.productCount}" /> 원
-                                </div> --%>
-
-                                <div class="delete" style="width:60px; height:100px; float:right; text-align: right; margin-top: 30px; ">
+                                <div class="delete" style="width:30px; height:50px; float:right; text-align: right; margin-top: 30px; ">
                                     <button type="button" class="delete_${basketList.basketNum}_btn" data-basketNum="${basketList.basketNum}">
                                         x
                                     </button>
@@ -234,15 +231,39 @@
 
                     </c:forEach>
                 </ul>
-				<br>
-                <div class="listResult">
-                    <div class="sum">
-                        총 합계 : <span class="totalPriceDisplay"><fmt:formatNumber pattern="###,###,###" value="${sum}" /></span> 원
-
+			<div class="style__CartBillWrapper-sc-zhmz48-5 calculate">
+                <div class="bill">
+                    <div class="title">계산서</div>
+                    <div class="solid-top"></div>
+                    <div class="content" style="margin-top: 20px; margin-bottom: 50px;">
+                        <div class="row">
+                            <div class="price">총 상품금액</div>
+                            <div class="price" style="font-size: 20px;">
+								<span class="totalPriceDisplay price"><fmt:formatNumber pattern="###,###,###" value="${sum}" /></span> 원
+							</div>
+                        </div>
+                        
+                        <div class="row">
+                            <div>총 배송비</div>
+                            <div class="price">2,000원</div>
+                        </div>
+                        <div class="info">
+                            <div class="text">
+                            <img alt="" src="/resources/images/basket/circle.png" style="width: 10px; height: 10px;">
+                            주문 1건당 배송비가 부과됩니다.</div>
+                        </div>
                     </div>
-					<button id="payment" class="btn btn-danger">결제</button>
-                </div>
-            </section>
+             </div>
+       </div>
+
+	            <div class="action-button-wrapper" style="width: 100px; margin-left: 10px; float: right;">                 
+	              	<button id="payment" style="font-size: 16px; width:100px; height:40px; background-color: rgb(255,187,0); border-radius:20px; line-height: 30px; border: 0px;">주문하기</button>
+	            </div>
+				<div style="width: 100px; margin-left: 100px; float: right;">
+					<button id = "list" onclick="location.href='./list'" style="font-size: 16px; width:100px; height:40px; border-radius:20px; background-color: rgb(255,187,0); line-height: 30px; border: 0px;">상품 더보기</button>
+				</div>
+	        
+     	</section>
         </div>
     </section>
 </c:if>
@@ -283,6 +304,7 @@
 	        let count = parseInt(countText);
 	
 	        totalPrice += price * count;
+	        
 	    });
 	
 	    $(".totalPriceDisplay").text(totalPrice.toLocaleString());
@@ -340,5 +362,7 @@
 		form.submit();
     });
 </script>
+<c:import url="../temp/footer.jsp"></c:import>
+
 </body>
 </html>

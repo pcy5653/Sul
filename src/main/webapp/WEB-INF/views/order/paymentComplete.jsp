@@ -37,10 +37,10 @@
 					<p class="title">${order.orderDate}</p>
 					<c:forEach items="${order.orderProducts}" var="orderProduct">
 						<div class="product">
-							<img src="../resources/images/order/백련_미스티.jpg">
+							<img src="../resources/images/product/${orderProduct.productDTO.productName}.jpg">
 							<div>
 								<p>${orderProduct.productDTO.productName}</p>
-								<p>[375ml]백련 미스티 살균 막...</p>
+								<p>[${orderProduct.productDTO.capacity}ml]${orderProduct.productDTO.productName} ...</p>
 								<p>${orderProduct.productDTO.price}원 / 수량 ${orderProduct.orderCount}개</p>
 							</div>
 						</div>

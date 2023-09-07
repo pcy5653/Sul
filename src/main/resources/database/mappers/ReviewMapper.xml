@@ -32,6 +32,7 @@
 		<id column="REVIEWNUM" property="reviewNum" />
 		<result column="ID" property="id" />
 		<result column="PRODUCTNUM" property="productNum" />
+		<result column="PRODUCTNAME" property="productName" />
 		<result column="REVIEWCONTENTS" property="reviewContents" />
 		<result column="REVIEWSTAR" property="reviewStar" />
 		<result column="REVIEWTIME" property="reviewTime" />
@@ -53,7 +54,7 @@
 			SELECT REVIEW_SEQ.NEXTVAL FROM DUAL
 		</selectKey>
 		INSERT INTO REVIEW
-		VALUES(#{reviewNum}, #{id}, #{productNum}, #{reviewContents},#{reviewStar}, SYSDATE)
+		VALUES(#{reviewNum}, #{id}, #{productNum}, #{reviewContents},#{reviewStar}, SYSDATE, #{productName})
 	</insert>
 
 	<delete id="setReviewDelete" parameterType="ReviewDTO">

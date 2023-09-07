@@ -31,14 +31,14 @@
 					<p>원료 : ${dto.base}</p>
 					<p>도수 : ${dto.proof}%</p>
 					<p>탄산 : ${dto.carbonicAcid}</p>
-					<p>용량 : 500ml</p>
+					<p>용량 : ${dto.capacity}ml</p>
 					<div id="price">
 						<p>판매 가격</p>
 						<p><fmt:formatNumber value="${dto.price}" pattern="#,###" />원</p>
 					</div>
 					<div id="note">
-						<p>유통기한 : 병입일로부터 N년</p>
-						<p>보관 방법 : 직사광선을 피한 서늘한 곳</p>
+						<p>유통기한 : ${dto.expiryDate}</p>
+						<p>보관 방법 : ${dto.storageMethod}</p>
 					</div>
 				</div>
 			</div>
@@ -51,6 +51,7 @@
 			<a class="btn btn-outline-danger" href="./update?productNum=${dto.productNum}">수정</a>
 	 		<button class="btn btn-outline-danger c1" id="del" data-delete-name="productNum" data-delete-num="${dto.productNum}">삭제</button>
 			</c:if>
+		
 			<div id="reviewWrap">
 				<!-- AJAX 처리 -->
 			</div>
@@ -108,8 +109,10 @@
 					if(tp>0){
 						let button = '<span id="moreButton">더 많은 리뷰('+pageNum+'/'+tp+')</span>'
 						$("#more").html(button);
-					} 
-					
+					} else{
+						let button = '<span id="moreButton"><img src="../resources/images/firstReview.jpg"></span>'
+						$("#more").html(button);					
+					}
 					if(isFirst){
 						let reviewTotal = $("#reviewTotal").val();
 						$("#score > .reviewCount").html("[" + reviewTotal + " 리뷰]");

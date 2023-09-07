@@ -35,6 +35,10 @@
                                     <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                     회원관리
                                 </a>
+                                <a class="nav-link" href="/product/add">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                    상품등록
+                                </a>
                             </div>
                         </div>
                         <div class="sb-sidenav-footer">

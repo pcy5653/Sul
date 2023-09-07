@@ -118,7 +118,26 @@
 		<div class="mb-3">		
 		  <label for="savePoint" class="form-label">적립금</label>
 		  <input type="text" name="savePoint" class="form-control" id="savePoint" value="${dto.savePoint}">
-		</div>									
+		</div>						
+		
+		<div class="mb-3">
+			<label for="capacity" class="form-label">용량</label>
+			<input type="text" name="capacity" class="form-control input" id="capacity" value="${dto.capacity}">
+			<div id="capacityMsg"></div>
+		</div>
+		
+		<div class="mb-3">
+			<label for="expiryDate" class="form-label">유통기한</label>
+			<input type="text" name="expiryDate" class="form-control input" id="expiryDate" value="${dto.expiryDate}">
+			<div id="expiryDateMsg"></div>
+		</div>
+		
+		<div class="mb-3">
+			<label for="storageMethod" class="form-label">보관방법</label>
+			<input type="text" name="storageMethod" class="form-control input" id="storageMethod" value="${dto.storageMethod}">
+			<div id="storageMethodMsg"></div>
+		</div>
+					
 		
 		<div class="mb-3">
 			<button type="button" class="btn btn-primary" id="fileAdd">File추가</button>

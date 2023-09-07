@@ -40,10 +40,10 @@
 						<c:set var="totalAmount" value="${totalAmount + (orderProduct.productDTO.price * orderProduct.orderCount)}" />
 						<c:set var="orderProductCount" value="${status.count}" />
 						<div class="product">
-							<img src="../resources/images/order/백련_미스티.jpg">
+							<img src="../resources/images/product/${orderProduct.productDTO.productName}.jpg">
 							<div>
 								<p>${orderProduct.productDTO.productName}</p>
-								<p>[500ml]${orderProduct.productDTO.productName}</p>
+								<p>[${orderProduct.productDTO.capacity}ml]${orderProduct.productDTO.productName} ...</p>
 								<p>${orderProduct.productDTO.price}원 / 수량 ${orderProduct.orderCount}개</p>
 							</div>
 						</div>
