@@ -18,16 +18,18 @@ window.addEventListener('scroll', function () {
 
 
 // best 상품(review 기준)
-
-function best(){
+$('#reviewBtn').click(function(){
     $.ajax({
         type:"GET",
         url : "/bestReview",
         dataType:'html',
         success:function(result){
-             $(".bestReview").html(result);
+                $("#review_fixed").css("display", "block");
+                $("#review_fixed").html(result);
         }
     }) 
-}
+});
 
-//best();
+$("#review_del").click(function(){
+    $("#review_fixed").css("display", "none");
+})

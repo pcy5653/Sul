@@ -25,6 +25,16 @@
 		</div>
 		<!-- /video_wrap -->
 	</section>
+	<section id="review_wrap">
+		<div class="review_div">
+			<p>술담화의 <span class="review">리뷰 Best 4</span> 상품을 만나보세요!</p>
+			<button id="reviewBtn">PUSH</button>
+			<div id="review_fixed">
+				<button id="review_del"></button>
+			</div>
+		</div>
+		<!-- /review_wrap -->
+	</section>
 	<section id="nav_wrap">
 		<div class="nav_div">
 			<ul>
@@ -96,39 +106,6 @@
 				</div>
 			</div>
 			<div class="best_btm pro_btm">
-				<div class="bestReview">
-					
-						<ul>
-	
-							<li>
-								<a href="#" class="best pro">
-									<div class="best_img pro_img">
-										<img src="${pageContext.request.contextPath}/resources/images/product/${dto.productName}.jpg" 
-										onclick="location.href='${pageContext.request.contextPath}/product/detail?productNum=${dto.productNum}'">
-									</div>
-									<div class="img_data">
-										<p class="i_name">${dto.productName}</p>
-										<div class="i_price">
-											<p class="cost"><fmt:formatNumber value="${dto.price}" pattern="#,###" /><span class="won">원</span></p>
-											<p class="i_score">
-												<span class="score">${dto.score}</span>
-											</p>
-										</div>
-										<div class="i_hash">
-											${dto.contents}
-										</div>
-									</div>
-								</a>
-							</li>
-
-						</ul>
-					
-				</div>
-
-
-
-<!-- 
-
 				<ul>
 					<li><a href="#" class="best pro">
 						<div class="best_img pro_img">
@@ -208,8 +185,7 @@
 					</a></li>
 				</ul>
 			</div>
-		<!-- /best_div -->
-		</div> -->
+		</div>
 
 
 		<div class="pick_div pro_div">
@@ -309,6 +285,7 @@
 </main>
 <c:import url="./temp/footer.jsp"></c:import>
 <script src="/resources/js/main.js"></script>
+<script type="text/javascript" src="/resources/js/khj/productList.js"></script>
 </body>
 
 </html>
