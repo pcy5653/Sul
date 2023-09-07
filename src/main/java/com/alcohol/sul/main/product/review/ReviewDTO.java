@@ -10,12 +10,23 @@ public class ReviewDTO {
 	private Long reviewNum;   
 	private String id;
 	private Long productNum;
+	private String productName;
 	private String reviewContents;
 	private Integer reviewStar;
-	private Date reviewTime;
+	private Date reviewTime;	
 	private List<ReviewFileDTO> reviewFileDTOs;
 	
 	
+	
+	
+	
+	
+	public String getProductName() {
+		return productName;
+	}
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
 	public List<ReviewFileDTO> getReviewFileDTOs() {
 		return reviewFileDTOs;
 	}
