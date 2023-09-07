@@ -100,7 +100,10 @@
  	
  	
  	<delete id="setDelete" parameterType="QnaDTO">
- 		DELETE QNA WHERE QNANUM = #{num}
+ 		DELETE QNA WHERE QNANUM IN (
+			SELECT QNANUM FROM QNA 
+			WHERE REF = #{num} AND (STEP = 1 OR STEP = 0)
+		)
  	</delete>
  	
  	

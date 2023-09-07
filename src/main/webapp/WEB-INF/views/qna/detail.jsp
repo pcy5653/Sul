@@ -22,13 +22,19 @@
 		<div class="wrap">
 			<input type="hidden" value="${member.roleNum}" id="role" name="roleNum">
 			<h1 id="title">상세 문의</h1>
-			<div id="question" data-step="${dto.qnaDTO.step}" data-con="${dto.qnaDTO.contents}" data-num = "${dto.qnaDTO.num}">
-				<!-- 질문내용 -->
-				<c:forEach items="${file}" var="f" begin="0" end="2">
-					<input type="hidden" id="files" data-file="${file}"+f>
-					<img src="/resources/upload/qna/${f.fileName}" alt="">
-				</c:forEach>
-			</div>
+			<!-- files!=null이 아니라면 -->
+			<c:if test="${files!=null}">
+				<div id="question" data-step="${dto.qnaDTO.step}" data-con="${dto.qnaDTO.contents}" data-num = "${dto.qnaDTO.num}">
+					<table>
+						<tr><th>고객님의 질문</th></tr>
+						<tr><td>${dto.qnaDTO.contents}</td></tr>
+					</table>
+					
+					<c:forEach items="${files}" var="f" begin="0" end="2">
+						<img src="/resources/upload/qna/${f.fileName}" alt="고객의 파일이미지">
+					</c:forEach>
+				</div>
+			</c:if>
 			
 			<table id="comment" data-step="${dto.step}">
 				<thead>
@@ -59,15 +65,17 @@
 			</form>
 			
 			<div class="btn_total">
-				<!-- 입력 form으로 method GET -->
-				<button id="update" class="c1 upBtn" data-url="qna/update">수정</button>
-				
-				<!-- method POST -->
-				<input type="hidden" data-url="qna/delete" data-delete-name="name" data-delete-num="${member.id}">
-				<button id="del" class="c1 deBtn" data-url="qna/delete" data-delete-name="num" data-delete-num="${dto.num}">삭제</button>
-				
-				<!-- 입력 form으로 method GET -->
+				<c:if test="${dto.step != 1}">
+					<!-- 입력 form으로 method GET -->
+					<button id="update" class="c1 upBtn" data-url="qna/update">수정</button>
+					
+					<!-- method POST -->
+					<input type="hidden" data-url="qna/delete" data-delete-name="name" data-delete-num="${member.id}">
+					<button id="del" class="c1 deBtn" data-url="qna/delete" data-delete-name="num" data-delete-num="${dto.num}">삭제</button>
+
+					<!-- 입력 form으로 method GET -->
 				<button id="reply" class="c1 reBtn" data-url="qna/reply">답글</button>
+				</c:if>
 			</div>
 		</div>
 	</section>
