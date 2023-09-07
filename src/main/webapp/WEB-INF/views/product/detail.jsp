@@ -18,7 +18,7 @@
 	<div id="outerWrap">
 		<div id="contents">
 			<div id="productInfo">
-				<img src="../resources/upload/product/${dto.imgDTOs[0].imgName}">
+				<img src="../resources/images/product/${dto.productName}.jpg">
 				<div>
 					<p id="name">${dto.productName}</p>
 					<p id="subTitle">${dto.contents}</p>
@@ -43,8 +43,14 @@
 				</div>
 			</div>
 			<div id="detail">
-				<img src="../resources/images/product/detail_sample.png">
+				<img src="../resources/images/product/detail/${dto.productName}.jpg">
 			</div>
+			
+			<c:if test="${member.roleNum eq 1}">
+			<hr>
+			<a class="btn btn-outline-danger" href="./update?productNum=${dto.productNum}">수정</a>
+	 		<button class="btn btn-outline-danger c1" id="del" data-delete-name="productNum" data-delete-num="${dto.productNum}">삭제</button>
+			</c:if>
 			<div id="reviewWrap">
 				<!-- AJAX 처리 -->
 			</div>

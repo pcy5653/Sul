@@ -11,6 +11,7 @@
 		<div class="wrap">
 			<div class="main">
 				<h1 id="title">1:1 문의 내역</h1>
+				<p id="totalNum">총 <span class="totalN">${total}</span> 개의 게시물이 작성되었습니다.</p>
 				<table>
 					<thead>
 						<tr>
@@ -38,6 +39,11 @@
 							</tr>
 						</c:forEach>
 					</tbody>
+					<c:if test="${total eq 0}">
+						<tbody id="NumZero">
+							<tr><td colspan="3">고객님의 문의 내역이 없습니다.</td></tr>
+						</tbody>
+					</c:if>
 				</table>
 			</div>
 			<nav class="t_page">

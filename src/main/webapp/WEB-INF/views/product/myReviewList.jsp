@@ -13,6 +13,7 @@
 #reviewNotExist {
 	text-align: center;
 }
+
 </style>
 </head>
 
@@ -55,8 +56,8 @@
 									</div>
 								</div>
 								<br>
-								<a class="btn btn-outline-primary " href="../product/reviewUpdate?reviewNum=${review.reviewNum}&productNum=${review.productNum}" target="_blank">수정</a>
-								<button class="btn btn-outline-primary c1" id="reviewDel" data-delete-name="reviewNum" data-delete-num="${review.reviewNum}">삭제</button> 
+								<a class="btn btn-outline-secondary " href="../product/reviewUpdate?reviewNum=${review.reviewNum}&productNum=${review.productNum}" target="_blank">수정</a>
+								<button class="btn btn-outline-secondary c1" id="reviewDel" data-delete-name="reviewNum" data-delete-num="${review.reviewNum}">삭제</button> 
 								
 							
 							</div>

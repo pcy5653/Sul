@@ -50,14 +50,23 @@ const com = comment.getAttribute("data-step");
 
 // file test
 const files = document.getElementById("files");
-const file = files.getAttribute("data-file");
-const fn = files.getAttribute("data-name")
-
+const fileArray = files.getAttribute("data-file");
+const fileData = fileArray.slice(1, -1);
+const file = fileData.split(',');
+//const fn = file.getAttribute("data-name")
+const f = files.getAttribute("data-file")
 
 console.log(pnum);
-console.log(file); // 배열 2개
+console.log(fileArray); // 배열 2개
 console.log(typeof(file));
-console.log(fn);
+console.log(file);
+console.log(f);
+console.log("==============================")
+
+
+// for(let i=0; i<file.length; i++){ 
+//     console.log(file[i]);
+// }
 
 
 // const fileArray = document.getElementById('file').getAttribute('data-file');
@@ -73,17 +82,19 @@ console.log(fn);
 
 
 if(q != com){
-//     // text
-    let i = '<table>';
-    i = i.concat('<tr><th>고객님의 질문</th></tr>');
-    i = i.concat('<tr><td>'+content+'</td></tr>');
-    i = i.concat('</table>');
+    // text
+    let k = '<table>';
+    k = k.concat('<tr><th>고객님의 질문</th></tr>');
+    k = k.concat('<tr><td>'+content+'</td></tr>');
+    k = k.concat('</table>');
 
-    // i = i.concat('<c:forEach items="'+files+'"'+' var ="f">');
-    // i = i.concat('<img src="/resources/upload/qna/'+files+'" class="fileImg"></img>')
-    // i = i.concat('</c:forEach>');
+    // file
+    // k = k.concat('<c:forEach var="i" begin="0" end="2">');
+    // k = k.concat('<img src="/resources/upload/qna/'+'${file}'+i+'">')
+    // k = k.concat('</c:forEach>');
+
+    question.innerHTML = k;
     
-    question.innerHTML = i;
     
 }
 
