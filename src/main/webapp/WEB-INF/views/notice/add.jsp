@@ -6,51 +6,77 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Insert title here</title>
-<c:import url="../temp/header.jsp"></c:import>
+<title>Notice Add</title>
+<c:import url="../temp/bootStrap.jsp"></c:import>
+<link rel="stylesheet" href="/resources/style/reset.css">
+<link rel="stylesheet" href="/resources/style/basic.css">
+
 <style>
 .title {font-size:2rem}
 
 /* header.css */
-.viewport {background-color: #ffc9cc;}
-header {position: relative;
-background-color: rgba(255,255, 255,0);}
+header {  
+	position: fixed;
+  	top: 0;
+  	left: 0;
+  	right: 0;}
 
 /* footer.css */
 footer {margin-top:7rem;}
-
 </style>
-
-<c:import url="../temp/bootStrap.jsp"></c:import>
 <!-- include summernote css/js-->
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 
 </head>
 <body>
+		<!-- 헤더 -->
+        <header>
+            <h1>
+                <a href="${pageContext.request.contextPath}/" class="main_logo">
+					<img src="/resources/images/main/main_logo.png" alt="메인로고">
+                </a>
+            </h1>
+          
+            <ul>
+                <c:if test="${not empty member}">
+                <li class="not_empty_Basket"><a href="/product/basketList">
+            		<img alt="" src="../resources/images/basket/cart.png" style="width: 30px; height: 30px;"></a></li>
+            	<li class="notice"><a href="/notice/list">공지사항</a></li>
+                <li class="qna"><a href="/qna/list">1:1문의</a></li>	
+	      		<li class="login"><a href="/member/logout">로그아웃</a></li>
+	      		<li class="join"><a href="/member/mypage">mypage</a></li>
+	      		</c:if>
+				<c:if test="${empty member}">
+				<li class="notice"><a href="/notice/list">공지사항</a></li>
+	      		<li class="login"><a href="/member/login">로그인</a></li>
+	      		<li class="join"><a href="/member/terms">회원가입</a></li>
+	      		</c:if>            
+	      	</ul>
+        </header>
+	<section class="container" style="width: 800px; margin-top: 100px;" >
 
-	<section class="container mt-5">
-	<br><br><br><br><br>
-	<h1 class="title my-4 text-center">Add Page</h1><br><br>
+	<h1 class="title my-4 text-center" style="font-size:2.5rem;">Add Page</h1>
 		<form action="./add" method="post" id="frm" enctype="multipart/form-data">
 			<div class="mb-3">
-				<label for="subject" class="form-label">SUBJECT</label>
+				<label for="subject" class="form-label">제목</label>
 				<input type="text" name="subject" class="form-control" id="subject" placeholder="제목을 입력하세요.">
 			</div>
 			
 			<div class="mb-3">
-				<label for="name" class="form-label">NAME</label>
+				<label for="name" class="form-label">작성자</label>
 				<input type="text" name="name" class="form-control" id="name" readonly value="${member.id}">
 			</div>
 			
 			<div class="mb-3">
-				<label for="contents" class="form-label">CONTENTS</label>
+				<label for="contents" class="form-label">내용</label>
 				<textarea class="form-control" name="contents" id="contents" rows="15" placeholder="내용을 입력하세요."></textarea>
 			</div>
 			
 			<div class="my-3">
-				<a class="btn btn-outline-secondary" href="./list" style='width:80px;float: right;'>목록</a>
-				<button type="button" id="btn" class="btn btn-secondary">완료</button>
+				<a class="btn btn-outline-secondary" href="./list" style="width:80px; height: 40px; background-color: #f1f3f5; float : right; border: 0px;">목록</a>
+				
+				<button type="button" id="btn" class="btn btn-secondary" style='width:80px; height: 40px; float: left; line-height: 10px; border: 0px;'>완료</button>
 			</div>
 		</form>
 	</section>
