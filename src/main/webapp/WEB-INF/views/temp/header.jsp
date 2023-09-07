@@ -26,11 +26,13 @@
                     <c:if test="${not empty member}">
                         <li class="not_empty_Basket"><a href="/product/basketList">
                             <img alt="" src="../resources/images/basket/cart.png" style="width: 30px; height: 30px;"></a></li>
+                    <li class="notice"><a href="/notice/list">공지사항</a></li>
                     <li class="qna"><a href="/qna/list">1:1문의</a></li>
                     <li class="login"><a href="/member/logout">로그아웃</a></li>
                     <li class="join"><a href="/member/mypage">${member.name}님</a></li>
                     </c:if>
                     <c:if test="${empty member}">
+                    <li class="notice"><a href="/notice/list">공지사항</a></li>
                     <li class="login"><a href="/member/login">로그인</a></li>
                     <li class="join"><a href="/member/terms">회원가입</a></li>
                     </c:if>            </ul>
