@@ -117,6 +117,24 @@
 		</div>
 		
 		<div class="mb-3">
+			<label for="capacity" class="form-label">용량</label>
+			<input type="text" name="capacity" class="form-control input" id="capacity" placeholder="용량">
+			<div id="capacityMsg"></div>
+		</div>
+		
+		<div class="mb-3">
+			<label for="expiryDate" class="form-label">유통기한</label>
+			<input type="text" name="expiryDate" class="form-control input" id="expiryDate" placeholder="용량">
+			<div id="expiryDateMsg"></div>
+		</div>
+		
+		<div class="mb-3">
+			<label for="storageMethod" class="form-label">보관방법</label>
+			<input type="text" name="storageMethod" class="form-control input" id="storageMethod" placeholder="용량">
+			<div id="storageMethodMsg"></div>
+		</div>
+		
+		<div class="mb-3">
   			<label for="pic" class="form-label">사진첨부</label>
   			<input type="file" name="photos" class="form-control" id="pic" placeholder="사진을 첨부해주세요.">
 		</div>
