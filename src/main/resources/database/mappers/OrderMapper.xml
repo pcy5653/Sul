@@ -127,6 +127,9 @@
 				<result column="score" property="score" />
 				<result column="savePoint" property="savePoint" />
 				<result column="productHit" property="productHit" />
+				<result column="capacity" property="capacity" />
+				<result column="expirydate" property="expiryDate" />
+				<result column="storagemethod" property="storageMethod" />
 			</association>
 		</collection>
 	</resultMap>
@@ -204,6 +207,9 @@
 					<result column="score" property="score" />
 					<result column="savePoint" property="savePoint" />
 					<result column="productHit" property="productHit" />
+					<result column="capacity" property="capacity" />
+					<result column="expirydate" property="expiryDate" />
+					<result column="storagemethod" property="storageMethod" />
 				</association>
 			</association>
 		</collection>

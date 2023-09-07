@@ -1,5 +1,5 @@
 document.getElementById("frm").addEventListener("submit", function (event) {
-    let checks = [false, false, false, false, false, false]; // 초기화
+    let checks = [false, false, false, false, false, false, false, false, false]; // 초기화
 
     const productName = document.getElementById("productName");
     const pnMsg = document.getElementById("pnMsg");
@@ -13,6 +13,12 @@ document.getElementById("frm").addEventListener("submit", function (event) {
     const stockMsg = document.getElementById("stockMsg");
     const base = document.getElementById("base");
     const baseMsg = document.getElementById("baseMsg");
+    const capacity = document.getElementById("capacity");
+    const capacityMsg = document.getElementById("capacityMsg");
+    const expiryDate = document.getElementById("expiryDate");
+    const expiryDateMsg = document.getElementById("expiryDateMsg");
+    const storageMethod = document.getElementById("storageMethod");
+    const storageMethodMsg = document.getElementById("storageMethodMsg");
 
     // productName 유효성 검사
     if (productName.value.trim() === "") {
@@ -86,6 +92,40 @@ document.getElementById("frm").addEventListener("submit", function (event) {
     } else {
         baseMsg.innerHTML = '원료 등록완료';
         baseMsg.className = "t";
+    }
+    
+    // capacity 유효성 검사
+   if (capacity.value.trim() === "") {
+        capacityMsg.innerHTML = "용량을 입력하세요.";
+        capacityMsg.className = "f";
+        checks[6] = true;
+    } else if (!/^\d+$/.test(capacity.value.trim())) {
+        capacityMsg.innerHTML = "용량은 숫자만 입력하세요.";
+        capacityMsg.className = "f";
+        checks[6] = true;
+    } else {
+        capacityMsg.innerHTML = '용량 등록완료';
+        capacityMsg.className = "t";
+    }
+    
+        // expiryDate 유효성 검사
+    if (expiryDate.value.trim() === "") {
+        expiryDateMsg.innerHTML = "유통기한을 입력하세요.";
+        expiryDateMsg.className = "f";
+        checks[7] = true;
+    } else {
+        expiryDateMsg.innerHTML = '유통기한 등록완료';
+        expiryDateMsg.className = "t";
+    }
+    
+        // STORAGEMETHOD 유효성 검사
+    if (storageMethod.value.trim() === "") {
+        storageMethodMsg.innerHTML = "보관방법을 입력하세요.";
+        storageMethodMsg.className = "f";
+        checks[8] = true;
+    } else {
+        storageMethodMsg.innerHTML = '보관방법 등록완료';
+        storageMethodMsg.className = "t";
     }
 
     if (checks.includes(true)) {
