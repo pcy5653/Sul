@@ -138,10 +138,10 @@ footer {margin-top:7rem;}
                                 <input type="hidden" class="productNum" value="${basketList.productNum}" />
                                 <input type="hidden" class="stock" value="${basketList.stock}" />
                                 <div style="width:120px; height:100px; float:left;">
-                                    <img alt="" style="width:100px; height:100px; " src="/resources/images/product/${basketList.productName}.jpg">
+                                    <img alt="" style="width:100px; height:100px; " src="/resources/images/product/${basketList.productName}.jpg" onclick="location.href='${pageContext.request.contextPath}/product/detail?productNum=${basketList.productNum}'">
                                 </div>
                                 <p>
-                                <div class="price" style="width:250px; height:80px; float:left; text-align: center; margin-top: 30px;">
+                                <div class="price" style="width:250px; height:80px; float:left; text-align: center; margin-top: 30px; font-weight: bold;" onclick="location.href='${pageContext.request.contextPath}/product/detail?productNum=${basketList.productNum}'">
                                     ${basketList.productName}<br><br>상품금액 : <fmt:formatNumber pattern="###,###,###" value="${basketList.price}" /> 원
                                 </div>
 
