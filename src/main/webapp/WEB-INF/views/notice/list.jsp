@@ -25,10 +25,9 @@
 
 .search{
 	border:0.5px  solid#e0e0e0;
-	border-radius: 3px;
+	border-radius: 5px;
 	}
 
-	
 /* header.css */
 header {position: relative; height: 100px; padding: 0;}
 
@@ -61,12 +60,13 @@ footer {margin-top:7rem;}
 				<c:if test="${empty member}">
 	      		<li class="login"><a href="/member/login">로그인</a></li>
 	      		<li class="join"><a href="/member/terms">회원가입</a></li>
-	      		</c:if>            </ul>
+	      		</c:if>            
+	      	</ul>
         </header>
 
 	<section id="container" class="wrap">
 		
-		<div class="title" style="height:80px; margin-right: 20px; margin-bottom: 50px;"> 
+		<div class="title" style="margin-right: 20px; margin-bottom: 50px;"> 
 			<img alt="" src="/resources/images/notice/notice.png" style="width: 50px;" height="50px;"> 공지사항
 		</div>
 	
@@ -74,10 +74,10 @@ footer {margin-top:7rem;}
 	
 		<thead class="head">
 			<th width=10%>NO</th>
-			<th width=50%>SUBJECT</th>
-			<th width=15%>NAME</th>
-			<th width=15%>DATE</th>
-			<th width=10%>HIT</th>
+			<th width=50%>제목</th>
+			<th width=15%>작성자</th>
+			<th width=15%>작성일</th>
+			<th width=10%>조회수</th>
 		</thead>
 		<tbody>
 		<c:forEach items="${list}" var="d" varStatus="i">
@@ -111,7 +111,7 @@ footer {margin-top:7rem;}
 		      	</a>
 		   </c:if>
 	   <!-- 검색창 -->	
-		<form action="./list" method="get" style="width: 20%; float: right; margin-right: 210px;">
+		<form action="./list" method="get" style="width: 20%; float: right; margin-right: 200px;">
 			<div id="frm" style="width: 300px;">
 				  <input type="hidden" value="${pager.page}" id="page" name="page">
 				    <!-- 파라미터 이름 kind -->
@@ -120,7 +120,7 @@ footer {margin-top:7rem;}
 					  <option class="kind" value="contents">내용</option>
 				  </select>
 				  
-				  <input type="text" name="search" value="${pager.search}" class="search" placeholder="검색어를 입력하세요.">
+				  <input type="text" name="search" value="${pager.search}" class="search" placeholder="검색어를 입력하세요." style="text-align: center;">
 				  <button class="btn btn-secondary" type="submit" id="button-addon2" style="float: right;">
 				  	<img alt="" src="/resources/images/search.png" style="width: 20px; height: 20px;">
 				  </button>

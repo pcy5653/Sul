@@ -53,17 +53,17 @@ footer {margin-top:7rem;}
 	<h1 class="title my-4 text-center" style="font-size:2.5rem;">Add Page</h1>
 		<form action="./add" method="post" id="frm" enctype="multipart/form-data">
 			<div class="mb-3">
-				<label for="subject" class="form-label">SUBJECT</label>
+				<label for="subject" class="form-label">제목</label>
 				<input type="text" name="subject" class="form-control" id="subject" placeholder="제목을 입력하세요.">
 			</div>
 			
 			<div class="mb-3">
-				<label for="name" class="form-label">NAME</label>
+				<label for="name" class="form-label">작성자</label>
 				<input type="text" name="name" class="form-control" id="name" readonly value="${member.id}">
 			</div>
 			
 			<div class="mb-3">
-				<label for="contents" class="form-label">CONTENTS</label>
+				<label for="contents" class="form-label">내용</label>
 				<textarea class="form-control" name="contents" id="contents" rows="15" placeholder="내용을 입력하세요."></textarea>
 			</div>
 			

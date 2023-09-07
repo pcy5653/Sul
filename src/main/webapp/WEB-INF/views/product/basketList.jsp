@@ -25,7 +25,6 @@ footer {margin-top:7rem;}
 </head>
 <body>
 
-<div class="viewport">
 		<!-- 헤더 -->
         <header>
             <h1>
@@ -47,7 +46,7 @@ footer {margin-top:7rem;}
 	      		</c:if>            
 	      	</ul>
         </header>
-</div>
+
 <!-- 장바구니 상품 없을 때 -->
 <c:if test="${empty basketList}">    
    <div style="text-align: center; margin-top: 100px; margin-bottom: 100px;" class="above">
