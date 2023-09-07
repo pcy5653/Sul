@@ -51,7 +51,6 @@ public class ReviewController {
 		reviewDTO.setId(memberDTO.getId());	
 		reviewService.setReviewAdd(reviewDTO, photos, session);
 		ProductDTO productDTO = new ProductDTO();
-		System.out.println(reviewDTO.getProductNum());
 		productDTO.setProductNum(reviewDTO.getProductNum());
 		Double result = reviewService.getReviewStarAvg(reviewDTO);
 		productDTO.setScore(result);

@@ -14,8 +14,16 @@ public class BasketDTO extends ImgFileDTO{
 	private String productName;
 	private Long price;
 	private Long stock;
+	private Long savePoint;
+	
 	
 
+	public Long getSavePoint() {
+		return savePoint;
+	}
+	public void setSavePoint(Long savePoint) {
+		this.savePoint = savePoint;
+	}
 	public Long getStock() {
 		return stock;
 	}

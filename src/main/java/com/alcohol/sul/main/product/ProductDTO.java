@@ -18,13 +18,34 @@ public class ProductDTO {
 	private String base;
 	private Double score;
 	private Long savePoint;
+	private Integer capacity;
+	private String expiryDate;
+	private String storageMethod;
 	private List<ProductImgDTO> imgDTOs;
-	private List<ReviewDTO> reviews;
-	
+	private List<ReviewDTO> reviews;	
 	private int productCount;
 	private Long basketNum;
 	
 	
+	
+	public Integer getCapacity() {
+		return capacity;
+	}
+	public void setCapacity(Integer capacity) {
+		this.capacity = capacity;
+	}
+	public String getExpiryDate() {
+		return expiryDate;
+	}
+	public void setExpiryDate(String expiryDate) {
+		this.expiryDate = expiryDate;
+	}
+	public String getStorageMethod() {
+		return storageMethod;
+	}
+	public void setStorageMethod(String storageMethod) {
+		this.storageMethod = storageMethod;
+	}
 	public Long getBasketNum() {
 		return basketNum;
 	}
