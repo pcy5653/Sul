@@ -39,7 +39,7 @@ public class OrderController {
 			ProductDTO productDTO = orderService.getProduct(orderProductDTO.getProductNum());
 			
 			if(orderProductDTO.getOrderCount() > productDTO.getStock()) {
-				String message = productDTO.getProductName() + " 상품의 재고가 부족합니다.\\n남은 수량 : " + productDTO.getStock();
+				String message = productDTO.getProductName() + " 상품의 재고가 부족합니다.\\n남은 수량 : " + productDTO.getStock() + "개";
 				model.addAttribute("message", message);
 				model.addAttribute("url", request.getHeader("Referer"));
 				return "commons/result";

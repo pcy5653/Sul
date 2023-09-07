@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.alcohol.sul.member.MemberDTO;
+import com.alcohol.sul.order.OrderDTO;
 
 import net.nurigo.java_sdk.api.Message;
 import net.nurigo.java_sdk.exceptions.CoolsmsException;
@@ -56,5 +57,10 @@ public class AdminService {
 	        System.out.println(e.getMessage());
 	        System.out.println(e.getCode());
 	      }
+	}
+	
+	
+	public List<OrderDTO> getSalesRevenue() {
+		return adminDAO.getSalesRevenue();
 	}
 }
