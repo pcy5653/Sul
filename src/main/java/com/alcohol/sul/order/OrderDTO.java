@@ -12,7 +12,7 @@ public class OrderDTO {
 	private Integer orderFee;
 	private String orderComment;
 	private Integer usedPoint;
-	private Date orderDate;	
+	private Date orderDate;
 	private List<OrderProductDTO> orderProducts;
 	private OrderAddressDTO orderAddressDTO;
 	private PaymentDTO paymentDTO;

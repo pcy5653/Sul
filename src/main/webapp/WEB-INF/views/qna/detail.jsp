@@ -18,6 +18,7 @@
 </head>
 <body>
 	<c:import url="../temp/header.jsp"></c:import>
+	
 	<section>
 		<div class="wrap">
 			<input type="hidden" value="${member.roleNum}" id="role" name="roleNum">
