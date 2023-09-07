@@ -40,7 +40,7 @@
 							<img src="../resources/images/product/${orderProduct.productDTO.productName}.jpg">
 							<div>
 								<p>${orderProduct.productDTO.productName}</p>
-								<p>[500ml]${orderProduct.productDTO.productName} ...</p>
+								<p>[${orderProduct.productDTO.capacity}ml]${orderProduct.productDTO.productName} ...</p>
 								<p>${orderProduct.productDTO.price}원 / 수량 ${orderProduct.orderCount}개</p>
 							</div>
 						</div>

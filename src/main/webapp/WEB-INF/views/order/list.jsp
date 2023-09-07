@@ -38,7 +38,7 @@
 											<span class="cancelState">[취소 완료]</span>
 										</c:if>
 										<p>${orderProduct.productDTO.productName}</p>
-										<p>[500ml]${orderProduct.productDTO.productName} ...</p>
+										<p>[${orderProduct.productDTO.capacity}ml]${orderProduct.productDTO.productName} ...</p>
 										<p>${orderProduct.productDTO.price}원 / 수량 ${orderProduct.orderCount}개</p>
 										<c:if test="${orderProduct.isCanceled ne 1}">
 										<a class="btn btn-success" href="../product/reviewAdd?productNum=${orderProduct.productDTO.productNum}&productName=${orderProduct.productDTO.productName}" target="_blank">리뷰 작성</a>
