@@ -60,9 +60,6 @@
                 <li class="nav-item">
                   <a class="nav-link" href="#" id="infoBtn">회원정보</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">배송지 관리</a>
-                </li>
                 <c:if test="${member.roleNum==1}">
                   <li class="nav-item">
                     <a class="nav-link" href="/admin/main">관리자 페이지</a>
