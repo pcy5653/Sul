@@ -137,7 +137,7 @@
                                 <input type="hidden" class="productNum" value="${basketList.productNum}" />
                                 <input type="hidden" class="stock" value="${basketList.stock}" />
                                 <div style="width:120px; height:100px; float:left;">
-                                    <img alt="" style="width:100px; height:100px; " src="/resources/images/${basketList.productName}.jpg">
+                                    <img alt="" style="width:100px; height:100px; " src="/resources/images/product/${basketList.productName}.jpg">
                                 </div>
                                 <p>
                                 <div class="price" style="width:120px; height:80px; float:left; text-align: center; margin-top: 30px;">

@@ -32,13 +32,13 @@
 							</div>
 							<c:forEach items="${order.orderProducts}" var="orderProduct">
 								<div class="product">
-									<img src="../resources/images/order/백련_미스티.jpg">
+									<img src="../resources/images/product/${orderProduct.productDTO.productName}.jpg">
 									<div>
 										<c:if test="${orderProduct.isCanceled eq 1}">
 											<span class="cancelState">[취소 완료]</span>
 										</c:if>
 										<p>${orderProduct.productDTO.productName}</p>
-										<p>[375ml]백련 미스티 살균 막...</p>
+										<p>[500ml]${orderProduct.productDTO.productName} ...</p>
 										<p>${orderProduct.productDTO.price}원 / 수량 ${orderProduct.orderCount}개</p>
 										<c:if test="${orderProduct.isCanceled ne 1}">
 										<a class="btn btn-success" href="../product/reviewAdd?productNum=${orderProduct.productDTO.productNum}&productName=${orderProduct.productDTO.productName}" target="_blank">리뷰 작성</a>
