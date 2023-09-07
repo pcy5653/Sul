@@ -42,7 +42,9 @@
 								&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 								<span>${review.reviewTime}</p></span>	<br>
 								<div class="contents">
-									<div>
+								
+										제품: <img height="35" width="35" src="/resources/images/product/${review.productName}.jpg">${review.productName}<br><hr>
+									<div>										
 										${review.reviewContents}
 									</div>
 									<br>

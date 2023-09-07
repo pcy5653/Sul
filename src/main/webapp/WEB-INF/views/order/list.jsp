@@ -41,7 +41,7 @@
 										<p>[375ml]백련 미스티 살균 막...</p>
 										<p>${orderProduct.productDTO.price}원 / 수량 ${orderProduct.orderCount}개</p>
 										<c:if test="${orderProduct.isCanceled ne 1}">
-										<a class="btn btn-success" href="../product/reviewAdd?productNum=${orderProduct.productDTO.productNum}" target="_blank">리뷰 작성</a>
+										<a class="btn btn-success" href="../product/reviewAdd?productNum=${orderProduct.productDTO.productNum}&productName=${orderProduct.productDTO.productName}" target="_blank">리뷰 작성</a>
 										</c:if>
 									</div>
 								</div>
