@@ -8,22 +8,48 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>${member.name}님의 장바구니</title>
-<c:import url="../temp/header.jsp"></c:import>
 <link rel="stylesheet" href="/resources/css/basket/basketList.css">
+<link rel="stylesheet" href="/resources/style/reset.css">
+<link rel="stylesheet" href="/resources/style/basic.css">
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<link rel="stylesheet" href="/resources/style/detail.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/ScrollTrigger.min.js"></script>
 <script src="/resources/js/main.js"></script>
 <style type="text/css">
 /* header.css */
-header {position: relative;}
+header {  
+	position: fixed;
+  	top: 0;
+  	left: 0;
+  	right: 0;}
 
 /* footer.css */
 footer {margin-top:7rem;}
 </style>
 </head>
 <body>
-
+		<!-- 헤더 -->
+        <header>
+            <h1>
+                <a href="${pageContext.request.contextPath}/" class="main_logo">
+					<img src="/resources/images/main/main_logo.png" alt="메인로고">
+                </a>
+            </h1>
+          
+            <ul>
+                <c:if test="${not empty member}">
+                <li class="not_empty_Basket"><a href="/product/basketList">
+            		<img alt="" src="../resources/images/basket/cart.png" style="width: 30px; height: 30px;"></a></li>
+            	<li class="notice"><a href="/notice/list">공지사항</a></li>
+                <li class="qna"><a href="/qna/list">1:1문의</a></li>	
+	      		<li class="login"><a href="/member/logout">로그아웃</a></li>
+	      		<li class="join"><a href="/member/mypage">mypage</a></li>
+	      		</c:if>
+				<c:if test="${empty member}">
+	      		<li class="login"><a href="/member/login">로그인</a></li>
+	      		<li class="join"><a href="/member/terms">회원가입</a></li>
+	      		</c:if>            
+	      	</ul>
+        </header>
 <!-- 장바구니 상품 없을 때 -->
 <c:if test="${empty basketList}">    
    <div style="text-align: center; margin-top: 100px; margin-bottom: 100px;" class="above">
@@ -34,7 +60,7 @@ footer {margin-top:7rem;}
         
 </c:if>
 <c:if test="${not empty basketList}">
-    <section id="container">
+    <section id="container" style="margin-top: 100px;">
         <div id="container_box" class="wrap">
 
             <section id="content">

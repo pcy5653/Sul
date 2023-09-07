@@ -5,23 +5,28 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<c:import url="../temp/header.jsp"></c:import>
+<title>공지사항</title>
+<link rel="stylesheet" href="/resources/style/reset.css">
+<link rel="stylesheet" href="/resources/style/basic.css">
 
 <style>
 .title {font-size:2rem}
 
 /* header.css */
-header {position: relative;
-}
+header {  
+	position: fixed;
+  	top: 0;
+  	left: 0;
+  	right: 0;}
 
 /* footer.css */
 footer {margin-top:7rem;}
 </style>
+
 <c:import url="../temp/bootStrap.jsp"></c:import>
 </head>
 <body>
-	<!-- 헤더 -->
+		<!-- 헤더 -->
         <header>
             <h1>
                 <a href="${pageContext.request.contextPath}/" class="main_logo">
@@ -33,16 +38,19 @@ footer {margin-top:7rem;}
                 <c:if test="${not empty member}">
                 <li class="not_empty_Basket"><a href="/product/basketList">
             		<img alt="" src="../resources/images/basket/cart.png" style="width: 30px; height: 30px;"></a></li>
+            	<li class="notice"><a href="/notice/list">공지사항</a></li>
+                <li class="qna"><a href="/qna/list">1:1문의</a></li>	
 	      		<li class="login"><a href="/member/logout">로그아웃</a></li>
 	      		<li class="join"><a href="/member/mypage">mypage</a></li>
 	      		</c:if>
 				<c:if test="${empty member}">
+				<li class="notice"><a href="/notice/list" >공지사항</a></li>
 	      		<li class="login"><a href="/member/login">로그인</a></li>
 	      		<li class="join"><a href="/member/terms">회원가입</a></li>
 	      		</c:if>            
 	      	</ul>
         </header>
-	<section class="container" style="width: 800px;">
+	<section class="container" style="width: 800px; margin-top: 100px;">
 		<h1 class="title mb-3 text-center" style="font-size:2.5rem;">공지사항</h1><br><br>
 		<div class="text-conter">
 		<table class="table">

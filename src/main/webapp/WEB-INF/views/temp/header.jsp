@@ -32,6 +32,7 @@
                     <li class="join"><a href="/member/mypage">mypage</a></li>
                     </c:if>
                     <c:if test="${empty member}">
+                    <li class="notice"><a href="/notice/list">공지사항</a></li>
                     <li class="login"><a href="/member/login">로그인</a></li>
                     <li class="join"><a href="/member/terms">회원가입</a></li>
                     </c:if>            </ul>
