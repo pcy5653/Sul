@@ -222,6 +222,13 @@
 		VALUES(BASKET_SEQ.NEXTVAL, #{id}, #{productNum}, #{productCount}) 
 	</insert>
 	
+	<!-- 특정 장바구니만 조회 -->
+	<select id="getBasket" resultType="com.alcohol.sul.basket.BasketDTO" parameterType="com.alcohol.sul.basket.BasketDTO">
+		SELECT * FROM
+			basket
+		WHERE id = #{id} AND productNum = #{productNum}
+	</select>
+	
 	<!-- 장바구니 리스트 -->
 	<select id="basketList" resultType="com.alcohol.sul.basket.BasketDTO" parameterType="ProductImgDTO">
 		SELECT B.*, P.*

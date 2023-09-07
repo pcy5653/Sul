@@ -63,24 +63,24 @@ public class QnaController {
 		// null여부에 따른 return 경로
 		if(qnaDTO != null) {
 			
-			System.out.println("답글 "+ qnaDTO.getNum());
+			// System.out.println("답글 "+ qnaDTO.getNum());
 			
 			if(qnaDTO.getStep() == 1) {
 				QnaDTO pDTO = new QnaDTO(); 
 				pDTO.setNum(qnaDTO.getRef());
-				System.out.println("부모글 "+pDTO.getNum());
+				// System.out.println("부모글 "+pDTO.getNum());
 
 				List<QnaFileDTO> files = qnaService.getReplyDetailFiles(pDTO);
-				System.out.println("file[] "+files); 
-				System.out.println("fileType "+files.getClass()); 
+				// System.out.println("file[] "+files); 
+				// System.out.println("fileType "+files.getClass()); 
 				
 				for(int i = 0; i<files.size(); i++) {
 					//System.out.println(files.get(i));
 					System.out.println(files.get(i).getFileName());
-					model.addAttribute("file"+i, files.get(i).getFileName());
+					// model.addAttribute("file"+i, files.get(i).getFileName());
 					
 				}
-				//model.addAttribute("files", files);
+				model.addAttribute("files", files);
 			
 			}
 			model.addAttribute("dto",qnaDTO);

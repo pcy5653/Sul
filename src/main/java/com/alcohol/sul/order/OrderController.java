@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONObject;
@@ -32,10 +33,18 @@ public class OrderController {
 	private MemberService memberService;
 	
 	@RequestMapping(value = "", method = RequestMethod.POST)
-	public String order(OrderProductsWrapper orderProductsWrapper, HttpSession session, Model model) {
+	public String order(OrderProductsWrapper orderProductsWrapper, HttpServletRequest request, HttpSession session, Model model) {
 		List<OrderProductDTO> orderProducts = orderProductsWrapper.getOrderProducts();
 		for(OrderProductDTO orderProductDTO : orderProducts) {
 			ProductDTO productDTO = orderService.getProduct(orderProductDTO.getProductNum());
+			
+			if(orderProductDTO.getOrderCount() > productDTO.getStock()) {
+				String message = productDTO.getProductName() + " 상품의 재고가 부족합니다.\\n남은 수량 : " + productDTO.getStock();
+				model.addAttribute("message", message);
+				model.addAttribute("url", request.getHeader("Referer"));
+				return "commons/result";
+			}
+			
 			orderProductDTO.setProductDTO(productDTO);
 		}
 		
