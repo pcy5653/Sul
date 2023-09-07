@@ -52,7 +52,6 @@ public class MemberController {
 		String phone=(apiResult.substring(apiResult.indexOf("mobile")+9,apiResult.indexOf("mobile")+22)).replaceAll("-","");
 		memberDTO = memberService.getNaverLogin(phone);
 		session.setAttribute("member", memberDTO);
-        /* 네이버 로그인 성공 페이지 View 호출 */
 		return "redirect:/";
 	}
 
