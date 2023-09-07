@@ -149,11 +149,14 @@ footer {margin-top:7rem;}
                                 <div class="basketStock" style="width:130px; height:100px; float:left; margin-top: 30px; margin-left: 60px;">
                                     <div class="amount">
                                         <button type="button" class="minus">-</button>
-                                        <input type="number" class="numBox" pattern="\d*" maxlength="3" value="${basketList.productCount}" style="width: 40px; text-align: center;"readonly="readonly">
+                                        <input type="number" class="numBox" pattern="\d*" maxlength="3" value="${basketList.productCount}" style="width: 40px; text-align: right;"readonly="readonly">
                                         <button type="button" class="plus">+</button>
                                     </div>
                                     <br>
-                                    <button type="button" class="update_btn" data-product-Num="${basketList.productNum}">&nbsp;&nbsp;&nbsp;&nbsp;수정</button>
+                                    <button type="button" class="update_btn" data-product-Num="${basketList.productNum}" style="border-radius:10px; margin-left: 12px; margin-bottom: 3px; width: 40px; height: 20px; background-color: rgb(255,187,0);">수정</button>
+                                	<div class="text" style=" width:110px; font-size: 8px; margin-top: 5px; margin-left: 12px;">
+                                	<img alt="" src="/resources/images/basket/circle.png" style="width: 10px; height: 10px;">
+                                	수정버튼을 눌러주세요!</div>
                                 </div>
 
                                 <script>
@@ -228,25 +231,38 @@ footer {margin-top:7rem;}
 
                     </c:forEach>
                 </ul>
-
-				<div class="basketBill calculate box" style="background-color: #f1f3f5;">
-
-			        <div class="solid-bottom"></div>
-                    <div class="footer"><div class="text" style="margin-left:80px; font-size: 18px;">총 상품 금액</div>
-                    <div class="price" style="margin-right: 80px;">
-                    	<span class="totalPriceDisplay" style="font-size: 18px;"><fmt:formatNumber pattern="###,###,###" value="${sum}" /></span> 원
+			<div class="style__CartBillWrapper-sc-zhmz48-5 calculate">
+                <div class="bill">
+                    <div class="title">계산서</div>
+                    <div class="solid-top"></div>
+                    <div class="content" style="margin-top: 20px; margin-bottom: 50px;">
+                        <div class="row">
+                            <div class="price">총 상품금액</div>
+                            <div class="price" style="font-size: 20px;">
+								<span class="totalPriceDisplay price"><fmt:formatNumber pattern="###,###,###" value="${sum}" /></span> 원
+							</div>
+                        </div>
+                        
+                        <div class="row">
+                            <div>총 배송비</div>
+                            <div class="price">2,000원</div>
+                        </div>
+                        <div class="info">
+                            <div class="text">
+                            <img alt="" src="/resources/images/basket/circle.png" style="width: 10px; height: 10px;">
+                            주문 1건당 배송비가 부과됩니다.</div>
+                        </div>
                     </div>
-                </div>
-                <div class="solid-bottom"></div>
-           	<div>
-				<div style="float: left; margin-left: 150px; width: 130px;">
-					<button id = "list" class="btn-danger" onclick="location.href='./list'" style="font-size: 18px;"> <img alt="" src="/resources/images/basket/listIcon.png" style="width: 30px; height: 30px;"> 상품 더보기</button>
-				</div>
-	            <div class="action-button-wrapper" style="float: left; margin-left: 80px;">                 
-	              	<button id="payment" class="btn-danger" style="font-size: 18px;">주문하기<img alt="" src="/resources/images/basket/payIcon.png" style="width: 25px; height: 25px;"></button>
+             </div>
+       </div>
+
+	            <div class="action-button-wrapper" style="width: 100px; margin-left: 10px; float: right;">                 
+	              	<button id="payment" style="font-size: 16px; width:100px; height:40px; background-color: rgb(255,187,0); border-radius:20px; line-height: 30px; border: 0px;">주문하기</button>
 	            </div>
-	        </div>
-		</div>
+				<div style="width: 100px; margin-left: 100px; float: right;">
+					<button id = "list" onclick="location.href='./list'" style="font-size: 16px; width:100px; height:40px; border-radius:20px; background-color: rgb(255,187,0); line-height: 30px; border: 0px;">상품 더보기</button>
+				</div>
+	        
      	</section>
         </div>
     </section>
