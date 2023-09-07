@@ -7,11 +7,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <title>${member.name}님의 장바구니</title>
 <link rel="stylesheet" href="/resources/css/basket/basketList.css">
 <link rel="stylesheet" href="/resources/style/reset.css">
 <link rel="stylesheet" href="/resources/style/basic.css">
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/ScrollTrigger.min.js"></script>
 <script src="/resources/js/main.js"></script>
 <style type="text/css">
@@ -142,7 +142,8 @@ footer {margin-top:7rem;}
                                 </div>
                                 <p>
                                 <div class="price" style="width:250px; height:80px; float:left; text-align: center; margin-top: 30px; font-weight: bold;" onclick="location.href='${pageContext.request.contextPath}/product/detail?productNum=${basketList.productNum}'">
-                                    ${basketList.productName}<br><br>상품금액 : <fmt:formatNumber pattern="###,###,###" value="${basketList.price}" /> 원
+                                    ${basketList.productName}
+                                    <div class="money" style="margin-top: 20px;">상품금액 : <fmt:formatNumber pattern="###,###,###" value="${basketList.price}" /> 원</div>
                                 </div>
 
 
@@ -235,24 +236,24 @@ footer {margin-top:7rem;}
                 <div class="bill">
                     <div class="title">계산서</div>
                     <div class="solid-top"></div>
-                    <div class="content" style="margin-top: 20px; margin-bottom: 50px;">
+                    <div class="content">
                         <div class="row">
-                            <div class="price">총 상품금액</div>
+                            <div>배송비</div>
+                            <div class="price">2,000원</div>
+                        </div>
+                        <div class="info">
+                            <div class="text" style="margin-bottom: 20px;">
+                            <img alt="" src="/resources/images/basket/circle.png" style="width: 10px; height: 10px;">
+                            주문 1건당 배송비가 부과됩니다.</div>
+                        </div>
+                    </div>
+                        <div class="row">
+                            <div class="price">결제 예상 금액</div>
                             <div class="price" style="font-size: 20px;">
 								<span class="totalPriceDisplay price"><fmt:formatNumber pattern="###,###,###" value="${sum}" /></span> 원
 							</div>
                         </div>
                         
-                        <div class="row">
-                            <div>총 배송비</div>
-                            <div class="price">2,000원</div>
-                        </div>
-                        <div class="info">
-                            <div class="text">
-                            <img alt="" src="/resources/images/basket/circle.png" style="width: 10px; height: 10px;">
-                            주문 1건당 배송비가 부과됩니다.</div>
-                        </div>
-                    </div>
              </div>
        </div>
 
@@ -298,13 +299,13 @@ footer {margin-top:7rem;}
 	function updateTotalPrice() {
 	    let totalPrice = 0;
 	    $(".chBox:checked").each(function () {
-	        let priceText = $(this).closest("li").find(".price").text();
+	        let priceText = $(this).closest("li").find(".money").text();
 	        let countText = $(this).closest("li").find(".numBox").val();
 	        let price = parseFloat(priceText.replace(/[^0-9.-]+/g, ""));
 	        let count = parseInt(countText);
-	
-	        totalPrice += price * count;
-	        
+			let fee = 2000;
+	        totalPrice += (price * count)+ fee;
+	    	console.log(totalPrice);
 	    });
 	
 	    $(".totalPriceDisplay").text(totalPrice.toLocaleString());
