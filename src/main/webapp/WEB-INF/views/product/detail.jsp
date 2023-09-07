@@ -51,11 +51,7 @@
 			<a class="btn btn-outline-danger" href="./update?productNum=${dto.productNum}">수정</a>
 	 		<button class="btn btn-outline-danger c1" id="del" data-delete-name="productNum" data-delete-num="${dto.productNum}">삭제</button>
 			</c:if>
-			<c:if test="${empty dto.reviews}">
-				<div>
-					<img src="../resources/images/firstReview.jpg">
-				</div>
-			</c:if>			
+		
 			<div id="reviewWrap">
 				<!-- AJAX 처리 -->
 			</div>
@@ -113,8 +109,10 @@
 					if(tp>0){
 						let button = '<span id="moreButton">더 많은 리뷰('+pageNum+'/'+tp+')</span>'
 						$("#more").html(button);
-					} 
-					
+					} else{
+						let button = '<span id="moreButton"><img src="../resources/images/firstReview.jpg"></span>'
+						$("#more").html(button);					
+					}
 					if(isFirst){
 						let reviewTotal = $("#reviewTotal").val();
 						$("#score > .reviewCount").html("[" + reviewTotal + " 리뷰]");
