@@ -10,11 +10,9 @@
 <c:import url="../temp/header.jsp"></c:import>
 <style>
 .title {font-size:2rem}
-
 /* header.css */
-.viewport {background-color: #ffc9cc;}
-header {position: relative;
-background-color: rgba(255,255, 255,0);}
+
+header {position: relative;}
 
 /* footer.css */
 footer {margin-top:7rem;}
@@ -25,26 +23,47 @@ footer {margin-top:7rem;}
 <!-- include summernote css/js-->
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/ScrollTrigger.min.js"></script>
+<script src="/resources/js/main.js"></script>
 </head>
 <body>
+	<!-- 헤더 -->
+        <header>
+            <h1>
+                <a href="${pageContext.request.contextPath}/" class="main_logo">
+					<img src="/resources/images/main/main_logo.png" alt="메인로고">
+                </a>
+            </h1>
+          
+            <ul>
+                <c:if test="${not empty member}">
+                <li class="not_empty_Basket"><a href="/product/basketList">
+            		<img alt="" src="../resources/images/basket/cart.png" style="width: 30px; height: 30px;"></a></li>
+	      		<li class="login"><a href="/member/logout">로그아웃</a></li>
+	      		<li class="join"><a href="/member/mypage">mypage</a></li>
+	      		</c:if>
+				<c:if test="${empty member}">
+	      		<li class="login"><a href="/member/login">로그인</a></li>
+	      		<li class="join"><a href="/member/terms">회원가입</a></li>
+	      		</c:if>            
+	      	</ul>
+        </header>
+	<section class="container" style="width: 800px;" >
 
-	<section class="container mt-5">
-	<br><br><br><br><br>
-	<h1 class="title my-4 text-center">Add Page</h1><br><br>
+	<h1 class="title my-4 text-center" style="font-size:2.5rem;">Add Page</h1>
 		<form action="./add" method="post" id="frm" enctype="multipart/form-data">
 			<div class="mb-3">
-				<label for="subject" class="form-label">SUBJECT</label>
+				<label for="subject" class="form-label">제목</label>
 				<input type="text" name="subject" class="form-control" id="subject" placeholder="제목을 입력하세요.">
 			</div>
 			
 			<div class="mb-3">
-				<label for="name" class="form-label">NAME</label>
+				<label for="name" class="form-label">작성자</label>
 				<input type="text" name="name" class="form-control" id="name" readonly value="${member.id}">
 			</div>
 			
 			<div class="mb-3">
-				<label for="contents" class="form-label">CONTENTS</label>
+				<label for="contents" class="form-label">내용</label>
 				<textarea class="form-control" name="contents" id="contents" rows="15" placeholder="내용을 입력하세요."></textarea>
 			</div>
 			

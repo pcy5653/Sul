@@ -8,13 +8,13 @@
 
 <title>Insert title here</title>
 <c:import url="../temp/header.jsp"></c:import>
+<link rel="stylesheet" href="/resources/style/reset.css">
+<link rel="stylesheet" href="/resources/style/basic.css">
 <style>
 .title {font-size:2rem}
 
 /* header.css */
-.viewport {background-color: #ffc9cc;}
-header {position: relative;
-background-color: rgba(255,255, 255,0);}
+header {position: relative;}
 
 /* footer.css */
 footer {margin-top:7rem;}
@@ -30,13 +30,35 @@ footer {margin-top:7rem;}
 <c:import url="../temp/bootStrap.jsp"></c:import>
 <!-- include summernote css/js-->
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/ScrollTrigger.min.js"></script>
+<script src="/resources/js/main.js"></script>
 </head>
 <body>
-
-	<section class="container mt-5">
-	<br><br><br><br><br>
-	<h1 class="title my-4 text-center">Update Page</h1><br><br>
+	<!-- 헤더 -->
+        <header>
+            <h1>
+                <a href="${pageContext.request.contextPath}/" class="main_logo">
+					<img src="/resources/images/main/main_logo.png" alt="메인로고">
+                </a>
+            </h1>
+          
+            <ul>
+                <c:if test="${not empty member}">
+                <li class="not_empty_Basket"><a href="/product/basketList">
+            		<img alt="" src="../resources/images/basket/cart.png" style="width: 30px; height: 30px;"></a></li>
+	      		<li class="login"><a href="/member/logout">로그아웃</a></li>
+	      		<li class="join"><a href="/member/mypage">mypage</a></li>
+	      		</c:if>
+				<c:if test="${empty member}">
+	      		<li class="login"><a href="/member/login">로그인</a></li>
+	      		<li class="join"><a href="/member/terms">회원가입</a></li>
+	      		</c:if>            </ul>
+        </header>
+        
+	<section class="container mt-5" style="width: 800px;"> 
+	<h1 class="title my-4 text-center" style="font-size:2.5rem;">Update Page</h1>
 		<form action="./update" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="noticeNum" value="${dto.noticeNum}">
 		<input type="hidden" name="fileNum" value="${fileDTOs.fileNum}">
