@@ -11,8 +11,7 @@
 <c:import url="../temp/header.jsp"></c:import>
 <link rel="stylesheet" href="/resources/css/basket/basketList.css">
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<link rel="stylesheet" href="/resources/style/reset.css">
-<link rel="stylesheet" href="/resources/style/basic.css">
+<link rel="stylesheet" href="/resources/style/detail.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/ScrollTrigger.min.js"></script>
 <script src="/resources/js/main.js"></script>
 <style type="text/css">
@@ -24,28 +23,6 @@ footer {margin-top:7rem;}
 </style>
 </head>
 <body>
-
-		<!-- 헤더 -->
-        <header>
-            <h1>
-                <a href="${pageContext.request.contextPath}/" class="main_logo">
-					<img src="/resources/images/main/main_logo.png" alt="메인로고">
-                </a>
-            </h1>
-          
-            <ul>
-                <c:if test="${not empty member}">
-                <li class="not_empty_Basket"><a href="/product/basketList">
-            		<img alt="" src="../resources/images/basket/cart.png" style="width: 30px; height: 30px;"></a></li>
-	      		<li class="login"><a href="/member/logout">로그아웃</a></li>
-	      		<li class="join"><a href="/member/mypage">mypage</a></li>
-	      		</c:if>
-				<c:if test="${empty member}">
-	      		<li class="login"><a href="/member/login">로그인</a></li>
-	      		<li class="join"><a href="/member/terms">회원가입</a></li>
-	      		</c:if>            
-	      	</ul>
-        </header>
 
 <!-- 장바구니 상품 없을 때 -->
 <c:if test="${empty basketList}">    
@@ -135,7 +112,7 @@ footer {margin-top:7rem;}
                                 <input type="hidden" class="productNum" value="${basketList.productNum}" />
                                 <input type="hidden" class="stock" value="${basketList.stock}" />
                                 <div style="width:120px; height:100px; float:left;">
-                                    <img alt="" style="width:100px; height:100px; " src="/resources/images/${basketList.productName}.jpg">
+                                    <img alt="" style="width:100px; height:100px; " src="/resources/images/product/${basketList.productName}.jpg">
                                 </div>
                                 <p>
                                 <div class="price" style="width:250px; height:80px; float:left; text-align: center; margin-top: 30px;">
@@ -226,7 +203,7 @@ footer {margin-top:7rem;}
                     </c:forEach>
                 </ul>
 
-				<div class="basketBill calculate box">
+				<div class="basketBill calculate box" style="background-color: #f1f3f5;">
 
 			        <div class="solid-bottom"></div>
                     <div class="footer"><div class="text" style="margin-left:80px; font-size: 18px;">총 상품 금액</div>
@@ -235,12 +212,12 @@ footer {margin-top:7rem;}
                     </div>
                 </div>
                 <div class="solid-bottom"></div>
-           	<div style="width: 600px;">
-				<div style="width: 50%; float: left;">
-					<button id = "list" class="btn btn-danger" onclick="location.href='./list'"> <img alt="" src="/resources/images/basket/listIcon.png" style="width: 30px; height: 30px;"> 상품 더보기</button>
+           	<div>
+				<div style="float: left; margin-left: 150px; width: 130px;">
+					<button id = "list" class="btn-danger" onclick="location.href='./list'" style="font-size: 18px;"> <img alt="" src="/resources/images/basket/listIcon.png" style="width: 30px; height: 30px;"> 상품 더보기</button>
 				</div>
-	            <div class="action-button-wrapper" style="width: 50%; float: left;">                
-	              	<button id="payment" class="btn btn-danger">주문하기<img alt="" src="/resources/images/basket/payIcon.png" style="width: 25px; height: 25px;"></button>
+	            <div class="action-button-wrapper" style="float: left; margin-left: 80px;">                 
+	              	<button id="payment" class="btn-danger" style="font-size: 18px;">주문하기<img alt="" src="/resources/images/basket/payIcon.png" style="width: 25px; height: 25px;"></button>
 	            </div>
 	        </div>
 		</div>

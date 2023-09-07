@@ -1,0 +1,15 @@
+@charset "UTF-8";
+.title {font-size:2rem}
+
+/* header.css */
+header {position: relative;}
+
+/* footer.css */
+footer {margin-top:7rem;}
+
+.table{
+	width: 1000px;	
+	text-align: center; 
+	}
+
+section {width:100% !important; margin-top: 3rem !important;margin-bottom: 5rem !important;}

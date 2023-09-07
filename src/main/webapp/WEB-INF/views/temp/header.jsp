@@ -26,6 +26,7 @@
                     <c:if test="${not empty member}">
                         <li class="not_empty_Basket"><a href="/product/basketList">
                             <img alt="" src="../resources/images/basket/cart.png" style="width: 30px; height: 30px;"></a></li>
+                    <li class="notice"><a href="/notice/list">공지사항</a></li>
                     <li class="qna"><a href="/qna/list">1:1문의</a></li>
                     <li class="login"><a href="/member/logout">로그아웃</a></li>
                     <li class="join"><a href="/member/mypage">mypage</a></li>

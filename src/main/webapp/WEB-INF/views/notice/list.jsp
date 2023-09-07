@@ -6,63 +6,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<c:import url="../temp/header.jsp"></c:import>
-<style>
-.wrap {width: 1000px; height:auto; margin-bottom: 200px;}
-.tb{width: 1000px;	
-	text-align: center; 
-
-	
-	}
-.title {font-size:2.5rem; text-align: center;}
-.head{height: 50px; background-color: #f1f3f5; width: 1200px;}
-.body{
-	height: 40px;
-	border-top:0.5px solid #b2b2b2;
-	margin-right: 200px;
-	
-	}
-
-.search{
-	border:0.5px  solid#e0e0e0;
-	border-radius: 5px;
-	}
-
-/* header.css */
-header {position: relative; height: 100px; padding: 0;}
-
-/* footer.css */
-footer {margin-top:7rem;}
-
-</style>
-
+<link rel="stylesheet" type="text/css" href="/resources/css/notice/list.css">
+<link rel="stylesheet" href="/resources/style/detail.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/ScrollTrigger.min.js"></script>
 <script src="/resources/js/main.js"></script>
+<c:import url="../temp/header.jsp"></c:import>
 
 </head>
 
 <body>
-	<!-- 헤더 -->
-        <header>
-            <h1>
-                <a href="${pageContext.request.contextPath}/" class="main_logo">
-					<img src="/resources/images/main/main_logo.png" alt="메인로고">
-                </a>
-            </h1>
-          
-            <ul>
-                <c:if test="${not empty member}">
-                <li class="not_empty_Basket"><a href="/product/basketList">
-            		<img alt="" src="../resources/images/basket/cart.png" style="width: 30px; height: 30px;"></a></li>
-	      		<li class="login"><a href="/member/logout">로그아웃</a></li>
-	      		<li class="join"><a href="/member/mypage">mypage</a></li>
-	      		</c:if>
-				<c:if test="${empty member}">
-	      		<li class="login"><a href="/member/login">로그인</a></li>
-	      		<li class="join"><a href="/member/terms">회원가입</a></li>
-	      		</c:if>            
-	      	</ul>
-        </header>
 
 	<section id="container" class="wrap">
 		
@@ -121,7 +73,7 @@ footer {margin-top:7rem;}
 				  </select>
 				  
 				  <input type="text" name="search" value="${pager.search}" class="search" placeholder="검색어를 입력하세요." style="text-align: center;">
-				  <button class="btn btn-secondary" type="submit" id="button-addon2" style="float: right;">
+				  <button class="button" type="submit" id="button-addon2" style="float: right;">
 				  	<img alt="" src="/resources/images/search.png" style="width: 20px; height: 20px;">
 				  </button>
 			</div>
@@ -129,7 +81,7 @@ footer {margin-top:7rem;}
 		</form>
 		 </ul>
 		<c:if test="${member.roleNum == 1}">
-			<a class="btn btn-outline-secondary" href="./add" style="float: right; margin-right: 50px; background-color: #f1f3f5">Add</a><br><br>				
+			<a class="btn btn-outline-secondary" href="./add" style="float: right; margin-right: 100px; background-color: #f1f3f5">Add</a><br><br>				
 		</c:if>
 	 </nav>
 </section>

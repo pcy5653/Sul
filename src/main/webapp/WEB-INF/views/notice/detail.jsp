@@ -71,10 +71,10 @@ footer {margin-top:7rem;}
 	<form id="frm" action="">
 		<input type="hidden" name="noticeNum" value="${dto.noticeNum}">
 	</form>
-	<a class="btn btn-outline-secondary" href="./list" >목록</a>
+	<a class="btn btn-outline-secondary" href="./list" style="width:80px; background-color: #f1f3f5; float : right; border: 0px;">목록</a>
 	<c:if test="${member.roleNum == 1}">
-		<a class="btn btn-outline-secondary" href="./update?noticeNum=${dto.noticeNum}" style='width:80px; float: right;'>수정</a>
-		<button id="del" data-url="delete" data-delete-name="num" data-delete-num="${f.fileNum}" class="btn btn-danger c1" style='width:80px; float: right;'>삭제</button>
+		<a class="btn btn-outline-secondary" href="./update?noticeNum=${dto.noticeNum}" style='width:80px; float: left; background-color: #f1f3f5; line-height: 30px; border: 0px;'>수정</a>
+		<button id="del" data-url="delete" data-delete-name="num" data-delete-num="${f.fileNum}" class="btn btn-danger c1" style='width:80px; height:40px; left; background-color: grey; line-height: 30px; border: 0px;'>삭제</button>
 	</c:if>
 	<br><br>
 </section>
