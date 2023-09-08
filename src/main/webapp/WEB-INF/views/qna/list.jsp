@@ -85,7 +85,9 @@
 					</div>
 				</form>
 				
-				<a class="btn btn-danger" href="./add">게시물 등록</a>
+				<c:if test="${member.roleNum == 0}">	
+					<a class="btn btn-danger" href="./add">게시물 등록</a>
+				</c:if>
 			</div>
 		</div>
     </section>
