@@ -83,18 +83,12 @@
 	VALUES (#{noticeNum}, #{name}, #{subject}, #{contents}, SYSDATE, 0)
 </insert>
 
-<!-- File Add -->
-
-<!-- <insert id="setFileAdd" parameterType="NoticeFileDTO">
-	INSERT INTO NOTICEFILE
-	VALUES (NOTICEFILE_SEQ.NEXTVAL, #{noticeNum},#{fileName},#{originalName})
-</insert> -->
-
 <!-- Update -->
 
 <update id="setUpdate" parameterType="NoticeDTO">
 	UPDATE NOTICE SET
 	SUBJECT=#{subject},
+	CREATEDATE=#{createDate},
 	CONTENTS=#{contents}
 	WHERE NOTICENUM=#{noticeNum}
 </update>
