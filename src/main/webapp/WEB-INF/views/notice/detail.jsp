@@ -51,7 +51,7 @@ footer {margin-top:7rem;}
 	      	</ul>
         </header>
 	<section class="container" style="width: 800px; margin-top: 100px;">
-		<h1 class="title mb-3 text-center" style="font-size:2.5rem;">공지사항</h1><br><br>
+		<h1 class="title mb-3 text-center" style="font-size:2.5rem;"onclick="location.href='${pageContext.request.contextPath}/notice/list'">공지사항</h1><br><br>
 		<div class="text-conter">
 		<table class="table">
 		
@@ -69,7 +69,7 @@ footer {margin-top:7rem;}
 		    </tr>
 	 
 		</table>
-			<div class="mb-3" style="text-align: center;">
+			<div class="mb-3" style="text-align:;">
 			<label for="contents" class="form-label"></label>
 				${dto.contents}
 			</div>

@@ -62,13 +62,18 @@ footer {margin-top:7rem;}
 		<input type="hidden" name="noticeNum" value="${dto.noticeNum}">
 		<input type="hidden" name="fileNum" value="${fileDTOs.fileNum}">
 		<div class="mb-3">
-		  <label for="subject" class="form-label">SUBJECT</label>
+		  <label for="subject" class="form-label">제목</label>
 		  <input type="text" name="subject" class="form-control" id="subject" value="${dto.subject}">
 		</div>
 		
 		<div class="mb-3">
-		  <label for="name" class="form-label">NAME</label>
+		  <label for="name" class="form-label">작성자</label>
 		  <input type="text" name="name" readonly value="${member.id}" class="form-control" id="name" value="${dto.name}">
+		</div>
+		
+		<div class="mb-3">
+		  <label for="createDate" class="form-label">작성일</label>
+		  <input type="date" name="createDate" class="form-control" id="createDate" value="${dto.createDate}">
 		</div>
 		
 		<div class="mb-3">
