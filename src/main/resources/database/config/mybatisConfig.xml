@@ -17,6 +17,8 @@
 		<typeAlias type="java.lang.Double" alias="Double"/>
 		
 		<typeAlias type="com.alcohol.sul.member.MemberDTO" alias="MemberDTO"/>
+		<typeAlias type="com.alcohol.sul.basket.BasketDTO" alias="BasketDTO"/>
+		<typeAlias type="com.alcohol.sul.admin.SalesRevenueDTO" alias="SalesRevenueDTO"/>
 		
 		<typeAlias type="com.alcohol.sul.order.OrderDTO" alias="OrderDTO"></typeAlias>
 		<typeAlias type="com.alcohol.sul.order.OrderProductDTO" alias="OrderProductDTO"></typeAlias>

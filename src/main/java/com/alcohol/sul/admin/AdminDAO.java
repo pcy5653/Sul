@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.alcohol.sul.member.MemberDTO;
-import com.alcohol.sul.order.OrderDTO;
 
 @Repository
 public class AdminDAO {
@@ -32,7 +31,7 @@ public class AdminDAO {
 	}
 	
 	
-	public List<OrderDTO> getSalesRevenue() {
+	public List<SalesRevenueDTO> getSalesRevenue() {
 		return sqlSession.selectList(NAMESPACE+"getSalesRevenue");
 	}
 }

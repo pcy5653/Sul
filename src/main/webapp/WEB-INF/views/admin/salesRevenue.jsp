@@ -149,7 +149,7 @@
 	        	let options = {
 	        		width:1100,
 					height:400, // 높이를 지정해주지 않으면 ticks로 지정한 레이블 중 일부 레이블이 잘린다.
-	        		bar:{ groupWidth:"60%" }, // 그래프 너비(적당하게 조절 - 어중간하게 작으면 { role:"annotation" }으로 설정한 값이 통일되지 않고, 뒤죽박죽 출력됨)
+	        		bar:{ groupWidth:"65%" }, // 그래프 너비(적당하게 조절 - 어중간하게 작으면 { role:"annotation" }으로 설정한 값이 통일되지 않고, 뒤죽박죽 출력됨)
 	        		annotations:{ textStyle:{ fontSize:11 } },
 	        		backgroundColor:"transparent",
 	        		legend:"none", // 범례 제거
