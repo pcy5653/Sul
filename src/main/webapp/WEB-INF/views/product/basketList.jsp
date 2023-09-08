@@ -14,6 +14,8 @@
 <link rel="stylesheet" href="/resources/style/basic.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/ScrollTrigger.min.js"></script>
 <script src="/resources/js/main.js"></script>
+<script src="sweetalert2.min.js"></script>
+<link rel="stylesheet" href="sweetalert2.min.css">
 <style type="text/css">
 /* header.css */
 header {  
@@ -24,6 +26,7 @@ header {
 
 /* footer.css */
 footer {margin-top:7rem;}
+
 </style>
 </head>
 <body>
@@ -52,7 +55,7 @@ footer {margin-top:7rem;}
         </header>
 <!-- 장바구니 상품 없을 때 -->
 <c:if test="${empty basketList}">    
-   <div style="text-align: center; margin-top: 100px; margin-bottom: 100px;" class="above">
+   <div style="text-align: center; margin-top: 130px; margin-bottom: 90px;" class="above">
        <img src="/resources/images/basket/cartList.png" style="width: 32px; height: 32px; ">
          <div style="font-size: 1.5em; margin-top: 25px;">장바구니가 비었습니다.</div><br>
              <a href="./list" class="btn">쇼핑하러 가기</a>
@@ -90,6 +93,7 @@ footer {margin-top:7rem;}
                             <script>
                                 $(".selectDelete_btn").click(function () {
                                     let confirm_val = confirm("삭제하시겠습니까?");
+                                    
 
                                     if (confirm_val) {
                                         let checkArr = new Array();
@@ -143,7 +147,8 @@ footer {margin-top:7rem;}
                                 <p>
                                 <div class="price" style="width:250px; height:80px; float:left; text-align: center; margin-top: 30px; font-weight: bold;" onclick="location.href='${pageContext.request.contextPath}/product/detail?productNum=${basketList.productNum}'">
                                     ${basketList.productName}
-                                    <div class="money" style="margin-top: 20px;">상품금액 : <fmt:formatNumber pattern="###,###,###" value="${basketList.price}" /> 원</div>
+                                	<div class="point" style="font-size: 13px; margin-left: 20px;"> <img alt="" src="/resources/images/basket/point.png" style="width: 15px; height: 15px;  margin-top: 4px;"> <input value="${basketList.savePoint * basketList.productCount}" readonly="readonly" style="width: 45px; border: 0px; text-align: left;"></div>
+                                    <div class="money" style="margin-top: 5px;">상품금액 : <fmt:formatNumber pattern="###,###,###" value="${basketList.price}" /> 원</div>
                                 </div>
 
 
@@ -179,7 +184,7 @@ footer {margin-top:7rem;}
 								            	console.log(result);
 								            	
 								            	if (result === 1) {
-								                    alert("수정되었습니다.");
+								                    location.href = "/product/basketList";
 								                } else {
 								                    alert("수정 실패");
 								                }
@@ -238,7 +243,13 @@ footer {margin-top:7rem;}
                     <div class="solid-top"></div>
                     <div class="content">
                         <div class="row">
-                            <div>배송비</div>
+                            <div class="price">총 상품 금액</div>
+                            <div class="price" >
+								<span class="productTotalPriceDisplay price"><fmt:formatNumber pattern="###,###,###" value="${sum}" /></span> 원
+							</div>
+                        </div>
+                        <div class="row">
+                            <div>총 배송비</div>
                             <div class="price">2,000원</div>
                         </div>
                         <div class="info">
@@ -248,7 +259,7 @@ footer {margin-top:7rem;}
                         </div>
                     </div>
                         <div class="row">
-                            <div class="price">결제 예상 금액</div>
+                            <div class="price">총 결제 예상 금액</div>
                             <div class="price" style="font-size: 20px;">
 								<span class="totalPriceDisplay price"><fmt:formatNumber pattern="###,###,###" value="${sum}" /></span> 원
 							</div>
@@ -296,16 +307,36 @@ footer {margin-top:7rem;}
 	    $("#allCheck").prop("checked", allChecked);
 	}
 	
-	function updateTotalPrice() {
+	//배송비 포함x 총 상품 금액
+	
+	function productTotalPrice() {
 	    let totalPrice = 0;
 	    $(".chBox:checked").each(function () {
 	        let priceText = $(this).closest("li").find(".money").text();
 	        let countText = $(this).closest("li").find(".numBox").val();
 	        let price = parseFloat(priceText.replace(/[^0-9.-]+/g, ""));
 	        let count = parseInt(countText);
-			let fee = 2000;
-	        totalPrice += (price * count)+ fee;
-	    	console.log(totalPrice);
+	        totalPrice += (price * count);
+
+	    });
+	
+	    $(".productTotalPriceDisplay").text(totalPrice.toLocaleString());
+	}
+	
+	productTotalPrice();
+
+	// 배송비 포함한 총 예상 결제 금액
+	
+	function updateTotalPrice() {
+		let shoppingFee = 2000;
+	    let totalPrice = shoppingFee;
+	    $(".chBox:checked").each(function () {
+	        let priceText = $(this).closest("li").find(".money").text();
+	        let countText = $(this).closest("li").find(".numBox").val();
+	        let price = parseFloat(priceText.replace(/[^0-9.-]+/g, ""));
+	        let count = parseInt(countText);
+	        totalPrice += price * count;
+
 	    });
 	
 	    $(".totalPriceDisplay").text(totalPrice.toLocaleString());
@@ -325,6 +356,7 @@ footer {margin-top:7rem;}
             numBox.val(plusNum);
         }
         updateTotalPrice();
+        productTotalPrice();
     });
 
     $(".minus").click(function () {
@@ -338,12 +370,18 @@ footer {margin-top:7rem;}
             numBox.val(minusNum);
         }
         updateTotalPrice();
+        productTotalPrice();
     });
 
     $(".chBox").change(function () {
         updateTotalPrice();
+        productTotalPrice();
     });
     
+    $("#allCheck").change(function(){
+        updateTotalPrice();
+        productTotalPrice();
+    });
     
     // 결제 버튼
     $("#payment").click(function(){
