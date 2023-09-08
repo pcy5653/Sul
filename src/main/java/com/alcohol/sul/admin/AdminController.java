@@ -1,7 +1,6 @@
 package com.alcohol.sul.admin;
 
 import java.util.List;
-import java.util.Random;
 
 import javax.servlet.http.HttpSession;
 
@@ -13,8 +12,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.alcohol.sul.main.product.ProductDTO;
 import com.alcohol.sul.member.MemberDTO;
 import com.alcohol.sul.member.MemberService;
+import com.alcohol.sul.order.OrderDTO;
+import com.alcohol.sul.order.OrderProductDTO;
+import com.google.gson.Gson;
 
 @Controller
 @RequestMapping("/admin/*")
@@ -33,9 +36,21 @@ public class AdminController {
 	}
 	
 	@GetMapping(value = "salesRevenue")
-	public void salesRevenue() throws Exception{
+	public void salesRevenue(Model model) throws Exception {
+		int[] salesRevenue = new int[12 + 1]; // 1 ~ 12월을 편하게 관리하기 위해 좀 그렇지만... 첫 번째 index(0)은 사용하지 않음.
 		
+		List<OrderDTO> orders = adminService.getSalesRevenue();
+		for(OrderDTO orderDTO : orders) {
+			int month = orderDTO.getOrderDate().toLocalDate().getMonthValue();
+			for(OrderProductDTO orderProductDTO : orderDTO.getOrderProducts()) {
+				ProductDTO productDTO = orderProductDTO.getProductDTO();
+				salesRevenue[month] += productDTO.getPrice() * orderProductDTO.getOrderCount();
+			}
+		}
+		
+		model.addAttribute("salesRevenue", new Gson().toJson(salesRevenue));
 	}
+	
 	
 	@GetMapping(value="memberManagement")
 	public void memberManagement(MemberDTO memberDTO,Model model,HttpSession session) throws Exception{
@@ -69,10 +84,10 @@ public class AdminController {
 	}
 	
 	//단체문자
-		@RequestMapping(value = "/groupSMS", method = RequestMethod.GET)
-		public void phoneFw(@RequestParam("phone") String userPhoneNumber,String smsContents) throws Exception { // 휴대폰 문자보내기
-			
-			adminService.certifiedPhoneNumber(userPhoneNumber, smsContents);
-			
-		}
+	@RequestMapping(value = "/groupSMS", method = RequestMethod.GET)
+	public void phoneFw(@RequestParam("phone") String userPhoneNumber,String smsContents) throws Exception { // 휴대폰 문자보내기
+		
+		adminService.certifiedPhoneNumber(userPhoneNumber, smsContents);
+		
+	}
 }
