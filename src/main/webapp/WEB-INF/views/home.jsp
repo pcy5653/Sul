@@ -29,7 +29,8 @@
 		<div class="review_div">
 			<p>술담화의 <span class="review">리뷰 Best 4</span> 상품을 만나보세요!</p>
 			<button id="reviewBtn">PUSH</button>
-			<div id="review_fixed">
+			<div id="reviewTotal">
+				<div id="review_fixed"></div>
 				<button id="review_del"></button>
 			</div>
 		</div>
