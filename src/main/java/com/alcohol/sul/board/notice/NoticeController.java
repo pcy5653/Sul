@@ -44,7 +44,7 @@ public class NoticeController {
 		model.addAttribute("result", path);
 		return "commons/ajaxResult";
 		
-	}
+	} 
 	
 	// List 
 	
