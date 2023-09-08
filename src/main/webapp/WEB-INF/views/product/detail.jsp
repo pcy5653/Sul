@@ -149,6 +149,7 @@
 		}
 	</script>
 	<script type="text/javascript">
+	
 	//수량 , 장바구니 버튼
 	
 	function getTotal(type){
