@@ -11,7 +11,9 @@
 		<div class="wrap">
 			<div class="main">
 				<h1 id="title">1:1 문의 내역</h1>
-				<p id="totalNum">총 <span class="totalN">${total}</span> 개의 게시물이 작성되었습니다.</p>
+				<c:if test="${member.roleNum == 0}">
+					<p id="totalNum">총 <span class="totalN">${total}</span> 개의 게시물이 작성되었습니다.</p>
+				</c:if>
 				<table>
 					<thead>
 						<tr>
@@ -83,7 +85,9 @@
 					</div>
 				</form>
 				
-				<a class="btn btn-danger" href="./add">게시물 등록</a>
+				<c:if test="${member.roleNum == 0}">	
+					<a class="btn btn-danger" href="./add">게시물 등록</a>
+				</c:if>
 			</div>
 		</div>
     </section>

@@ -82,9 +82,42 @@ footer {
 	background:rgb(247, 247, 247) url("/resources/images/product/searchIcon.svg") no-repeat 10px center;
 }
 
+
+/* review */
+#review_wrap{width:100%;background: aliceblue;}
+#review_wrap .review_div{display:flex;width:30%;height:120px;margin:0 auto;}
+#review_wrap .review_div > p{width:70%;line-height:120px;font-size:1.3rem;}
+#review_wrap .review_div > p > .review {font-weight: 800;color: #39b3dc;}
+#review_wrap .review_div #reviewBtn{position:relative; width: calc(100% - 70%);font-size:1.4rem;}
+#review_wrap .review_div #reviewBtn::after{
+	display: inline-block; content: ""; width: 30px; height:30px;
+	position: absolute;left: 67%;top: 40%; animation: point 1s infinite linear;
+	background-image: url("/resources/images/main/reBtn.png");
+	background-repeat: no-repeat; background-position: center center; background-size: contain;
+}
+@keyframes point {
+    0% {top: 40%}
+    25% {top: 44%}
+    50% {top: 47%}
+    75% {top: 44%}
+    100% {top: 40%}
+}
+#review_wrap .review_div #reviewTotal {   
+	display: none;position: fixed;width: 80%;height: 40rem;background:#fffae4;
+    left: 50%;top: 50%;z-index: 1;transform: translate(-50%, -50%);border-radius: 15px
+}
+#review_wrap .review_div #reviewTotal #review_fixed{height: 100%;}
+#review_wrap .review_div #reviewTotal #review_del {
+	z-index:1; display:none;
+	background-image: url("/resources/images/main/reDel.png");
+	background-repeat: no-repeat; background-position: center center; background-size: contain;
+	width: 30px; height: 30px;position: absolute;right: 0;top: 0;margin-top: 1rem;margin-right: 1rem;
+}
+
+
 /* nav = product_detail */
 #nav_wrap {margin:5rem auto;}
-.nav_div {width: 80%; height: 150px; margin: 0 auto;}
+.nav_div {width: 65%; height: 150px; margin: 0 auto;}
 .nav_div > ul {display: flex;justify-content: space-around;height: 100%;align-items: center;}
 .nav_div > ul > li {
     width: 13%;height: 100%;line-height: 150px;
@@ -131,7 +164,7 @@ footer {
 #pro_wrap .pro_div .pro_btm ul > li{width:23%;}
 #pro_wrap .pro_div .pro_btm ul > li > a{display:flex;flex-direction:column; width:100%;height:100%;}
 #pro_wrap .pro_div .pro_btm ul > li > pro{}
-#pro_wrap .pro_div .pro_btm ul > li > a > .pro_img{position: relative; width:100%; height:20rem;margin: 0 auto 1.5rem;overflow:hidden;}
+#pro_wrap .pro_div .pro_btm ul > li > a > .pro_img{position: relative; width:100%; height:25rem;margin: 0 auto 1.5rem;overflow:hidden;}
 #pro_wrap .pro_div .pro_btm ul > li > a > .pro_img > img{
 	position: absolute;left:7%;transform: scale(1);transition:all 0.5s;
 	display:block;width:85%;height:100%;margin:0 auto;

@@ -25,6 +25,17 @@
 		</div>
 		<!-- /video_wrap -->
 	</section>
+	<section id="review_wrap">
+		<div class="review_div">
+			<p>술담화의 <span class="review">리뷰 Best 4</span> 상품을 만나보세요!</p>
+			<button id="reviewBtn">PUSH</button>
+			<div id="reviewTotal">
+				<div id="review_fixed"></div>
+				<button id="review_del"></button>
+			</div>
+		</div>
+		<!-- /review_wrap -->
+	</section>
 	<section id="nav_wrap">
 		<div class="nav_div">
 			<ul>
@@ -175,8 +186,8 @@
 					</a></li>
 				</ul>
 			</div>
-		<!-- /best_div -->
 		</div>
+
 
 		<div class="pick_div pro_div">
 			<div class="pick_top pro_top">
@@ -275,6 +286,7 @@
 </main>
 <c:import url="./temp/footer.jsp"></c:import>
 <script src="/resources/js/main.js"></script>
+<script type="text/javascript" src="/resources/js/khj/productList.js"></script>
 </body>
 
 </html>
