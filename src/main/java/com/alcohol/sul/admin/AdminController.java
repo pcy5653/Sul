@@ -12,11 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.alcohol.sul.main.product.ProductDTO;
 import com.alcohol.sul.member.MemberDTO;
 import com.alcohol.sul.member.MemberService;
-import com.alcohol.sul.order.OrderDTO;
-import com.alcohol.sul.order.OrderProductDTO;
 import com.google.gson.Gson;
 
 @Controller
@@ -38,15 +35,24 @@ public class AdminController {
 	@GetMapping(value = "salesRevenue")
 	public void salesRevenue(Model model) throws Exception {
 		int[] salesRevenue = new int[12 + 1]; // 1 ~ 12월을 편하게 관리하기 위해 좀 그렇지만... 첫 번째 index(0)은 사용하지 않음.
-		
-		List<OrderDTO> orders = adminService.getSalesRevenue();
-		for(OrderDTO orderDTO : orders) {
-			int month = orderDTO.getOrderDate().toLocalDate().getMonthValue();
-			for(OrderProductDTO orderProductDTO : orderDTO.getOrderProducts()) {
-				ProductDTO productDTO = orderProductDTO.getProductDTO();
-				salesRevenue[month] += productDTO.getPrice() * orderProductDTO.getOrderCount();
-			}
+		List<SalesRevenueDTO> salesRevenues = adminService.getSalesRevenue();
+		for(SalesRevenueDTO salesRevenueDTO : salesRevenues) {
+			String s_month = salesRevenueDTO.getMonth(); // 2023-09
+			int i_month = Integer.parseInt(s_month.substring(s_month.indexOf('-') + 1));
+			
+			salesRevenue[i_month] = salesRevenueDTO.getSalesRevenue();
 		}
+		
+		/*
+			List<OrderDTO> orders = adminService.getSalesRevenue();
+			for(OrderDTO orderDTO : orders) {
+				int month = orderDTO.getOrderDate().toLocalDate().getMonthValue();
+				for(OrderProductDTO orderProductDTO : orderDTO.getOrderProducts()) {
+					ProductDTO productDTO = orderProductDTO.getProductDTO();
+					salesRevenue[month] += productDTO.getPrice() * orderProductDTO.getOrderCount();
+				}
+			}
+		*/
 		
 		model.addAttribute("salesRevenue", new Gson().toJson(salesRevenue));
 	}

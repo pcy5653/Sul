@@ -32,7 +32,7 @@ public class OrderDAO {
 		return sqlSession.insert(NAMESPACE + "deleteOtherAddress", addressNum);
 	}
 	
-	public void paymentSuccess(OrderDTO orderDTO) {
+	public void paymentSuccess(OrderDTO orderDTO, boolean isBasket) {
 		sqlSession.insert(NAMESPACE + "addOrder", orderDTO);
 		
 		// sqlSession.insert(NAMESPACE + "addOrderProducts", orderDTO.getOrderProducts());
@@ -43,6 +43,8 @@ public class OrderDAO {
 		sqlSession.insert(NAMESPACE + "addOrderAddress", orderDTO.getOrderAddressDTO());
 		sqlSession.insert(NAMESPACE + "addPayment", orderDTO.getPaymentDTO());
 		sqlSession.update(NAMESPACE + "subMemberPoint", orderDTO);
+		
+		if(isBasket) sqlSession.delete(NAMESPACE + "deleteBasket", orderDTO.getId());
 	}
 	
 	public OrderDTO getOrderOne(Map<String, String> map) {
