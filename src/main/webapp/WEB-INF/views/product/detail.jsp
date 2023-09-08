@@ -192,7 +192,7 @@
 	        type: "post",
 	        data: data,
 	        success: function (result) {
-	            if (result === 1) {
+	        	if (result === 1) {
 	                alert("장바구니에 담기 성공했습니다.");
 	                $(".numBox").val("1");
 	                if(confirm("장바구니로 이동하시겠습니까?")){

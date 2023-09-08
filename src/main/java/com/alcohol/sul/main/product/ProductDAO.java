@@ -109,6 +109,10 @@ public class ProductDAO {
 		sqlSession.insert(NAMESPACE+"addBasket", basketDTO);
 	}
 	
+	public BasketDTO getBasket(BasketDTO basketDTO)throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getBasket", basketDTO);
+	}
+	
 	public List<BasketDTO> basketList(String id)throws Exception{
 		return sqlSession.selectList(NAMESPACE+"basketList", id);
 	}

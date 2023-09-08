@@ -35,7 +35,7 @@
 									<span class="cancelState">[취소 완료]</span>
 								</c:if>
 								<p>${orderProduct.productDTO.productName}</p>
-								<p>[500ml]${orderProduct.productDTO.productName} ...</p>
+								<p>[${orderProduct.productDTO.capacity}ml]${orderProduct.productDTO.productName} ...</p>
 								<p>${orderProduct.productDTO.price}원 / 수량 ${orderProduct.orderCount}개</p>
 							</div>
 						</div>
