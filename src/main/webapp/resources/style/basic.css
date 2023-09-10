@@ -63,7 +63,7 @@ footer {
 #search_wrap {background: #68aeff;height: 120px;margin-bottom:7rem;}
 #search{display: flex;flex-direction: column;}
 #searchTitle {height: 50px;line-height: 60px;font-size: 1.3rem;font-weight: 700;color: white;}
-#searchTitle > span {font-weight: 800;font-size: 1.6rem;color: #71e5ff;}
+
 #searchFrm {height: 70px;line-height: 50px;}
 #search select{
 	width:70px; height:40px;
