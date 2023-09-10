@@ -77,7 +77,7 @@ public class OrderController {
 	
 	@RequestMapping(value = "paymentSuccess", method = RequestMethod.POST, produces = "text/plain; charset=UTF-8")
 	@ResponseBody
-	public String paymentSuccess(@RequestBody OrderDTO orderDTO, HttpServletRequest request, HttpSession session) throws Exception {
+	public String paymentSuccess(@RequestBody OrderDTO orderDTO, HttpSession session) throws Exception {
 		@SuppressWarnings("unchecked")
 		List<OrderProductDTO> orderProducts = (List<OrderProductDTO>)session.getAttribute("orderProducts");
 		if(orderProducts == null) {
@@ -90,7 +90,7 @@ public class OrderController {
 		memberDTO = memberService.getMember(memberDTO.getId());
 		session.setAttribute("member", memberDTO); // 회원 정보 갱신
 		
-		return orderService.paymentSuccess(orderDTO, memberDTO, (boolean)session.getAttribute("isBasket"));
+		return orderService.paymentSuccess(orderDTO, memberDTO, (Boolean)session.getAttribute("isBasket"));
 	}
 	
 	@RequestMapping(value = "paymentComplete")

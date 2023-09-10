@@ -100,15 +100,8 @@
                                     </tbody>
                                 </table>
                                 
-                                <div id="monthlyChartWrap">
-                                	<!-- <img src=""> -->
-                                	<div>
-                                		<p>매출 현황</p>
-                                		<p>이번년도 월별 매출 현황(단위 : 만원)</p>
-                                	</div>
-	                                <div id="monthlyChart">	
-	                                	
-	                                </div>
+                                <div id="monthlyChart">
+                                	
                                 </div>
                             </div>
                         </div>
@@ -137,36 +130,34 @@
         <script type="text/javascript">
 	        function drawScoreDistributionChart(){
 	        	let salesRevenue = ${salesRevenue};
-				console.log(salesRevenue);
 	        	
-	        	let dataChart = [["월", "분포율", { role:"style" }, { role:"annotation" }]];
+	        	let dataChart = [["월", "매출", { role:"style" }, { role:"annotation" }]];
 	        	for(let i = 1; i <= 12; i++){
-	        		dataChart.push([i + "월", salesRevenue[i] / 10000, "#353535", salesRevenue[i] / 10000 + "만"]); // 위 형식에 알맞게 데이터 삽입
+	        		dataChart.push([i + "월", salesRevenue[i] / 10000, "#353535", salesRevenue[i] / 10000 + "만"]);
 	        	}
 	        	
 	        	let data = google.visualization.arrayToDataTable(dataChart);
 	        	let view = new google.visualization.DataView(data);
 	        	let options = {
 	        		width:1100,
-					height:400, // 높이를 지정해주지 않으면 ticks로 지정한 레이블 중 일부 레이블이 잘린다.
-	        		bar:{ groupWidth:"65%" }, // 그래프 너비(적당하게 조절 - 어중간하게 작으면 { role:"annotation" }으로 설정한 값이 통일되지 않고, 뒤죽박죽 출력됨)
+					height:400,
+	        		bar:{ groupWidth:"65%" },
 	        		annotations:{ textStyle:{ fontSize:11 } },
 	        		backgroundColor:"transparent",
-	        		legend:"none", // 범례 제거
-	        		enableInteractivity:false, // 마우스 이벤트 제거
+	        		legend:"none",
 	        		
-	        		// 세로 축
-	        		vAxis:{
-						ticks:[50, 100, 150, 200, 250, 300], // 원하는 단위 값들을 배열로 지정
-						format:'0만', // 레이블 형식을 'decimal'로 지정
-	        			
-	        			gridlines:{ color:"#d8d8d8" }, // 주 눈금선
-	        			minorGridlines:{ color:"none" } // 보조 눈금선
+	        		hAxis:{
+	        			title:"이번년도 월별 매출 현황",
+	        			titleTextStyle:{ italic:false, fontSize:13, bold:true },
+	        			textStyle:{ bold:false }
 	        		},
 	        		
-	        		// 가로 축
-	        		hAxis:{
-	        			textStyle:{ bold:true }
+	        		vAxis:{
+						ticks:[50, 100, 150, 200, 250, 300],
+						format:'0만',
+	        			
+	        			gridlines:{ color:"#d8d8d8" },
+	        			minorGridlines:{ color:"none" }
 	        		}
 	        	};
 	        	
@@ -175,8 +166,8 @@
 	        }
 			
         	$(function(){
-        		google.charts.load("current", { "packages":["corechart"] }); // Google Chart를 사용하기 위한 준비
-        		google.charts.setOnLoadCallback(drawScoreDistributionChart); // 차트 생성
+        		google.charts.load("current", { "packages":["corechart"] });
+        		google.charts.setOnLoadCallback(drawScoreDistributionChart);
         	});
         </script>
     </body>
