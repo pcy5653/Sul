@@ -1,10 +1,12 @@
 package com.alcohol.sul.order;
 
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONObject;
@@ -21,6 +23,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.alcohol.sul.main.product.ProductDTO;
 import com.alcohol.sul.member.MemberDTO;
 import com.alcohol.sul.member.MemberService;
+import com.alcohol.sul.util.AuthService;
+import com.alcohol.sul.util.CustomMessageService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Controller
@@ -31,6 +35,12 @@ public class OrderController {
 	
 	@Autowired
 	private MemberService memberService;
+	
+	@Autowired
+	private AuthService authService;
+	
+	@Autowired
+	private CustomMessageService customMessageService;
 	
 	@RequestMapping(value = "", method = RequestMethod.POST)
 	public String order(OrderProductsWrapper orderProductsWrapper, HttpServletRequest request, HttpSession session, Model model) {
@@ -166,6 +176,21 @@ public class OrderController {
 		model.addAttribute("cancel", cancelDTO);
 		model.addAttribute("member", memberDTO);
 		return "order/cancelDetail";
+	}
+	
+	@RequestMapping(value = "kakaoAlarmTest")
+	public void kakaoAlarmTest(String code, HttpSession session, HttpServletResponse response) throws Exception {
+		if(authService.getKakaoAuthToken(code)) {
+			// boolean result = customMessageService.sendMyMessage();
+			session.setAttribute("KakaoAuthToken", AuthService.authToken);
+		}else {
+			System.out.println("토큰 발급 실패");
+		}
+		
+		// 이후 Dispatcher Servlet을 거치치 않고, 그냥 바로 클라이언트에게 응답을 보내고 종료
+		PrintWriter out = response.getWriter();
+		out.println("<script>window.close();</script>");
+		out.flush();
 	}
 	
 	@RequestMapping(value = "tracking")

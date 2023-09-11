@@ -10,12 +10,15 @@ $(function(){
                 
 // 주문 내역
 $("#orderListBtn").click(function(){
+	$("body").append("<div id='loading'></div>");
+	
 	$.ajax({
         type:"get",
         url:"../order/list",
         dataType:'html',
         success:function(data){
-            $("#page").html(data)
+            $("#page").html(data);
+            $("#loading").remove();
         }
     })
 });

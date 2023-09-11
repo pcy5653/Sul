@@ -139,13 +139,25 @@
 		
 		// '바로 구매'
 		function buyNow(){
-			let form = $("<form></form>");
-			form.attr("method", "POST");		
-			form.attr("action", "../order/")
-			form.append($("<input />", {type:"hidden", name:"orderProducts[0].productNum", value:${dto.productNum}}));
-			form.append($("<input />", {type:"hidden", name:"orderProducts[0].orderCount", value:$(".numBox").val()}));
-			form.appendTo("body");
-			form.submit();
+			let kakaoAuthToken = "${sessionScope.KakaoAuthToken}";
+			if(kakaoAuthToken == ""){
+				let url = "https://kauth.kakao.com/oauth/authorize?client_id=bea6fb109d4f653a33311d67686f57b0&redirect_uri=http://localhost:8080/order/kakaoAlarmTest&response_type=code&scope=talk_message";
+				let authWindow = window.open(url, "_blank", "width=600, height=600");
+			}
+			
+			// 0.5초 간격으로 인증 창이 닫혔는지 확인(닫혔다면 구매 단계로 계속 진행)
+			let checkAuthWindow = setInterval(function () {
+				if(authWindow.closed) {
+					clearInterval(checkAuthWindow);
+					let form = $("<form></form>");
+					form.attr("method", "POST");
+					form.attr("action", "../order/");
+					form.append($("<input />", { type: "hidden", name: "orderProducts[0].productNum", value: ${dto.productNum} }));
+					form.append($("<input />", { type: "hidden", name: "orderProducts[0].orderCount", value: $(".numBox").val() }));
+					form.appendTo("body");
+					form.submit();
+				}
+			}, 500);
 		}
 	</script>
 	<script type="text/javascript">
