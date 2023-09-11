@@ -56,12 +56,12 @@ public class ReviewController {
 		productDTO.setScore(result);
 		productService.setReviewStarUpdate(productDTO); 		
 		
-		return "redirect:./list";
+		return "redirect:./detail?productNum="+reviewDTO.getProductNum();
 	}
 	
 	@GetMapping("myReviewList")
 	public void getMyReviewList(ReviewDTO reviewDTO, PagerK pager, Model model,HttpSession session)throws Exception{
-		pager.setPerPage(20L);
+		pager.setPerPage(30L);
 		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
 		reviewDTO.setId(memberDTO.getId());
 		List<ReviewDTO> ar = reviewService.getMyReviewList(pager, reviewDTO);			
