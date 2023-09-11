@@ -51,7 +51,7 @@
                     <main>
                         <div class="container-fluid px-4">
                             <h1 class="mt-4">매출</h1>
-                            
+
                             <div class="card mb-4">
                                 <div class="card-header">
                                     <i class="fas fa-table me-1"></i>
@@ -113,7 +113,8 @@
                                                             <td>${dailySales.year}</td>
                                                             <td>${dailySales.month2}</td>
                                                             <td>${dailySales.day}</td>
-                                                            <td>$${dailySales.salesRevenue}</td>
+                                                            <td class="sales" id="sales${i.index}">
+                                                                ${dailySales.salesRevenue}</td>
 
                                                         </tr>
                                                     </c:forEach>
@@ -163,8 +164,13 @@
             <script type="text/javascript">
 
                 //일별매출
+                for (let i = 0; i < $(".sales").length; i++) {
+                    $("#sales" + i).text('$' + Number($("#sales" + i).text()).toLocaleString());
+                }
+
                 $("#" + $("#year").attr("data-year")).prop("selected", true)
                 $("#" + $("#month2").attr("data-month")).prop("selected", true)
+
 
                 $("#dailySalesBtn").click(function () {
                     let year = $("#year option:selected").val();
@@ -177,6 +183,9 @@
                         dataType: 'html',
                         success: function (data) {
                             $("#a").html($(data).find("#a").html());
+                            for (let i = 0; i < $(".sales").length; i++) {
+                                $("#sales" + i).text('$' + Number($("#sales" + i).text()).toLocaleString());
+                            }
                         }
                     })
                 })
