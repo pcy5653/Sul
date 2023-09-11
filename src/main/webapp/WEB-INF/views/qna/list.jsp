@@ -10,7 +10,7 @@
 	<section>
 		<div class="wrap">
 			<div class="main">
-				<h1 id="title">1:1 문의 내역</h1>
+				<h1 id="title" style="font-weight: 900;">1:1 문의 내역</h1>
 				<c:if test="${member.roleNum == 0}">
 					<p id="totalNum">총 <span class="totalN">${total}</span> 개의 게시물이 작성되었습니다.</p>
 				</c:if>
@@ -31,6 +31,7 @@
 												<span class="material-icons comment" >
 													subdirectory_arrow_right
 												</span>
+												<span class="re">RE: </span>
 											</c:forEach>
 										</c:catch>
 										${dto.subject}

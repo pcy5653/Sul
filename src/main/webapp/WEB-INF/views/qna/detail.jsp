@@ -11,7 +11,7 @@
 <title>Detail Page</title>
 <base href="/">
 <style>
-	#title {font-size: 2.5rem; margin-bottom : 2rem;}
+	#title {font-size: 2.5rem; margin-bottom : 2rem;font-weight: 900;}
 	table {border: 1px solid black;}
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
@@ -20,14 +20,14 @@
 	<c:import url="../temp/header.jsp"></c:import>
 	
 	<section>
-		<div class="wrap">
+		<div class ="wrap">
 			<input type="hidden" value="${member.roleNum}" id="role" name="roleNum">
 			<h1 id="title">상세 문의</h1>
 			<!-- files!=null이 아니라면 -->
 			<c:if test="${files!=null}">
 				<div id="question" data-step="${dto.qnaDTO.step}" data-con="${dto.qnaDTO.contents}" data-num = "${dto.qnaDTO.num}">
 					<table>
-						<tr><th>고객님의 질문</th></tr>
+						<tr><th id="queCus">고객님의 질문</th></tr>
 						<tr><td>${dto.qnaDTO.contents}</td></tr>
 					</table>
 					

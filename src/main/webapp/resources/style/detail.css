@@ -17,12 +17,13 @@ section {width:100% !important; margin-top: 3rem !important;margin-bottom: 5rem 
 #title {font-size: 2.5rem; margin-bottom : 4rem; text-align: center;}
 #totalNum {width: 85%;margin: 0 auto 2rem;}
 #totalNum .totalN {font-size:1.2rem; font-weight: 600;}
-.wrap table, .t_page, .t_search{width:85%; margin: 0 auto;margin-bottom: 2rem;}
+.wrap table, .t_page, .t_search{width:85%; margin: 0 auto;margin-bottom: 3rem;}
 table tr {height:3rem; text-align: center;}
 table thead, table tbody{border-top:1px solid black; border-bottom: 1px solid black;}
 table thead tr, table tbody tr th.dcont {background-color:rgb(242 242 242);    border-bottom: 1px solid;}
 table thead tr th, table tbody tr th {font-size: 1.1rem; font-weight: 800;}
 table tbody tr td {border-bottom: 1px solid rgb(139, 139, 139);}
+table tbody tr td > a > .re {font-size: 1.1rem;font-weight: bolder;color: #565656;}
 /* table tbody tr td:first-of-type {}  title 앞으로*/
 
 .t_page ul {display: flex;}
@@ -47,6 +48,9 @@ table tbody tr td {border-bottom: 1px solid rgb(139, 139, 139);}
 
 
 /* detail.css */
+#question {width:85%;margin: 0 auto 5rem;text-align: center;}
+#question > table {width:100%;}
+#question > table > tbody > tr > th#queCus {background-color: rgb(242 242 242);border-bottom: 1px solid;}
 thead {width: 100%;}
 .subject {width: 60%;}
 .name{width: 20%;}
@@ -59,7 +63,7 @@ table tr td.dcon {
     position: absolute; left:2rem; top:2rem;
 }
 
-#detail_file{width: 85%;margin: 0 auto; margin-bottom: 2rem;}
+#detail_file{width: 85%;margin: 0 auto; margin-bottom: 5rem; text-align: center;}
 
 .btn_total {width: 85%;margin: 0 auto;}
 .c1 {width: 8rem;height: 3rem;font-size: 1.1rem;font-weight: 600;}
