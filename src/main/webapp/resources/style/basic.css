@@ -62,7 +62,8 @@ footer {
 /* search */
 #search_wrap {background: #68aeff;height: 120px;margin-bottom:7rem;}
 #search{display: flex;flex-direction: column;}
-#searchTitle {height: 50px;line-height: 60px;font-size: 1.3rem;font-weight: 700;}
+#searchTitle {height: 50px;line-height: 60px;font-size: 1.3rem;font-weight: 700;color: white;}
+#searchTitle > span {font-weight: 800;font-size: 1.6rem;color: #71e5ff;}
 #searchFrm {height: 70px;line-height: 50px;}
 #search select{
 	width:70px; height:40px;
@@ -84,7 +85,7 @@ footer {
 
 
 /* review */
-#review_wrap{width:100%;background: aliceblue;}
+#review_wrap{width:100%;background: #cee8ff;}
 #review_wrap .review_div{display:flex;width:30%;height:120px;margin:0 auto;}
 #review_wrap .review_div > p{width:70%;line-height:120px;font-size:1.3rem;}
 #review_wrap .review_div > p > .review {font-weight: 800;color: #39b3dc;}
@@ -103,7 +104,7 @@ footer {
     100% {top: 40%}
 }
 #review_wrap .review_div #reviewTotal {   
-	display: none;position: fixed;width: 80%;height: 40rem;background:#fffae4;
+	display: none;position: fixed;width: 80%;height: 40rem;background:#ecf5ff;box-shadow:8px 8px 8px #a9a9a9b8;
     left: 50%;top: 50%;z-index: 1;transform: translate(-50%, -50%);border-radius: 15px
 }
 #review_wrap .review_div #reviewTotal #review_fixed{height: 100%;}
