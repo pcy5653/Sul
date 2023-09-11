@@ -26,10 +26,10 @@
 						<input id="writer" class="name_in in" type="text" name="name" value="${member.id}" class="form-control">
 					</div>
 					<div class="addD">
-						<label class="add_sub addT" for="title">문의내역</label>
-						<input id="title" class="sub_in in" type="text" name="subject" value="${dto.subject}" class="form-control">
+						<label class="add_sub addT" for="subject">문의내역</label>
+						<input id="subject" class="sub_in in" type="text" name="subject" value="${dto.subject}" class="form-control">
 					</div>
-					<div class="addD">
+					<div class="addD upCon">
 						<label class="add_con addT" for="contents">내용</label>
 						<textarea id="contents" name="contents" class="con_in in">${dto.contents}</textarea>
 					</div>
@@ -51,8 +51,8 @@
 						</c:forEach>
 					</div>
 	
-					<div class="add_btn">
-						<button type="submit" class="btn btn-dark" >수정</button>
+					<div class="add_btn updateBtn">
+						<button type="submit" class="btn btn-dark upbtn" >수정</button>
 					</div>
 				</form>   
 			</div>

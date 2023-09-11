@@ -36,6 +36,7 @@
 			<mapping path="/member/mypage"/>
 			<mapping path="/member/info"/>
 			<mapping path="/admin/*"/>
+			<mapping path="/qna/*"/>
 			
 			<mapping path="/order/**"/>
 			<beans:bean class="com.alcohol.sul.interceptors.LoginInterceptor"></beans:bean>
@@ -45,6 +46,7 @@
 		<interceptor>
 			<mapping path="/admin/*"/>
 			<mapping path="/notice/*"/>
+			<mapping path="/qna/reply"/>
 			<exclude-mapping path="/notice/list"/>
 			<exclude-mapping path="/notice/detail"/>
 			<beans:bean class="com.alcohol.sul.interceptors.RoleInterceptor"></beans:bean>
