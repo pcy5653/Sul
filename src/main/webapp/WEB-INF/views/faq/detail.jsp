@@ -24,41 +24,22 @@
 			<input type="hidden" value="${member.roleNum}" id="role" name="roleNum">
 			<h1 id="title">상세 문의</h1>
 			<!-- files!=null이 아니라면 -->
-			<c:if test="${files!=null}">
-				<div id="question" data-step="${dto.qnaDTO.step}" data-con="${dto.qnaDTO.contents}" data-num = "${dto.qnaDTO.num}">
-					<table>
-						<tr><th id="queCus">고객님의 질문</th></tr>
-						<tr><td>${dto.qnaDTO.contents}</td></tr>
-					</table>
-					
-					<c:forEach items="${files}" var="f" begin="0" end="2">
-						<img src="/resources/upload/qna/${f.fileName}" alt="고객의 파일이미지">
-					</c:forEach>
-				</div>
-			</c:if>
-			
-			<table id="comment" data-step="${dto.step}">
-				<thead>
-					<th class="subject">제목</th><th class="name">작성자</th><th class="date">날짜</th>
-				</thead>
-				<tbody>
+			<table>
+				<c:forEach items="${list}" var="dto" varStatus="i">
 					<tr>
-						<td>${dto.subject}</td>
-						<td>${dto.name}</td>
-						<td>${dto.createDate}</td>
-					</tr>			
-				</tbody>
-			</table>
-			
-			<table id="commentCon">
-				<tr><th class="dcont">내용</th></tr>
-				<tr class="dcont"><td class="dcon">${dto.contents}</td></tr>
-			</table>
-			<div id="detail_file" data-file="${dto.fileDTOs}">
-				<c:forEach items="${dto.fileDTOs}" var="f">
-					<img src="/resources/upload/qna/${f.fileName}" class="fileImg" data-file-num="${f.fileNum}">
+						<td class="listTitle"  data-num="${dto.num}"name="num" >
+							<input type="hidden" value="${dto.num}"  name="ref" class="listRef">
+							<a href="#">
+								<span class="faqQ">Q.</span>
+								${dto.subject}
+							</a>
+						</td>
+						<td>${dto.kind}</td>
+						<td><button id="underBtn">+</button></td>
+					</tr>
+					<tr><td>${dto.contents}</td></tr>
 				</c:forEach>
-			</div>
+			</table>
 			
 			
 			<form id="frm" action="">

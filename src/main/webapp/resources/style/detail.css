@@ -18,8 +18,10 @@ section {width:100% !important; margin-top: 3rem !important;margin-bottom: 5rem 
 #totalNum {width: 85%;margin: 0 auto 2rem;}
 #totalNum .totalN {font-size:1.2rem; font-weight: 600;}
 .wrap table, .t_page, .t_search{width:85%; margin: 0 auto;margin-bottom: 3rem;}
+.wrap > #comment {margin-bottom:0;}
+.wrap > #commentCon { border-top:0;}
 table tr {height:3rem; text-align: center;}
-table thead, table tbody{border-top:1px solid black; border-bottom: 1px solid black;}
+table thead, table tbody{ border-bottom: 1px solid black;}
 table thead tr, table tbody tr th.dcont {background-color:rgb(242 242 242);    border-bottom: 1px solid;}
 table thead tr th, table tbody tr th {font-size: 1.1rem; font-weight: 800;}
 table tbody tr td {border-bottom: 1px solid rgb(139, 139, 139);}

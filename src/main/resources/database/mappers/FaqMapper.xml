@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.alcohol.sul.board.faq.FaqDAO">
+ 	
+ 	<select id="getList" parameterType="FaqDTO" resultMap="getListResult">
+ 		SELECT * FROM FAQ
+ 	</select>
+ 	<select id="getDetailList" parameterType="FaqDTO" resultMap="getListResult">
+ 		SELECT * FROM FAQ
+ 		WHERE FAQNUM > 0
+ 		<choose>
+			<when test="kind == 'operate'">
+				AND KIND LIKE 'operate'
+			</when>
+			<when test="kind == 'member'">
+				AND KIND LIKE 'member'
+			</when>
+			<when test="kind == 'buy'">
+				AND KIND LIKE 'buy'
+			</when>
+			<when test="kind == 'refund'">
+				AND KIND LIKE 'refund'
+			</when>
+		</choose>
+ 	</select>
+ 	
+ 	<resultMap type="FaqDTO" id="getListResult">
+ 		<id column = "FAQNUM" property="num"/>
+ 		<result column="NAME" property="name"/>
+ 		<result column="KIND" property="kind"/>
+ 		<result column="SUBJECT" property="subject"/>
+ 		<result column="CONTENTS" property="contents"/>
+ 		<result column="CREATEDATE" property="createDate"/>
+ 	</resultMap>
+ 	
+ 	<insert id="setAdd" parameterType="FaqDTO">
+ 		INSERT INTO FAQ
+		VALUES (FAQ_SEQ.NEXTVAL, #{name}, #{kind}, #{subject}, #{contents}, SYSDATE)
+ 	</insert>
+ 	
+ 	<update id="setUpdate" parameterType="FaqDTO">
+ 		 UPDATE FAQ
+		 SET SUBJECT = #{subject}, CONTENTS = #{contents}
+		 WHERE FAQNUM = #{num}
+ 	</update>
+	
+	<delete id="setDelete" parameterType="FaqDTO">
+		DELETE FAQ WHERE FAQNUM = #{num} 
+		
+	</delete> 	
+  </mapper>
