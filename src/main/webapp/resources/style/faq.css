@@ -1,7 +1,7 @@
 section{}
+section title{font-size: 2.5rem;margin-bottom: 4rem;text-align: center; font-weight: 900;}
 section .wrap{display: flex;flex-direction: row-reverse;}
 section .wrap .main{width: 85%;}
-section .wrap .main #title{}
 section .wrap .main > ul{width: 85%;margin: 2rem auto 5rem;display: flex;}
 section .wrap .main > ul > li{text-align: center;width: calc(100% - 80%);}
 section .wrap .main > ul > li.faqKind{}

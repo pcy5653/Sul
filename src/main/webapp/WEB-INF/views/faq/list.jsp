@@ -9,9 +9,10 @@
 <c:import url="../temp/header.jsp"></c:import>
 	<input type="hidden" value="${member.id}" id="check_id" name="name">
 	<section>
+
+		<h1 id="title" style="font-weight: 900;">FAQ</h1>
 		<div class="wrap">
 			<div class="main">
-				<h1 id="title" style="font-weight: 900;">FAQ</h1>
 				<ul>
 					<li class="faqKind"><a href="/faq/list" class="aKind">전체보기</a></li>
 					<li class="faqKind"><a href="/faq/detail/operate" class="aKind">운영정책</a></li>
