@@ -7,26 +7,64 @@ for(n of nn){
 }
 
 //1. 수정, 삭제 btn 클릭 시 변경
-for(c of c1){
-    c.addEventListener("click", function(){
+for (let i = 0; i < c1.length; i++) {
+    c1[i].addEventListener("click", function() {
         let url = this.getAttribute("data-url");
-        console.log("누름")
-        for(f of frm){
-            if(url == '/faq/delete'){
-                let check = confirm("정말로 삭제하시겠습니까?");
-                if(check){
-                    f.method='post';
-                }else{
-                    return;
-                }
+        
+
+        if (url == '/faq/delete') {
+            let check = confirm("정말로 삭제하시겠습니까?");
+            if (check) {
+                frm[i].method = "POST";
+                frm[i].action = url;
+                frm[i].submit();
+            } else {
+                return;
             }
-            if(url == '/faq/update'){
-                let check = confirm("이 글을 수정하시겠습니까?");
-                if(check){
-                    f.action=url;
-                    f.submit();
-                }
+        }
+
+        if (url == '/faq/update') {
+            let check = confirm("이 글을 수정하시겠습니까?");
+            if (check) {
+                frm[i].action = url;
+                frm[i].submit();
+            } else {
+                return;
             }
         }
     });
 }
+
+
+// const c1 = document.querySelectorAll('.c1');
+// c1.forEach(button => {
+//     button.addEventListener("click", function() {
+//         let url = this.getAttribute("data-url");
+//         let formId = this.getAttribute("data-form-id");
+//         let form = document.getElementById(formId); // Get the form by its ID
+        
+//         if (url == '/faq/delete') {
+            
+           
+//         let check = confirm("정말로 삭제하시겠습니까?");
+//         if (check) {
+//             form.method = 'post';
+//             form.action = url; // Set the form action to the delete URL
+//             form.submit();
+//             }else {
+//                 return;
+//             }
+//         }
+
+//         if (url == '/faq/update') {
+//             let check = confirm("이 글을 수정하시겠습니까?");
+//             if (check) {
+//                 form.action = url;
+//                 form.submit();
+//             }else {
+//                 return;
+//             }
+//         }
+//     });
+// });
+

@@ -99,7 +99,7 @@ public class FaqController {
 	public String setUpdate(FaqDTO faqDTO, HttpSession session)throws Exception{
 		int result = faqService.setUpdate(faqDTO, session);
 		
-		return "/faq/list";
+		return "redirect:./list";
 	}
 	
 	

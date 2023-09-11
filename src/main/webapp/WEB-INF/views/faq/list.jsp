@@ -40,11 +40,11 @@
 										<input type="text" class="faqIn" name="num" value="${dto.num}">
 									</form>
 									<!-- 입력 form으로 method GET -->
-									<button class="c1 upBtn" data-url="faq/update">수정</button>
+									<button class="c1 upBtn" data-url="/faq/update" data-form-id="form1">수정</button>
 						
 									<!-- method POST -->
-									<input type="hidden" data-url="faq/delete" data-delete-name="name" data-delete-num="${member.id}">
-									<button class="c1 deBtn" data-url="faq/delete" data-delete-name="num" data-delete-num="${dto.num}">삭제</button>
+									<input type="hidden" data-url="/faq/delete" data-delete-name="name" data-delete-num="${member.id}">
+									<button class="c1 deBtn" data-url="/faq/delete" data-form-id="form1" data-delete-name="num" data-delete-num="${dto.num}">삭제</button>
 								</div>
 							</td>
 						</tr>
