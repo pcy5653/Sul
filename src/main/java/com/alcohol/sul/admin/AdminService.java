@@ -62,4 +62,11 @@ public class AdminService {
 	public List<SalesRevenueDTO> getSalesRevenue() {
 		return adminDAO.getSalesRevenue();
 	}
+	
+	public List<SalesRevenueDTO> dailySales(SalesRevenueDTO salesDTO){
+		return adminDAO.dailySales(salesDTO);
+	}
+
+
+	
 }
