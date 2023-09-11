@@ -34,7 +34,7 @@ for(c of c1){
         if(url == 'qna/reply'){
             // 관리자 권한(1)만 답글
             if(r_num == 0){
-                alert("권한이 없습니다.");
+                alert("관리자 권한이 없습니다.");
                 return;
             }
         }
