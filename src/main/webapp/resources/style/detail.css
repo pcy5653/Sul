@@ -110,7 +110,7 @@ table tr td.dcon {
     background-color: #80a9ff;
     font-weight: 900;text-align: center;line-height: 2.5rem;
 }
-.phone_total{width: 30rem;}
+.phone_total{border: 1px solid aliceblue;background: aliceblue;padding: 1rem;border-radius: 10px;}
 .phone_total > span{font-size: 1.2rem;font-weight: 600;line-height: 2rem;}
 .phone_total > span .material-icons{width: 30px;height: 30px;position: relative;left: 5px;top: 5px;}
 .phone_total > .sms{margin-left: 0.8rem;}

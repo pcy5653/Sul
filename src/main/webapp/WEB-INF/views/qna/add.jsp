@@ -48,7 +48,7 @@
 							<span class="material-icons">email</span>
 							답변이 작성되면 알려드립니다.
 						</span><br>
-						<span class="sms">SMS 발송 여부를 확인해주세요!</span><br>
+						<span class="sms">SMS 발송 여부를 체크해주세요!</span><br>
 						<div class="smsCheck">
 							<label for="sms_yes">YES</label>
 							<input type="radio" id="sms_yes" name="sms" value="1" checked>
