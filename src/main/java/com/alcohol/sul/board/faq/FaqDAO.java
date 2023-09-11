@@ -32,10 +32,23 @@ public class FaqDAO implements BoardDAO{
 	public List<BoardDTO> getList(FaqDTO faqDTO) throws Exception {
 		return sqlSession.selectList(NAMESPACE+"getList", faqDTO);
 	}
-	// ListDetail
-	public List<BoardDTO> getDetailList(FaqDTO faqDTO) throws Exception {
-		return sqlSession.selectList(NAMESPACE+"getDetailList", faqDTO);
+	// DetailOperate
+	public List<BoardDTO> getDetailOperate(FaqDTO faqDTO) throws Exception {
+		return sqlSession.selectList(NAMESPACE+"getDetailOperate", faqDTO);
 	}
+	// DetailOperate
+	public List<BoardDTO> getDetailMember(FaqDTO faqDTO) throws Exception {
+		return sqlSession.selectList(NAMESPACE+"getDetailMember", faqDTO);
+	}
+	// DetailOperate
+	public List<BoardDTO> getDetailBuy(FaqDTO faqDTO) throws Exception {
+		return sqlSession.selectList(NAMESPACE+"getDetailBuy", faqDTO);
+	}
+	// DetailOperate
+	public List<BoardDTO> getDetailRefund(FaqDTO faqDTO) throws Exception {
+		return sqlSession.selectList(NAMESPACE+"getDetailRefund", faqDTO);
+	}
+		
 
 	@Override
 	public BoardDTO getDetail(BoardDTO boardDTO) throws Exception {

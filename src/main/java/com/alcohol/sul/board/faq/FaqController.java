@@ -34,12 +34,38 @@ public class FaqController {
 	}
 	
 	// ListDetail
-	@GetMapping("detail")
-	public String getDetailList(FaqDTO faqDTO, Model model)throws Exception{
-		List<BoardDTO> ar = faqService.getDetailList(faqDTO);	
+	@GetMapping("detail/operate")
+	public String getDetailOperate(FaqDTO faqDTO, Model model)throws Exception{
+		List<BoardDTO> ar = faqService.getDetailOperate(faqDTO);
+		model.addAttribute("list", ar);
 				
-		return "/faq/detail?kind="+faqDTO.getKind();
+		return "/faq/list";
 	}
+	// ListDetail
+	@GetMapping("detail/member")
+	public String getDetailMember(FaqDTO faqDTO, Model model)throws Exception{
+		List<BoardDTO> ar = faqService.getDetailMember(faqDTO);
+		model.addAttribute("list", ar);
+				
+		return "/faq/list";
+	}
+	// ListDetail
+	@GetMapping("detail/buy")
+	public String getDetailBuy(FaqDTO faqDTO, Model model)throws Exception{
+		List<BoardDTO> ar = faqService.getDetailBuy(faqDTO);
+		model.addAttribute("list", ar);
+				
+		return "/faq/list";
+	}
+	// ListDetail
+	@GetMapping("detail/refund")
+	public String getDetailRefund(FaqDTO faqDTO, Model model)throws Exception{
+		List<BoardDTO> ar = faqService.getDetailRefund(faqDTO);
+		model.addAttribute("list", ar);
+				
+		return "/faq/list";
+	}
+		
 	
 	// insert
 	@GetMapping("add")

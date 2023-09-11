@@ -1,67 +1,70 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <link rel="stylesheet" href="/resources/style/reset.css">
 <link rel="stylesheet" href="/resources/style/basic.css">
 <link rel="stylesheet" href="/resources/style/detail.css">
-<title>Detail Page</title>
-<base href="/">
-<style>
-	#title {font-size: 2.5rem; margin-bottom : 2rem;font-weight: 900;}
-	table {border: 1px solid black;}
-</style>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-</head>
-<body>
-	<c:import url="../temp/header.jsp"></c:import>
-	
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<c:import url="../temp/header.jsp"></c:import>
+	<input type="hidden" value="${member.id}" id="check_id" name="name">
 	<section>
-		<div class ="wrap">
-			<input type="hidden" value="${member.roleNum}" id="role" name="roleNum">
-			<h1 id="title">상세 문의</h1>
-			<!-- files!=null이 아니라면 -->
-			<table>
-				<c:forEach items="${list}" var="dto" varStatus="i">
-					<tr>
-						<td class="listTitle"  data-num="${dto.num}"name="num" >
-							<input type="hidden" value="${dto.num}"  name="ref" class="listRef">
-							<a href="#">
-								<span class="faqQ">Q.</span>
-								${dto.subject}
-							</a>
-						</td>
-						<td>${dto.kind}</td>
-						<td><button id="underBtn">+</button></td>
-					</tr>
-					<tr><td>${dto.contents}</td></tr>
+		<div class="wrap">
+			<div class="main">
+				<h1 id="title" style="font-weight: 900;">FAQ kind</h1>
+				<table>
+					<c:forEach items="${list}" var="dto" varStatus="i">
+						<tr>
+							<td class="listTitle"  data-num="${dto.num}"name="num" >
+								<input type="hidden" value="${dto.num}"  name="ref" class="listRef">
+								<a href="#">
+									<span class="faqQ">Q.</span>
+									${dto.subject}
+								</a>
+							</td>
+							<td>${dto.kind}</td>
+							<td><button id="underBtn">+</button></td>
+						</tr>
+						<tr><td>${dto.contents}</td></tr>
+					</c:forEach>
+				</table>
+			</div>
+			<div class="side">
+				<ul>
+					<li class="notice"><a href="#">공지사항</a></li>
+					<li class="qna"><a href="#">1:1문의</a></li>
+				</ul>
+			</div>
+			<!-- <nav class="t_page">
+				<ul class="pagination">
+					<c:if test="${pager.pre}">
+					<li class="page-item">
+						<a class="move" href="#" data-num="${pager.startNum-1}" aria-label="Previous">
+						<span aria-hidden="true">&laquo;</span>
+						</a>
+					</li>
+				</c:if>
+				<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
+					<li class="page-item "><a class="page-link move" href="#" data-num="${i}">${i}</a></li>
 				</c:forEach>
-			</table>
-			
-			
-			<form id="frm" action="">
-				<input type="hidden" name="num" value="${dto.num}">
-			</form>
-			
-			<div class="btn_total">
-				<c:if test="${dto.step != 1}">
-					<!-- 입력 form으로 method GET -->
-					<button id="update" class="c1 upBtn" data-url="qna/update">수정</button>
-					
-					<!-- method POST -->
-					<input type="hidden" data-url="qna/delete" data-delete-name="name" data-delete-num="${member.id}">
-					<button id="del" class="c1 deBtn" data-url="qna/delete" data-delete-name="num" data-delete-num="${dto.num}">삭제</button>
+				<c:if test="${pager.next}">
+					<li class="page-item">
+						<a class="move" href="#" data-num="${pager.lastNum+1}" aria-label="Next">
+						<span aria-hidden="true">&raquo;</span>
+						</a>
+					</li>
+				</c:if>
+				</ul>
+			</nav> -->
 
-					<!-- 입력 form으로 method GET -->
-				<button id="reply" class="c1 reBtn" data-url="qna/reply">답글</button>
+			<div class="t_search">
+				<c:if test="${member.roleNum == 1}">	
+					<a class="btn btn-danger" href="./add">등록</a>
 				</c:if>
 			</div>
 		</div>
-	</section>
+    </section>
+    
+    
+    
 <c:import url="../temp/footer.jsp"></c:import>
-<script src="/resources/js/qna_delete.js"></script>
-</body>
-</html>
+<script src="/resources/js/faq/list.js"></script>

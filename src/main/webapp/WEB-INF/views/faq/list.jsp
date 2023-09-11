@@ -4,6 +4,7 @@
 <link rel="stylesheet" href="/resources/style/reset.css">
 <link rel="stylesheet" href="/resources/style/basic.css">
 <link rel="stylesheet" href="/resources/style/detail.css">
+<link rel="stylesheet" href="/resources/style/faq.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <c:import url="../temp/header.jsp"></c:import>
 	<input type="hidden" value="${member.id}" id="check_id" name="name">
@@ -12,13 +13,13 @@
 			<div class="main">
 				<h1 id="title" style="font-weight: 900;">FAQ</h1>
 				<ul>
-					<li class="faqKind"><a href="./detail?kind=operate" class="aKind" value="operate" name="kind">운영정책</a></li>
-					<li class="faqKind"><a href="./detail?kind=member" class="aKind" value="member" name="kind">계정</a></li>
-					<li class="faqKind"><a href="./detail?kind=buy" class="aKind" value="buy" name="kind">구매</a></li>
-					<li class="faqKind"><a href="./detail?kind=refund" class="aKind" value="refund" name="kind">환불</a></li>
+					<li class="faqKind"><a href="/faq/detail/operate" class="aKind" data-value="operate" name="kind">운영정책</a></li>
+					<li class="faqKind"><a href="/faq/detail/member" class="aKind" data-value="member" name="kind">계정</a></li>
+					<li class="faqKind"><a href="/faq/detail/buy" class="aKind" data-value="buy" name="kind">구매</a></li>
+					<li class="faqKind"><a href="/faq/detail/refund" class="aKind" data-value="refund" name="kind">환불</a></li>
 				</ul>
-				<p>자주 묻는 질문들을 먼저 확인해보세요!</p>
-				<table>
+				<p class="faqSub">자주 묻는 질문들을 먼저 확인해보세요!</p>
+				<table id="faqList">
 					<c:forEach items="${list}" var="dto" varStatus="i">
 						<tr>
 							<td class="listTitle"  data-num="${dto.num}"name="num" >
@@ -28,10 +29,9 @@
 									${dto.subject}
 								</a>
 							</td>
-							<td>${dto.kind}</td>
 							<td><button id="underBtn">+</button></td>
 						</tr>
-						<tr><td>${dto.contents}</td></tr>
+						<tr id="fqaCon"><td id="fcon">${dto.contents}</td></tr>
 					</c:forEach>
 				</table>
 			</div>

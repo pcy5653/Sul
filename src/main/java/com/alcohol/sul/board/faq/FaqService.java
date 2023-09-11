@@ -30,9 +30,21 @@ public class FaqService implements BoardService {
 		return faqDAO.getList(faqDTO);
 	}
 	
-	// ListDetail
-	public List<BoardDTO> getDetailList(FaqDTO faqDTO) throws Exception {
-		return faqDAO.getDetailList(faqDTO);
+	// DetailOperate
+	public List<BoardDTO> getDetailOperate(FaqDTO faqDTO) throws Exception {
+		return faqDAO.getDetailOperate(faqDTO);
+	}
+	// DetailOperate
+	public List<BoardDTO> getDetailMember(FaqDTO faqDTO) throws Exception {
+		return faqDAO.getDetailMember(faqDTO);
+	}
+	// DetailOperate
+	public List<BoardDTO> getDetailBuy(FaqDTO faqDTO) throws Exception {
+		return faqDAO.getDetailBuy(faqDTO);
+	}
+	// DetailOperate
+	public List<BoardDTO> getDetailRefund(FaqDTO faqDTO) throws Exception {
+		return faqDAO.getDetailRefund(faqDTO);
 	}
 
 	@Override

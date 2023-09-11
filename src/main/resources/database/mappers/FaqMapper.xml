@@ -8,23 +8,18 @@
  	<select id="getList" parameterType="FaqDTO" resultMap="getListResult">
  		SELECT * FROM FAQ
  	</select>
- 	<select id="getDetailList" parameterType="FaqDTO" resultMap="getListResult">
- 		SELECT * FROM FAQ
- 		WHERE FAQNUM > 0
- 		<choose>
-			<when test="kind == 'operate'">
-				AND KIND LIKE 'operate'
-			</when>
-			<when test="kind == 'member'">
-				AND KIND LIKE 'member'
-			</when>
-			<when test="kind == 'buy'">
-				AND KIND LIKE 'buy'
-			</when>
-			<when test="kind == 'refund'">
-				AND KIND LIKE 'refund'
-			</when>
-		</choose>
+ 	
+ 	<select id="getDetailOperate" parameterType="FaqDTO" resultMap="getListResult">
+ 		SELECT * FROM FAQ WHERE FAQNUM > 0 AND KIND LIKE 'operate'
+ 	</select>
+ 	<select id="getDetailMember" parameterType="FaqDTO" resultMap="getListResult">
+ 		SELECT * FROM FAQ WHERE FAQNUM > 0 AND KIND LIKE 'member'
+ 	</select>
+ 	<select id="getDetailBuy" parameterType="FaqDTO" resultMap="getListResult">
+ 		SELECT * FROM FAQ WHERE FAQNUM > 0 AND KIND LIKE 'buy'
+ 	</select>
+ 	<select id="getDetailRefund" parameterType="FaqDTO" resultMap="getListResult">
+ 		SELECT * FROM FAQ WHERE FAQNUM > 0 AND KIND LIKE 'refund'
  	</select>
  	
  	<resultMap type="FaqDTO" id="getListResult">
