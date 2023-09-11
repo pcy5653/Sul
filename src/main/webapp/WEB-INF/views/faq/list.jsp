@@ -13,10 +13,11 @@
 			<div class="main">
 				<h1 id="title" style="font-weight: 900;">FAQ</h1>
 				<ul>
-					<li class="faqKind"><a href="/faq/detail/operate" class="aKind" data-value="operate" name="kind">운영정책</a></li>
-					<li class="faqKind"><a href="/faq/detail/member" class="aKind" data-value="member" name="kind">계정</a></li>
-					<li class="faqKind"><a href="/faq/detail/buy" class="aKind" data-value="buy" name="kind">구매</a></li>
-					<li class="faqKind"><a href="/faq/detail/refund" class="aKind" data-value="refund" name="kind">환불</a></li>
+					<li class="faqKind"><a href="/faq/list" class="aKind">전체보기</a></li>
+					<li class="faqKind"><a href="/faq/detail/operate" class="aKind">운영정책</a></li>
+					<li class="faqKind"><a href="/faq/detail/member" class="aKind">계정</a></li>
+					<li class="faqKind"><a href="/faq/detail/buy" class="aKind">구매</a></li>
+					<li class="faqKind"><a href="/faq/detail/refund" class="aKind">환불</a></li>
 				</ul>
 				<p class="faqSub">자주 묻는 질문들을 먼저 확인해보세요!</p>
 				<table id="faqList">
@@ -34,6 +35,11 @@
 						<tr id="fqaCon"><td id="fcon">${dto.contents}</td></tr>
 					</c:forEach>
 				</table>
+				<div class="t_search">
+					<c:if test="${member.roleNum == 1}">	
+						<a class="btn btn-danger" href="./add">등록</a>
+					</c:if>
+				</div>
 			</div>
 			<div class="side">
 				<ul>
@@ -63,11 +69,7 @@
 				</ul>
 			</nav> -->
 
-			<div class="t_search">
-				<c:if test="${member.roleNum == 1}">	
-					<a class="btn btn-danger" href="./add">등록</a>
-				</c:if>
-			</div>
+			
 		</div>
     </section>
     

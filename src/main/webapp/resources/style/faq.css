@@ -1,22 +1,23 @@
 section{}
-section .wrap{}
-section .wrap .main{}
+section .wrap{display: flex;flex-direction: row-reverse;}
+section .wrap .main{width: 85%;}
 section .wrap .main #title{}
-section .wrap .main > ul{}
-section .wrap .main > ul > li{}
+section .wrap .main > ul{width: 85%;margin: 2rem auto 5rem;display: flex;}
+section .wrap .main > ul > li{text-align: center;width: calc(100% - 80%);}
 section .wrap .main > ul > li.faqKind{}
-section .wrap .main > ul > li.faqKind > a.aKind{}
-section .wrap .main .faqSub{}
+section .wrap .main > ul > li.faqKind > a.aKind{height: 3rem;display: inline-block;line-height: 3rem;font-size: 1.2rem;font-weight: 600;}
+section .wrap .main .faqSub{width: 85%;margin: 0 auto 2rem;font-size: 1.4rem;font-weight: 500;}
 section .wrap .main #faqList{}
-section .wrap .main #faqList > tr{}
-section .wrap .main #faqList > tr > td{}
-section .wrap .main #faqList > tr > td > input{}
-section .wrap .main #faqList > tr > td > a .faqQ{}
-section .wrap .main #faqList > tr#faqCon{}
-section .wrap .main #faqList > tr#faqCon > td#fcon{}
-section .wrap .side{}
-section .wrap .side > ul{}
-section .wrap .side > ul > li{}
-section .wrap .side > ul > li > a{}
+section .wrap .main #faqList > tbody > tr{}
+section .wrap .main #faqList > tbody > tr > td{text-align: left;padding-left: 2rem;}
+section .wrap .main #faqList > tbody > tr > td.listTitle{}
+section .wrap .main #faqList > tbody > tr > td > input{}
+section .wrap .main #faqList > tbody > tr > td > a .faqQ{}
+section .wrap .main #faqList > tbody > #faqCon{}
+section .wrap .main #faqList > tbody > #faqCon > #fcon{}
+section .wrap .side{width: calc(100% - 85%);}
+section .wrap .side > ul{height: 150px;text-align: center;margin-top: 6rem;}
+section .wrap .side > ul > li{height: calc(100% - 75px);}
+section .wrap .side > ul > li > a{display: block;width: 100%;height: 100%;line-height: 75px;}
 section .wrap .side > ul > li.notice{}
 section .wrap .side > ul > li.qna{}
