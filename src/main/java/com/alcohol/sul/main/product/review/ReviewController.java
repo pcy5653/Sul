@@ -56,12 +56,12 @@ public class ReviewController {
 		productDTO.setScore(result);
 		productService.setReviewStarUpdate(productDTO); 		
 		
-		return "redirect:./list";
+		return "redirect:./detail?productNum="+reviewDTO.getProductNum();
 	}
 	
 	@GetMapping("myReviewList")
 	public void getMyReviewList(ReviewDTO reviewDTO, PagerK pager, Model model,HttpSession session)throws Exception{
-		pager.setPerPage(20L);
+		pager.setPerPage(30L);
 		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
 		reviewDTO.setId(memberDTO.getId());
 		List<ReviewDTO> ar = reviewService.getMyReviewList(pager, reviewDTO);			
@@ -91,12 +91,14 @@ public class ReviewController {
 	@GetMapping(value = "reviewDelete")
 	public String setReviewDelete(ReviewDTO reviewDTO) throws Exception {
 		int result = reviewService.setReviewDelete(reviewDTO);
-		/*
-		 * ProductDTO productDTO = new ProductDTO();
-		 * productDTO.setProductNum(reviewDTO.getProductNum()); Double result2 =
-		 * reviewService.getReviewStarAvg(reviewDTO); productDTO.setScore(result2);
-		 * productService.setReviewStarUpdate(productDTO);
-		 */
+		ProductDTO productDTO = new ProductDTO();
+		productDTO.setProductNum(reviewDTO.getProductNum()); 
+		Double result2 = reviewService.getReviewStarAvg(reviewDTO); 
+		if(result2 == null) {
+			result2 = 0.0;
+		}
+		productDTO.setScore(result2);
+		productService.setReviewStarUpdate(productDTO);		
 		
 		return "redirect:../member/mypage";
 	}
