@@ -25,15 +25,14 @@
 					<c:forEach items="${list}" var="dto" varStatus="i">
 						<tr>
 							<td class="listTitle"  data-num="${dto.num}"name="num" >
-								<input type="hidden" value="${dto.num}"  name="ref" class="listRef">
 								<a href="#">
 									<span class="faqQ">Q.</span>
 									${dto.subject}
 								</a>
 							</td>
-							<td class="listBtn"><button id="underBtn">+</button></td>
+							<td class="listBtn"><button class="underBtn" data-index="${i.index}">+ index : ${i.index}</button></td>
 						</tr>
-						<tr id="faqCon"><td colspan="2" id="fcon">${dto.contents}</td></tr>
+						<tr class="faqCon" data-index="${i.index}"><td colspan="2" class="fcon">${dto.contents} index : ${i.index}</td></tr>
 					</c:forEach>
 				</table>
 				<div class="t_search">
@@ -78,10 +77,13 @@
     
 <c:import url="../temp/footer.jsp"></c:import>
 <script type="text/javascript">
-
-	$("#underBtn").click(function(){
-		$("#faqCon").toggle();
-		//$("#faqCon").css("display", "block");
-	})
+    $(document).ready(function() {
+		$(".underBtn").click(function() {
+			let btnIndex = $(this).data("index");
+        
+			let $faqCon = $(".faqCon[data-index='" + btnIndex + "']");
+			$faqCon.toggle();
+        
+		});
+	});
 </script>
-

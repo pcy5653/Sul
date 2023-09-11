@@ -14,8 +14,8 @@ section .wrap .main #faqList > tbody > tr > .listTitle{width:90%;}
 section .wrap .main #faqList > tbody > tr > .listBtn{width: calc(100% - 90%);padding: 0;text-align: center;}
 section .wrap .main #faqList > tbody > tr > td > input{}
 section .wrap .main #faqList > tbody > tr > td > a .faqQ{}
-section .wrap .main #faqList > tbody > #faqCon{display: none;}
-section .wrap .main #faqList > tbody > #faqCon > #fcon{background-color: aquamarine;}
+section .wrap .main #faqList > tbody > .faqCon{display: none;}
+section .wrap .main #faqList > tbody > .faqCon > .fcon{background-color: aquamarine;}
 section .wrap .side{width: calc(100% - 85%);}
 section .wrap .side > ul{height: 150px;text-align: center;margin-top: 6rem;}
 section .wrap .side > ul > li{height: calc(100% - 75px);}
