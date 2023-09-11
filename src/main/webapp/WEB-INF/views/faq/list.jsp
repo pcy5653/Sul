@@ -30,9 +30,9 @@
 									${dto.subject}
 								</a>
 							</td>
-							<td><button id="underBtn">+</button></td>
+							<td class="listBtn"><button id="underBtn">+</button></td>
 						</tr>
-						<tr id="fqaCon"><td id="fcon">${dto.contents}</td></tr>
+						<tr id="faqCon"><td colspan="2" id="fcon">${dto.contents}</td></tr>
 					</c:forEach>
 				</table>
 				<div class="t_search">
@@ -76,4 +76,11 @@
     
     
 <c:import url="../temp/footer.jsp"></c:import>
-<script src="/resources/js/faq/list.js"></script>
+<script type="text/javascript">
+
+	$("#underBtn").click(function(){
+		$("#faqCon").toggle();
+		//$("#faqCon").css("display", "block");
+	})
+</script>
+
