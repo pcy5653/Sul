@@ -39,7 +39,7 @@ public class OrderController {
 			ProductDTO productDTO = orderService.getProduct(orderProductDTO.getProductNum());
 			
 			if(orderProductDTO.getOrderCount() > productDTO.getStock()) {
-				String message = productDTO.getProductName() + " 상품의 재고가 부족합니다.\\n남은 수량 : " + productDTO.getStock();
+				String message = productDTO.getProductName() + " 상품의 재고가 부족합니다.\\n남은 수량 : " + productDTO.getStock() + "개";
 				model.addAttribute("message", message);
 				model.addAttribute("url", request.getHeader("Referer"));
 				return "commons/result";
@@ -50,6 +50,7 @@ public class OrderController {
 		
 		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
 		session.setAttribute("member", memberService.getMember(memberDTO.getId())); // 회원 정보 갱신
+		session.setAttribute("isBasket", request.getHeader("Referer").contains("basketList"));
 		session.setAttribute("orderProducts", orderProductsWrapper.getOrderProducts());
 		model.addAttribute("orderProducts", orderProductsWrapper.getOrderProducts());
 		
@@ -76,7 +77,7 @@ public class OrderController {
 	
 	@RequestMapping(value = "paymentSuccess", method = RequestMethod.POST, produces = "text/plain; charset=UTF-8")
 	@ResponseBody
-	public String paymentSuccess(@RequestBody OrderDTO orderDTO, HttpSession session) throws Exception {
+	public String paymentSuccess(@RequestBody OrderDTO orderDTO, HttpServletRequest request, HttpSession session) throws Exception {
 		@SuppressWarnings("unchecked")
 		List<OrderProductDTO> orderProducts = (List<OrderProductDTO>)session.getAttribute("orderProducts");
 		if(orderProducts == null) {
@@ -89,7 +90,7 @@ public class OrderController {
 		memberDTO = memberService.getMember(memberDTO.getId());
 		session.setAttribute("member", memberDTO); // 회원 정보 갱신
 		
-		return orderService.paymentSuccess(orderDTO, memberDTO);
+		return orderService.paymentSuccess(orderDTO, memberDTO, (boolean)session.getAttribute("isBasket"));
 	}
 	
 	@RequestMapping(value = "paymentComplete")

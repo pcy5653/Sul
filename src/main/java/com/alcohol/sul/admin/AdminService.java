@@ -57,4 +57,9 @@ public class AdminService {
 	        System.out.println(e.getCode());
 	      }
 	}
+	
+	
+	public List<SalesRevenueDTO> getSalesRevenue() {
+		return adminDAO.getSalesRevenue();
+	}
 }

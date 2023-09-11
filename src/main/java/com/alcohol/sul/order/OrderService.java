@@ -42,7 +42,7 @@ public class OrderService {
 	}
 	
 	@Transactional(rollbackFor = Exception.class)
-	public String paymentSuccess(OrderDTO orderDTO, MemberDTO memberDTO) throws Exception {
+	public String paymentSuccess(OrderDTO orderDTO, MemberDTO memberDTO, boolean isBasket) throws Exception {
 		if(orderDTO.getUsedPoint() > memberDTO.getPoint()) {
 			throw new OverUsablePointException("사용 가능 포인트 초과");
 		}
@@ -87,7 +87,7 @@ public class OrderService {
 			paymentDTO.setPayDate(curDate);
 			orderDTO.setPaymentDTO(paymentDTO);
 			
-			orderDAO.paymentSuccess(orderDTO);
+			orderDAO.paymentSuccess(orderDTO, isBasket);
 			
 			Map<String, Object> map = new HashMap<String, Object>();
 			map.put("member", memberDTO);
@@ -106,8 +106,6 @@ public class OrderService {
 			// - Gson -
 			Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").create();
 			return gson.toJson(map); // Map to JSON String
-			
-			// 장바구니 삭제...
 		}
 	}
 	

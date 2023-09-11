@@ -32,7 +32,7 @@
 			        <img src="${pageContext.request.contextPath}/resources/images/product/${dto.productName}.jpg"
 							onclick="location.href='${pageContext.request.contextPath}/product/detail?productNum=${dto.productNum}'">
 			        <div>
-			            <p class="name">${dto.productName}</p>
+			            <p class="name" onclick="location.href='${pageContext.request.contextPath}/product/detail?productNum=${dto.productNum}'">${dto.productName}</p>
 			            <p class="price"><fmt:formatNumber value="${dto.price}" pattern="#,###" />원</p>
 			            <p class="score">
 			                <img src="${pageContext.request.contextPath}/resources/images/product/star.png">
@@ -71,6 +71,5 @@
 		</div>
 	</div>
 	
-	<script type="text/javascript" src="/resources/js/khj/productList.js"></script>
 </body>
 </html>

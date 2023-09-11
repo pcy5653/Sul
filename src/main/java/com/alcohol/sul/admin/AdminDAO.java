@@ -29,4 +29,9 @@ public class AdminDAO {
 	public List<MemberDTO> getSmsCheckList(MemberDTO memberDTO) throws Exception{
 		return sqlSession.selectList(NAMESPACE+"getSmsCheckList", memberDTO);
 	}
+	
+	
+	public List<SalesRevenueDTO> getSalesRevenue() {
+		return sqlSession.selectList(NAMESPACE+"getSalesRevenue");
+	}
 }

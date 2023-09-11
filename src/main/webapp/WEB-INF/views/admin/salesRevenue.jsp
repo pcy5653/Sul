@@ -136,23 +136,12 @@
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
         <script type="text/javascript">
 	        function drawScoreDistributionChart(){
-	        	let test_data = new Array();
-	        	test_data.push(5000000);
-	        	test_data.push(15000000);
-	        	test_data.push(4000000);
-	        	test_data.push(7000000);
-	        	test_data.push(9000000);
-	        	test_data.push(21000000);
-	        	test_data.push(10000000);
-	        	test_data.push(11000000);
-	        	test_data.push(6000000);
-	        	test_data.push(6400000);
-	        	test_data.push(15000000);
-	        	test_data.push(7900000);
+	        	let salesRevenue = ${salesRevenue};
+				console.log(salesRevenue);
 	        	
 	        	let dataChart = [["월", "분포율", { role:"style" }, { role:"annotation" }]];
-	        	for(let i = 0; i < 12; i++){
-	        		dataChart.push([i + 1 + "월", test_data[i] / 10000, "#353535", test_data[i] / 10000]); // 위 형식에 알맞게 데이터 삽입
+	        	for(let i = 1; i <= 12; i++){
+	        		dataChart.push([i + "월", salesRevenue[i] / 10000, "#353535", salesRevenue[i] / 10000 + "만"]); // 위 형식에 알맞게 데이터 삽입
 	        	}
 	        	
 	        	let data = google.visualization.arrayToDataTable(dataChart);
@@ -160,7 +149,7 @@
 	        	let options = {
 	        		width:1100,
 					height:400, // 높이를 지정해주지 않으면 ticks로 지정한 레이블 중 일부 레이블이 잘린다.
-	        		bar:{ groupWidth:"60%" }, // 그래프 너비(적당하게 조절 - 어중간하게 작으면 { role:"annotation" }으로 설정한 값이 통일되지 않고, 뒤죽박죽 출력됨)
+	        		bar:{ groupWidth:"65%" }, // 그래프 너비(적당하게 조절 - 어중간하게 작으면 { role:"annotation" }으로 설정한 값이 통일되지 않고, 뒤죽박죽 출력됨)
 	        		annotations:{ textStyle:{ fontSize:11 } },
 	        		backgroundColor:"transparent",
 	        		legend:"none", // 범례 제거
@@ -168,7 +157,7 @@
 	        		
 	        		// 세로 축
 	        		vAxis:{
-						ticks:[500, 1000, 1500, 2000, 2500, 3000], // 원하는 단위 값들을 배열로 지정
+						ticks:[50, 100, 150, 200, 250, 300], // 원하는 단위 값들을 배열로 지정
 						format:'0만', // 레이블 형식을 'decimal'로 지정
 	        			
 	        			gridlines:{ color:"#d8d8d8" }, // 주 눈금선
@@ -184,7 +173,7 @@
 	        	let chart = new google.visualization.ColumnChart(document.getElementById("monthlyChart"));
 	        	chart.draw(view, options);
 	        }
-        	
+			
         	$(function(){
         		google.charts.load("current", { "packages":["corechart"] }); // Google Chart를 사용하기 위한 준비
         		google.charts.setOnLoadCallback(drawScoreDistributionChart); // 차트 생성

@@ -10,11 +10,7 @@
 <link rel="stylesheet" href="/resources/style/basic.css">
 <style>
 .wrap {width: 1000px; height:auto; margin-bottom: 200px; margin-top: 100px;}
-.tb{width: 1000px;	
-	text-align: center; 
-
-	
-	}
+.tb{width: 1000px;}
 .title {font-size:2.5rem; text-align: center;}
 .head{height: 50px; background-color: #f1f3f5; width: 1200px;}
 .body{
@@ -71,13 +67,13 @@ footer {margin-top:7rem;}
 
 	<section id="container" class="wrap">
 		
-		<div class="title" style="margin-right: 20px; margin-bottom: 50px;"> 
+		<div class="title" style="margin-right: 20px; margin-bottom: 50px;" onclick="location.href='${pageContext.request.contextPath}/notice/list'"> 
 			<img alt="" src="/resources/images/notice/notice.png" style="width: 50px;" height="50px;"> 공지사항
 		</div>
 	
 		<table class="tb">
 	
-		<thead class="head">
+		<thead class="head" style="text-align: center;">
 			<th width=10%>NO</th>
 			<th width=50%>제목</th>
 			<th width=15%>작성자</th>
@@ -88,11 +84,11 @@ footer {margin-top:7rem;}
 		<c:forEach items="${list}" var="d" varStatus="i">
 			
 			<tr class="body">
-				<td>${d.noticeNum}</td>
-				<td><a href="./detail?noticeNum=${d.noticeNum}" class="">${d.subject}</a></td>
-				<td>${d.name}</td>
-				<td>${d.createDate}</td>
-				<td>${d.hit}</td>
+				<td style="text-align: center;">${d.noticeNum}</td>
+				<td><a href="./detail?noticeNum=${d.noticeNum}" style="text-align: ;">${d.subject}</a></td>
+				<td style="text-align: center;">${d.name}</td>
+				<td style="text-align: center;">${d.createDate}</td>
+				<td style="text-align: center;">${d.hit}</td>
 			</tr>
 		</c:forEach>
 		</tbody>

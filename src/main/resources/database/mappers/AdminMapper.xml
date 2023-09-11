@@ -19,4 +19,54 @@
  	<update id="pointAdd" parameterType="MemberDTO">
  		UPDATE MEMBER SET POINT=#{point} WHERE ID=#{id}
  	</update>
+ 	
+ 	
+ 	<select id="getSalesRevenue" resultType="SalesRevenueDTO">
+ 		SELECT TO_CHAR(o.orderDate, 'YYYY-MM') AS month, SUM(p.price * op.orderCount) AS salesRevenue
+			FROM order_ o INNER JOIN orderProduct op
+				ON o.orderNum = op.orderNum INNER JOIN product p
+				ON op.productNum = p.productNum
+		WHERE o.orderDate >= TO_DATE('20230101', 'YYYYMMDD') AND op.isCanceled = 0
+		GROUP BY TO_CHAR(o.orderDate, 'YYYY-MM')
+		ORDER BY TO_CHAR(o.orderDate, 'YYYY-MM')
+ 	</select>
+ 	
+ 	<!-- 
+	 	<resultMap id="getSalesRevenueResult" type="OrderDTO">
+			<id column="orderNum" property="orderNum" />
+			<result column="id" property="id" />
+			<result column="total" property="total" />
+			<result column="orderFee" property="orderFee" />
+			<result column="orderComment" property="orderComment" />
+			<result column="usedPoint" property="usedPoint" />
+			<result column="orderDate" property="orderDate" />
+			
+			<collection property="orderProducts" javaType="List" ofType="OrderProductDTO">
+				<id column="orderProductNum" property="orderProductNum" />
+				<result column="orderNum" property="orderNum" />
+				<result column="productNum" property="productNum" />
+				<result column="orderCount" property="orderCount" />
+				<result column="isCanceled" property="isCanceled" />
+				
+				<association property="productDTO" javaType="ProductDTO">
+					<id column="productNum" property="productNum" />
+					<result column="productName" property="productName" />
+					<result column="price" property="price" />
+					<result column="kind" property="kind" />
+					<result column="proof" property="proof" />
+					<result column="contents" property="contents" />
+					<result column="stock" property="stock" />
+					<result column="carbonicAcid" property="carbonicAcid" />
+					<result column="taste" property="taste" />
+					<result column="base" property="base" />
+					<result column="score" property="score" />
+					<result column="savePoint" property="savePoint" />
+					<result column="productHit" property="productHit" />
+					<result column="capacity" property="capacity" />
+					<result column="expirydate" property="expiryDate" />
+					<result column="storagemethod" property="storageMethod" />
+				</association>
+			</collection>
+		</resultMap>
+	 -->
   </mapper>

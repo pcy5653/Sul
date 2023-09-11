@@ -66,6 +66,10 @@
 		UPDATE member SET point = point - #{usedPoint} WHERE id = #{id}
 	</update>
 	
+	<delete id="deleteBasket" parameterType="String">
+		DELETE FROM basket WHERE id = #{value}
+	</delete>
+	
 	<select id="getOrder" parameterType="Map" resultMap="getOrderResult">
 		SELECT *
 			FROM order_ o INNER JOIN orderProduct op

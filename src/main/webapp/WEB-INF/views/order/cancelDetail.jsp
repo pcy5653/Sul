@@ -33,10 +33,10 @@
 					<c:forEach items="${cancel.cancelInfos}" var="cancelInfo">
 						<c:set var="productAmount" value="${productAmount + (cancelInfo.orderProductDTO.productDTO.price * cancelInfo.orderProductDTO.orderCount)}" />
 						<div class="product">
-							<img src="../resources/images/product/${orderProduct.productDTO.productName}.jpg">
+							<img src="../resources/images/product/${cancelInfo.orderProductDTO.productDTO.productName}.jpg">
 							<div>
 								<p>${cancelInfo.orderProductDTO.productDTO.productName}</p>
-								<p>[${orderProduct.productDTO.capacity}ml]${orderProduct.productDTO.productName} ...</p>
+								<p>[${cancelInfo.orderProductDTO.productDTO.capacity}ml]${cancelInfo.orderProductDTO.productDTO.productName} ...</p>
 								<p>${cancelInfo.orderProductDTO.productDTO.price}원 / 수량 ${cancelInfo.orderProductDTO.orderCount}개</p>
 							</div>
 						</div>

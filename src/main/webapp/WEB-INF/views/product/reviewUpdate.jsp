@@ -15,7 +15,7 @@
 	
 	<form action="../product/reviewUpdate" method="post" enctype="multipart/form-data" id="frm">
 		<input type="hidden" name="reviewNum" value="${dto.reviewNum}">
-		<input type="hidden" name="produtNum" value="${dto.productNum}">
+		<input type="hidden" name="productNum" value="${dto.productNum}">
 		
 		<div class="mb-3">
 		 	 <label for="reviewContents" class="form-label">리뷰 내용</label>

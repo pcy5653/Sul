@@ -57,6 +57,8 @@
 			</div>
 			<div id="more">
 			</div>
+			<div id="dummy">
+			</div>
 		</div>
 		<div id="sideBar">
 			<div>
@@ -111,7 +113,7 @@
 						$("#more").html(button);
 					} else{
 						let button = '<span id="moreButton"><img src="../resources/images/firstReview.jpg"></span>'
-						$("#more").html(button);					
+						$("#dummy").html(button);					
 					}
 					if(isFirst){
 						let reviewTotal = $("#reviewTotal").val();
@@ -147,6 +149,7 @@
 		}
 	</script>
 	<script type="text/javascript">
+	
 	//수량 , 장바구니 버튼
 	
 	function getTotal(type){
