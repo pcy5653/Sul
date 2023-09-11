@@ -9,13 +9,17 @@ section .wrap .main > ul > li.faqKind > a.aKind{height: 3rem;display: inline-blo
 section .wrap .main .faqSub{width: 85%;margin: 0 auto 2rem;font-size: 1.4rem;font-weight: 500;}
 section .wrap .main #faqList{}
 section .wrap .main #faqList > tbody > tr{}
-section .wrap .main #faqList > tbody > tr > td{text-align: left;padding-left: 2rem;}
+section .wrap .main #faqList > tbody > tr > td{text-align: left;padding: 2rem;}
 section .wrap .main #faqList > tbody > tr > .listTitle{width:90%;}
 section .wrap .main #faqList > tbody > tr > .listBtn{width: calc(100% - 90%);padding: 0;text-align: center;}
 section .wrap .main #faqList > tbody > tr > td > input{}
 section .wrap .main #faqList > tbody > tr > td > a .faqQ{}
 section .wrap .main #faqList > tbody > .faqCon{display: none;}
-section .wrap .main #faqList > tbody > .faqCon > .fcon{background-color: aquamarine;}
+section .wrap .main #faqList > tbody > .faqCon > .fcon{}
+section .wrap .main #faqList > tbody > .faqCon > .fcon .faqTBtn{display:flex;justify-content:flex-end;}
+section .wrap .main #faqList > tbody > .faqCon > .fcon .faqTBtn .c1{}
+section .wrap .main #faqList > tbody > .faqCon > .fcon .faqTBtn .upBtn{}
+section .wrap .main #faqList > tbody > .faqCon > .fcon .faqTBtn .deBtn{}
 section .wrap .side{width: calc(100% - 85%);}
 section .wrap .side > ul{height: 150px;text-align: center;margin-top: 6rem;}
 section .wrap .side > ul > li{height: calc(100% - 75px);}
@@ -23,7 +27,3 @@ section .wrap .side > ul > li > a{display: block;width: 100%;height: 100%;line-h
 section .wrap .side > ul > li.notice{margin-bottom: 1rem;}
 section .wrap .side > ul > li.qna{}
 
-.active {
-    /*주조색 보조색이용*/
-    background-color:#fff !important;
-}

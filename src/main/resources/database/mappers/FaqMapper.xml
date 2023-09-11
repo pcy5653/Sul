@@ -22,6 +22,10 @@
  		SELECT * FROM FAQ WHERE FAQNUM > 0 AND KIND LIKE 'refund'
  	</select>
  	
+ 	<select id="getDetail" parameterType="FaqDTO" resultMap="getListResult">
+ 		SELECT * FROM FAQ WHERE FAQNUM = #{num}
+ 	</select>
+ 	
  	<resultMap type="FaqDTO" id="getListResult">
  		<id column = "FAQNUM" property="num"/>
  		<result column="NAME" property="name"/>

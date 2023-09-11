@@ -49,8 +49,7 @@ public class FaqService implements BoardService {
 
 	@Override
 	public BoardDTO getDetail(BoardDTO boardDTO) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return faqDAO.getDetail(boardDTO);
 	}
 
 	@Override

@@ -1,4 +1,4 @@
-//const frm = document.getElementById('frm');
+const frm = document.getElementById('frm');
 const c1 = document.getElementsByClassName('c1');
 const fileImg = document.getElementsByClassName('fileImg')
 const role = document.getElementById('role');

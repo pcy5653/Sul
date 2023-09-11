@@ -30,9 +30,24 @@
 									${dto.subject}
 								</a>
 							</td>
-							<td class="listBtn"><button class="underBtn" data-index="${i.index}">+ index : ${i.index}</button></td>
+							<td class="listBtn"><button class="underBtn" data-index="${i.index}">+</button></td>
 						</tr>
-						<tr class="faqCon" data-index="${i.index}"><td colspan="2" class="fcon">${dto.contents} index : ${i.index}</td></tr>
+						<tr class="faqCon" data-index="${i.index}">
+							<td colspan="2" class="fcon">
+								${dto.contents} <br>
+								<div class="faqTBtn">
+									<form class="frm" action="">
+										<input type="text" class="faqIn" name="num" value="${dto.num}">
+									</form>
+									<!-- 입력 form으로 method GET -->
+									<button class="c1 upBtn" data-url="faq/update">수정</button>
+						
+									<!-- method POST -->
+									<input type="hidden" data-url="faq/delete" data-delete-name="name" data-delete-num="${member.id}">
+									<button class="c1 deBtn" data-url="faq/delete" data-delete-name="num" data-delete-num="${dto.num}">삭제</button>
+								</div>
+							</td>
+						</tr>
 					</c:forEach>
 				</table>
 				<div class="t_search">
@@ -76,6 +91,7 @@
     
     
 <c:import url="../temp/footer.jsp"></c:import>
+<script src="/resources/js/faq/faq.js"></script>
 <script type="text/javascript">
     $(document).ready(function() {
 		$(".underBtn").click(function() {

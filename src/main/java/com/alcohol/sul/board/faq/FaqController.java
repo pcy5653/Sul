@@ -93,7 +93,7 @@ public class FaqController {
 		faqDTO = (FaqDTO)faqService.getDetail(faqDTO);
 		model.addAttribute("dto", faqDTO);
 		
-		return "/qna/update";
+		return "/faq/update";
 	}
 	@RequestMapping(value = "update", method = RequestMethod.POST)
 	public String setUpdate(FaqDTO faqDTO, HttpSession session)throws Exception{
