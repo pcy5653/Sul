@@ -138,7 +138,9 @@ footer {
 #pro_wrap .pro_div{width: 80%;margin: 0px auto;}
 #pro_wrap .pro_div .pro_top{}
 #pro_wrap .pro_div .pro_btm{}
-#pro_wrap .pro_div .pro_top .pro_text{display:flex;justify-content:space-between;align-items:center;margin:1.3rem 3.5rem 1.3rem 5rem;}
+#pro_wrap .pro_div .pro_top .pro_text{display:flex;justify-content:space-between;align-items:center;}
+#pro_wrap .best_div .best_top .best_text{margin:1.3rem 3.5rem 1.3rem 5.3rem;}
+#pro_wrap .pick_div .pick_top .pick_text{margin:1.3rem 3.5rem 1.3rem 5.7rem;}
 #pro_wrap .pro_div .pro_top .pro_text .pro_title{position: relative; text-align:left;padding-left: 0.5rem;}
 #pro_wrap .pro_div .pro_top .pro_text .pro_title::before{
 	display: inline-block; content:""; width: 50px; height:50px; position: absolute; left:-50px; top:5px;

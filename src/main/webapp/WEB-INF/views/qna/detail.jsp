@@ -22,6 +22,7 @@
 	<section>
 		<div class ="wrap">
 			<input type="hidden" value="${member.roleNum}" id="role" name="roleNum">
+			<input type="hidden" id="detailNum" value="${dto.num}" data-step="${dto.step}">
 			<h1 id="title">상세 문의</h1>
 			<!-- files!=null이 아니라면 -->
 			<c:if test="${files!=null}">

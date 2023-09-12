@@ -48,3 +48,13 @@ for(c of c1){
         frm.submit();
     });
 }
+
+
+// 2. title 명 변경하기
+console.log($("#detailNum").attr("data-step"));
+
+if($("#detailNum").attr("data-step") == 1){
+    $("#title").html("답변 상세 페이지")
+}else if($("#detailNum").attr("data-step") == 0){
+    $("#title").html("문의 상세 페이지")
+}
