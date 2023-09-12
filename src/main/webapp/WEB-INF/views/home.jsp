@@ -286,7 +286,6 @@
 </main>
 <c:import url="./temp/footer.jsp"></c:import>
 <script src="/resources/js/main.js"></script>
-<script type="text/javascript" src="/resources/js/khj/productList.js"></script>
 </body>
 
 </html>
