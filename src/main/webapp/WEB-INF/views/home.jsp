@@ -113,17 +113,16 @@
 							<img src="/resources/images/product/편백숲 산소막걸리 딸기 스파클링.jpg" alt="편백숲 산소막걸리 딸기 스파클링 이미지">
 						</div>
 						<div class="img_data">
-							<p class="i_name">편백숲 산소막걸리 딸기 스파클링</p>
+							<p class="i_name">${p46.productName}</p>
 							<div class="i_price">
-								<p class="cost">15,000<span class="won">원</span></p>
+								<p class="cost">${p46.price}<span class="won">원</span></p>
 								<p class="i_score">
-									<span class="score">4.9</span>
-									<span class="review_total">리뷰 82</span>
+									<span class="score">${p46.score}</span>
+									<span class="review_total">리뷰 ${p46r}개</span>
 								</p>
 							</div>
 							<div class="i_hash">
-								<p>#딸기맛</p>
-								<p>#탄산가득</p>
+								<p>${p46.contents}</p>
 							</div>
 						</div>
 					</a></li>
@@ -132,17 +131,16 @@
 							<img src="/resources/images/product/호호.jpg" alt="호호 이미지">
 						</div>
 						<div class="img_data">
-							<p class="i_name">호호</p>
+							<p class="i_name">${p48.productName}</p>
 							<div class="i_price">
-								<p class="cost">15,000<span class="won">원</span></p>
+								<p class="cost">${p48.price}<span class="won">원</span></p>
 								<p class="i_score">
-									<span class="score">4.9</span>
-									<span class="review_total">리뷰 82</span>
+									<span class="score">${p48.score}</span>
+									<span class="review_total">리뷰 ${p48r}개</span>
 								</p>
 							</div>
 							<div class="i_hash">
-								<p>#호박죽 같은 부드러움</p>
-								<p>#은은한 단맛</p>
+								<p>${p48.contents}</p>
 							</div>
 						</div>
 					</a></li>
@@ -151,17 +149,16 @@
 							<img src="/resources/images/product/우주멜론미 X 3병.jpg" alt="우주멜론미 X 3병 이미지">
 						</div>
 						<div class="img_data">
-							<p class="i_name">우주멜론미 X 3병</p>
+							<p class="i_name">${p47.productName}</p>
 							<div class="i_price">
-								<p class="cost">19,200<span class="won">원</span></p>
+								<p class="cost">${p47.price}<span class="won">원</span></p>
 								<p class="i_score">
-									<span class="score">4.9</span>
-									<span class="review_total">리뷰 82</span>
+									<span class="score">${p47.score}</span>
+									<span class="review_total">리뷰 ${p47r}개</span>
 								</p>
 							</div>
 							<div class="i_hash">
-								<p>#병째로 들이켜고 싶은</p>
-								<p>#청량감 넘치는 스파클링 막걸리</p>
+								<p>${p47.contents}</p>
 							</div>
 						</div>
 					</a></li>
@@ -170,17 +167,16 @@
 							<img src="/resources/images/product/별산 오디 스파클링 막걸리 X 3병.jpg" alt="별산 오디 스파클링 막걸리 X 3병 이미지">
 						</div>
 						<div class="img_data">
-							<p class="i_name">별산 오디 스파클링 막걸리 X 3병</p>
+							<p class="i_name">${p49.productName}</p>
 							<div class="i_price">
-								<p class="cost">39,000<span class="won">원</span></p>
+								<p class="cost">${p49.price}<span class="won">원</span></p>
 								<p class="i_score">
-									<span class="score">4.9</span>
-									<span class="review_total">리뷰 82</span>
+									<span class="score">${p49.score}</span>
+									<span class="review_total">리뷰 ${p49r}개</span>
 								</p>
 							</div>
 							<div class="i_hash">
-								<p>#오디 알이 입 안에서 톡톡 터지듯</p>
-								<p>#청량감 넘치는 스파클링 막걸리</p>
+								<p>${p49.contents}</p>
 							</div>
 						</div>
 					</a></li>
@@ -207,17 +203,16 @@
 							<img src="/resources/images/product/밀담 52.jpg" alt="밀담 52 이미지">
 						</div>
 						<div class="img_data">
-							<p class="i_name">밀담 52</p>
+							<p class="i_name">${p72.productName}</p>
 							<div class="i_price">
-								<p class="cost">23,400<span class="won">원</span></p>
+								<p class="cost">${p72.price}<span class="won">원</span></p>
 								<p class="i_score">
-									<span class="score">4.9</span>
-									<span class="review_total">리뷰 82</span>
+									<span class="score">${p72.score}</span>
+									<span class="review_total">리뷰 ${p72r}개</span>
 								</p>
 							</div>
 							<div class="i_hash">
-								<p>#한국의 럼주</p>
-								<p>#달콤하고 향긋한 소주</p>
+								<p>${p72.contents}</p>
 							</div>
 						</div>
 					</a></li>
@@ -226,17 +221,16 @@
 							<img src="/resources/images/product/크라테 산머루 미디엄 드라이.jpg" alt="크라테 산머루 미디엄 드라이 이미지">
 						</div>
 						<div class="img_data">
-							<p class="i_name">크라테 산머루 미디엄 드라이</p>
+							<p class="i_name">${p66.productName}</p>
 							<div class="i_price">
-								<p class="cost">69,000<span class="won">원</span></p>
+								<p class="cost">${p66.price}<span class="won">원</span></p>
 								<p class="i_score">
-									<span class="score">4.9</span>
-									<span class="review_total">리뷰 82</span>
+									<span class="score">${p66.score}</span>
+									<span class="review_total">리뷰 ${p66r}개</span>
 								</p>
 							</div>
 							<div class="i_hash">
-								<p>#유기농 산머루</p>
-								<p>#미디엄 드라이 레드와인</p>
+								<p>${p66.contents}</p>
 							</div>
 						</div>
 					</a></li>
@@ -245,17 +239,16 @@
 							<img src="/resources/images/product/추사 블루 스위트.jpg" alt="추사 블루 스위트 이미지">
 						</div>
 						<div class="img_data">
-							<p class="i_name">추사 블루 스위트</p>
+							<p class="i_name">${p63.productName}</p>
 							<div class="i_price">
-								<p class="cost">22,000<span class="won">원</span></p>
+								<p class="cost">${p63.price}<span class="won">원</span></p>
 								<p class="i_score">
-									<span class="score">4.9</span>
-									<span class="review_total">리뷰 82</span>
+									<span class="score">${p63.score}</span>
+									<span class="review_total">리뷰 ${p63r}개</span>
 								</p>
 							</div>
 							<div class="i_hash">
-								<p>#블루베리로 만든 와인</p>
-								<p>#주스같이 달콤</p>
+								<p>${p63.contents}</p>
 							</div>
 						</div>
 					</a></li>
@@ -264,17 +257,16 @@
 							<img src="/resources/images/product/삼양춘 탁주.jpg" alt="삼양춘 탁주 이미지">
 						</div>
 						<div class="img_data">
-							<p class="i_name">삼양춘 탁주</p>
+							<p class="i_name">${p45.productName}</p>
 							<div class="i_price">
-								<p class="cost">12,800<span class="won">원</span></p>
+								<p class="cost">${p45.price}<span class="won">원</span></p>
 								<p class="i_score">
-									<span class="score">4.9</span>
-									<span class="review_total">리뷰 82</span>
+									<span class="score">${p45.score}</span>
+									<span class="review_total">리뷰 ${p45r}개</span>
 								</p>
 							</div>
 							<div class="i_hash">
-								<p>#맛 밸런스 최강</p>
-								<p>#고급술에 붙는 '춘'</p>
+								<p>${p45.contents}</p>
 							</div>
 						</div>
 					</a></li>
