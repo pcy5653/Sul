@@ -92,6 +92,6 @@ background-color: rgba(255,255, 255,0) !important;}
 		</div>
 		</c:if>
 	</div>
-	
+<c:import url="../temp/footer.jsp"></c:import>	
 </body>
 </html>
