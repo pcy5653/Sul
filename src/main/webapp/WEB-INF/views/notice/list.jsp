@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="/resources/style/reset.css">
 <link rel="stylesheet" href="/resources/style/basic.css">
 <style>
-.wrap {width: 1000px; height:auto; margin-bottom: 200px; margin-top: 100px;}
+.wrap {width: 1000px; height:auto; margin-bottom: 100px; margin-top: 50px;}
 .tb{width: 1000px;}
 .title {font-size:2.5rem; text-align: center;}
 .head{height: 50px; background-color: #f1f3f5; width: 1200px;}
@@ -27,7 +27,7 @@
 
 /* header.css */
 header {  
-	position: fixed;
+	position: relative;
   	top: 0;
   	left: 0;
   	right: 0;}
@@ -52,7 +52,7 @@ footer {margin-top:7rem;}
                 <c:if test="${not empty member}">
                 <li class="not_empty_Basket"><a href="/product/basketList">
             		<img alt="" src="../resources/images/basket/cart.png" style="width: 30px; height: 30px;"></a></li>
-            	<li class="notice"><a href="/notice/list">공지사항</a></li>
+            	<li class="notice"><a href="/notice/list" >공지사항</a></li>
                 <li class="qna"><a href="/qna/list">1:1문의</a></li>	
 	      		<li class="login"><a href="/member/logout">로그아웃</a></li>
 	      		<li class="join"><a href="/member/mypage">mypage</a></li>
@@ -134,7 +134,7 @@ footer {margin-top:7rem;}
 		</c:if>
 	 </nav>
 </section>
-</div>
+
 <c:import url="../temp/footer.jsp"></c:import>
 </body>
 </html>

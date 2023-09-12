@@ -22,7 +22,8 @@ header {
 	position: fixed;
   	top: 0;
   	left: 0;
-  	right: 0;}
+  	right: 0;
+  	}
 
 /* footer.css */
 footer {margin-top:7rem;}
