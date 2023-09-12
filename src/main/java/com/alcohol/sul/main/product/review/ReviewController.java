@@ -61,11 +61,12 @@ public class ReviewController {
 	
 	@GetMapping("myReviewList")
 	public void getMyReviewList(ReviewDTO reviewDTO, PagerK pager, Model model,HttpSession session)throws Exception{
-		pager.setPerPage(30L);
+		pager.setPerPage(5L);
 		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
 		reviewDTO.setId(memberDTO.getId());
-		List<ReviewDTO> ar = reviewService.getMyReviewList(pager, reviewDTO);			
+		List<ReviewDTO> ar = reviewService.getMyReviewList(pager, reviewDTO);
 		model.addAttribute("myReviewList", ar);
+		model.addAttribute("pager", pager);
 	}
 	
 	//form으로 이동

@@ -15,7 +15,9 @@ $("#orderListBtn").click(function(){
         url:"../order/list",
         dataType:'html',
         success:function(data){
-            $("#page").html(data)
+            $("#more").html("");
+            $("#before").html("");
+            $("#page").html(data);
         }
     })
 });
@@ -39,26 +41,78 @@ $("#infoBtn").click(function(){
         url:"/member/info",
         dataType:'html',
         success:function(data){
+            $("#more").html("");
+            $("#before").html("");
             $("#page").html(data)
         }
     })
 })
-
-//작성리뷰
+let totalPage = 0;
+let pageNum=1;
+//작성리뷰//////////////////////////////////////////////////////////////////////
 $("#reviewBtn").click(function(){
     
-    
+    pageNum=1;
+    $("#before").html("")
     $.ajax({
         type:"get",
-        url:"/product/myReviewList",    
-        dataType:'html',
+        url:"/product/myReviewList",
+        data:{
+            page:pageNum
+        },
         success:function(data){
-            $("#page").html(data)
+            $("#page").html(data);
+            totalPage = $('#outerWrap').attr('data-totalPage')
+            let btn5 = '<button id="moreButton" class="btn btn-success">다음5개('+pageNum+'/'+totalPage+')</button>';
+            let btn4 = '<button id="lastButton" class="btn btn-danger">마지막페이지('+pageNum+'/'+totalPage+')</button>';
+            if(pageNum<totalPage){
+                $('#more').html(btn5);
+            }else{
+                $('#more').html(btn4);
+            }
         }
     })
 })
+function myReviewList(page){
+    $.ajax({
+        type:"get",
+        url:"/product/myReviewList",
+        data:{
+            page:page
+        },
+        success:function(data){
+            $("#page").html(data);
+            totalPage = $('#outerWrap').attr('data-totalPage')
+            let btn5 = '<button id="moreButton" class="btn btn-success">다음5개('+pageNum+'/'+totalPage+')</button>';
+            let btn4 = '<button id="lastButton" class="btn btn-danger">마지막페이지('+pageNum+'/'+totalPage+')</button>';
+            let btn3 = '<button id="beforeButton" class="btn btn-warning">이전5개('+pageNum+'/'+totalPage+')</button>';
+            if(pageNum<totalPage){
+                $('#more').html(btn5);
+            }else{
+                $('#more').html(btn4);
+            }
+            if(pageNum!=1){
+                $('#before').html(btn3);
+            }else{
+                $('#before').html("");
+            }
+        }
+    })
+}
 
+$("#before").on("click","#beforeButton",function(){
+    pageNum--;
+    myReviewList(pageNum)
+})
 
+$("#more").on("click","#moreButton",function(){
+    if(pageNum>=totalPage){
+        return
+    }
+    pageNum++;
+    myReviewList(pageNum)
+});
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
 $(document).on("click","#updateBtn",function(){
     $.ajax({
         type:"post",
