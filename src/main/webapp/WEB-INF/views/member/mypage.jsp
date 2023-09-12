@@ -18,6 +18,7 @@
   
   
   <link href="/resources/css/member/style.css" rel="stylesheet" />
+  <link href="/resources/css/member/mypage.css" rel="stylesheet" />
   <link href="/resources/css/order/common.css" rel="stylesheet"/>
 
 
