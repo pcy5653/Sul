@@ -6,7 +6,7 @@
   <mapper namespace="com.alcohol.sul.board.faq.FaqDAO">
  	
  	<select id="getList" parameterType="FaqDTO" resultMap="getListResult">
- 		SELECT * FROM FAQ
+ 		SELECT * FROM FAQ ORDER BY FAQNUM
  	</select>
  	
  	<select id="getDetailOperate" parameterType="FaqDTO" resultMap="getListResult">

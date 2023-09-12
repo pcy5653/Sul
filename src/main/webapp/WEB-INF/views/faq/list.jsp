@@ -40,11 +40,11 @@
 										<input type="text" class="faqIn" name="num" value="${dto.num}">
 									</form>
 									<!-- 입력 form으로 method GET -->
-									<button class="c1 upBtn" data-url="/faq/update" data-form-id="form1">수정</button>
+									<button class="c1 upBtn" data-url="/faq/update" data-form-id="form1" data-num="${dto.num}">수정</button>
 						
 									<!-- method POST -->
 									<input type="hidden" data-url="/faq/delete" data-delete-name="name" data-delete-num="${member.id}">
-									<button class="c1 deBtn" data-url="/faq/delete" data-form-id="form1" data-delete-name="num" data-delete-num="${dto.num}">삭제</button>
+									<button class="c1 deBtn" data-url="/faq/delete" data-form-id="form1" data-delete-name="num" data-num="${dto.num}">삭제</button>
 								</div>
 							</td>
 						</tr>
@@ -91,7 +91,7 @@
     
     
 <c:import url="../temp/footer.jsp"></c:import>
-<script src="/resources/js/faq/faq.js"></script>
+<script src="/resources/js/faq.js"></script>
 <script type="text/javascript">
     $(document).ready(function() {
 		$(".underBtn").click(function() {
