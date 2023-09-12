@@ -36,7 +36,7 @@
 			<mapping path="/member/mypage"/>
 			<mapping path="/member/info"/>
 			<mapping path="/admin/*"/>
-			
+			<mapping path="/product/basketList"/>
 			<mapping path="/order/**"/>
 			<beans:bean class="com.alcohol.sul.interceptors.LoginInterceptor"></beans:bean>
 		</interceptor>

@@ -155,7 +155,7 @@ footer {margin-top:7rem;}
                                 <div class="basketStock" style="width:130px; height:100px; float:left; margin-top: 30px; margin-left: 60px;">
                                     <div class="amount">
                                         <button type="button" class="minus">-</button>
-                                        <input type="number" class="numBox" pattern="\d*" maxlength="3" value="${basketList.productCount}" style="width: 40px; text-align: right;"readonly="readonly">
+                                        <input type="number" class="numBox" pattern="\d*" maxlength="3" value="${basketList.productCount}" style="width: 40px; text-align: right; border-radius:50px; border:0.5px solid #e0e0e0; "readonly="readonly">
                                         <button type="button" class="plus">+</button>
                                     </div>
                                     <br>
