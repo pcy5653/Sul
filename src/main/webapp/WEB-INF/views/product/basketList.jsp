@@ -22,7 +22,8 @@ header {
 	position: fixed;
   	top: 0;
   	left: 0;
-  	right: 0;}
+  	right: 0;
+  	}
 
 /* footer.css */
 footer {margin-top:7rem;}
@@ -55,7 +56,7 @@ footer {margin-top:7rem;}
         </header>
 <!-- 장바구니 상품 없을 때 -->
 <c:if test="${empty basketList}">    
-   <div style="text-align: center; margin-top: 130px; margin-bottom: 90px;" class="above">
+   <div style="text-align: center; /* margin-top: 150px; margin-bottom: 90px; margin-left: 450px; */ margin: auto; margin-top: 200px;'" class="above">
        <img src="/resources/images/basket/cartList.png" style="width: 32px; height: 32px; ">
          <div style="font-size: 1.5em; margin-top: 25px;">장바구니가 비었습니다.</div><br>
              <a href="./list" class="btn">쇼핑하러 가기</a>
@@ -155,7 +156,7 @@ footer {margin-top:7rem;}
                                 <div class="basketStock" style="width:130px; height:100px; float:left; margin-top: 30px; margin-left: 60px;">
                                     <div class="amount">
                                         <button type="button" class="minus">-</button>
-                                        <input type="number" class="numBox" pattern="\d*" maxlength="3" value="${basketList.productCount}" style="width: 40px; text-align: right;"readonly="readonly">
+                                        <input type="number" class="numBox" pattern="\d*" maxlength="3" value="${basketList.productCount}" style="width: 40px; text-align: right; border-radius:50px; border:0.5px solid #e0e0e0; "readonly="readonly">
                                         <button type="button" class="plus">+</button>
                                     </div>
                                     <br>

@@ -6,6 +6,17 @@
 <head>
 <meta charset="UTF-8">
 <c:import url="../temp/bootStrap.jsp"></c:import>
+<style>
+/* header.css */
+.viewport {}
+.headerWrap {
+    position: relative !important; top:0px !important;
+    background-color: rgba(255,255, 255,0) !important;
+}
+header {position: absolute !important;left:0px !important; top:0px !important;
+background-color: rgba(255,255, 255,0) !important;}
+
+</style>
 </head>
 <body>
 	<c:import url="../temp/header.jsp"></c:import>
@@ -25,7 +36,7 @@
 
 		
 		<div class="mb-3">
-				<h4>별점</h4>
+				<h4>평점</h4>
 				<select name="reviewStar">
 					<option value="5">★★★★★</option>
 					<option value="4">★★★★</option>

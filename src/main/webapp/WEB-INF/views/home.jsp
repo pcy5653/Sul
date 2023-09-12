@@ -85,7 +85,7 @@
 	</section>
 	<section id="search_wrap">
 		<div id="search">
-			<p id="searchTitle">무슨 술을 마실지 고민되시나요?</p>
+			<p id="searchTitle">무슨 <span>술</span>을 마실지 고민되시나요?</p>
 			<form id="searchFrm" action="${pageContext.request.contextPath}/product/list" method="get">
 				<select name="kind">
 					<option value="name">이름</option>
@@ -108,79 +108,79 @@
 			</div>
 			<div class="best_btm pro_btm">
 				<ul>
-					<li><a href="#" class="best pro">
+					<li><a href="/product/detail?productNum=46" class="best pro">
 						<div class="best_img pro_img">
-							<img src="/resources/images/main/p1.jpg" alt="혼디주 이미지">
+							<img src="/resources/images/product/편백숲 산소막걸리 딸기 스파클링.jpg" alt="편백숲 산소막걸리 딸기 스파클링 이미지">
 						</div>
 						<div class="img_data">
-							<p class="i_name">혼디주</p>
+							<p class="i_name">편백숲 산소막걸리 딸기 스파클링</p>
 							<div class="i_price">
-								<p class="cost">7,200<span class="won">원</span></p>
+								<p class="cost">15,000<span class="won">원</span></p>
 								<p class="i_score">
 									<span class="score">4.9</span>
 									<span class="review_total">리뷰 82</span>
 								</p>
 							</div>
 							<div class="i_hash">
-								<p>#제주 감귤주</p>
-								<p>#새콤달콤에 구수함을 더한</p>
+								<p>#딸기맛</p>
+								<p>#탄산가득</p>
 							</div>
 						</div>
 					</a></li>
-					<li><a href="#" class="best pro">
+					<li><a href="/product/detail?productNum=48" class="best pro">
 						<div class="best_img pro_img">
-							<img src="/resources/images/main/p2.jpg" alt="온지 몬 이미지">
+							<img src="/resources/images/product/호호.jpg" alt="호호 이미지">
 						</div>
 						<div class="img_data">
-							<p class="i_name">시작을 여는 술들</p>
+							<p class="i_name">호호</p>
 							<div class="i_price">
-								<p class="cost">22,000<span class="won">원</span></p>
+								<p class="cost">15,000<span class="won">원</span></p>
 								<p class="i_score">
 									<span class="score">4.9</span>
 									<span class="review_total">리뷰 82</span>
 								</p>
 							</div>
 							<div class="i_hash">
-								<p>#MD 최애술</p>
-								<p>#다들 맛 봤으면 좋겠다</p>
+								<p>#호박죽 같은 부드러움</p>
+								<p>#은은한 단맛</p>
 							</div>
 						</div>
 					</a></li>
-					<li><a href="#" class="best pro">
+					<li><a href="/product/detail?productNum=47" class="best pro">
 						<div class="best_img pro_img">
-							<img src="/resources/images/main/p3.jpg" alt="모든날에 이미지">
+							<img src="/resources/images/product/우주멜론미 X 3병.jpg" alt="우주멜론미 X 3병 이미지">
 						</div>
 						<div class="img_data">
-							<p class="i_name">모든날에</p>
+							<p class="i_name">우주멜론미 X 3병</p>
 							<div class="i_price">
-								<p class="cost">22,000<span class="won">원</span></p>
+								<p class="cost">19,200<span class="won">원</span></p>
 								<p class="i_score">
 									<span class="score">4.9</span>
 									<span class="review_total">리뷰 82</span>
 								</p>
 							</div>
 							<div class="i_hash">
-								<p>#새콤쌉쌀</p>
-								<p>#모든날에 잘 어울려요</p>
+								<p>#병째로 들이켜고 싶은</p>
+								<p>#청량감 넘치는 스파클링 막걸리</p>
 							</div>
 						</div>
 					</a></li>
-					<li><a href="#" class="best pro">
+					<li><a href="/product/detail?productNum=49" class="best pro">
 						<div class="best_img pro_img">
-							<img src="/resources/images/main/p4.jpg" alt="청비성 16% 이미지">
+							<img src="/resources/images/product/별산 오디 스파클링 막걸리 X 3병.jpg" alt="별산 오디 스파클링 막걸리 X 3병 이미지">
 						</div>
 						<div class="img_data">
-							<p class="i_name">청비성 16%</p>
+							<p class="i_name">별산 오디 스파클링 막걸리 X 3병</p>
 							<div class="i_price">
-								<p class="cost">22,000<span class="won">원</span></p>
+								<p class="cost">39,000<span class="won">원</span></p>
 								<p class="i_score">
 									<span class="score">4.9</span>
 									<span class="review_total">리뷰 82</span>
 								</p>
 							</div>
 							<div class="i_hash">
-								<p>#고소한 쌀 튀밥 향</p>
-								<p>#은은한 산미</p>
+								<p>#오디 알이 입 안에서 톡톡 터지듯</p>
+								<p>#청량감 넘치는 스파클링 막걸리</p>
 							</div>
 						</div>
 					</a></li>
@@ -202,50 +202,50 @@
 			<div class="pick_btm pro_btm">
 				<ul>
 					<li>
-						<a href="#" class="pick pro">
+						<a href="/product/detail?productNum=72" class="pick pro">
 						<div class="pick_img pro_img">
-							<img src="/resources/images/main/b1.jpg" alt="담솔 이미지">
+							<img src="/resources/images/product/밀담 52.jpg" alt="밀담 52 이미지">
 						</div>
 						<div class="img_data">
-							<p class="i_name">담솔</p>
+							<p class="i_name">밀담 52</p>
 							<div class="i_price">
-								<p class="cost">22,000<span class="won">원</span></p>
+								<p class="cost">23,400<span class="won">원</span></p>
 								<p class="i_score">
 									<span class="score">4.9</span>
 									<span class="review_total">리뷰 82</span>
 								</p>
 							</div>
 							<div class="i_hash">
-								<p>#코로 시원하게 들어오는 솔향</p>
-								<p>#마시는 피톤치드</p>
+								<p>#한국의 럼주</p>
+								<p>#달콤하고 향긋한 소주</p>
 							</div>
 						</div>
 					</a></li>
-					<li><a href="#" class="pick pro">
+					<li><a href="/product/detail?productNum=66" class="pick pro">
 						<div class="pick_img pro_img">
-							<img src="/resources/images/main/b2.jpg" alt="솔섬 17% 이미지">
+							<img src="/resources/images/product/크라테 산머루 미디엄 드라이.jpg" alt="크라테 산머루 미디엄 드라이 이미지">
 						</div>
 						<div class="img_data">
-							<p class="i_name">솔섬 17%</p>
+							<p class="i_name">크라테 산머루 미디엄 드라이</p>
 							<div class="i_price">
-								<p class="cost">22,000<span class="won">원</span></p>
+								<p class="cost">69,000<span class="won">원</span></p>
 								<p class="i_score">
 									<span class="score">4.9</span>
 									<span class="review_total">리뷰 82</span>
 								</p>
 							</div>
 							<div class="i_hash">
-								<p>#한약재 향</p>
-								<p>#스모키한 풍미</p>
+								<p>#유기농 산머루</p>
+								<p>#미디엄 드라이 레드와인</p>
 							</div>
 						</div>
 					</a></li>
-					<li><a href="#" class="pick pro">
+					<li><a href="/product/detail?productNum=63" class="pick pro">
 						<div class="pick_img pro_img">
-							<img src="/resources/images/main/b3.jpg" alt="참주가 솔 막걸리 이미지">
+							<img src="/resources/images/product/추사 블루 스위트.jpg" alt="추사 블루 스위트 이미지">
 						</div>
 						<div class="img_data">
-							<p class="i_name">참주가 솔 막걸리</p>
+							<p class="i_name">추사 블루 스위트</p>
 							<div class="i_price">
 								<p class="cost">22,000<span class="won">원</span></p>
 								<p class="i_score">
@@ -254,27 +254,27 @@
 								</p>
 							</div>
 							<div class="i_hash">
-								<p>#페퍼민트 차를 마신 듯</p>
-								<p>#뼛속까지 시원해지는 개운함</p>
+								<p>#블루베리로 만든 와인</p>
+								<p>#주스같이 달콤</p>
 							</div>
 						</div>
 					</a></li>
-					<li><a href="#" class="pick pro">
+					<li><a href="product/detail?productNum=45" class="pick pro">
 						<div class="pick_img pro_img">
-							<img src="/resources/images/main/b4.jpg" alt="메밀로 25% 이미지">
+							<img src="/resources/images/product/삼양춘 탁주.jpg" alt="삼양춘 탁주 이미지">
 						</div>
 						<div class="img_data">
-							<p class="i_name">메밀로 25%</p>
+							<p class="i_name">삼양춘 탁주</p>
 							<div class="i_price">
-								<p class="cost">22,000<span class="won">원</span></p>
+								<p class="cost">12,800<span class="won">원</span></p>
 								<p class="i_score">
 									<span class="score">4.9</span>
 									<span class="review_total">리뷰 82</span>
 								</p>
 							</div>
 							<div class="i_hash">
-								<p>#고소한 메밀차의 풍미</p>
-								<p>#메밀로 만든 메밀로</p>
+								<p>#맛 밸런스 최강</p>
+								<p>#고급술에 붙는 '춘'</p>
 							</div>
 						</div>
 					</a></li>
@@ -286,7 +286,6 @@
 </main>
 <c:import url="./temp/footer.jsp"></c:import>
 <script src="/resources/js/main.js"></script>
-<script type="text/javascript" src="/resources/js/khj/productList.js"></script>
 </body>
 
 </html>
