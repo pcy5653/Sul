@@ -28,9 +28,18 @@ background-color: rgba(255,255, 255,0) !important;}
 	<c:import url="../temp/header.jsp"></c:import>
 	<div id="outerWrap">
 		<div id="top">
+		<c:choose>
+			<c:when test="${not empty pagerk}">
+			<p>
+				<span>${pagerk.total}</span><span>건의 결과가 있어요!</span>
+			</p>
+			</c:when>
+			<c:otherwise>
 			<p>
 				<span>${pager.total}</span><span>건의 결과가 있어요!</span>
 			</p>
+			</c:otherwise>
+		</c:choose>
 			<%-- <a class="btn btn-danger" href="${pageContext.request.contextPath}/product/add">상품 등록</a> --%>
 		</div>
 		<p class="line">
@@ -58,21 +67,22 @@ background-color: rgba(255,255, 255,0) !important;}
 		    </c:if>
 			</c:forEach>
 		</div>
-		
+
+		<c:if test="${not empty pagerk}">
 		<div id="navWrap">
 			<nav aria-label="Page navigation example">
 				<ul class="pagination justify-content-center">
-					<li class="page-item ${pager.pre?'':'disabled'}">
-						<a class="page-link" href="./list?page=${pager.startNum - 1}&kind=${pager.kind}&search=${pager.search}" aria-label="Previous">
+					<li class="page-item ${pagerk.pre?'':'disabled'}">
+						<a class="page-link" href="./list?page=${pagerk.startNum - 1}&kind=${pagerk.kind}&search=${pagerk.search}" aria-label="Previous">
 							<span aria-hidden="true">&laquo;</span>
 						</a>
 					</li>
-					<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
-						<li class="page-item"><a class="page-link" href="./list?page=${i}&kind=${pager.kind}&search=${pager.search}">${i}</a></li>
+					<c:forEach begin="${pagerk.startNum}" end="${pagerk.lastNum}" var="i">
+						<li class="page-item"><a class="page-link" href="./list?page=${i}&kind=${pagerk.kind}&search=${pagerk.search}">${i}</a></li>
 					</c:forEach>
-			     	<c:if test="${pager.next}">
+			     	<c:if test="${pagerk.next}">
 						<li class="page-item">
-							<a class="page-link" href="./list?page=${pager.lastNum + 1}&kind=${pager.kind}&search=${pager.search}" aria-label="Next">
+							<a class="page-link" href="./list?page=${pagerk.lastNum + 1}&kind=${pagerk.kind}&search=${pagerk.search}" aria-label="Next">
 								<span aria-hidden="true">&raquo;</span>
 							</a>
 						</li>
@@ -80,6 +90,7 @@ background-color: rgba(255,255, 255,0) !important;}
 				</ul>
 			</nav>
 		</div>
+		</c:if>
 	</div>
 	
 </body>

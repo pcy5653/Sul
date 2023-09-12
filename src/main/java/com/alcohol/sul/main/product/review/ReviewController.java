@@ -81,7 +81,7 @@ public class ReviewController {
 	public String setUpdate(ReviewDTO reviewDTO, MultipartFile[] photos, HttpSession session) throws Exception {
 		reviewService.setReviewUpdate(reviewDTO, photos, session);	
 		ProductDTO productDTO = new ProductDTO();
-		System.out.println(reviewDTO.getProductNum());
+//		System.out.println(reviewDTO.getProductNum());
 		productDTO.setProductNum(reviewDTO.getProductNum());
 		Double result = reviewService.getReviewStarAvg(reviewDTO);
 		productDTO.setScore(result);

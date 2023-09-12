@@ -6,6 +6,17 @@
 <head>
 <meta charset="UTF-8">
 <c:import url="../temp/bootStrap.jsp"></c:import>
+<style>
+/* header.css */
+.viewport {}
+.headerWrap {
+    position: relative !important; top:0px !important;
+    background-color: rgba(255,255, 255,0) !important;
+}
+header {position: absolute !important;left:0px !important; top:0px !important;
+background-color: rgba(255,255, 255,0) !important;}
+
+</style>
 </head>
 <body>
 	<c:import url="../temp/header.jsp"></c:import>
@@ -70,41 +81,41 @@
 
 		탄산
 		<div class="form-check">
-		  <input class="form-check-input" value="none" type="radio" name="carbonicAcid"  id="none" checked >
-		  <label class="form-check-label" for="none">
+		  <input class="form-check-input" value="없음" type="radio" name="carbonicAcid"  id="없음" checked >
+		  <label class="form-check-label" for="없음">
 		    없음
 		  </label>
 		 </div>
 		<div class="form-check">
-		  <input class="form-check-input" value="weak" type="radio" name="carbonicAcid"  id="weak" >
-		  <label class="form-check-label" for="weak">
-		    약한
+		  <input class="form-check-input" value="약함" type="radio" name="carbonicAcid"  id="약함" >
+		  <label class="form-check-label" for="약함">
+		    약함
 		  </label>
 		</div>
 		<div class="form-check">
-		  <input class="form-check-input" value="middle" type="radio" name="carbonicAcid" id="middle" >
-		  <label class="form-check-label" for="middle">
+		  <input class="form-check-input" value="중간" type="radio" name="carbonicAcid" id="중간" >
+		  <label class="form-check-label" for="중간">
 		   중간
 		  </label>
 		</div>
 		<div class="form-check">
-		  <input class="form-check-input" value="strong" type="radio" name="carbonicAcid"  id="strong" >
-		  <label class="form-check-label" for="strong">
-		   강한
+		  <input class="form-check-input" value="강함" type="radio" name="carbonicAcid"  id="강함" >
+		  <label class="form-check-label" for="강함">
+		   강함
 		</label>
 		<div id="caMsg"></div>
 		</div>
 
 		맛
 		<div class="form-check">
-			<input class="form-check-input" value="sour" type="radio" name="taste"  id="sour" checked >
-			<label class="form-check-label" for="sour">
+			<input class="form-check-input" value="신맛" type="radio" name="taste"  id="신맛" checked >
+			<label class="form-check-label" for="신맛">
 			  신맛
 			</label>
 		  </div>
 		  <div class="form-check">
-			<input class="form-check-input" value="sweet" type="radio" name="taste" id="sweet" >
-			<label class="form-check-label" for="sweet">
+			<input class="form-check-input" value="단맛" type="radio" name="taste" id="단맛" >
+			<label class="form-check-label" for="단맛">
 			  단맛
 			</label>
 			<div id="tasteMsg"></div>
