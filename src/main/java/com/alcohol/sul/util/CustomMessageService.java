@@ -3,20 +3,33 @@ package com.alcohol.sul.util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.alcohol.sul.main.product.ProductDTO;
+import com.alcohol.sul.order.OrderDTO;
+import com.alcohol.sul.order.OrderProductDTO;
+
 @Service
 public class CustomMessageService {
 	@Autowired
 	private MessageService messageService;
 	
-	public boolean sendMyMessage() throws Exception {
-		DefaultMessageDTO defaultMessageDTO = new DefaultMessageDTO();
-		defaultMessageDTO.setBtnTitle("바로가기 버튼");
-		defaultMessageDTO.setMobileUrl("http://localhost:8080/");
-		defaultMessageDTO.setObjType("text");
-		defaultMessageDTO.setWebUrl("http://localhost:8080/");
-		defaultMessageDTO.setText("술담화 서비스를 이용해주셔서 감사합니다.\n해당 제품의 구매가 완료되었습니다.");
+	public boolean sendMyMessage(OrderDTO orderDTO) throws Exception {
+		String msg = "술담화 서비스를 이용해주셔서 감사합니다 :)\n\n";
 		
-		String accessToken = AuthService.authToken;
-		return messageService.sendMessage(accessToken, defaultMessageDTO);
+		for(OrderProductDTO orderProductDTO : orderDTO.getOrderProducts()) {
+			ProductDTO productDTO = orderProductDTO.getProductDTO();
+			msg += "[" + productDTO.getProductName() + " : " + orderProductDTO.getOrderCount() + "개]\n\n";
+		}
+		
+		msg += "주문이 완료되었습니다!";
+		
+		DefaultMessageDTO defaultMessageDTO = new DefaultMessageDTO();
+		defaultMessageDTO.setBtnTitle("주문 내역");
+		defaultMessageDTO.setMobileUrl("");
+		defaultMessageDTO.setObjType("text");
+		defaultMessageDTO.setHeaderTitle("주문 완료");
+		defaultMessageDTO.setWebUrl("");
+		defaultMessageDTO.setText(msg);
+		
+		return messageService.sendMessage(AuthService.accessToken, defaultMessageDTO);
 	}
 }

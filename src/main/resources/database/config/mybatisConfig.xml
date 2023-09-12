@@ -27,6 +27,7 @@
 		<typeAlias type="com.alcohol.sul.order.PaymentDTO" alias="PaymentDTO"></typeAlias>
 		<typeAlias type="com.alcohol.sul.order.CancelDTO" alias="CancelDTO"></typeAlias>
 		<typeAlias type="com.alcohol.sul.order.CancelInfoDTO" alias="CancelInfoDTO"></typeAlias>
+		<typeAlias type="com.alcohol.sul.order.KakaoRefreshTokenDTO" alias="KakaoRefreshTokenDTO"></typeAlias>
 	
 		<typeAlias type="com.alcohol.sul.board.notice.NoticeDTO" alias="NoticeDTO"/>
 		<typeAlias type="com.alcohol.sul.board.notice.NoticeFileDTO" alias="NoticeFileDTO"/>

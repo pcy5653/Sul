@@ -105,7 +105,7 @@ public class OrderController {
 	
 	@RequestMapping(value = "paymentComplete")
 	// @ResponseBody
-	public String paymentComplete(@RequestParam String paymentInfo, Model model) throws Exception {
+	public String paymentComplete(@RequestParam String paymentInfo, HttpSession session, Model model) throws Exception {
 		JSONParser parser = new JSONParser();
 		JSONObject json = (JSONObject)parser.parse(paymentInfo); // JSON String to JSON
 		
@@ -125,6 +125,12 @@ public class OrderController {
 			model.addAttribute("orderProducts", orderProducts);
 			model.addAttribute("payment", paymentDTO);
 		*/
+		
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		KakaoRefreshTokenDTO kakaoRefreshTokenDTO = orderService.getKakaoRefreshToken(memberDTO.getId());
+		boolean result = authService.revalidateAccessToken(kakaoRefreshTokenDTO);
+		
+		if(result) customMessageService.sendMyMessage(orderDTO);
 		
 		return "order/paymentComplete";
 	}
@@ -178,19 +184,36 @@ public class OrderController {
 		return "order/cancelDetail";
 	}
 	
-	@RequestMapping(value = "kakaoAlarmTest")
-	public void kakaoAlarmTest(String code, HttpSession session, HttpServletResponse response) throws Exception {
-		if(authService.getKakaoAuthToken(code)) {
-			// boolean result = customMessageService.sendMyMessage();
-			session.setAttribute("KakaoAuthToken", AuthService.authToken);
+	@RequestMapping(value = "kakaoAuth")
+	public void kakaoAuth(String code, HttpSession session, HttpServletResponse response) throws Exception {
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		
+		KakaoRefreshTokenDTO kakaoRefreshTokenDTO = orderService.getKakaoRefreshToken(memberDTO.getId());
+		String refrashToken = authService.getKakaoAuthToken(code);
+		if(refrashToken != null) {
+			kakaoRefreshTokenDTO = new KakaoRefreshTokenDTO();
+			kakaoRefreshTokenDTO.setId(memberDTO.getId());
+			kakaoRefreshTokenDTO.setRefreshToken(refrashToken);
+			
+			orderService.addKakaoRefreshToken(kakaoRefreshTokenDTO);
 		}else {
 			System.out.println("토큰 발급 실패");
 		}
 		
-		// 이후 Dispatcher Servlet을 거치치 않고, 그냥 바로 클라이언트에게 응답을 보내고 종료
+		// Dispatcher Servlet을 거치치 않고, 그냥 바로 클라이언트에게 응답을 보내고 종료
 		PrintWriter out = response.getWriter();
 		out.println("<script>window.close();</script>");
 		out.flush();
+	}
+	
+	@RequestMapping(value = "haveRefreshToken")
+	@ResponseBody
+	public boolean haveRefreshToken(@RequestParam String id) throws Exception {
+		if(orderService.getKakaoRefreshToken(id) != null) {
+			return true;
+		}else {
+			return false;
+		}
 	}
 	
 	@RequestMapping(value = "tracking")

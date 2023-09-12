@@ -2,6 +2,7 @@ package com.alcohol.sul.util;
 
 public class DefaultMessageDTO {
 	private String objType;
+	private String headerTitle;
 	private String text;
 	private String webUrl;
 	private String mobileUrl;
@@ -9,6 +10,10 @@ public class DefaultMessageDTO {
 	
 	public String getObjType() {
 		return objType;
+	}
+	
+	public String getHeaderTitle() {
+		return headerTitle;
 	}
 	
 	public String getText() {
@@ -29,6 +34,10 @@ public class DefaultMessageDTO {
 	
 	public void setObjType(String objType) {
 		this.objType = objType;
+	}
+	
+	public void setHeaderTitle(String headerTitle) {
+		this.headerTitle = headerTitle;
 	}
 	
 	public void setText(String text) {

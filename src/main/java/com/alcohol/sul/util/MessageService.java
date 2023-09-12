@@ -25,6 +25,7 @@ public class MessageService extends HttpCallService {
 		
 		JSONObject templateObj = new JSONObject();
 		templateObj.put("object_type", defaultMessageDTO.getObjType());
+		templateObj.put("header_title", defaultMessageDTO.getHeaderTitle());
 		templateObj.put("text", defaultMessageDTO.getText());
 		templateObj.put("link", linkObj);
 		templateObj.put("button_title", defaultMessageDTO.getBtnTitle());
@@ -32,6 +33,8 @@ public class MessageService extends HttpCallService {
 		HttpHeaders headers = new HttpHeaders();
 		headers.set("Content-Type", APP_TYPE_URL_ENCODED);
 		headers.set("Authorization", "Bearer " + accessToken);
+		
+		System.out.println(templateObj.toString());
 		
 		MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
 		params.add("template_object", templateObj.toString());
