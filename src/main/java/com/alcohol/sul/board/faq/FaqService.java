@@ -1,6 +1,8 @@
 package com.alcohol.sul.board.faq;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -11,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.alcohol.sul.board.BoardDTO;
 import com.alcohol.sul.board.BoardService;
 import com.alcohol.sul.board.qna.QnaDTO;
+import com.alcohol.sul.util.FaqPage;
 import com.alcohol.sul.util.Pager;
 
 @Service
@@ -26,26 +29,52 @@ public class FaqService implements BoardService {
 	}
 	
 	// List
-	public List<BoardDTO> getList(FaqDTO faqDTO) throws Exception {
-		return faqDAO.getList(faqDTO);
+	public List<BoardDTO> getList(FaqPage faqPage) throws Exception {
+		faqPage.makeRowNum();
+		Long total = faqDAO.getTotal(faqPage);
+		faqPage.makePageNum(total);
+		
+		return faqDAO.getList(faqPage);
 	}
 	
 	// DetailOperate
-	public List<BoardDTO> getDetailOperate(FaqDTO faqDTO) throws Exception {
+	public List<BoardDTO> getDetailOperate(FaqDTO faqDTO, FaqPage faqPage) throws Exception {
+		faqPage.makeRowNum();
+		Long total = faqDAO.getTotalOp(faqPage);
+		faqPage.makePageNum(total);
+		
 		return faqDAO.getDetailOperate(faqDTO);
 	}
-	// DetailOperate
-	public List<BoardDTO> getDetailMember(FaqDTO faqDTO) throws Exception {
+	// DetailMember
+	public List<BoardDTO> getDetailMember(FaqDTO faqDTO, FaqPage faqPage) throws Exception {
+		faqPage.makeRowNum();
+		Long total = faqDAO.getTotalMe(faqPage);
+		faqPage.makePageNum(total);
+		
 		return faqDAO.getDetailMember(faqDTO);
 	}
-	// DetailOperate
-	public List<BoardDTO> getDetailBuy(FaqDTO faqDTO) throws Exception {
+	// DetailBuy
+	public List<BoardDTO> getDetailBuy(FaqDTO faqDTO, FaqPage faqPage) throws Exception {
+		faqPage.makeRowNum();
+		Long total = faqDAO.getTotalBuy(faqPage);
+		faqPage.makePageNum(total);
+		
 		return faqDAO.getDetailBuy(faqDTO);
 	}
-	// DetailOperate
-	public List<BoardDTO> getDetailRefund(FaqDTO faqDTO) throws Exception {
+	// DetailRefund
+	public List<BoardDTO> getDetailRefund(FaqDTO faqDTO, FaqPage faqPage) throws Exception {
+		faqPage.makeRowNum();
+		Long total = faqDAO.getTotalRe(faqPage);
+		faqPage.makePageNum(total);
+		
 		return faqDAO.getDetailRefund(faqDTO);
 	}
+	
+	
+	// Total
+	
+	//ListTotal
+//	public Long getTotal(Pager pager)
 
 	@Override
 	public BoardDTO getDetail(BoardDTO boardDTO) throws Exception {

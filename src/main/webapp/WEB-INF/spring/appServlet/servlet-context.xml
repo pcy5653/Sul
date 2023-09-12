@@ -37,8 +37,12 @@
 			<mapping path="/member/info"/>
 			<mapping path="/admin/*"/>
 			<mapping path="/qna/*"/>
+			<mapping path="/faq/*"/>
 			
 			<mapping path="/order/**"/>
+			
+			<exclude-mapping path="/faq/list"/>
+			<exclude-mapping path="/faq/detail/*"/>
 			<beans:bean class="com.alcohol.sul.interceptors.LoginInterceptor"></beans:bean>
 		</interceptor>
 		
@@ -47,8 +51,11 @@
 			<mapping path="/admin/*"/>
 			<mapping path="/notice/*"/>
 			<mapping path="/qna/reply"/>
+			<mapping path="/faq/*"/>
 			<exclude-mapping path="/notice/list"/>
 			<exclude-mapping path="/notice/detail"/>
+			<exclude-mapping path="/faq/list"/>
+			<exclude-mapping path="/faq/detail/*"/>
 			<beans:bean class="com.alcohol.sul.interceptors.RoleInterceptor"></beans:bean>
 		</interceptor>
 	</interceptors>

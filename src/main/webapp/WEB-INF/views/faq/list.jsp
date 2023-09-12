@@ -16,9 +16,9 @@
 				<ul>
 					<li class="faqKind"><a href="/faq/list" class="aKind">전체보기</a></li>
 					<li class="faqKind"><a href="/faq/detail/operate" class="aKind">운영정책</a></li>
-					<li class="faqKind"><a href="/faq/detail/member" class="aKind">계정</a></li>
-					<li class="faqKind"><a href="/faq/detail/buy" class="aKind">구매</a></li>
-					<li class="faqKind"><a href="/faq/detail/refund" class="aKind">환불</a></li>
+					<li class="faqKind"><a href="/faq/detail/member" class="aKind">회원</a></li>
+					<li class="faqKind"><a href="/faq/detail/buy" class="aKind">구매/결제</a></li>
+					<li class="faqKind"><a href="/faq/detail/refund" class="aKind">교환/환불</a></li>
 				</ul>
 				<p class="faqSub">자주 묻는 질문들을 먼저 확인해보세요!</p>
 				<table id="faqList">
@@ -34,55 +34,64 @@
 						</tr>
 						<tr class="faqCon" data-index="${i.index}">
 							<td colspan="2" class="fcon">
-								${dto.contents} <br>
+								<pre>${dto.contents}</pre><br>
 								<div class="faqTBtn">
-									<form class="frm" action="">
-										<input type="text" class="faqIn" name="num" value="${dto.num}">
+									<form class="frm" id="frm${i.index}" action="">
+										<input type="hidden" class="faqIn" name="num"  value="${dto.num}">
 									</form>
 									<!-- 입력 form으로 method GET -->
-									<button class="c1 upBtn" data-url="/faq/update" data-form-id="form1" data-num="${dto.num}">수정</button>
-						
-									<!-- method POST -->
-									<input type="hidden" data-url="/faq/delete" data-delete-name="name" data-delete-num="${member.id}">
-									<button class="c1 deBtn" data-url="/faq/delete" data-form-id="form1" data-delete-name="num" data-num="${dto.num}">삭제</button>
+									<c:if test="${member.roleNum == 1}">	
+										<button class="c1 upBtn" id="upBtn${i.index}" data-url="/faq/update" data-form-id="form1" data-num="${dto.num}">수정</button>
+							
+										<!-- method POST -->
+										<input type="hidden" data-url="/faq/delete" data-delete-name="name" data-delete-num="${member.id}">
+										<button class="c1 deBtn" id="deBtn${i.index}" data-url="/faq/delete" data-form-id="form1" data-delete-name="num" data-num="${dto.num}">삭제</button>
+									</c:if>
 								</div>
 							</td>
 						</tr>
 					</c:forEach>
 				</table>
-				<div class="t_search">
-					<c:if test="${member.roleNum == 1}">	
-						<a class="btn btn-danger" href="./add">등록</a>
-					</c:if>
+				<div class="faqBtm">
+					<div class="t_search">
+						<c:if test="${member.roleNum == 1}">	
+							<a class="btn btn-danger faqAdd" href="/faq/add">등록</a>
+						</c:if>
+					</div>
+					<nav class="t_page">
+						<ul class="pagination">
+							<c:if test="${pager.pre}">
+							<li class="page-item">
+								<a class="move" href="#" data-num="${pager.startNum-1}" aria-label="Previous">
+								<span aria-hidden="false">&laquo;</span>
+								</a>
+							</li>
+						</c:if>
+						<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
+							<li class="page-item "><a class="page-link move" href="#" data-num="${i}">${i}</a></li>
+						</c:forEach>
+						<c:if test="${pager.next}">
+							<li class="page-item">
+								<a class="move" href="#" data-num="${pager.lastNum+1}" aria-label="Next">
+								<span aria-hidden="false">&raquo;</span>
+								</a>
+							</li>
+						</c:if>
+						</ul>
+					</nav>
 				</div>
+				<form action="/faq/list" method="get" id="faqPageFrm">
+					<input type="hidden" id="faqPage" value="${pager.page}" name="page">
+				</form>
 			</div>
 			<div class="side">
 				<ul>
-					<li class="notice"><a href="#">공지사항</a></li>
-					<li class="qna"><a href="#">1:1문의</a></li>
+					<li class="faq"><a href="/faq/list">자주하는 질문</a></li>
+					<li class="notice"><a href="/notice/list">공지사항</a></li>
+					<li class="qna"><a href="/qna/list">1:1문의</a></li>
 				</ul>
 			</div>
-			<!-- <nav class="t_page">
-				<ul class="pagination">
-					<c:if test="${pager.pre}">
-					<li class="page-item">
-						<a class="move" href="#" data-num="${pager.startNum-1}" aria-label="Previous">
-						<span aria-hidden="true">&laquo;</span>
-						</a>
-					</li>
-				</c:if>
-				<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
-					<li class="page-item "><a class="page-link move" href="#" data-num="${i}">${i}</a></li>
-				</c:forEach>
-				<c:if test="${pager.next}">
-					<li class="page-item">
-						<a class="move" href="#" data-num="${pager.lastNum+1}" aria-label="Next">
-						<span aria-hidden="true">&raquo;</span>
-						</a>
-					</li>
-				</c:if>
-				</ul>
-			</nav> -->
+			
 
 			
 		</div>

@@ -12,6 +12,7 @@
 		<typeAlias type="java.util.Map" alias="Map"/>
 		
 		<typeAlias type="com.alcohol.sul.board.faq.FaqDTO" alias="FaqDTO"/>
+		<typeAlias type="com.alcohol.sul.util.FaqPage" alias="FaqPage"/>
 		
 		<typeAlias type="com.alcohol.sul.main.product.ProductDTO" alias="ProductDTO"/>
 		<typeAlias type="com.alcohol.sul.main.product.ProductImgDTO" alias="ProductImgDTO"/>	

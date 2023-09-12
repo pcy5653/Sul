@@ -1,11 +1,11 @@
 section{}
 section title{font-size: 2.5rem;margin-bottom: 4rem;text-align: center; font-weight: 900;}
-section .wrap{display: flex;flex-direction: row-reverse;}
+section .wrap{display: flex;flex-direction: row-reverse;width:60%;}
 section .wrap .main{width: 85%;}
 section .wrap .main > ul{width: 85%;margin: 2rem auto 5rem;display: flex;}
-section .wrap .main > ul > li{text-align: center;width: calc(100% - 80%);}
-section .wrap .main > ul > li.faqKind{}
-section .wrap .main > ul > li.faqKind > a.aKind{height: 3rem;display: inline-block;line-height: 3rem;font-size: 1.2rem;font-weight: 600;}
+section .wrap .main > ul > li{text-align: center;width: calc(100% - 80%);border: 1px solid #b8b8b8;border-right: 0;}
+section .wrap .main > ul > li.faqKind:last-child{border-right: 1px solid #b8b8b8;}
+section .wrap .main > ul > li.faqKind > a.aKind{height: 3.5rem;display: inline-block;line-height: 3.5rem;font-size: 1.2rem;font-weight: 600;}
 section .wrap .main .faqSub{width: 85%;margin: 0 auto 2rem;font-size: 1.4rem;font-weight: 500;}
 section .wrap .main #faqList{}
 section .wrap .main #faqList > tbody > tr{}
@@ -16,14 +16,31 @@ section .wrap .main #faqList > tbody > tr > td > input{}
 section .wrap .main #faqList > tbody > tr > td > a .faqQ{}
 section .wrap .main #faqList > tbody > .faqCon{display: none;}
 section .wrap .main #faqList > tbody > .faqCon > .fcon{}
+section .wrap .main #faqList > tbody > .faqCon > .fcon > pre{white-space: pre-wrap;}
 section .wrap .main #faqList > tbody > .faqCon > .fcon .faqTBtn{display:flex;justify-content:flex-end;}
 section .wrap .main #faqList > tbody > .faqCon > .fcon .faqTBtn .c1{}
 section .wrap .main #faqList > tbody > .faqCon > .fcon .faqTBtn .upBtn{}
 section .wrap .main #faqList > tbody > .faqCon > .fcon .faqTBtn .deBtn{}
+section .wrap .main .faqBtm{display: flex;flex-direction: row-reverse; width: 85%;margin: 0 auto;}
+section .wrap .main .faqBtm > .t_search{width: 10rem;}
+section .wrap .main .faqBtm > .t_page{}
+
 section .wrap .side{width: calc(100% - 85%);}
 section .wrap .side > ul{height: 150px;text-align: center;margin-top: 6rem;}
 section .wrap .side > ul > li{height: calc(100% - 75px);}
-section .wrap .side > ul > li > a{display: block;width: 100%;height: 100%;line-height: 75px;border: 1px solid;font-size: 1.2rem;font-weight: bold;}
-section .wrap .side > ul > li.notice{margin-bottom: 1rem;}
+section .wrap .side > ul > li > a{
+    display: block;width: 100%;height: 100%;line-height: 75px;border: 1px solid #b8b8b8;
+    font-size: 1.1rem;text-align: left;padding:0 1rem;
+}
+section .wrap .side > ul > li > a::after{
+    width: 15px;height: 15px;display: inline-block;content: "";float:right; padding-top:3.7rem;
+    background-image: url("/resources/images/faq/list.png"); background-size: contain;
+    background-repeat: no-repeat; background-position: center;
+}
+section .wrap .side > ul > li.faq {background-color:#efefef;}
+section .wrap .side > ul > li.faq > a{border-bottom:0;}
+section .wrap .side > ul > li.notice > a{border-bottom:0;}
 section .wrap .side > ul > li.qna{}
+
+
 

@@ -104,7 +104,7 @@ footer {
     100% {top: 40%}
 }
 #review_wrap .review_div #reviewTotal {   
-	display: none;position: fixed;width: 70%;height: 40rem;background:#ecf5ff;box-shadow:8px 8px 8px #a9a9a9b8;
+	display: none;position: fixed;width: 70%;height: 40rem;background:#ffffff;box-shadow:8px 8px 8px #a9a9a9b8;
     left: 50%;top: 50%;z-index: 1;transform: translate(-50%, -50%);border-radius: 15px
 }
 #review_wrap .review_div #reviewTotal #review_fixed{height: 100%;}

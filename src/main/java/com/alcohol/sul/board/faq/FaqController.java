@@ -15,6 +15,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.alcohol.sul.board.BoardDTO;
 import com.alcohol.sul.board.qna.QnaDTO;
+import com.alcohol.sul.util.FaqPage;
+import com.alcohol.sul.util.Pager;
 
 @Controller
 @RequestMapping("/faq/*")
@@ -26,42 +28,47 @@ public class FaqController {
 	
 	// List
 	@GetMapping("list")
-	public String getList(FaqDTO faqDTO, Model model)throws Exception{
-		List<BoardDTO> ar = faqService.getList(faqDTO);
+	public String getList(FaqDTO faqDTO, FaqPage faqPage, Model model)throws Exception{
+		List<BoardDTO> ar = faqService.getList(faqPage);
 		model.addAttribute("list", ar);
+		model.addAttribute("pager", faqPage);
 		
 		return "/faq/list";
 	}
 	
 	// ListDetail
 	@GetMapping("detail/operate")
-	public String getDetailOperate(FaqDTO faqDTO, Model model)throws Exception{
-		List<BoardDTO> ar = faqService.getDetailOperate(faqDTO);
+	public String getDetailOperate(FaqDTO faqDTO,FaqPage faqPage, Model model)throws Exception{
+		List<BoardDTO> ar = faqService.getDetailOperate(faqDTO, faqPage);
 		model.addAttribute("list", ar);
+		model.addAttribute("pager", faqPage);
 				
 		return "/faq/list";
 	}
 	// ListDetail
 	@GetMapping("detail/member")
-	public String getDetailMember(FaqDTO faqDTO, Model model)throws Exception{
-		List<BoardDTO> ar = faqService.getDetailMember(faqDTO);
+	public String getDetailMember(FaqDTO faqDTO,FaqPage faqPage, Model model)throws Exception{
+		List<BoardDTO> ar = faqService.getDetailMember(faqDTO, faqPage);
 		model.addAttribute("list", ar);
+		model.addAttribute("pager", faqPage);
 				
 		return "/faq/list";
 	}
 	// ListDetail
 	@GetMapping("detail/buy")
-	public String getDetailBuy(FaqDTO faqDTO, Model model)throws Exception{
-		List<BoardDTO> ar = faqService.getDetailBuy(faqDTO);
+	public String getDetailBuy(FaqDTO faqDTO,FaqPage faqPage, Model model)throws Exception{
+		List<BoardDTO> ar = faqService.getDetailBuy(faqDTO, faqPage);
 		model.addAttribute("list", ar);
+		model.addAttribute("pager", faqPage);
 				
 		return "/faq/list";
 	}
 	// ListDetail
 	@GetMapping("detail/refund")
-	public String getDetailRefund(FaqDTO faqDTO, Model model)throws Exception{
-		List<BoardDTO> ar = faqService.getDetailRefund(faqDTO);
+	public String getDetailRefund(FaqDTO faqDTO, FaqPage faqPage, Model model)throws Exception{
+		List<BoardDTO> ar = faqService.getDetailRefund(faqDTO, faqPage);
 		model.addAttribute("list", ar);
+		model.addAttribute("pager", faqPage);
 				
 		return "/faq/list";
 	}

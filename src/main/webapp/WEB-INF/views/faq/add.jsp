@@ -10,6 +10,9 @@
 <link rel="stylesheet" href="/resources/style/basic.css">
 <link rel="stylesheet" href="/resources/style/detail.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+	#k, .search {margin: 0; padding: 1rem;}
+</style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <style>
 	.addCon{flex-direction: column;margin-top: 2rem;}
@@ -32,9 +35,9 @@
 				</div>
 				<select name="kind" id="k">
 					<option value="operate" class="kind">운영정책</option>
-					<option value="member" class="kind">계정</option>
-					<option value="buy" class="kind">구매</option>
-					<option value="refund" class="kind">환불</option>
+					<option value="member" class="kind">회원/인증</option>
+					<option value="buy" class="kind">구매/결제</option>
+					<option value="refund" class="kind">교환/환불</option>
 				</select>
 				<div class="addD addCon">
 					<label for="contents" class="add_con addT">내용</label>

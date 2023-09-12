@@ -1,5 +1,6 @@
 package com.alcohol.sul.board.faq;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import com.alcohol.sul.board.BoardDAO;
 import com.alcohol.sul.board.BoardDTO;
 import com.alcohol.sul.board.qna.QnaDTO;
+import com.alcohol.sul.util.FaqPage;
 import com.alcohol.sul.util.Pager;
 
 @Repository
@@ -29,8 +31,8 @@ public class FaqDAO implements BoardDAO{
 	}
 	
 	// List
-	public List<BoardDTO> getList(FaqDTO faqDTO) throws Exception {
-		return sqlSession.selectList(NAMESPACE+"getList", faqDTO);
+	public List<BoardDTO> getList(FaqPage faqPage) throws Exception {
+		return sqlSession.selectList(NAMESPACE+"getList", faqPage);
 	}
 	// DetailOperate
 	public List<BoardDTO> getDetailOperate(FaqDTO faqDTO) throws Exception {
@@ -48,7 +50,30 @@ public class FaqDAO implements BoardDAO{
 	public List<BoardDTO> getDetailRefund(FaqDTO faqDTO) throws Exception {
 		return sqlSession.selectList(NAMESPACE+"getDetailRefund", faqDTO);
 	}
-		
+	
+	// Total
+	
+	// ListTotal
+	public Long getTotal(FaqPage faqPage) throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"getTotal", faqPage);
+	}
+	
+	// operateTotal
+	public Long getTotalOp(FaqPage faqPage) throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"getTotalOp", faqPage);
+	}
+	// operateTotal
+	public Long getTotalMe(FaqPage faqPage) throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"getTotalMe", faqPage);
+	}
+	// operateTotal
+	public Long getTotalBuy(FaqPage faqPage) throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"getTotalBuy", faqPage);
+	}
+	// operateTotal
+	public Long getTotalRe(FaqPage faqPage) throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"getTotalRe", faqPage);
+	}
 
 	@Override
 	public BoardDTO getDetail(BoardDTO boardDTO) throws Exception {
