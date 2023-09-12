@@ -55,7 +55,7 @@ footer {margin-top:7rem;}
         </header>
 <!-- 장바구니 상품 없을 때 -->
 <c:if test="${empty basketList}">    
-   <div style="text-align: center; margin-top: 130px; margin-bottom: 90px;" class="above">
+   <div style="text-align: center; margin-top: 130px; margin-bottom: 90px; /* margin-left: 500px; */" class="above">
        <img src="/resources/images/basket/cartList.png" style="width: 32px; height: 32px; ">
          <div style="font-size: 1.5em; margin-top: 25px;">장바구니가 비었습니다.</div><br>
              <a href="./list" class="btn">쇼핑하러 가기</a>
