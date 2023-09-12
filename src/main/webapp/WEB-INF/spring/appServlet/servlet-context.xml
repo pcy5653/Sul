@@ -36,6 +36,7 @@
 			<mapping path="/member/mypage"/>
 			<mapping path="/member/info"/>
 			<mapping path="/admin/*"/>
+			<mapping path="/product/basketList"/>
 			<mapping path="/qna/*"/>
 			<mapping path="/faq/*"/>
 			

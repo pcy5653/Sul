@@ -21,6 +21,12 @@
 					background-color: #ffc9cc;
 				}
 
+				.headerWrap {
+					position: relative !important;
+					top: 0px !important;
+					background-color: rgba(255, 255, 255, 0) !important;
+				}
+
 				header {
 					position: relative !important;
 					top: 0px !important;

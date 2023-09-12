@@ -33,7 +33,7 @@ public class ProductController {
 	public String getList(PagerK pager, Model model) throws Exception {
 		List<ProductDTO> ar = productService.getList(pager);
 		model.addAttribute("list", ar);
-		model.addAttribute("pager", pager);		
+		model.addAttribute("pagerk", pager);		
 		return "product/list";
 	}
 	

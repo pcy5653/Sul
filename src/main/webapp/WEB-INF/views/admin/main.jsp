@@ -13,14 +13,15 @@
             <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
             <link href="/resources/css/admin/styles.css" rel="stylesheet" />
             <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
         </head>
 
         <body class="sb-nav-fixed">
             <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
                 <!-- Navbar Brand-->
                 <a class="navbar-brand ps-3" href="main">AdminHome</a>
-               
-                
+
+
             </nav>
             <div id="layoutSidenav">
                 <div id="layoutSidenav_nav">
@@ -43,7 +44,7 @@
                         </div>
                         <div class="sb-sidenav-footer">
                             <div class="small">Logged in as:</div>
-                                ${member.id}
+                            ${member.id}
                         </div>
                     </nav>
                 </div>
@@ -54,18 +55,7 @@
                             <ol class="breadcrumb mb-4">
                                 <li class="breadcrumb-item active">Dashboard</li>
                             </ol>
-                            
-                            <div class="row">
-                                <div>
-                                    <div class="card mb-4">
-                                        <div class="card-header">
-                                            
-                                            월별매출
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                            </div>
+
                             <div class="card mb-4">
                                 <div class="card-header">
                                     <i class="fas fa-table me-1"></i>
@@ -102,7 +92,10 @@
                                                 <tr>
                                                     <td>${member.id}</td>
                                                     <td>${member.name}</td>
-                                                    <td><c:if test="${member.roleNum==1}">관리자</c:if><c:if test="${member.roleNum==0}">유저</c:if></td>
+                                                    <td>
+                                                        <c:if test="${member.roleNum==1}">관리자</c:if>
+                                                        <c:if test="${member.roleNum==0}">유저</c:if>
+                                                    </td>
                                                     <td>${member.phone}</td>
                                                     <td>${member.address}</td>
                                                     <td>${member.birth}</td>

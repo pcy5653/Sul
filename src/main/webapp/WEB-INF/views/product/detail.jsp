@@ -8,9 +8,18 @@
 <title>Insert title here</title>
 <c:import url="../temp/bootStrap.jsp"></c:import>
 
-<!-- <link rel="stylesheet" href="/resources/css/star.css"> -->
 <link rel="stylesheet" href="../resources/css/product/detail.css">
+<style>
+/* header.css */
+.viewport {}
+.headerWrap {
+    position: relative !important; top:0px !important;
+    background-color: rgba(255,255, 255,0) !important;
+}
+header {position: absolute !important;left:0px !important; top:0px !important;
+background-color: rgba(255,255, 255,0) !important;}
 
+</style>
 </head>
 <body>
 	<c:import url="../temp/header.jsp"></c:import>
@@ -48,7 +57,7 @@
 			
 			<c:if test="${member.roleNum eq 1}">
 			<hr>
-			<a class="btn btn-outline-danger" href="./update?productNum=${dto.productNum}">수정</a>
+			<a class="btn btn-outline-danger" href="./update?productNum=${dto.productNum}&taste=${dto.taste}&carbonicAcid=${dto.carbonicAcid}&kind=${dto.kind}">수정</a>
 	 		<button class="btn btn-outline-danger c1" id="del" data-delete-name="productNum" data-delete-num="${dto.productNum}">삭제</button>
 			</c:if>
 		

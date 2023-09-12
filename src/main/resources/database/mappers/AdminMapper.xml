@@ -31,6 +31,18 @@
 		ORDER BY TO_CHAR(o.orderDate, 'YYYY-MM')
  	</select>
  	
+ 	<select id="dailySales" resultType="SalesRevenueDTO" parameterType="SalesRevenueDTO">
+ 		SELECT TO_CHAR(o.orderDate, 'YYYY') AS year,TO_CHAR(o.orderDate, 'MM') AS month2,TO_CHAR(o.orderDate, 'DD') AS day, SUM(p.price * op.orderCount) AS salesRevenue
+			FROM order_ o INNER JOIN orderProduct op
+				ON o.orderNum = op.orderNum INNER JOIN product p
+				ON op.productNum = p.productNum
+		WHERE o.orderDate >= TO_DATE('20230101', 'YYYYMMDD') AND op.isCanceled = 0 AND TO_CHAR(o.orderDate, 'YYYY')=#{year} AND TO_CHAR(o.orderDate, 'MM')=${month2}
+		GROUP BY TO_CHAR(o.orderDate, 'YYYY'),TO_CHAR(o.orderDate, 'MM'),TO_CHAR(o.orderDate, 'DD')
+		ORDER BY TO_CHAR(o.orderDate, 'YYYY'),TO_CHAR(o.orderDate, 'MM'),TO_CHAR(o.orderDate, 'DD')
+ 	</select>
+ 	
+ 	
+ 	
  	<!-- 
 	 	<resultMap id="getSalesRevenueResult" type="OrderDTO">
 			<id column="orderNum" property="orderNum" />

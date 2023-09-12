@@ -58,20 +58,10 @@
  
 <!-- Detail -->
 	<select id="getDetail" resultMap="getSelectResult" parameterType="NoticeDTO" >
-		SELECT N.*, NF.*
-  		FROM NOTICE N
-  			LEFT JOIN
-  			NOTICEFILE NF
-  			ON (N.NOTICENUM=NF.NOTICENUM)
-  		WHERE N.NOTICENUM=#{noticeNum}
+		SELECT *
+  		FROM NOTICE 
+  		WHERE NOTICENUM=#{noticeNum}
 	</select>
-
-
-<!-- File Detail -->
-
-<select id="getFileDetail" parameterType="NoticeFileDTO" resultType="NoticeFileDTO">
-	SELECT FILENUM, FILENAME FROM NOTICEFILE WHERE FILENUM=#{fileNum}
-</select>
 
 <!-- Add -->
 
@@ -99,11 +89,6 @@
  		DELETE NOTICE WHERE NOTICENUM=#{noticeNum}
  	</delete>
  	
-<!-- File Delete -->
-
-<delete id="setFileDelete" parameterType="NoticeFileDTO">
-	DELETE NOTICEFILE WHERE FILENUM=#{fileNum}
-</delete>
 
 <!-- Hit -->
 <update id="setHitCount">

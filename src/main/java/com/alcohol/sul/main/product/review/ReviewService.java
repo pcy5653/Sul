@@ -104,7 +104,7 @@ public class ReviewService {
 		Map<String, Object> map = new HashMap<String, Object>();
 		pager.makeRowNum();
 		pager.makePageNum(reviewDAO.getMyReviewTotal(reviewDTO));		
-						
+		
 		map.put("pager", pager);
 		map.put("review", reviewDTO);
 		
