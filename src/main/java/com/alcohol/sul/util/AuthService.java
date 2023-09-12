@@ -35,7 +35,7 @@ public class AuthService extends HttpCallService {
 		params.add("code", code);
 		params.add("grant_type", "authorization_code");
 		params.add("client_id", CLIENT_ID);
-		params.add("redirect_url", "http://localhost:8080/order/kakaoAuth");
+		params.add("redirect_url", "http://localhost:82/order/kakaoAuth");
 		params.add("client_secret", CLIENT_SECRET);
 		
 		HttpEntity<?> requestEntity = httpClientEntity(headers, params);

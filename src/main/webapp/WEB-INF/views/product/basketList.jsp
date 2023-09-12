@@ -412,7 +412,7 @@ footer {margin-top:7rem;}
 					if(result){
 						form.submit();
 					}else{
-						let url = "https://kauth.kakao.com/oauth/authorize?client_id=d904cac31b9fc17c41fc6bcb88454c07&redirect_uri=http://localhost:8080/order/kakaoAuth&response_type=code&scope=talk_message";
+						let url = "https://kauth.kakao.com/oauth/authorize?client_id=d904cac31b9fc17c41fc6bcb88454c07&redirect_uri=http://localhost:82/order/kakaoAuth&response_type=code&scope=talk_message";
 						let authWindow = window.open(url, "_blank", "width=600, height=600");
 						
 						// 0.5초 간격으로 인증 창이 닫혔는지 확인(닫혔다면 구매 단계로 계속 진행)
