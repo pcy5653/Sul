@@ -18,7 +18,7 @@
 </head>
 
 <body>
-	<div id="outerWrap">
+	<div id="outerWrap" data-totalPage="${pager.totalPage}">
 		<div id="title">
 			<p>작성리뷰</p>
 		</div>

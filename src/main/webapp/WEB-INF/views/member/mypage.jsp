@@ -76,9 +76,14 @@
   <section>
     <div id="page">
 
+      
+    </div>
+    <div id="more">
 
     </div>
-
+    <div id="before">
+      
+    </div>
   </section>
 
 
