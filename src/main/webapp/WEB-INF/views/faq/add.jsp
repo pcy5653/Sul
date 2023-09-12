@@ -10,6 +10,9 @@
 <link rel="stylesheet" href="/resources/style/basic.css">
 <link rel="stylesheet" href="/resources/style/detail.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+	#k, .search {margin: 0; padding: 1rem;}
+</style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <style>
 	.addCon{flex-direction: column;margin-top: 2rem;}
@@ -20,7 +23,7 @@
 <section id="add_view">
 	<div class="wrap">
 		<div class="main">
-			<h1 id="title">1:1 문의하기</h1>
+			<h1 id="title">FAQ 작성</h1>
 			<form action="./add" method="post" id="frm" class="t_frm add_frm" enctype="multipart/form-data">
 				<div class="addD">
 					<label for="name" class="add_name addT">작성자</label>
@@ -30,32 +33,18 @@
 					<label for="title" class="add_sub addT">문의내역</label>
 					<input type="text" name="subject" class="sub_in in" id="subject" placeholder="제목을 작성하세요">
 				</div>
+				<select name="kind" id="k">
+					<option value="operate" class="kind">운영정책</option>
+					<option value="member" class="kind">회원/인증</option>
+					<option value="buy" class="kind">구매/결제</option>
+					<option value="refund" class="kind">교환/환불</option>
+				</select>
 				<div class="addD addCon">
 					<label for="contents" class="add_con addT">내용</label>
 					<textarea class="con_in in" name="contents" id="contents"></textarea>
 				</div>	
-				
-				<div id="files">
-					<div class="addF">
-						<button type="button" id="add" class="add_file">File 추가</button>
-					</div>
-					<div id="fileList"></div>
-				</div>
 	
 				<div class="add_btn">
-					<div class="phone_total">
-						<span>
-							<span class="material-icons">email</span>
-							답변이 작성되면 알려드립니다.
-						</span><br>
-						<span class="sms">SMS 발송 여부를 체크해주세요!</span><br>
-						<div class="smsCheck">
-							<label for="sms_yes">YES</label>
-							<input type="radio" id="sms_yes" name="sms" value="1" checked>
-							<label for="sms_no">NO</label>
-							<input type="radio" id="sms_no" name="sms" value="0"><br>
-						</div>	
-					</div>
 					<button type="button" class="btn btn-danger" id="btn">게시글 등록</button>
 				</div>
 			</form>

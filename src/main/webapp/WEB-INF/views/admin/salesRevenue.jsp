@@ -1,61 +1,66 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-        <!DOCTYPE html>
-        <html>
 
-        <head>
-            <meta charset="utf-8" />
-            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-            <meta name="description" content="" />
-            <meta name="author" content="" />
-            <title>Tables - SB Admin</title>
-            <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
-            <link href="/resources/css/admin/styles.css" rel="stylesheet" />
-            <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-        </head>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Tables - SB Admin</title>
+        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+        <link href="/resources/css/admin/styles.css" rel="stylesheet" />
+        <link href="/resources/css/admin/salesRevenue.css" rel="stylesheet" />
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    </head>
+    <body class="sb-nav-fixed">
+        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+            <!-- Navbar Brand-->
+            <a class="navbar-brand ps-3" href="main">AdminHome</a>
+            
+            
+        </nav>
+        <div id="layoutSidenav">
+            <div id="layoutSidenav_nav">
+                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                    <div class="sb-sidenav-menu">
+                        <div class="nav">
+                            <a class="nav-link" href="salesRevenue">
+                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                                매출
+                            </a>
+                            <a class="nav-link" href="memberManagement">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                회원관리
+                            </a>
+                            <a class="nav-link" href="/product/add">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                상품등록
+                            </a>
 
-        <body class="sb-nav-fixed">
-            <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-                <!-- Navbar Brand-->
-                <a class="navbar-brand ps-3" href="main">AdminHome</a>
-
-
-            </nav>
-            <div id="layoutSidenav">
-                <div id="layoutSidenav_nav">
-                    <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-                        <div class="sb-sidenav-menu">
-                            <div class="nav">
-                                <a class="nav-link" href="salesRevenue">
-                                    <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                                    매출
-                                </a>
-                                <a class="nav-link" href="memberManagement">
-                                    <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                                    회원관리
-                                </a>
-                                <a class="nav-link" href="/product/add">
-                                    <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                                    상품등록
-                                </a>
-                            </div>
                         </div>
                         <div class="sb-sidenav-footer">
                             <div class="small">Logged in as:</div>
                             ${member.id}
+
                         </div>
                     </nav>
                 </div>
                 <div id="layoutSidenav_content">
                     <main>
                         <div class="container-fluid px-4">
-                            <h1 class="mt-4">매출</h1>
-
+                           <h2 class="mt-4" style="font-weight:bold; margin-bottom:20px;">매출 관리</h2>
+                        <div class="card mb-4">
+                            <div class="card-body">
+								술담화 서비스의 2023년도 월별 매출 현황 기록표입니다.
+                            </div>
+                        </div>
                             <div class="card mb-4">
                                 <div class="card-header">
                                     <i class="fas fa-table me-1"></i>
-                                    DataTable Example
+                                    매출
                                 </div>
                                 <div class="card-body">
                                     <select name="year" id="year" data-year="${year}">
@@ -135,6 +140,7 @@
 
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
@@ -153,10 +159,9 @@
                     </footer>
                 </div>
             </div>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-                crossorigin="anonymous"></script>
-            <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
-                crossorigin="anonymous"></script>
+
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
             <script src="/resources/js/table/datatables-simple-demo.js"></script>
 
             <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
@@ -191,50 +196,48 @@
                 })
                 ///////////////////////////////////////////////////////////////
 
-                function drawScoreDistributionChart() {
-                    let salesRevenue = ${ salesRevenue };
-                    console.log(salesRevenue);
+                function drawScoreDistributionChart(){
+	        	let salesRevenue = ${salesRevenue};
+	        	
+	        	let dataChart = [["월", "매출", { role:"style" }, { role:"annotation" }]];
+	        	for(let i = 1; i <= 12; i++){
+	        		dataChart.push([i + "월", salesRevenue[i] / 10000, "#353535", salesRevenue[i] / 10000 + "만"]);
+	        	}
+	        	
+	        	let data = google.visualization.arrayToDataTable(dataChart);
+	        	let view = new google.visualization.DataView(data);
+	        	let options = {
+	        		width:1100,
+					height:400,
+	        		bar:{ groupWidth:"65%" },
+	        		annotations:{ textStyle:{ fontSize:11 } },
+	        		backgroundColor:"transparent",
+	        		legend:"none",
+	        		
+	        		hAxis:{
+	        			title:"이번년도 월별 매출 현황",
+	        			titleTextStyle:{ italic:false, fontSize:13, bold:true },
+	        			textStyle:{ bold:false }
+	        		},
+	        		
+	        		vAxis:{
+						ticks:[50, 100, 150, 200, 250, 300],
+						format:'0만',
+	        			
+	        			gridlines:{ color:"#d8d8d8" },
+	        			minorGridlines:{ color:"none" }
+	        		}
+	        	};
+	        	
+	        	let chart = new google.visualization.ColumnChart(document.getElementById("monthlyChart"));
+	        	chart.draw(view, options);
+	        }
+			
+        	$(function(){
+        		google.charts.load("current", { "packages":["corechart"] });
+        		google.charts.setOnLoadCallback(drawScoreDistributionChart);
+        	});
+        </script>
+    </body>
+</html>
 
-                    let dataChart = [["월", "분포율", { role: "style" }, { role: "annotation" }]];
-                    for (let i = 1; i <= 12; i++) {
-                        dataChart.push([i + "월", salesRevenue[i] / 10000, "#353535", salesRevenue[i] / 10000 + "만"]); // 위 형식에 알맞게 데이터 삽입
-                    }
-
-                    let data = google.visualization.arrayToDataTable(dataChart);
-                    let view = new google.visualization.DataView(data);
-                    let options = {
-                        width: 1100,
-                        height: 400, // 높이를 지정해주지 않으면 ticks로 지정한 레이블 중 일부 레이블이 잘린다.
-                        bar: { groupWidth: "65%" }, // 그래프 너비(적당하게 조절 - 어중간하게 작으면 { role:"annotation" }으로 설정한 값이 통일되지 않고, 뒤죽박죽 출력됨)
-                        annotations: { textStyle: { fontSize: 11 } },
-                        backgroundColor: "transparent",
-                        legend: "none", // 범례 제거
-                        enableInteractivity: false, // 마우스 이벤트 제거
-
-                        // 세로 축
-                        vAxis: {
-                            ticks: [50, 100, 150, 200, 250, 300], // 원하는 단위 값들을 배열로 지정
-                            format: '0만', // 레이블 형식을 'decimal'로 지정
-
-                            gridlines: { color: "#d8d8d8" }, // 주 눈금선
-                            minorGridlines: { color: "none" } // 보조 눈금선
-                        },
-
-                        // 가로 축
-                        hAxis: {
-                            textStyle: { bold: true }
-                        }
-                    };
-
-                    let chart = new google.visualization.ColumnChart(document.getElementById("monthlyChart"));
-                    chart.draw(view, options);
-                }
-
-                $(function () {
-                    google.charts.load("current", { "packages": ["corechart"] }); // Google Chart를 사용하기 위한 준비
-                    google.charts.setOnLoadCallback(drawScoreDistributionChart); // 차트 생성
-                });
-            </script>
-        </body>
-
-        </html>

@@ -148,13 +148,41 @@ background-color: rgba(255,255, 255,0) !important;}
 		
 		// '바로 구매'
 		function buyNow(){
-			let form = $("<form></form>");
-			form.attr("method", "POST");		
-			form.attr("action", "../order/")
-			form.append($("<input />", {type:"hidden", name:"orderProducts[0].productNum", value:${dto.productNum}}));
-			form.append($("<input />", {type:"hidden", name:"orderProducts[0].orderCount", value:$(".numBox").val()}));
-			form.appendTo("body");
-			form.submit();
+			let member = "${sessionScope.member}";
+			if(member != ""){
+				$.ajax({
+					type:"get",
+					url: "../order/haveRefreshToken",
+					data:{
+						id:"${member.id}",
+					},
+					success:function(result){
+						let form = $("<form></form>");
+						form.attr("method", "POST");
+						form.attr("action", "../order/");
+						form.append($("<input />", { type: "hidden", name: "orderProducts[0].productNum", value: ${dto.productNum} }));
+						form.append($("<input />", { type: "hidden", name: "orderProducts[0].orderCount", value: $(".numBox").val() }));
+						form.appendTo("body");
+						
+						if(result){
+							form.submit();
+						}else{
+							let url = "https://kauth.kakao.com/oauth/authorize?client_id=d904cac31b9fc17c41fc6bcb88454c07&redirect_uri=http://localhost:8080/order/kakaoAuth&response_type=code&scope=talk_message";
+							let authWindow = window.open(url, "_blank", "width=600, height=600");
+							
+							// 0.5초 간격으로 인증 창이 닫혔는지 확인(닫혔다면 구매 단계로 계속 진행)
+							let checkAuthWindow = setInterval(function () {
+								if(authWindow.closed) {
+									clearInterval(checkAuthWindow);
+									form.submit();
+								}
+							}, 500);
+						}
+					}
+				});
+			}else{
+				location.href = "../member/login";
+			}
 		}
 	</script>
 	<script type="text/javascript">

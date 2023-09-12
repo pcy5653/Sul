@@ -13,14 +13,14 @@ import javax.net.ssl.HttpsURLConnection;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
 
 
-@Component
+@Service
 public class PayService {
 	public String getToken(String imp_key, String imp_secret) throws Exception {
 		HttpURLConnection conn = null;

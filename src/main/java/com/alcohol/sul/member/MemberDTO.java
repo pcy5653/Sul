@@ -15,7 +15,6 @@ public class MemberDTO {
 	private Long point;
 	private Integer sms;
 	
-	
 	public Integer getSms() {
 		return sms;
 	}
@@ -76,6 +75,4 @@ public class MemberDTO {
 	public void setPoint(Long point) {
 		this.point = point;
 	}
-	
-	
 }

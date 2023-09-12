@@ -1,10 +1,12 @@
 package com.alcohol.sul.order;
 
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONObject;
@@ -21,6 +23,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.alcohol.sul.main.product.ProductDTO;
 import com.alcohol.sul.member.MemberDTO;
 import com.alcohol.sul.member.MemberService;
+import com.alcohol.sul.util.AuthService;
+import com.alcohol.sul.util.CustomMessageService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Controller
@@ -31,6 +35,12 @@ public class OrderController {
 	
 	@Autowired
 	private MemberService memberService;
+	
+	@Autowired
+	private AuthService authService;
+	
+	@Autowired
+	private CustomMessageService customMessageService;
 	
 	@RequestMapping(value = "", method = RequestMethod.POST)
 	public String order(OrderProductsWrapper orderProductsWrapper, HttpServletRequest request, HttpSession session, Model model) {
@@ -77,7 +87,7 @@ public class OrderController {
 	
 	@RequestMapping(value = "paymentSuccess", method = RequestMethod.POST, produces = "text/plain; charset=UTF-8")
 	@ResponseBody
-	public String paymentSuccess(@RequestBody OrderDTO orderDTO, HttpServletRequest request, HttpSession session) throws Exception {
+	public String paymentSuccess(@RequestBody OrderDTO orderDTO, HttpSession session) throws Exception {
 		@SuppressWarnings("unchecked")
 		List<OrderProductDTO> orderProducts = (List<OrderProductDTO>)session.getAttribute("orderProducts");
 		if(orderProducts == null) {
@@ -90,12 +100,12 @@ public class OrderController {
 		memberDTO = memberService.getMember(memberDTO.getId());
 		session.setAttribute("member", memberDTO); // 회원 정보 갱신
 		
-		return orderService.paymentSuccess(orderDTO, memberDTO, (boolean)session.getAttribute("isBasket"));
+		return orderService.paymentSuccess(orderDTO, memberDTO, (Boolean)session.getAttribute("isBasket"));
 	}
 	
 	@RequestMapping(value = "paymentComplete")
 	// @ResponseBody
-	public String paymentComplete(@RequestParam String paymentInfo, Model model) throws Exception {
+	public String paymentComplete(@RequestParam String paymentInfo, HttpSession session, Model model) throws Exception {
 		JSONParser parser = new JSONParser();
 		JSONObject json = (JSONObject)parser.parse(paymentInfo); // JSON String to JSON
 		
@@ -115,6 +125,12 @@ public class OrderController {
 			model.addAttribute("orderProducts", orderProducts);
 			model.addAttribute("payment", paymentDTO);
 		*/
+		
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		KakaoRefreshTokenDTO kakaoRefreshTokenDTO = orderService.getKakaoRefreshToken(memberDTO.getId());
+		boolean result = authService.revalidateAccessToken(kakaoRefreshTokenDTO);
+		
+		if(result) customMessageService.sendMyMessage(orderDTO);
 		
 		return "order/paymentComplete";
 	}
@@ -166,6 +182,38 @@ public class OrderController {
 		model.addAttribute("cancel", cancelDTO);
 		model.addAttribute("member", memberDTO);
 		return "order/cancelDetail";
+	}
+	
+	@RequestMapping(value = "kakaoAuth")
+	public void kakaoAuth(String code, HttpSession session, HttpServletResponse response) throws Exception {
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		
+		KakaoRefreshTokenDTO kakaoRefreshTokenDTO = orderService.getKakaoRefreshToken(memberDTO.getId());
+		String refrashToken = authService.getKakaoAuthToken(code);
+		if(refrashToken != null) {
+			kakaoRefreshTokenDTO = new KakaoRefreshTokenDTO();
+			kakaoRefreshTokenDTO.setId(memberDTO.getId());
+			kakaoRefreshTokenDTO.setRefreshToken(refrashToken);
+			
+			orderService.addKakaoRefreshToken(kakaoRefreshTokenDTO);
+		}else {
+			System.out.println("토큰 발급 실패");
+		}
+		
+		// Dispatcher Servlet을 거치치 않고, 그냥 바로 클라이언트에게 응답을 보내고 종료
+		PrintWriter out = response.getWriter();
+		out.println("<script>window.close();</script>");
+		out.flush();
+	}
+	
+	@RequestMapping(value = "haveRefreshToken")
+	@ResponseBody
+	public boolean haveRefreshToken(@RequestParam String id) throws Exception {
+		if(orderService.getKakaoRefreshToken(id) != null) {
+			return true;
+		}else {
+			return false;
+		}
 	}
 	
 	@RequestMapping(value = "tracking")

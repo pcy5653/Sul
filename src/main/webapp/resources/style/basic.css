@@ -89,7 +89,7 @@ footer {
 #review_wrap .review_div{display:flex;width:30%;height:120px;margin:0 auto;}
 #review_wrap .review_div > p{width:70%;line-height:120px;font-size:1.3rem;}
 #review_wrap .review_div > p > .review {font-weight: 800;color: #39b3dc;}
-#review_wrap .review_div #reviewBtn{position:relative; width: calc(100% - 70%);font-size:1.4rem;}
+#review_wrap .review_div #reviewBtn{position:relative; width: calc(100% - 70%);font-size:1.4rem;font-weight: 700;}
 #review_wrap .review_div #reviewBtn::after{
 	display: inline-block; content: ""; width: 30px; height:30px;
 	position: absolute;left: 67%;top: 40%; animation: point 1s infinite linear;
@@ -104,7 +104,7 @@ footer {
     100% {top: 40%}
 }
 #review_wrap .review_div #reviewTotal {   
-	display: none;position: fixed;width: 80%;height: 40rem;background:#ecf5ff;box-shadow:8px 8px 8px #a9a9a9b8;
+	display: none;position: fixed;width: 70%;height: 40rem;background:#ffffff;box-shadow:8px 8px 8px #a9a9a9b8;
     left: 50%;top: 50%;z-index: 1;transform: translate(-50%, -50%);border-radius: 15px
 }
 #review_wrap .review_div #reviewTotal #review_fixed{height: 100%;}
