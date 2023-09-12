@@ -9,8 +9,8 @@
 <link rel="stylesheet" href="/resources/style/reset.css">
 <link rel="stylesheet" href="/resources/style/basic.css">
 <style>
-.wrap {width: 1000px; height:auto; margin-bottom: 100px; margin-top: 50px;}
-.tb{width: 1000px;}
+.wrap {width: 1200px; height:auto; margin-bottom: 100px; margin-top: 50px;}
+.tb{width: 1200px;}
 .title {font-size:2.5rem; text-align: center;}
 .head{height: 50px; background-color: #f1f3f5; width: 1200px;}
 .body{
