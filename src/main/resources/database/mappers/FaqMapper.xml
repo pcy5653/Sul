@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.alcohol.sul.board.faq.FaqDAO">
+ 	
+ 	<!-- 전체보기 -->
+ 	<select id="getList" parameterType="FaqPage" resultMap="getListResult">
+ 		SELECT * FROM
+ 			(SELECT ROWNUM R, B.* FROM
+		  		(
+					SELECT * FROM FAQ ORDER BY FAQNUM
+		  		) B
+	  		)
+	  	WHERE R BETWEEN #{startRow} AND #{lastRow}
+ 	</select>
+ 	
+ 	<!-- 문의 kind -->
+ 	<!-- 1. operate -->
+ 	<select id="getDetailOperate" parameterType="FaqDTO" resultMap="getListResult">
+ 		SELECT * FROM FAQ WHERE FAQNUM > 0 AND KIND LIKE 'operate'
+ 	</select>
+ 	<!-- 2. member -->
+ 	<select id="getDetailMember" parameterType="FaqDTO" resultMap="getListResult">
+ 		SELECT * FROM FAQ WHERE FAQNUM > 0 AND KIND LIKE 'member'
+ 	</select>
+ 	<!-- 3. buy -->
+ 	<select id="getDetailBuy" parameterType="FaqDTO" resultMap="getListResult">
+ 		SELECT * FROM FAQ WHERE FAQNUM > 0 AND KIND LIKE 'buy'
+ 	</select>
+ 	<!-- 4. refund -->
+ 	<select id="getDetailRefund" parameterType="FaqDTO" resultMap="getListResult">
+ 		SELECT * FROM FAQ WHERE FAQNUM > 0 AND KIND LIKE 'refund'
+ 	</select>
+ 	
+ 	<!-- 각 내용 -->
+ 	<select id="getDetail" parameterType="FaqDTO" resultMap="getListResult">
+ 		SELECT * FROM FAQ WHERE FAQNUM = #{num}
+ 	</select>
+ 	
+ 	<resultMap type="FaqDTO" id="getListResult">
+ 		<id column = "FAQNUM" property="num"/>
+ 		<result column="NAME" property="name"/>
+ 		<result column="KIND" property="kind"/>
+ 		<result column="SUBJECT" property="subject"/>
+ 		<result column="CONTENTS" property="contents"/>
+ 		<result column="CREATEDATE" property="createDate"/>
+ 	</resultMap>
+ 	
+ 	<insert id="setAdd" parameterType="FaqDTO">
+ 		INSERT INTO FAQ
+		VALUES (FAQ_SEQ.NEXTVAL, #{name}, #{kind}, #{subject}, #{contents}, SYSDATE)
+ 	</insert>
+ 	
+ 	<update id="setUpdate" parameterType="FaqDTO">
+ 		 UPDATE FAQ
+		 SET SUBJECT = #{subject}, CONTENTS = #{contents}
+		 WHERE FAQNUM = #{num}
+ 	</update>
+	
+	<delete id="setDelete" parameterType="FaqDTO">
+		DELETE FAQ WHERE FAQNUM = #{num} 
+		
+	</delete> 
+	
+	
+	<!-- 전체 LIST TOTAL -->
+	<select id="getTotal" parameterType="FaqPage" resultType="Long">
+		SELECT COUNT(FAQNUM) FROM FAQ WHERE FAQNUM > 0
+	</select>	
+	
+	<!-- 1. operate Total -->
+	<select id="getTotalOp" parameterType="FaqPage" resultType="Long">
+		SELECT COUNT(FAQNUM) FROM FAQ WHERE FAQNUM > 0 AND KIND LIKE 'operate'
+	</select>
+	<!-- 2. member Total -->	
+	<select id="getTotalMe" parameterType="FaqPage" resultType="Long">
+		SELECT COUNT(FAQNUM) FROM FAQ WHERE FAQNUM > 0 AND KIND LIKE 'member'
+	</select>	
+	<!-- 3. buy Total -->
+	<select id="getTotalBuy" parameterType="FaqPage" resultType="Long">
+		SELECT COUNT(FAQNUM) FROM FAQ WHERE FAQNUM > 0 AND KIND LIKE 'buy'
+	</select>	
+	<!-- 4. refund Total -->
+	<select id="getTotalRe" parameterType="FaqPage" resultType="Long">
+		SELECT COUNT(FAQNUM) FROM FAQ WHERE FAQNUM > 0 AND KIND LIKE 'refund'
+	</select>	
+  </mapper>

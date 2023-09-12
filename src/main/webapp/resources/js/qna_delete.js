@@ -1,4 +1,4 @@
-//const frm = document.getElementById('frm');
+const frm = document.getElementById('frm');
 const c1 = document.getElementsByClassName('c1');
 const fileImg = document.getElementsByClassName('fileImg')
 const role = document.getElementById('role');
@@ -14,7 +14,7 @@ for(c of c1){
         
         if(url=='qna/delete'){
             if(r_num == 1){
-                alert("작성 권한이 없습니다.");
+                alert("삭제 권한이 없습니다.");
                 return;
             }else if(r_num == 0){
                 let check = confirm("정말로 삭제하시겠습니까?");
@@ -34,13 +34,13 @@ for(c of c1){
         if(url == 'qna/reply'){
             // 관리자 권한(1)만 답글
             if(r_num == 0){
-                alert("권한이 없습니다.");
+                alert("관리자 권한이 없습니다.");
                 return;
             }
         }
         if(url == 'qna/update'){
             if(r_num == 1){
-                alert("작성 권한이 없습니다.");
+                alert("수정 권한이 없습니다.");
                 return;
             }
         }
