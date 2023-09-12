@@ -218,4 +218,17 @@
 			</association>
 		</collection>
 	</resultMap>
+	
+	<select id="getKakaoRefreshToken" parameterType="String" resultType="KakaoRefreshTokenDTO">
+		SELECT * FROM kakaoRefreshtoken WHERE id = #{value}
+	</select>
+	
+	<insert id="addKakaoRefreshToken" parameterType="KakaoRefreshTokenDTO">
+		INSERT INTO kakaoRefreshtoken(id, refreshToken)
+		VALUES(#{id}, #{refreshToken}) 
+	</insert>
+	
+	<delete id="deleteKakaoRefreshToken" parameterType="String">
+		DELETE FROM kakaoRefreshtoken WHERE id = #{value}
+	</delete>
 </mapper>

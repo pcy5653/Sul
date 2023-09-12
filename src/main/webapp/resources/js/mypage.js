@@ -10,6 +10,8 @@ $(function(){
                 
 // 주문 내역
 $("#orderListBtn").click(function(){
+	$("body").append("<div id='loading'></div>");
+	
 	$.ajax({
         type:"get",
         url:"../order/list",
@@ -18,6 +20,7 @@ $("#orderListBtn").click(function(){
             $("#more").html("");
             $("#before").html("");
             $("#page").html(data);
+            $("#loading").remove();
         }
     })
 });

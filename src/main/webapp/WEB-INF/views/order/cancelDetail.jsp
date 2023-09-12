@@ -14,6 +14,7 @@
 	<div id="outerWrap">
 		<div id="title">
 			<p>취소 상세</p>
+			<p id="home" onclick="location.href='${pageContext.request.contextPath}/'">홈으로</p>
 		</div>
 		<div id="innerWrap">
 			<div id="alignWrap">

@@ -10,6 +10,10 @@
 		<typeAlias type="com.alcohol.sul.util.Pager" alias="Pager"/>
 		<typeAlias type="java.lang.Long" alias="Long"/>
 		<typeAlias type="java.util.Map" alias="Map"/>
+		
+		<typeAlias type="com.alcohol.sul.board.faq.FaqDTO" alias="FaqDTO"/>
+		<typeAlias type="com.alcohol.sul.util.FaqPage" alias="FaqPage"/>
+		
 		<typeAlias type="com.alcohol.sul.main.product.ProductDTO" alias="ProductDTO"/>
 		<typeAlias type="com.alcohol.sul.main.product.ProductImgDTO" alias="ProductImgDTO"/>	
 		<typeAlias type="com.alcohol.sul.main.product.review.ReviewDTO" alias="ReviewDTO"/>	
@@ -27,6 +31,7 @@
 		<typeAlias type="com.alcohol.sul.order.PaymentDTO" alias="PaymentDTO"></typeAlias>
 		<typeAlias type="com.alcohol.sul.order.CancelDTO" alias="CancelDTO"></typeAlias>
 		<typeAlias type="com.alcohol.sul.order.CancelInfoDTO" alias="CancelInfoDTO"></typeAlias>
+		<typeAlias type="com.alcohol.sul.order.KakaoRefreshTokenDTO" alias="KakaoRefreshTokenDTO"></typeAlias>
 	
 		<typeAlias type="com.alcohol.sul.board.notice.NoticeDTO" alias="NoticeDTO"/>
 		<typeAlias type="com.alcohol.sul.board.notice.NoticeFileDTO" alias="NoticeFileDTO"/>
