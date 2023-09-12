@@ -18,31 +18,37 @@ window.addEventListener('scroll', function () {
 
 
 // best 상품(review 기준)
-$(document).ready(function(){
-    $('#reviewBtn').click(function(){
-        $.ajax({
-            type:"GET",
-            url : "/bestReview",
-            dataType:'html',
-            success:function(result){
-                    $("#reviewTotal").css("display", "block");
-                    $("#reviewTotal > #review_del").css("display", "block");
-                    $("#review_fixed").html(result);
-                    $("#review_fixed > .headerWrap").css("display", "none");
-                    $("#review_fixed > #outerWrap").css("margin", "0 auto");
-                    $("#review_fixed > #outerWrap").css("height", "100%");
-                    $("#review_fixed > #outerWrap").css("z-index", "2");
-                    $("#review_fixed > #outerWrap > #top").css("display", "none");
-                    $("#review_fixed > #outerWrap > .line").css("display", "none");
-                    $("#review_fixed > #outerWrap > #navWrap").css("display", "none");
-                    $("#review_fixed > #outerWrap > #productList").css("display", "flex");
-                    $("#review_fixed > #outerWrap > #productList").css("align-items", "center");
-                    $("#review_fixed > #outerWrap > #productList").css("height", "100%");
-                    $("#review_fixed > #outerWrap > #productList").css("margin", "0");
-                }
-        }) 
-    });
-});
+
+window.onload = function(){
+    // $(document).ready(function(){
+        $('#reviewBtn').click(function(){
+            $.ajax({
+                type:"GET",
+                url : "/bestReview",
+                dataType:'html',
+                cache: false,
+                async:false,
+                success:function(result){
+                        $("#reviewTotal").css("display", "block");
+                        $("#reviewTotal > #review_del").css("display", "block");
+                        $("#review_fixed").html(result);
+                        $("#review_fixed > .headerWrap").css("display", "none");
+                        $("#review_fixed > #outerWrap").css("margin", "0 auto");
+                        $("#review_fixed > #outerWrap").css("height", "100%");
+                        $("#review_fixed > #outerWrap").css("z-index", "2");
+                        $("#review_fixed > #outerWrap > #top").css("display", "none");
+                        $("#review_fixed > #outerWrap > .line").css("display", "none");
+                        $("#review_fixed > #outerWrap > #navWrap").css("display", "none");
+                        $("#review_fixed > #outerWrap > #productList").css("display", "flex");
+                        $("#review_fixed > #outerWrap > #productList").css("align-items", "center");
+                        $("#review_fixed > #outerWrap > #productList").css("height", "100%");
+                        $("#review_fixed > #outerWrap > #productList").css("margin", "0");
+                    }
+            }) 
+        });
+    // });
+}
+
 
 $("#review_del").click(function(){
     $("#reviewTotal").css("display", "none");

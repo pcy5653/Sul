@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <!DOCTYPE html>
 
 <html>
@@ -9,12 +10,22 @@
 <title></title>
 
 <link rel="stylesheet" href="/resources/css/product/list.css">
+<Style>
+/* header.css */
+.viewport {}
+.headerWrap {
+    position: relative !important; top:0px !important;
+    background-color: rgba(255,255, 255,0) !important;
+}
+header {position: absolute !important;left:0px !important; top:0px !important;
+background-color: rgba(255,255, 255,0) !important;}
+
+</Style>
 
 </head>
 <body>
 	<c:import url="../temp/bootStrap.jsp"></c:import>
 	<c:import url="../temp/header.jsp"></c:import>
-	
 	<div id="outerWrap">
 		<div id="top">
 			<p>

@@ -34,4 +34,11 @@ public class AdminDAO {
 	public List<SalesRevenueDTO> getSalesRevenue() {
 		return sqlSession.selectList(NAMESPACE+"getSalesRevenue");
 	}
+	
+	public List<SalesRevenueDTO> dailySales(SalesRevenueDTO salesDTO){
+		return sqlSession.selectList(NAMESPACE+"dailySales",salesDTO);
+	}
+	
+
+
 }

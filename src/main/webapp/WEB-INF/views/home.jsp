@@ -85,7 +85,7 @@
 	</section>
 	<section id="search_wrap">
 		<div id="search">
-			<p id="searchTitle">무슨 술을 마실지 고민되시나요?</p>
+			<p id="searchTitle">무슨 <span>술</span>을 마실지 고민되시나요?</p>
 			<form id="searchFrm" action="${pageContext.request.contextPath}/product/list" method="get">
 				<select name="kind">
 					<option value="name">이름</option>
@@ -286,7 +286,6 @@
 </main>
 <c:import url="./temp/footer.jsp"></c:import>
 <script src="/resources/js/main.js"></script>
-<script type="text/javascript" src="/resources/js/khj/productList.js"></script>
 </body>
 
 </html>
