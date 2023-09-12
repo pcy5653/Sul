@@ -11,5 +11,77 @@
 			)A
 		WHERE ROWNUM BETWEEN 1 AND 4
 	</select>
- 	
+	
+	<select id="p46" resultType="ProductDTO">
+		SELECT * FROM PRODUCT
+		WHERE PRODUCTNUM = 46
+	</select> 	
+ 	<select id="p46r" resultType="Long">
+		SELECT count(*) FROM review
+		WHERE PRODUCTNUM = 46
+	</select>
+	
+	<select id="p47" resultType="ProductDTO">
+		SELECT * FROM PRODUCT
+		WHERE PRODUCTNUM = 47
+	</select> 	
+ 	<select id="p47r" resultType="Long">
+		SELECT count(*) FROM review
+		WHERE PRODUCTNUM = 47
+	</select>
+	
+	<select id="p48" resultType="ProductDTO">
+		SELECT * FROM PRODUCT
+		WHERE PRODUCTNUM = 48
+	</select> 	
+ 	<select id="p48r" resultType="Long">
+		SELECT count(*) FROM review
+		WHERE PRODUCTNUM = 48
+	</select>
+	
+	<select id="p49" resultType="ProductDTO">
+		SELECT * FROM PRODUCT
+		WHERE PRODUCTNUM = 49
+	</select> 	
+ 	<select id="p49r" resultType="Long">
+		SELECT count(*) FROM review
+		WHERE PRODUCTNUM = 49
+	</select>
+	
+	<select id="p45" resultType="ProductDTO">
+		SELECT * FROM PRODUCT
+		WHERE PRODUCTNUM = 45
+	</select> 	
+ 	<select id="p45r" resultType="Long">
+		SELECT count(*) FROM review
+		WHERE PRODUCTNUM = 45
+	</select>
+	
+	<select id="p63" resultType="ProductDTO">
+		SELECT * FROM PRODUCT
+		WHERE PRODUCTNUM = 63
+	</select> 	
+ 	<select id="p63r" resultType="Long">
+		SELECT count(*) FROM review
+		WHERE PRODUCTNUM = 63
+	</select>
+	
+	<select id="p66" resultType="ProductDTO">
+		SELECT * FROM PRODUCT
+		WHERE PRODUCTNUM = 66
+	</select> 	
+ 	<select id="p66r" resultType="Long">
+		SELECT count(*) FROM review
+		WHERE PRODUCTNUM = 66
+	</select>
+	
+	<select id="p72" resultType="ProductDTO">
+		SELECT * FROM PRODUCT
+		WHERE PRODUCTNUM = 72
+	</select> 	
+ 	<select id="p72r" resultType="Long">
+		SELECT count(*) FROM review
+		WHERE PRODUCTNUM = 72
+	</select>
+	
   </mapper>

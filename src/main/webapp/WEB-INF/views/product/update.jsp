@@ -366,6 +366,6 @@ background-color: rgba(255,255, 255,0) !important;}
 	<br><br><br><br><br><br>
 	<script src="/resources/js/khj/file.js"></script>
 	<script src="/resources/js/khj/add.js"></script>
-	
+	<c:import url="../temp/footer.jsp"></c:import>
 </body>
 </html>

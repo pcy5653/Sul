@@ -159,5 +159,6 @@ background-color: rgba(255,255, 255,0) !important;}
 	</form>
 	</section>
 	<script src="/resources/js/khj/add.js"></script>
+	<c:import url="../temp/footer.jsp"></c:import>
 </body>
 </html>

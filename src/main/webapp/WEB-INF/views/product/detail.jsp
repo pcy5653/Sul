@@ -255,5 +255,6 @@ background-color: rgba(255,255, 255,0) !important;}
 	    }); 
 	});
 	</script>
+	<c:import url="../temp/footer.jsp"></c:import>
 </body>
 </html>
