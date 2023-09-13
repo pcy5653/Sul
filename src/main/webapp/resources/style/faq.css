@@ -16,7 +16,7 @@ section .wrap .main #faqList > tbody > tr > td > input{}
 section .wrap .main #faqList > tbody > tr > td > a .faqQ{}
 section .wrap .main #faqList > tbody > .faqCon{display: none;}
 section .wrap .main #faqList > tbody > .faqCon > .fcon{}
-section .wrap .main #faqList > tbody > .faqCon > .fcon > pre{white-space: pre-wrap;}
+section .wrap .main #faqList > tbody > .faqCon > .fcon > pre{white-space: pre-wrap;font-size: 1rem;line-height: 1.5;}
 section .wrap .main #faqList > tbody > .faqCon > .fcon .faqTBtn{display:flex;justify-content:flex-end;}
 section .wrap .main #faqList > tbody > .faqCon > .fcon .faqTBtn .c1{}
 section .wrap .main #faqList > tbody > .faqCon > .fcon .faqTBtn .upBtn{}

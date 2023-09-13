@@ -82,8 +82,8 @@ table tr td.dcon {
 #NumZero > tr > td {}
 
 /* add.css */
-#add_view {height:90vh;}
-.add_frm {display:flex;flex-direction:column;width:80%;height:60vh; margin:0 auto; margin-bottom:5rem;}
+#add_view {}
+.add_frm {display:flex;flex-direction:column;width:80%;height:100%; margin:0 auto; margin-bottom:5rem;}
 .addD {display:flex;width:100%;margin: 0 auto;margin-bottom: 1rem;align-items:center;}
 .in {width: calc(100% - 20%);height:2.5rem;border: 1px solid #cccccc;border-radius: 10px;}
 .name_in, .sub_in {padding-left: 1rem;}

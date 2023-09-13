@@ -2,9 +2,6 @@
 const c1 = document.getElementsByClassName('c1');
 
 const nn = document.getElementsByClassName("faqIn");
-for(n of nn){
-    console.log("num value :",n.value)
-}
 // 1. page 처리
 const move = document.getElementsByClassName('move');
 const page= document.getElementById('faqPage');
