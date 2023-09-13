@@ -33,6 +33,7 @@ window.onload = function(){
                         $("#reviewTotal > #review_del").css("display", "block");
                         $("#review_fixed").html(result);
                         $("#review_fixed > .headerWrap").css("display", "none");
+                        $("#review_fixed > .viewport").css("display", "none");
                         $("#review_fixed > #outerWrap").css("margin", "0 auto");
                         $("#review_fixed > #outerWrap").css("height", "100%");
                         $("#review_fixed > #outerWrap").css("z-index", "2");
