@@ -37,8 +37,8 @@ footer {margin-top:7rem;}
                 </h1>    
                 <ul>
                     <c:if test="${not empty member}">
-                        <li class="not_empty_Basket"><a href="/product/basketList">
-                            <img alt="" src="../resources/images/basket/cart.png" style="width: 30px; height: 30px;"></a>
+                        <li class="not_empty_Basket"><a href="/product/basketList">장바구니
+                            <!-- <img alt="" src="../resources/images/basket/cart.png" style="width: 30px; height: 30px;"> --></a>
                         </li>
                         <li class="faq"><a href="/faq/list">고객센터</a></li>
                         <li class="login"><a href="/member/logout">로그아웃</a></li>
