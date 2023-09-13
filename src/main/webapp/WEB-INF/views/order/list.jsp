@@ -1,6 +1,7 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 
 <html>
@@ -41,7 +42,7 @@
 										</c:if>
 										<p>${orderProduct.productDTO.productName}</p>
 										<p>[${orderProduct.productDTO.capacity}ml]${orderProduct.productDTO.productName} ...</p>
-										<p>${orderProduct.productDTO.price}원 / 수량 ${orderProduct.orderCount}개</p>
+										<p><fmt:formatNumber value="${orderProduct.productDTO.price}" pattern="#,###" />원 / 수량 ${orderProduct.orderCount}개</p>
 										<c:if test="${orderProduct.isCanceled ne 1}">
 										<a class="btn btn-success" href="../product/reviewAdd?productNum=${orderProduct.productDTO.productNum}&productName=${orderProduct.productDTO.productName}" target="_blank">리뷰 작성</a>
 										</c:if>
@@ -51,7 +52,7 @@
 							</c:forEach>
 							<div id="orderFee">
 								<img src="../resources/images/order/truck-icon.png">
-								<span>${order.orderFee}원</span>
+								<span><fmt:formatNumber value="${order.orderFee}" pattern="#,###" />원</span>
 							</div>
 						</div>
 					</c:forEach>

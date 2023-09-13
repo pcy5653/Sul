@@ -386,48 +386,20 @@ footer {margin-top:7rem;}
     
     // 결제 버튼
     $("#payment").click(function(){
-    	let member = "${sessionScope.member}";
-		if(member != ""){
-			$.ajax({
-				type:"get",
-				url: "../order/haveRefreshToken",
-				data:{
-					id:"${member.id}",
-				},
-				success:function(result){
-					let form = $("<form></form>");
-					form.attr("method", "POST");
-					form.attr("action", "../order/")
-					
-			    	$("ul > li > .productInfo").each(function(index, element){
-			    		let productNum = $(element).find(".productNum").val();
-			    		let count = $(element).find(".amount > .numBox").val();
-			    		
-			    		form.append($("<input />", {type:"hidden", name:"orderProducts[" + index + "].productNum", value:productNum}));
-			    		form.append($("<input />", {type:"hidden", name:"orderProducts[" + index + "].orderCount", value:count}));
-			    	});
-			    	
-			    	form.appendTo("body");
-					
-					if(result){
-						form.submit();
-					}else{
-						let url = "https://kauth.kakao.com/oauth/authorize?client_id=d904cac31b9fc17c41fc6bcb88454c07&redirect_uri=http://localhost:8080/order/kakaoAuth&response_type=code&scope=talk_message";
-						let authWindow = window.open(url, "_blank", "width=600, height=600");
-						
-						// 0.5초 간격으로 인증 창이 닫혔는지 확인(닫혔다면 구매 단계로 계속 진행)
-						let checkAuthWindow = setInterval(function () {
-							if(authWindow.closed) {
-								clearInterval(checkAuthWindow);
-								form.submit();
-							}
-						}, 500);
-					}
-				}
-			});
-		}else{
-			location.href = "../member/login";
-		}
+    	let form = $("<form></form>");
+		form.attr("method", "POST");
+		form.attr("action", "../order/")
+		
+    	$("ul > li > .productInfo").each(function(index, element){
+    		let productNum = $(element).find(".productNum").val();
+    		let count = $(element).find(".amount > .numBox").val();
+    		
+    		form.append($("<input />", {type:"hidden", name:"orderProducts[" + index + "].productNum", value:productNum}));
+    		form.append($("<input />", {type:"hidden", name:"orderProducts[" + index + "].orderCount", value:count}));
+    	});
+    	
+    	form.appendTo("body");
+		form.submit();
     });
 </script>
 <c:import url="../temp/footer.jsp"></c:import>
