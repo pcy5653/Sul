@@ -1,5 +1,6 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 
 <html>
@@ -19,6 +20,7 @@
 	<div id="outerWrap">
 		<div id="title">
 			<p>주문 / 결제</p>
+			<p id="home" onclick="location.href='${pageContext.request.contextPath}/'">홈으로</p>
 		</div>
 		<div id="innerWrap">
 			<div id="alignWrap">
@@ -44,7 +46,7 @@
 							<div>
 								<p>${orderProduct.productDTO.productName}</p>
 								<p>[${orderProduct.productDTO.capacity}ml]${orderProduct.productDTO.productName} ...</p>
-								<p>${orderProduct.productDTO.price}원 / 수량 ${orderProduct.orderCount}개</p>
+								<p><fmt:formatNumber value="${orderProduct.productDTO.price}" pattern="#,###" />원 / 수량 ${orderProduct.orderCount}개</p>
 							</div>
 						</div>
 						<p class="line" />
@@ -52,12 +54,12 @@
 					<div id="orderFee">
 						<c:set var="orderFee" value="2000" />
 						<img src="../resources/images/order/truck-icon.png">
-						<span>${orderFee}원</span>
+						<span><fmt:formatNumber value="${orderFee}" pattern="#,###" />원</span>
 					</div>
 					<p class="strongLine" />
 					<div id="totalAmount">
 						<p class="l_label">주문 총액</p>
-						<p class="r_label">${totalAmount + orderFee}원</p>
+						<p class="r_label"><fmt:formatNumber value="${totalAmount + orderFee}" pattern="#,###" />원</p>
 					</div>
 				</div>
 				<div id="point" class="wrap">
@@ -65,7 +67,7 @@
 					<div id="usePoint">
 						<p class="strongLabel">포인트</p><input type="number" placeholder="사용할 포인트를 입력해주세요.">
 					</div>
-					<p class="skyFont">사용 가능한 포인트 : ${member.point}p</p>
+					<p class="skyFont">사용 가능한 포인트 : <fmt:formatNumber value="${member.point}" pattern="#,###" />p</p>
 				</div>
 				<div id="billInfo" class="wrap">
 					<p class="title">계산서</p>
