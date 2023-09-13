@@ -41,29 +41,28 @@ footer {margin-top:7rem;}
 
 <body>
 	<!-- 헤더 -->
-        <header>
-            <h1>
-                <a href="${pageContext.request.contextPath}/" class="main_logo">
-					<img src="/resources/images/main/main_logo.png" alt="메인로고">
-                </a>
-            </h1>
-          
-            <ul>
-                <c:if test="${not empty member}">
-                <li class="not_empty_Basket"><a href="/product/basketList">
-            		<img alt="" src="../resources/images/basket/cart.png" style="width: 30px; height: 30px;"></a></li>
-            	<li class="notice"><a href="/notice/list" >공지사항</a></li>
-                <li class="qna"><a href="/qna/list">1:1문의</a></li>	
-	      		<li class="login"><a href="/member/logout">로그아웃</a></li>
-	      		<li class="join"><a href="/member/mypage">mypage</a></li>
-	      		</c:if>
-				<c:if test="${empty member}">
-				<li class="notice"><a href="/notice/list">공지사항</a></li>
-	      		<li class="login"><a href="/member/login">로그인</a></li>
-	      		<li class="join"><a href="/member/terms">회원가입</a></li>
-	      		</c:if>            
-	      	</ul>
-        </header>
+            <header>
+                <h1>
+                    <a href="${pageContext.request.contextPath}/" class="main_logo">
+                        <img src="/resources/images/main/main_logo.png" alt="메인로고">
+                    </a>
+                </h1>    
+                <ul>
+                    <c:if test="${not empty member}">
+                        <li class="not_empty_Basket"><a href="/product/basketList">
+                            <img alt="" src="../resources/images/basket/cart.png" style="width: 30px; height: 30px;"></a>
+                        </li>
+                        <li class="faq"><a href="/faq/list">고객센터</a></li>
+                        <li class="login"><a href="/member/logout">로그아웃</a></li>
+                        <li class="join"><a href="/member/mypage">${member.name}님</a></li>
+                    </c:if>
+                    <c:if test="${empty member}">
+                        <li class="faq"><a href="/faq/list">고객센터</a></li>
+                        <li class="login"><a href="/member/login">로그인</a></li>
+                        <li class="join"><a href="/member/terms">회원가입</a></li>
+                    </c:if>            
+                </ul>
+            </header>
 
 	<section id="container" class="wrap">
 		
