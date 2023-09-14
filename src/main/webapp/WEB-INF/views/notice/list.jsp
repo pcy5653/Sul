@@ -11,10 +11,10 @@
 <style>
 .wrap {width: 1200px; height:auto; margin-bottom: 100px; margin-top: 50px;}
 .tb{width: 1200px;}
-.title {font-size:2.5rem; text-align: center;}
+.title {font-size:3rem; text-align: center; font-weight: 900;}
 .head{height: 50px; background-color: #f1f3f5; width: 1200px;}
 .body{
-	height: 40px;
+	height: 50px;
 	border-top:0.5px solid #b2b2b2;
 	margin-right: 200px;
 	
@@ -44,9 +44,9 @@ footer {margin-top:7rem;}
             <header>
                 <h1>
                     <a href="${pageContext.request.contextPath}/" class="main_logo">
-                        <img src="/resources/images/main/main_logo.png" alt="메인로고">
+                        <img src="/resources/images/main/mainLogo.png" alt="메인로고">
                     </a>
-                </h1>    
+                </h1>   
                 <ul>
                     <c:if test="${not empty member}">
                         <li class="not_empty_Basket"><a href="/product/basketList">장바구니
