@@ -22,7 +22,7 @@ background-color: rgba(255,255, 255,0) !important;}
 	<c:import url="../temp/header.jsp"></c:import>
 	
 	<section class="container mt-5">
-	<h1 class="my-4">리뷰 등록 페이지</h1>
+	<h1 class="my-4">리뷰 수정 페이지</h1>
 	
 	<form action="../product/reviewUpdate" method="post" enctype="multipart/form-data" id="frm">
 		<input type="hidden" name="reviewNum" value="${dto.reviewNum}">
