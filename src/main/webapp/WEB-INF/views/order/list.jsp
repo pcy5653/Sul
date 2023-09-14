@@ -44,7 +44,11 @@
 										<p>[${orderProduct.productDTO.capacity}ml]${orderProduct.productDTO.productName} ...</p>
 										<p><fmt:formatNumber value="${orderProduct.productDTO.price}" pattern="#,###" />원 / 수량 ${orderProduct.orderCount}개</p>
 										<c:if test="${orderProduct.isCanceled ne 1}">
-										<a class="btn btn-success" href="../product/reviewAdd?productNum=${orderProduct.productDTO.productNum}&productName=${orderProduct.productDTO.productName}" target="_blank">리뷰 작성</a>
+										
+										<c:url value="../product/reviewAdd?productNum=${orderProduct.productDTO.productNum}" var="url">
+											<c:param name="productName" value="${orderProduct.productDTO.productName}" />
+										</c:url>
+										<a class="btn btn-success" href="${url}" target="_blank">리뷰 작성</a>
 										</c:if>
 									</div>
 								</div>
