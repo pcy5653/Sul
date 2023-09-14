@@ -79,7 +79,7 @@
 
       
     </div>
-    <div id="more">
+    <div id="more" style="width:1150px;margin:0 auto;display:flex;justify-content:end;">
 
     </div>
     <div id="before">
