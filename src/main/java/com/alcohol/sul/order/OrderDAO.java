@@ -85,16 +85,4 @@ public class OrderDAO {
 	public List<CancelDTO> getCancelAll(Map<String, String> map) {
 		return sqlSession.selectList(NAMESPACE + "getCancel", map);
 	}
-	
-	public KakaoRefreshTokenDTO getKakaoRefreshTokenDTO(String id) {
-		return sqlSession.selectOne(NAMESPACE + "getKakaoRefreshToken", id);
-	}
-	
-	public int addKakaoRefreshToken(KakaoRefreshTokenDTO kakaoRefreshTokenDTO) {
-		return sqlSession.insert(NAMESPACE + "addKakaoRefreshToken", kakaoRefreshTokenDTO);
-	}
-	
-	public int deleteKakaoRefreshToken(String id) {
-		return sqlSession.delete(NAMESPACE + "deleteKakaoRefreshToken", id);
-	}
 }

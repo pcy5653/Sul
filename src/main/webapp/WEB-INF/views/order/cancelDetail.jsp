@@ -1,5 +1,6 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 
 <html>
@@ -38,7 +39,7 @@
 							<div>
 								<p>${cancelInfo.orderProductDTO.productDTO.productName}</p>
 								<p>[${cancelInfo.orderProductDTO.productDTO.capacity}ml]${cancelInfo.orderProductDTO.productDTO.productName} ...</p>
-								<p>${cancelInfo.orderProductDTO.productDTO.price}원 / 수량 ${cancelInfo.orderProductDTO.orderCount}개</p>
+								<p><fmt:formatNumber value="${cancelInfo.orderProductDTO.productDTO.price}" pattern="#,###" />원 / 수량 ${cancelInfo.orderProductDTO.orderCount}개</p>
 							</div>
 						</div>
 						<p class="line" />
@@ -52,26 +53,26 @@
 					<p class="title">상세 정보</p>
 					<div>
 						<p class="l_label">환불 상품 금액</p>
-						<p class="r_label"><span>${productAmount}</span>원</p>
+						<p class="r_label"><span><fmt:formatNumber value="${productAmount}" pattern="#,###" /></span>원</p>
 					</div>
 					<div>
 						<p class="l_label">환불 배송비</p>
-						<p class="r_label">${cancel.cancelOrderFee}원</p>
+						<p class="r_label"><fmt:formatNumber value="${cancel.cancelOrderFee}" pattern="#,###" />원</p>
 					</div>
 					<p class="strongLine" />
 					<div>
 						<p class="l_label pinkFont">총 환불액</p>
 						<p class="r_label pinkFont">
-							<span style="font-size:16px; color:#F47070;">${productAmount + cancel.cancelOrderFee}</span>원
+							<span style="font-size:16px; color:#F47070;"><fmt:formatNumber value="${productAmount + cancel.cancelOrderFee}" pattern="#,###" /></span>원
 						</p>
 					</div>
 					<div>
 						<p class="l_label">현금 환불액</p>
-						<p class="r_label"><span>${productAmount + cancel.cancelOrderFee - cancel.cancelPoint}</span>원</p>
+						<p class="r_label"><span><fmt:formatNumber value="${productAmount + cancel.cancelOrderFee - cancel.cancelPoint}" pattern="#,###" /></span>원</p>
 					</div>
 					<div>
 						<p class="l_label">포인트 반환액</p>
-						<p class="r_label"><span>${cancel.cancelPoint}</span>원</p>
+						<p class="r_label"><span><fmt:formatNumber value="${cancel.cancelPoint}" pattern="#,###" /></span>원</p>
 					</div>
 				</div>
 			</div>

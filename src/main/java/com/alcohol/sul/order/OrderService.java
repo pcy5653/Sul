@@ -148,16 +148,4 @@ public class OrderService {
 	public List<CancelDTO> getCancelAll(Map<String, String> map) {
 		return orderDAO.getCancelAll(map);
 	}
-	
-	public KakaoRefreshTokenDTO getKakaoRefreshToken(String id) {
-		return orderDAO.getKakaoRefreshTokenDTO(id);
-	}
-	
-	public int addKakaoRefreshToken(KakaoRefreshTokenDTO kakaoRefreshTokenDTO) {
-		return orderDAO.addKakaoRefreshToken(kakaoRefreshTokenDTO);
-	}
-	
-	public int deleteKakaoRefreshToken(String id) {
-		return orderDAO.deleteKakaoRefreshToken(id);
-	}
 }

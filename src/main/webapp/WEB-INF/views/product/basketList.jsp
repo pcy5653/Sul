@@ -32,28 +32,28 @@ footer {margin-top:7rem;}
 </head>
 <body>
 		<!-- 헤더 -->
-        <header>
-            <h1>
-                <a href="${pageContext.request.contextPath}/" class="main_logo">
-					<img src="/resources/images/main/main_logo.png" alt="메인로고">
-                </a>
-            </h1>
-          
-            <ul>
-                <c:if test="${not empty member}">
-                <li class="not_empty_Basket"><a href="/product/basketList">
-            		<img alt="" src="../resources/images/basket/cart.png" style="width: 30px; height: 30px;"></a></li>
-            	<li class="notice"><a href="/notice/list">공지사항</a></li>
-                <li class="qna"><a href="/qna/list">1:1문의</a></li>	
-	      		<li class="login"><a href="/member/logout">로그아웃</a></li>
-	      		<li class="join"><a href="/member/mypage">mypage</a></li>
-	      		</c:if>
-				<c:if test="${empty member}">
-	      		<li class="login"><a href="/member/login">로그인</a></li>
-	      		<li class="join"><a href="/member/terms">회원가입</a></li>
-	      		</c:if>            
-	      	</ul>
-        </header>
+            <header>
+                <h1>
+                    <a href="${pageContext.request.contextPath}/" class="main_logo">
+                        <img src="/resources/images/main/main_logo.png" alt="메인로고">
+                    </a>
+                </h1>    
+                <ul>
+                    <c:if test="${not empty member}">
+                        <li class="not_empty_Basket"><a href="/product/basketList">장바구니
+                            <!-- <img alt="" src="../resources/images/basket/cart.png" style="width: 30px; height: 30px;"> --></a>
+                        </li>
+                        <li class="faq"><a href="/faq/list">고객센터</a></li>
+                        <li class="login"><a href="/member/logout">로그아웃</a></li>
+                        <li class="join"><a href="/member/mypage">${member.name}님</a></li>
+                    </c:if>
+                    <c:if test="${empty member}">
+                        <li class="faq"><a href="/faq/list">고객센터</a></li>
+                        <li class="login"><a href="/member/login">로그인</a></li>
+                        <li class="join"><a href="/member/terms">회원가입</a></li>
+                    </c:if>            
+                </ul>
+            </header>
 <!-- 장바구니 상품 없을 때 -->
 <c:if test="${empty basketList}">    
    <div style="text-align: center; /* margin-top: 150px; margin-bottom: 90px; margin-left: 450px; */ margin: auto; margin-top: 200px;'" class="above">
@@ -386,48 +386,20 @@ footer {margin-top:7rem;}
     
     // 결제 버튼
     $("#payment").click(function(){
-    	let member = "${sessionScope.member}";
-		if(member != ""){
-			$.ajax({
-				type:"get",
-				url: "../order/haveRefreshToken",
-				data:{
-					id:"${member.id}",
-				},
-				success:function(result){
-					let form = $("<form></form>");
-					form.attr("method", "POST");
-					form.attr("action", "../order/")
-					
-			    	$("ul > li > .productInfo").each(function(index, element){
-			    		let productNum = $(element).find(".productNum").val();
-			    		let count = $(element).find(".amount > .numBox").val();
-			    		
-			    		form.append($("<input />", {type:"hidden", name:"orderProducts[" + index + "].productNum", value:productNum}));
-			    		form.append($("<input />", {type:"hidden", name:"orderProducts[" + index + "].orderCount", value:count}));
-			    	});
-			    	
-			    	form.appendTo("body");
-					
-					if(result){
-						form.submit();
-					}else{
-						let url = "https://kauth.kakao.com/oauth/authorize?client_id=d904cac31b9fc17c41fc6bcb88454c07&redirect_uri=http://localhost:8080/order/kakaoAuth&response_type=code&scope=talk_message";
-						let authWindow = window.open(url, "_blank", "width=600, height=600");
-						
-						// 0.5초 간격으로 인증 창이 닫혔는지 확인(닫혔다면 구매 단계로 계속 진행)
-						let checkAuthWindow = setInterval(function () {
-							if(authWindow.closed) {
-								clearInterval(checkAuthWindow);
-								form.submit();
-							}
-						}, 500);
-					}
-				}
-			});
-		}else{
-			location.href = "../member/login";
-		}
+    	let form = $("<form></form>");
+		form.attr("method", "POST");
+		form.attr("action", "../order/")
+		
+    	$("ul > li > .productInfo").each(function(index, element){
+    		let productNum = $(element).find(".productNum").val();
+    		let count = $(element).find(".amount > .numBox").val();
+    		
+    		form.append($("<input />", {type:"hidden", name:"orderProducts[" + index + "].productNum", value:productNum}));
+    		form.append($("<input />", {type:"hidden", name:"orderProducts[" + index + "].orderCount", value:count}));
+    	});
+    	
+    	form.appendTo("body");
+		form.submit();
     });
 </script>
 <c:import url="../temp/footer.jsp"></c:import>
