@@ -27,7 +27,7 @@
 	</section>
 	<section id="review_wrap">
 		<div class="review_div">
-			<p>술담화의 <span class="review">리뷰 Best 4</span> 상품을 만나보세요!</p>
+			<p>술담아의 <span class="review">리뷰 Best 4</span> 상품을 만나보세요!</p>
 			<button id="reviewBtn">PUSH</button>
 			<div id="reviewTotal">
 				<div id="review_fixed"></div>
@@ -100,7 +100,7 @@
 			<div class="best_top pro_top">
 				<div class="best_text pro_text">
 					<div class="best_title pro_title">
-						<p class="pt">술담화 BEST 상품</p>
+						<p class="pt">술담아 BEST 상품</p>
 						<p>센스쟁이 MD 추천</p>
 					</div>
 					<a href="/product/list" class="best_more more">더보기</a>
@@ -189,7 +189,7 @@
 			<div class="pick_top pro_top">
 				<div class="pick_text pro_text">
 					<div class="pick_title pro_title">
-						<p class="pt">이번주 술담화 PICK!</p>
+						<p class="pt">이번주 술담아 PICK!</p>
 						<p>더운 여름에 청량감을 더한다면?</p>
 					</div>
 					<a href="/product/list" class="pick_more more">더보기</a>
