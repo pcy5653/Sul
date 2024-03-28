@@ -1,5 +1,5 @@
 ## 🍶  전통주 쇼핑몰 술담아
-- [프로젝트 개요](#📋-프로젝트-개요)
+- [프로젝트 개요](#프로젝트-개요)
 - [팀원 소개](#팀원-소개)
 - [내 담당 기능](#내-담당-기능)
 - [개발 환경 및 도구](#개발-환경-및-도구)
@@ -25,7 +25,7 @@
 
 <br>
 
-## 📋 프로젝트 개요
+## 📋프로젝트 개요
 <p align="center"><img width="330" alt="술담아" src="https://github.com/koehdcks/Sul/assets/68891642/05326e06-86e5-4a4b-9b96-e2727eaee1c9"></p>
 
 > **프로젝트** : 전통주 쇼핑몰 술담아  
@@ -38,7 +38,7 @@
 
 <br>
 
-## 👨‍👩‍👧‍👦 팀원 소개
+## 👨‍👩‍👧‍👦팀원 소개
 > **팀장** : 김호진  
 > 상품페이지, 상품리뷰  
 
@@ -56,7 +56,7 @@
 
 <br>
 
-## 🤠 내 담당 기능
+## 🤠내 담당 기능
 > #**회원**   
 >>a) 1:1 내 문의 목록  
 >>b) 1:1 문의 등록 (파일 첨부 및 SMS 수신 동의), 수정, 삭제  
@@ -69,7 +69,7 @@
 
 <br>
 
-## ⚙️ 개발 환경 및 도구
+## ⚙️개발 환경 및 도구
 
 > ### Framework  :  ![Spring](https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white)  ![Bootstrap](https://img.shields.io/badge/bootstrap-%238511FA.svg?style=for-the-badge&logo=bootstrap&logoColor=white) <img src="https://img.shields.io/badge/MyBatis-000000?style=for-the-badge&logo=MyBatis&logoColor=white"> 
 > ### Design  : ![Adobe Photoshop](https://img.shields.io/badge/adobe%20photoshop-%2331A8FF.svg?style=for-the-badge&logo=adobe%20photoshop&logoColor=white)
@@ -85,5 +85,5 @@
 
 <br>
 
-##  🚀 기능 구현
+##  🚀기능 구현
 
