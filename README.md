@@ -23,6 +23,7 @@
 
     </details>
 
+<br>
 
 ## 📋 프로젝트 개요
 <p align="center"><img width="330" alt="술담아" src="https://github.com/koehdcks/Sul/assets/68891642/05326e06-86e5-4a4b-9b96-e2727eaee1c9"></p>
@@ -35,7 +36,7 @@
 >> **시스템 아키텍처**   
 그림 들어간다.
 
-
+<br>
 
 ## 👨‍👩‍👧‍👦 팀원 소개
 > **팀장** : 김호진  
@@ -53,7 +54,7 @@
 > **팀원** : 김민진  
 >주문/주문취소, 관리자페이지, 상품페이지
 
-
+<br>
 
 ## 🤠 내 담당 기능
 > #**회원**   
@@ -66,6 +67,7 @@
 >> b) FAQ 목록, 등록, 수정, 삭제, 페이징 처리  
 >> c) 총괄 페이지 디자인
 
+<br>
 
 ## ⚙️ 개발 환경 및 도구
 
@@ -79,3 +81,7 @@
 > ### OS  : ![windows](https://img.shields.io/badge/windows-0078D4.svg?style=for-the-badge&logo=windows&logoColor=white)
 > ### Hosting : ![AWS](https://img.shields.io/badge/aws-232F3E.svg?style=for-the-badge&logo=amazonaws&logoColor=white)
 > ### Other :  ![docker](https://img.shields.io/badge/docker-2496ED.svg?style=for-the-badge&logo=docker&logoColor=white) ![slack](https://img.shields.io/badge/slack-4A154B.svg?style=for-the-badge&logo=slack&logoColor=white) ![github](https://img.shields.io/badge/github-181717.svg?style=for-the-badge&logo=github&logoColor=white)
+
+
+<br>
+
