@@ -23,7 +23,7 @@
     </details>
 
 ## 📋 프로젝트 개요
-<img width="500" alt="술담아" src="https://github.com/koehdcks/Sul/assets/68891642/05326e06-86e5-4a4b-9b96-e2727eaee1c9">
+<img width="330" alt="술담아" align="center" src="https://github.com/koehdcks/Sul/assets/68891642/05326e06-86e5-4a4b-9b96-e2727eaee1c9">
 
 > **프로젝트** : 전통주 쇼핑몰 술담아  
 > **기획 및 제작** : 김세은, 김동찬, 김민진, 김호진, 박채연  
