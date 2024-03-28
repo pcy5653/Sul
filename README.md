@@ -22,7 +22,7 @@
 
     </details>
 
-## 프로젝트 개요
+## 📋 프로젝트 개요
 <img width="330" alt="술담아" src="https://github.com/koehdcks/Sul/assets/68891642/05326e06-86e5-4a4b-9b96-e2727eaee1c9">
 
 
