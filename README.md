@@ -88,5 +88,5 @@
 ### 1. 회원
 1-1. 메인화면
 <p align="center">
-<img style="width:500px;" src="https://github.com/pcy5653/GDJ68_Boot/assets/68891642/23f2566f-f3bd-4ed3-938e-657ff243b8f2" />
+<img style="width:300px;" src="https://github.com/pcy5653/GDJ68_Boot/assets/68891642/23f2566f-f3bd-4ed3-938e-657ff243b8f2" />
 </p>
