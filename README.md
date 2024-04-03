@@ -88,5 +88,5 @@
 ### 1. 회원
 1-1. 메인화면
 <p align="center">
-    ![술1](https://github.com/koehdcks/Sul/assets/68891642/57b48635-675e-41db-acb8-12f1599dc2d6)
+![술1](https://github.com/pcy5653/GDJ68_Boot/assets/68891642/8cd79f29-11ce-488f-9790-e0aa336b95c7)
 </p>
