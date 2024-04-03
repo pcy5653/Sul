@@ -116,13 +116,16 @@
 <img style="width:400px;" align="center" src="https://github.com/pcy5653/GDJ68_Boot/assets/68891642/dafe8fcd-db02-4a58-bf90-31f738d4f002" />
 <img style="width:200px;" align="center" src="https://github.com/pcy5653/GDJ68_Boot/assets/68891642/510ffdba-ac5a-44cb-8a8e-6b83dabdf691" />
 </p>
+- 1:1 문의 작성 페이지에서 건의사항을 등록할 수 있으며, SMS 발송 여부에 따라 사용자에게 문자 알림이 전송됩니다.
 
 <p align="center">
 <img style="width:400px;" align="center" src="https://github.com/pcy5653/GDJ68_Boot/assets/68891642/73c058ee-7228-4d07-8e37-3bf9a02ae21d" />
 <img style="width:200px;" align="center" src="https://github.com/pcy5653/GDJ68_Boot/assets/68891642/5a762977-045e-49ba-a244-0d2ebf6dcbb9" />
 </p>
+- 수정 페이지로 이동하여 내용을 수정할 수 있으며, 파일은 최대 3개까지 등록할 수 있는 경고창을 띄웁니다.
 
 <p align="center">
 <img style="width:400px;" align="center" src="https://github.com/pcy5653/GDJ68_Boot/assets/68891642/e1931d7a-eeb9-409b-b3e2-0387a9c4cc26" />
 <img style="width:200px;" align="center" src="https://github.com/pcy5653/GDJ68_Boot/assets/68891642/5a93d54e-9543-4c31-b7ba-ab356807bddc" />
 </p>
+- 사용자만이 글을 삭제할 수 있으며, 삭제하면 해당 문의글의 답변까지 삭제가 됩니다.
