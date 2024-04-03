@@ -92,4 +92,12 @@
 <img style="width:200px;" align="center" src="https://github.com/pcy5653/GDJ68_Boot/assets/68891642/f00c67f0-9041-4d84-8940-6c64a3bbc526" />
 </p>
 
-- <술담아> 메인페이지로 평점에 따른 Best 4 상품을 확인할 수 있습니다. 
+- <술담아> 메인페이지로 평점에 따른 Best 4 상품을 확인할 수 있습니다.
+
+<br>
+1-2. FAQ 목록
+<p align="center">
+<img style="width:300px;" align="center" src="https://github.com/pcy5653/GDJ68_Boot/assets/68891642/1eb8d29a-a59c-4e26-89f2-6c750ec4ea34" />
+</p>
+
+- 카테고리 별로 원하는 FAQ를 확인할 수 있으며, '+' 클릭하면 각 List 상세 내용을 확인할 수 있습니다.
