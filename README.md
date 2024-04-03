@@ -143,4 +143,22 @@
 <br>
 
 ### 2. 관리자
-#### 2-1. FAQ 목록
+#### 2-1. FAQ 목록, 등록, 수정, 삭제
+<p align="center">
+<img style="width:500px;" align="center" src="https://github.com/pcy5653/GDJ68_Boot/assets/68891642/74fb2901-2d13-4476-b01e-529c70fa216b" />
+</p>
+
+- FAQ를 등록, 수정, 삭제 할 수 있는 버튼이 보이며, 원하는 기능에 따라 버튼을 누르면 해당 페이지로 이동됩니다.
+
+<br>
+<br>
+
+#### 2-2. 1:1 전체 사용자 문의 목록
+<p align="center">
+<img style="width:500px;" align="center" src="https://github.com/pcy5653/GDJ68_Boot/assets/68891642/f8350088-10ae-493d-bf25-47fa13257ad7" />
+<img style="width:500px;" align="center" src="https://github.com/pcy5653/GDJ68_Boot/assets/68891642/f1c8733d-3144-4d46-a9a3-fa35fc77c966" />
+</p>
+<p align="center">
+<img style="width:200px;" align="top" src="https://github.com/pcy5653/GDJ68_Boot/assets/68891642/abd9eb79-17bf-4003-8e19-d59568a42b10" />
+<img style="width:200px;" align="bottom" src="https://github.com/pcy5653/GDJ68_Boot/assets/68891642/cafc6a98-9e67-42d6-97c6-da639a44691a" />
+</p>
