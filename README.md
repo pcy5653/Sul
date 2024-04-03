@@ -88,5 +88,5 @@
 ### 1. 회원
 1-1. 메인화면
 <p align="center">
-    <img width="374" alt="헬스" src="https://github.com/koehdcks/Sul/assets/68891642/248c9b64-fd02-4f76-97c8-e1e5b1dd130f">
+    ![술1](https://github.com/koehdcks/Sul/assets/68891642/57b48635-675e-41db-acb8-12f1599dc2d6)
 </p>
