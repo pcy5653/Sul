@@ -86,7 +86,7 @@
 
 ## 🔍기능 구현
 ### 1. 회원
-1-1. 메인화면
+#### 1-1. 메인화면
 <p align="center">
 <img style="width:300px;" align="center" src="https://github.com/pcy5653/GDJ68_Boot/assets/68891642/23f2566f-f3bd-4ed3-938e-657ff243b8f2" />
 <img style="width:200px;" align="center" src="https://github.com/pcy5653/GDJ68_Boot/assets/68891642/f00c67f0-9041-4d84-8940-6c64a3bbc526" />
@@ -96,7 +96,8 @@
 
 <br>
 <br>
-1-2. FAQ 목록
+
+#### 1-2. FAQ 목록
 <p align="center">
 <img style="width:400px;" align="center" src="https://github.com/pcy5653/GDJ68_Boot/assets/68891642/1eb8d29a-a59c-4e26-89f2-6c750ec4ea34" />
 </p>
@@ -105,7 +106,8 @@
 
 <br>
 <br>
-1-3. 1:1 내 문의 목록
+
+#### 1-3. 1:1 내 문의 목록
 <p align="center">
 <img style="width:400px;" align="center" src="https://github.com/pcy5653/GDJ68_Boot/assets/68891642/609eaec5-9fa5-4ae8-ab50-a807c4601a4f" />
 </p>
@@ -114,7 +116,8 @@
 
 <br>
 <br>
-1-4. 1:1 내 문의 등록, 수정, 삭제
+
+#### 1-4. 1:1 내 문의 등록, 수정, 삭제
 <p align="center">
 <img style="width:500px;" align="center" src="https://github.com/pcy5653/GDJ68_Boot/assets/68891642/dafe8fcd-db02-4a58-bf90-31f738d4f002" />
 <img style="width:200px;" align="center" src="https://github.com/pcy5653/GDJ68_Boot/assets/68891642/510ffdba-ac5a-44cb-8a8e-6b83dabdf691" />
@@ -140,4 +143,4 @@
 <br>
 
 ### 2. 관리자
-2-1. FAQ 목록
+#### 2-1. FAQ 목록
