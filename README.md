@@ -101,3 +101,28 @@
 </p>
 
 - 카테고리 별로 원하는 FAQ를 확인할 수 있으며, '+' 클릭하면 각 List 상세 내용을 확인할 수 있습니다.
+
+<br>
+1-3. 1:1 내 문의 목록
+<p align="center">
+<img style="width:400px;" align="center" src="https://github.com/pcy5653/GDJ68_Boot/assets/68891642/609eaec5-9fa5-4ae8-ab50-a807c4601a4f" />
+</p>
+
+- 사용자의 문의 목록과 총 건수, 문의내역 및 내용으로 검색이 가능합니다.
+
+<br>
+1-4. 1:1 내 문의 등록, 수정, 삭제
+<p align="center">
+<img style="width:400px;" align="center" src="https://github.com/pcy5653/GDJ68_Boot/assets/68891642/dafe8fcd-db02-4a58-bf90-31f738d4f002" />
+<img style="width:200px;" align="center" src="https://github.com/pcy5653/GDJ68_Boot/assets/68891642/510ffdba-ac5a-44cb-8a8e-6b83dabdf691" />
+</p>
+
+<p align="center">
+<img style="width:400px;" align="center" src="https://github.com/pcy5653/GDJ68_Boot/assets/68891642/73c058ee-7228-4d07-8e37-3bf9a02ae21d" />
+<img style="width:200px;" align="center" src="https://github.com/pcy5653/GDJ68_Boot/assets/68891642/5a762977-045e-49ba-a244-0d2ebf6dcbb9" />
+</p>
+
+<p align="center">
+<img style="width:400px;" align="center" src="https://github.com/pcy5653/GDJ68_Boot/assets/68891642/e1931d7a-eeb9-409b-b3e2-0387a9c4cc26" />
+<img style="width:200px;" align="center" src="https://github.com/pcy5653/GDJ68_Boot/assets/68891642/5a93d54e-9543-4c31-b7ba-ab356807bddc" />
+</p>
