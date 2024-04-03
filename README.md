@@ -159,11 +159,11 @@
 <img style="width:300px;" align="center" src="https://github.com/pcy5653/GDJ68_Boot/assets/68891642/f1c8733d-3144-4d46-a9a3-fa35fc77c966" />
 </p>
 <p align="center">
-    <p align="center">
+    <p align="left">
         <img style="width:200px;" align="top" src="https://github.com/pcy5653/GDJ68_Boot/assets/68891642/abd9eb79-17bf-4003-8e19-d59568a42b10" />
         <img style="width:200px;" align="bottom" src="https://github.com/pcy5653/GDJ68_Boot/assets/68891642/cafc6a98-9e67-42d6-97c6-da639a44691a" />
     </p>
-    <p align="center">
+    <p align="left">
         <img style="width:400px;" align="center" src="https://github.com/pcy5653/GDJ68_Boot/assets/68891642/5c0b88af-2a34-4411-96c3-74d5887850e4" />
     </p>
 </p>
