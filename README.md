@@ -90,3 +90,4 @@
 <p align="center">
 <img style="width:300px;" src="https://github.com/pcy5653/GDJ68_Boot/assets/68891642/23f2566f-f3bd-4ed3-938e-657ff243b8f2" />
 </p>
+- <술담아> 메인페이지로 평점에 따른 Best 4 상품을 확인할 수 있습니다. 
