@@ -158,13 +158,23 @@
 <img style="width:500px;" align="center" src="https://github.com/pcy5653/GDJ68_Boot/assets/68891642/f8350088-10ae-493d-bf25-47fa13257ad7" />
 <img style="width:300px;" align="center" src="https://github.com/pcy5653/GDJ68_Boot/assets/68891642/f1c8733d-3144-4d46-a9a3-fa35fc77c966" />
 </p>
+
+- 모든 사용자들의 문의 내역을 확인할 수 있으며, 해당 문의에 대한 답변을 작성할 수 있습니다.
+
+#### 2-3. 답변 등록, 수정, 삭제
 <p align="center">
-    <p style="width:50%">
-        <img style="width:200px;" src="https://github.com/pcy5653/GDJ68_Boot/assets/68891642/abd9eb79-17bf-4003-8e19-d59568a42b10" />
-        <img style="width:200px;" src="https://github.com/pcy5653/GDJ68_Boot/assets/68891642/cafc6a98-9e67-42d6-97c6-da639a44691a" />
-    </p>
-    <p style="width:50%">
-        <img style="width:400px;" src="https://github.com/pcy5653/GDJ68_Boot/assets/68891642/5c0b88af-2a34-4411-96c3-74d5887850e4" />
-    </p>
+<img style="width:300px;" align="center" src="https://github.com/pcy5653/GDJ68_Boot/assets/68891642/f1c8733d-3144-4d46-a9a3-fa35fc77c966" />
 </p>
+<p align="center">
+<img style="width:200px;" src="https://github.com/pcy5653/GDJ68_Boot/assets/68891642/abd9eb79-17bf-4003-8e19-d59568a42b10" />
+<img style="width:200px;" src="https://github.com/pcy5653/GDJ68_Boot/assets/68891642/cafc6a98-9e67-42d6-97c6-da639a44691a" />
+</p>
+
+- 관리자는 사용자 문의 수정, 삭제 권한이 없으며, 답변만 등록할 수 있습니다.
+  
+#### 
+<p style="width:50%">
+    <img style="width:400px;" src="https://github.com/pcy5653/GDJ68_Boot/assets/68891642/5c0b88af-2a34-4411-96c3-74d5887850e4" />
+</p>
+
 
